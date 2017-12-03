@@ -1,0 +1,19 @@
+.root {
+    orientation: vertical;
+}
+MainMenu {
+    height: 40u;
+}
+.appContainer {
+    height: fill;
+}
+
+Button {
+    align.vertical: center;
+    width: 10p + 5px;
+    
+    Icon {
+        width: 1p;
+        height: 1p;
+    }
+}
