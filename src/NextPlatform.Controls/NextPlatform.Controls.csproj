@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
+    <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj" />
+    <ProjectReference Include="..\NextPlatform.Metrics\NextPlatform.Metrics.csproj" />
+    <ProjectReference Include="..\NextPlatform.Styling\NextPlatform.Styling.csproj" />
+  </ItemGroup>
+
+</Project>

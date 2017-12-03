@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NextPlatform.Metrics\NextPlatform.Metrics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Tree\" />
+  </ItemGroup>
+
+</Project>
