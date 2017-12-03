@@ -8,6 +8,7 @@ using NextPlatform.Platforms.WindowsForms;
 using NextPlatform.Rendering;
 using NextPlatform.Controls.Abstractions;
 using NextPlatform.Controls;
+using NextPlatform.Rendering.Skia;
 
 namespace Playground
 {
@@ -17,7 +18,7 @@ namespace Playground
         static void Main(string[] args)
         {
             var layoutEngine = new LayoutEngine();
-            var renderEngine = new RenderEngine(layoutEngine);
+            var renderEngine = new SkiaRenderEngine(layoutEngine);
 
             var app = new Application(renderEngine);
             var window = app.CreatePlatformWindow();

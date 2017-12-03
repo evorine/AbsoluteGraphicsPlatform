@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="1.59.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
     <ProjectReference Include="..\NextPlatform.Controls\NextPlatform.Controls.csproj" />
     <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj" />

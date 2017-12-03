@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj" />
     <ProjectReference Include="..\NextPlatform.Platforms.WindowsForms\NextPlatform.Platforms.WindowsForms.csproj" />
+    <ProjectReference Include="..\NextPlatform.Rendering.Skia\NextPlatform.Rendering.Skia.csproj" />
     <ProjectReference Include="..\NextPlatform.Rendering\NextPlatform.Rendering.csproj" />
   </ItemGroup>
 

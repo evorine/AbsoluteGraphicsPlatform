@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Rendering
+namespace NextPlatform.Rendering.Skia
 {
     public class FrameRenderer : IFrameRenderer
     {
