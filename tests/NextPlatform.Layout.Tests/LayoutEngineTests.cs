@@ -1,10 +1,11 @@
+using NextPlatform.Controls;
 using NextPlatform.Core;
 using NextPlatform.Core.Layout;
-using NextPlatform.Rendering;
+using NextPlatform.Metrics;
 using System;
 using Xunit;
 
-namespace NextPlatform.Metrics.Tests
+namespace NextPlatform.Layout.Tests
 {
     public class LayoutEngineTests
     {
@@ -29,14 +30,14 @@ namespace NextPlatform.Metrics.Tests
             var layoutEngine = new LayoutEngine();
             var componentTree = new ComponentTree();
 
-            var componentRoot = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentRoot = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRoot.Name = "Root";
             componentRoot.Width = Length.Fill;
             componentRoot.Height = Length.Fill;
             componentRoot.LayoutDirection = Controls.Abstractions.LayoutDirection.Vertical;
             componentTree.AppendRootComponent(componentRoot);
 
-            var componentTop = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentTop = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentTop.Name = "Top";
             componentTop.Width = Length.Fill;
             componentTop.Height = new Length(20, UnitType.Unit);
@@ -44,7 +45,7 @@ namespace NextPlatform.Metrics.Tests
             componentRoot.Components.Append(componentTop);
             componentTop.Parent = componentRoot;
 
-            var componentBottom = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentBottom = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentBottom.Name = "Bottom";
             componentBottom.Width = Length.Fill;
             componentBottom.Height = Length.Fill;
@@ -53,7 +54,7 @@ namespace NextPlatform.Metrics.Tests
             componentBottom.Parent = componentRoot;
 
             // LEFT
-            var componentLeft = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentLeft = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft.Name = "Left";
             componentLeft.Width = new Length(1, UnitType.Ratio);
             componentLeft.Height = Length.Shrink;
@@ -61,7 +62,7 @@ namespace NextPlatform.Metrics.Tests
             componentBottom.Components.Append(componentLeft);
             componentLeft.Parent = componentBottom;
 
-            var componentLeft1 = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentLeft1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft1.Name = "Left1";
             componentLeft1.Width = Length.Fill;
             componentLeft1.Height = new Length(10, UnitType.Unit);
@@ -69,7 +70,7 @@ namespace NextPlatform.Metrics.Tests
             componentLeft.Components.Append(componentLeft1);
             componentLeft1.Parent = componentLeft;
 
-            var componentLeft2 = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentLeft2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft2.Name = "Left2";
             componentLeft2.Width = Length.Fill;
             componentLeft2.Height = new Length(20, UnitType.Unit);
@@ -78,7 +79,7 @@ namespace NextPlatform.Metrics.Tests
             componentLeft2.Parent = componentLeft;
 
             // RIGHT
-            var componentRight = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentRight = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight.Name = "Right";
             componentRight.Width = new Length(3, UnitType.Ratio);
             componentRight.Height = Length.Fill;
@@ -86,7 +87,7 @@ namespace NextPlatform.Metrics.Tests
             componentBottom.Components.Append(componentRight);
             componentRight.Parent = componentBottom;
 
-            var componentRight1 = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentRight1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight1.Name = "Right1";
             componentRight1.Width = Length.Fill;
             componentRight1.Height = new Length(35, UnitType.Unit);
@@ -94,7 +95,7 @@ namespace NextPlatform.Metrics.Tests
             componentRight.Components.Append(componentRight1);
             componentRight1.Parent = componentRight;
 
-            var componentRight2 = componentTree.ComponentFactory.CreateComponent<Controls.VisualElement>();
+            var componentRight2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight2.Name = "Right2";
             componentRight2.Width = Length.Fill;
             componentRight2.Height = new Length(20, UnitType.Unit);
