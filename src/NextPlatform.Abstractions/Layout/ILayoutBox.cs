@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Controls.Abstractions
+namespace NextPlatform.Abstractions
 {
     public interface ILayoutBox
     {
