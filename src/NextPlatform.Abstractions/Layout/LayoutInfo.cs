@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Core.Layout
+namespace NextPlatform.Layout
 {
     public class LayoutInfo
     {

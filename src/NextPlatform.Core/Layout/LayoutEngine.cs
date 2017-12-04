@@ -3,6 +3,7 @@
 
 using NextPlatform.Abstractions;
 using NextPlatform.Controls.Abstractions;
+using NextPlatform.Layout;
 using NextPlatform.Metrics;
 using System;
 using System.Collections.Generic;

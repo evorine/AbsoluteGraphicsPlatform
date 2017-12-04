@@ -1,7 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using NextPlatform.Core.Layout;
+using NextPlatform.Layout;
 using NextPlatform.Metrics;
 using System;
 using System.Collections.Generic;

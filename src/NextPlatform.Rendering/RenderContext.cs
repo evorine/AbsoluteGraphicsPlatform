@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using NextPlatform.Metrics;
 using NextPlatform.Core.Layout;
+using NextPlatform.Layout;
 
 namespace NextPlatform.Rendering
 {
