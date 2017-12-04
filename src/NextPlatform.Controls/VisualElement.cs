@@ -22,10 +22,10 @@ namespace NextPlatform.Controls
         public virtual LayoutDirection LayoutDirection { get; set; }
 
         [ComponentProperty]
-        public virtual Length Width { get; set; }
+        public virtual CompositeLength Width { get; set; }
 
         [ComponentProperty]
-        public virtual Length Height { get; set; }
+        public virtual CompositeLength Height { get; set; }
 
         [ComponentProperty]
         public virtual Rectangle Margin { get; set; }

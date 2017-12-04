@@ -27,7 +27,7 @@ namespace NextPlatform.Core.Layout
         }
 
 
-        private float calculateLength(Length componentLength, Length totalLength, float absoluteClientLength)
+        private float calculateLength(CompositeLength componentLength, CompositeLength totalLength, float absoluteClientLength)
         {
             // Calculate unrelated length in pixel
             // TODO: Temporarly Unit type is calculated as Pixel type.
@@ -53,7 +53,7 @@ namespace NextPlatform.Core.Layout
                 var factor = rest / totalDynamicLength;
                 return lengthUnrelated + (factor * componentLength[UnitType.Ratio]);
             }
-            else if (componentLength == Length.Fill)
+            else if (componentLength == CompositeLength.Fill)
             {
                 return absoluteClientLength - totalUnrelated + lengthUnrelated;
             }
@@ -70,9 +70,9 @@ namespace NextPlatform.Core.Layout
             var parentLayoutData = layoutData[component.Parent];
             if (component is ILayoutBox box)
             {
-                var hasClientWidth = box.Width != Length.Shrink;
+                var hasClientWidth = box.Width != CompositeLength.Shrink;
                 var clientWidth = parentLayoutData.AbsolutePaddingBox.Right - parentLayoutData.AbsolutePaddingBox.Left;
-                var hasClientHeight = box.Height != Length.Shrink;
+                var hasClientHeight = box.Height != CompositeLength.Shrink;
                 var clientHeight = parentLayoutData.AbsolutePaddingBox.Bottom - parentLayoutData.AbsolutePaddingBox.Top;
 
                 var totalWidth = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Width).Aggregate((total, sibling) => { return total + sibling; });
@@ -83,8 +83,8 @@ namespace NextPlatform.Core.Layout
 
                 layoutData[component].AbsoluteMarginBox = new Rectangle(
                     parentLayoutData.AbsoluteMarginBox.Top + offset.Top,
-                    parentLayoutData.AbsoluteMarginBox.Left + new Length(width, UnitType.Pixel) + offset.Left,
-                    parentLayoutData.AbsoluteMarginBox.Top + new Length(height, UnitType.Pixel) + offset.Top,
+                    parentLayoutData.AbsoluteMarginBox.Left + new CompositeLength(width, UnitType.Pixel) + offset.Left,
+                    parentLayoutData.AbsoluteMarginBox.Top + new CompositeLength(height, UnitType.Pixel) + offset.Top,
                     parentLayoutData.AbsoluteMarginBox.Left + offset.Left
                 );
                 layoutData[component].AbsoluteBox = layoutData[component].AbsoluteMarginBox;

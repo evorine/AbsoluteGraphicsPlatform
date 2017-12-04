@@ -12,8 +12,8 @@ namespace NextPlatform.Controls.Abstractions
     {
         LayoutDirection LayoutDirection { get; set; }
 
-        Length Width { get; set; }
-        Length Height { get; set; }
+        CompositeLength Width { get; set; }
+        CompositeLength Height { get; set; }
         Rectangle Margin { get; set; }
         Rectangle Padding { get; set; }
     }

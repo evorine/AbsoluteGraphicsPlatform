@@ -33,23 +33,23 @@ namespace Playground
         {
             var componentRoot = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRoot.Name = "Root";
-            componentRoot.Width = Length.Fill;
-            componentRoot.Height = Length.Fill;
+            componentRoot.Width = CompositeLength.Fill;
+            componentRoot.Height = CompositeLength.Fill;
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentTree.AppendRootComponent(componentRoot);
 
             var componentTop = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentTop.Name = "Top";
-            componentTop.Width = Length.Fill;
-            componentTop.Height = new Length(20, UnitType.Unit);
+            componentTop.Width = CompositeLength.Fill;
+            componentTop.Height = new CompositeLength(20, UnitType.Unit);
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentRoot.Components.Append(componentTop);
             componentTop.Parent = componentRoot;
 
             var componentBottom = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentBottom.Name = "Bottom";
-            componentBottom.Width = Length.Fill;
-            componentBottom.Height = Length.Fill;
+            componentBottom.Width = CompositeLength.Fill;
+            componentBottom.Height = CompositeLength.Fill;
             componentBottom.LayoutDirection = LayoutDirection.Horizontal;
             componentRoot.Components.Append(componentBottom);
             componentBottom.Parent = componentRoot;
@@ -57,24 +57,24 @@ namespace Playground
             // LEFT
             var componentLeft = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft.Name = "Left";
-            componentLeft.Width = new Length(1, UnitType.Ratio);
-            componentLeft.Height = Length.Shrink;
+            componentLeft.Width = new CompositeLength(1, UnitType.Ratio);
+            componentLeft.Height = CompositeLength.Shrink;
             componentLeft.LayoutDirection = LayoutDirection.Vertical;
             componentBottom.Components.Append(componentLeft);
             componentLeft.Parent = componentBottom;
 
             var componentLeft1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft1.Name = "Left1";
-            componentLeft1.Width = Length.Fill;
-            componentLeft1.Height = new Length(10, UnitType.Unit);
+            componentLeft1.Width = CompositeLength.Fill;
+            componentLeft1.Height = new CompositeLength(10, UnitType.Unit);
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentLeft.Components.Append(componentLeft1);
             componentLeft1.Parent = componentLeft;
 
             var componentLeft2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentLeft2.Name = "Left2";
-            componentLeft2.Width = Length.Fill;
-            componentLeft2.Height = new Length(20, UnitType.Unit);
+            componentLeft2.Width = CompositeLength.Fill;
+            componentLeft2.Height = new CompositeLength(20, UnitType.Unit);
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentLeft.Components.Append(componentLeft2);
             componentLeft2.Parent = componentLeft;
@@ -82,24 +82,24 @@ namespace Playground
             // RIGHT
             var componentRight = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight.Name = "Right";
-            componentRight.Width = new Length(3, UnitType.Ratio);
-            componentRight.Height = Length.Fill;
+            componentRight.Width = new CompositeLength(3, UnitType.Ratio);
+            componentRight.Height = CompositeLength.Fill;
             componentRight.LayoutDirection = LayoutDirection.Vertical;
             componentBottom.Components.Append(componentRight);
             componentRight.Parent = componentBottom;
 
             var componentRight1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight1.Name = "Right1";
-            componentRight1.Width = Length.Fill;
-            componentRight1.Height = new Length(35, UnitType.Unit);
+            componentRight1.Width = CompositeLength.Fill;
+            componentRight1.Height = new CompositeLength(35, UnitType.Unit);
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentRight.Components.Append(componentRight1);
             componentRight1.Parent = componentRight;
 
             var componentRight2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentRight2.Name = "Right2";
-            componentRight2.Width = Length.Fill;
-            componentRight2.Height = new Length(20, UnitType.Unit);
+            componentRight2.Width = CompositeLength.Fill;
+            componentRight2.Height = new CompositeLength(20, UnitType.Unit);
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentRight.Components.Append(componentRight2);
             componentRight2.Parent = componentRight;

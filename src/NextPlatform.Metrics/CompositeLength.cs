@@ -6,14 +6,14 @@ using System.Text.RegularExpressions;
 
 namespace NextPlatform.Metrics
 {
-    public struct Length
+    public struct CompositeLength
     {
         static Regex expressionRegex = new Regex($@"(?<part>(?<ratio>x)?(?<magnitude>\d+)(?<unit>{unitPoint}|{unitPixel}|{unitPercentage})?)+");
 
-        public static Length Zero = new Length(0, UnitType.Pixel);
-        public static Length Infinity = new Length(float.PositiveInfinity, UnitType.Pixel);
-        public static Length Fill = new Length(LengthType.Fill);
-        public static Length Shrink = new Length(LengthType.Shrink);
+        public static CompositeLength Zero = new CompositeLength(0, UnitType.Pixel);
+        public static CompositeLength Infinity = new CompositeLength(float.PositiveInfinity, UnitType.Pixel);
+        public static CompositeLength Fill = new CompositeLength(LengthType.Fill);
+        public static CompositeLength Shrink = new CompositeLength(LengthType.Shrink);
 
         private const string unitPoint = "u";
         private const string unitPixel = "px";
@@ -27,7 +27,7 @@ namespace NextPlatform.Metrics
         float lengthPercentage;
         float lengthRatio;
 
-        public Length(float length, UnitType unit)
+        public CompositeLength(float length, UnitType unit)
         {
             lengthType = LengthType.Amount;
             lengthUnit = 0;
@@ -36,7 +36,7 @@ namespace NextPlatform.Metrics
             lengthRatio = 0;
             Append(length, unit);
         }
-        public Length(params (float Length, UnitType Unit)[] lengths)
+        public CompositeLength(params (float Length, UnitType Unit)[] lengths)
         {
             lengthType = LengthType.Amount;
             lengthUnit = 0;
@@ -48,7 +48,7 @@ namespace NextPlatform.Metrics
         }
 
 
-        private Length(LengthType lengthType)
+        private CompositeLength(LengthType lengthType)
         {
             this.lengthType = lengthType;
             lengthUnit = 0;
@@ -132,9 +132,9 @@ namespace NextPlatform.Metrics
         }
         
         #region Operators
-        public static Length operator +(Length left, Length right)
+        public static CompositeLength operator +(CompositeLength left, CompositeLength right)
         {
-            return new Length(
+            return new CompositeLength(
                 (left.lengthUnit, UnitType.Unit),
                 (left.lengthPixel, UnitType.Pixel),
                 (left.lengthPercentage, UnitType.Percentage),
@@ -145,9 +145,9 @@ namespace NextPlatform.Metrics
                 (right.lengthRatio, UnitType.Ratio)
             );
         }
-        public static Length operator -(Length left, Length right)
+        public static CompositeLength operator -(CompositeLength left, CompositeLength right)
         {
-            return new Length(
+            return new CompositeLength(
                 (left.lengthUnit, UnitType.Unit),
                 (left.lengthPixel, UnitType.Pixel),
                 (left.lengthPercentage, UnitType.Percentage),
@@ -161,7 +161,7 @@ namespace NextPlatform.Metrics
 
         public override bool Equals(object obj)
         {
-            if (obj is Length length) return this == length;
+            if (obj is CompositeLength length) return this == length;
             else return false;
         }
 
@@ -179,7 +179,7 @@ namespace NextPlatform.Metrics
             }
         }
 
-        public static bool operator ==(Length left, Length right)
+        public static bool operator ==(CompositeLength left, CompositeLength right)
         {
             return
                 left.lengthType == right.lengthType &&
@@ -189,7 +189,7 @@ namespace NextPlatform.Metrics
                 left.lengthRatio == right.lengthRatio;
         }
 
-        public static bool operator !=(Length left, Length right)
+        public static bool operator !=(CompositeLength left, CompositeLength right)
         {
             return
                 left.lengthType != right.lengthType ||
