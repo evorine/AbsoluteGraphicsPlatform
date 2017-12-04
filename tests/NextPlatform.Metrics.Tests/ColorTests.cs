@@ -29,7 +29,7 @@ namespace NextPlatform.Metrics.Tests
         }
 
         [Fact]
-        public void MustParseGreenAppropriately()
+        public void MustParseHexStringAppropriately()
         {
             var color1 = new Color("#4cAF50");
             Assert.Equal(76, color1.Red);
@@ -39,7 +39,7 @@ namespace NextPlatform.Metrics.Tests
         }
 
         [Fact]
-        public void MustParseGreenWithAlphaAppropriately()
+        public void MustParseHexStringWithAlphaAppropriately()
         { 
             var color2 = new Color("#4CAF50aF");
             Assert.Equal(76, color2.Red);

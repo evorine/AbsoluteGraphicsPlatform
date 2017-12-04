@@ -10,7 +10,7 @@ namespace NextPlatform.Layout.Tests
     public class LayoutEngineTests
     {
         [Fact]
-        public void TestBasic()
+        public void TestComponentTreeStructure()
         {
             var layoutEngine = new LayoutEngine();
             var componentTree = new ComponentTree();
