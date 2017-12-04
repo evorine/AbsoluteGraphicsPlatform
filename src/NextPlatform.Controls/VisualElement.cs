@@ -28,10 +28,10 @@ namespace NextPlatform.Controls
         public virtual CompositeLength Height { get; set; }
 
         [ComponentProperty]
-        public virtual Rectangle Margin { get; set; }
+        public virtual Thickness Margin { get; set; }
 
         [ComponentProperty]
-        public virtual Rectangle Padding { get; set; }
+        public virtual Thickness Padding { get; set; }
 
 
         public virtual void Render(IRenderContext renderContext)

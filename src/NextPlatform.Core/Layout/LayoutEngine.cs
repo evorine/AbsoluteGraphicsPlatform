@@ -20,12 +20,12 @@ namespace NextPlatform.Core.Layout
         {
             generateLayoutDatas(componentTree);
             var rootComponent = componentTree.RootComponents.First();
-            layoutData[rootComponent].AbsoluteBox = new Rectangle((0, UnitType.Pixel), (clientSize.Width.Magnitude, UnitType.Pixel), (clientSize.Height.Magnitude, UnitType.Pixel), (0, UnitType.Pixel));
+            layoutData[rootComponent].AbsoluteBox = new Thickness((0, UnitType.Pixel), (clientSize.Width.Magnitude, UnitType.Pixel), (clientSize.Height.Magnitude, UnitType.Pixel), (0, UnitType.Pixel));
             layoutData[rootComponent].AbsoluteMarginBox = layoutData[rootComponent].AbsoluteBox;
             layoutData[rootComponent].AbsolutePaddingBox = layoutData[rootComponent].AbsoluteBox;
             layoutData[rootComponent].LayoutDirection = LayoutDirection.Vertical;
 
-            var offset = new Rectangle();
+            var offset = new Thickness();
             foreach (var component in rootComponent.Components)
                 processComponent(component, rootComponent.Components, ref offset);
         }
@@ -69,7 +69,7 @@ namespace NextPlatform.Core.Layout
             }
         }
 
-        private void processComponent(IComponent component, IEnumerable<IComponent> siblings, ref Rectangle offset)
+        private void processComponent(IComponent component, IEnumerable<IComponent> siblings, ref Thickness offset)
         {
             var parentLayoutData = layoutData[component.Parent];
             if (component is ILayoutBox box)
@@ -85,7 +85,7 @@ namespace NextPlatform.Core.Layout
                 var totalHeight = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Height).Aggregate((total, sibling) => { return total + sibling; });
                 var height = calculateLength(box.Height, totalHeight, clientHeight[UnitType.Pixel]);
 
-                layoutData[component].AbsoluteMarginBox = new Rectangle(
+                layoutData[component].AbsoluteMarginBox = new Thickness(
                     parentLayoutData.AbsoluteMarginBox.Top + offset.Top,
                     parentLayoutData.AbsoluteMarginBox.Left + new CompositeLength(width, UnitType.Pixel) + offset.Left,
                     parentLayoutData.AbsoluteMarginBox.Top + new CompositeLength(height, UnitType.Pixel) + offset.Top,
@@ -106,7 +106,7 @@ namespace NextPlatform.Core.Layout
                 layoutData[component].LayoutDirection = parentLayoutData.LayoutDirection;
             }
 
-            var childOffset = new Rectangle();
+            var childOffset = new Thickness();
             foreach (var child in component.Components)
                 processComponent(child, component.Components, ref childOffset);
         }
@@ -117,9 +117,9 @@ namespace NextPlatform.Core.Layout
             {
                 layoutData[component] = new LayoutInfo()
                 {
-                    AbsoluteBox = new Rectangle(),
-                    AbsoluteMarginBox = new Rectangle(),
-                    AbsolutePaddingBox = new Rectangle()
+                    AbsoluteBox = new Thickness(),
+                    AbsoluteMarginBox = new Thickness(),
+                    AbsolutePaddingBox = new Thickness()
                 };
             }
         }

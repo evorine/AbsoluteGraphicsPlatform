@@ -14,7 +14,7 @@ namespace NextPlatform.Abstractions
 
         CompositeLength Width { get; set; }
         CompositeLength Height { get; set; }
-        Rectangle Margin { get; set; }
-        Rectangle Padding { get; set; }
+        Thickness Margin { get; set; }
+        Thickness Padding { get; set; }
     }
 }

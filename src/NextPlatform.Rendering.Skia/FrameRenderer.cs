@@ -32,7 +32,7 @@ namespace NextPlatform.Rendering.Skia
             canvas.DrawRect(new SKRect(0, 0, clientSize.Width.Magnitude, clientSize.Height.Magnitude), paint);*/
         }
 
-        public void DrawRectangle(Rectangle rect, Color fillColor)
+        public void DrawRectangle(Thickness rect, Color fillColor)
         {
             canvas.Save();
             var paint = new SKPaint();

@@ -10,28 +10,20 @@ namespace NextPlatform.Metrics
     public struct Rectangle
     {
         public CompositeLength Top;
-        public CompositeLength Right;
-        public CompositeLength Bottom;
         public CompositeLength Left;
+        public CompositeLength Width;
+        public CompositeLength Height;
 
-        public Rectangle(CompositeLength top, CompositeLength right, CompositeLength bottom, CompositeLength left)
+        public Rectangle(CompositeLength top, CompositeLength left, CompositeLength width, CompositeLength height)
         {
             Top = top;
-            Right = right;
-            Bottom = bottom;
             Left = left;
+            Width = width;
+            Height = height;
         }
-        public Rectangle(ValueTuple<float, UnitType> top, ValueTuple<float, UnitType> right, ValueTuple<float, UnitType> bottom, ValueTuple<float, UnitType> left)
-        {
-            Top = new CompositeLength(top);
-            Right = new CompositeLength(right);
-            Bottom = new CompositeLength(bottom);
-            Left = new CompositeLength(left);
-        }
-
         public override string ToString()
         {
-            return $"Rectangle: {Top} {Right} {Bottom} {Left}";
+            return $"Rectangle: {Width}x{Height}@{Left},{Top}";
         }
     }
 }

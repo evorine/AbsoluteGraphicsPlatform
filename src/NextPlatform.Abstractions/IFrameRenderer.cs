@@ -11,6 +11,6 @@ namespace NextPlatform.Abstractions
 {
     public interface IFrameRenderer
     {
-        void DrawRectangle(Rectangle rect, Color fillColor);
+        void DrawRectangle(Thickness rect, Color fillColor);
     }
 }
