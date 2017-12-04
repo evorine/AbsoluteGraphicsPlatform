@@ -1,4 +1,7 @@
-﻿using NextPlatform.Abstractions;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using NextPlatform.Abstractions;
 using NextPlatform.Core;
 using System;
 using System.Collections.Generic;

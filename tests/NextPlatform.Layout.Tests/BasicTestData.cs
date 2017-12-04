@@ -1,4 +1,7 @@
-﻿using NextPlatform.Controls;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using NextPlatform.Controls;
 using NextPlatform.Controls.Abstractions;
 using NextPlatform.Core;
 using NextPlatform.Metrics;
