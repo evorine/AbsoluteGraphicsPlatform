@@ -13,9 +13,7 @@ namespace NextPlatform.Controls.Abstractions
     {
         IComponentFactory ComponentFactory { get; }
         IEnumerable<IComponent> AllComponents { get; }
-        IEnumerable<IComponent> RootComponents { get; }
+        IComponent RootComponent { get; set; }
         IEnumerable<IComponent> LeafComponents { get; }
-        void AppendRootComponent(IComponent component);
-        void Recalculate();
     }
 }

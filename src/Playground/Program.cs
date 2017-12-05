@@ -37,7 +37,7 @@ namespace Playground
             componentRoot.Width = CompositeLength.Fill;
             componentRoot.Height = CompositeLength.Fill;
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
-            componentTree.AppendRootComponent(componentRoot);
+            componentTree.RootComponent = componentRoot;
 
             var componentTop = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             componentTop.Name = "Top";
@@ -104,9 +104,6 @@ namespace Playground
             componentRoot.LayoutDirection = LayoutDirection.Vertical;
             componentRight.Components.Append(componentRight2);
             componentRight2.Parent = componentRight;
-
-            componentTree.Recalculate();
-
         }
     }
 }

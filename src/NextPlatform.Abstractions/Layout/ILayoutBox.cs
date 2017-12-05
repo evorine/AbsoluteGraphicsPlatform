@@ -16,5 +16,7 @@ namespace NextPlatform.Abstractions
         CompositeLength Height { get; set; }
         Thickness Margin { get; set; }
         Thickness Padding { get; set; }
+
+        LayoutBoxInformation CalculatedLayoutBox { get; set; }
     }
 }

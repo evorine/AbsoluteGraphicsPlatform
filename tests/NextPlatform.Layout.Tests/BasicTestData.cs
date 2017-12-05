@@ -46,7 +46,7 @@ namespace NextPlatform.Layout.Tests
             ComponentRoot.Width = CompositeLength.Fill;
             ComponentRoot.Height = CompositeLength.Fill;
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
-            ComponentTree.AppendRootComponent(ComponentRoot);
+            ComponentTree.RootComponent = ComponentRoot;
 
             ComponentTop = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentTop.Name = "Top";
@@ -113,8 +113,6 @@ namespace NextPlatform.Layout.Tests
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Components.Append(ComponentRight2);
             ComponentRight2.Parent = ComponentRight;
-
-            ComponentTree.Recalculate();
         }
     }
 }

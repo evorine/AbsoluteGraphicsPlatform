@@ -3,7 +3,6 @@
 
 using NextPlatform.Abstractions;
 using NextPlatform.Controls.Abstractions;
-using NextPlatform.Layout;
 using NextPlatform.Metrics;
 using System;
 using System.Collections.Generic;
@@ -14,12 +13,12 @@ namespace NextPlatform.Core.Layout
 {
     public class LayoutEngine : ILayoutEngine
     {
-        public IDictionary<IComponent, LayoutInfo> layoutData = new Dictionary<IComponent, LayoutInfo>();
+        public IDictionary<IComponent, LayoutBoxInformation> layoutData = new Dictionary<IComponent, LayoutBoxInformation>();
 
         public void ProcessLayout(Size clientSize, IComponentTree componentTree)
         {
             generateLayoutDatas(componentTree);
-            var rootComponent = componentTree.RootComponents.First();
+            var rootComponent = componentTree.RootComponent;
             layoutData[rootComponent].AbsoluteBox = new Thickness((0, UnitType.Pixel), (clientSize.Width.Magnitude, UnitType.Pixel), (clientSize.Height.Magnitude, UnitType.Pixel), (0, UnitType.Pixel));
             layoutData[rootComponent].AbsoluteMarginBox = layoutData[rootComponent].AbsoluteBox;
             layoutData[rootComponent].AbsolutePaddingBox = layoutData[rootComponent].AbsoluteBox;
@@ -115,7 +114,7 @@ namespace NextPlatform.Core.Layout
         {
             foreach(var component in componentTree.AllComponents)
             {
-                layoutData[component] = new LayoutInfo()
+                layoutData[component] = new LayoutBoxInformation()
                 {
                     AbsoluteBox = new Thickness(),
                     AbsoluteMarginBox = new Thickness(),

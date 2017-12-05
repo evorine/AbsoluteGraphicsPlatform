@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Text;
 using NextPlatform.Metrics;
 using NextPlatform.Core.Layout;
-using NextPlatform.Layout;
 
 namespace NextPlatform.Rendering
 {
@@ -15,6 +14,6 @@ namespace NextPlatform.Rendering
     {
         public Size ClientSize { get; set; }
         public IFrameRenderer FrameRenderer { get; set; }
-        public LayoutInfo LayoutInfo { get; set; }
+        public LayoutBoxInformation LayoutInfo { get; set; }
     }
 }

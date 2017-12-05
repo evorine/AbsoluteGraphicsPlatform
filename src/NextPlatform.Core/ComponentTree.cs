@@ -12,14 +12,13 @@ namespace NextPlatform.Core
 {
     public class ComponentTree : IComponentTree
     {
-        IList<IComponent> rootComponents;
+        IComponent rootComponent;
         IList<IComponent> allComponents;
         IList<IComponent> leafComponents;
 
         public ComponentTree()
         {
             ComponentFactory = new ComponentFactory(this);
-            rootComponents = new List<IComponent>();
             allComponents = new List<IComponent>();
             leafComponents = new List<IComponent>();
         }
@@ -27,32 +26,33 @@ namespace NextPlatform.Core
         // TODO: Fix
         public IComponentFactory ComponentFactory { get; }
         public IEnumerable<IComponent> AllComponents => allComponents.AsEnumerable();
-        public IEnumerable<IComponent> RootComponents => rootComponents.AsEnumerable();
         public IEnumerable<IComponent> LeafComponents => leafComponents.AsEnumerable();
-
-
-        public void AppendRootComponent(IComponent component)
+        public IComponent RootComponent
         {
-            rootComponents.Add(component);
-            Recalculate();
+            get => rootComponent;
+            set
+            {
+                rootComponent = value;
+                reStructure();
+            }
         }
 
-        public void Recalculate()
+        
+        private void reStructure()
         {
             allComponents.Clear();
             leafComponents.Clear();
-            setAllAndLeafs(rootComponents);
+            setAllAndLeafComponents(rootComponent);
         }
 
-        private void setAllAndLeafs(IEnumerable<IComponent> components)
+        private void setAllAndLeafComponents(IComponent component)
         {
-            foreach(var component in components)
+            allComponents.Add(component);
+            if (!component.Components.Any()) leafComponents.Add(component);
+            else
             {
-                allComponents.Add(component);
-                if (!component.Components.Any())
-                    leafComponents.Add(component);
-                else
-                    setAllAndLeafs(component.Components); 
+                foreach (var child in component.Components)
+                    setAllAndLeafComponents(child);
             }
         }
     }

@@ -7,9 +7,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Layout
+namespace NextPlatform.Abstractions
 {
-    public class LayoutInfo
+    public class LayoutBoxInformation
     {
         public Thickness AbsoluteBox { get; set; }
         public Thickness AbsoluteMarginBox { get; set; }

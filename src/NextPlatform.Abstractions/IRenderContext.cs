@@ -1,7 +1,6 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using NextPlatform.Layout;
 using NextPlatform.Metrics;
 using System;
 using System.Collections.Generic;
@@ -13,6 +12,6 @@ namespace NextPlatform.Abstractions
     {
         Size ClientSize { get; }
         IFrameRenderer FrameRenderer { get; }
-        LayoutInfo LayoutInfo { get; }
+        LayoutBoxInformation LayoutInfo { get; }
     }
 }

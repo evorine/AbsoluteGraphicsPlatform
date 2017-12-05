@@ -33,6 +33,7 @@ namespace NextPlatform.Controls
         [ComponentProperty]
         public virtual Thickness Padding { get; set; }
 
+        public LayoutBoxInformation CalculatedLayoutBox { get; set; }
 
         public virtual void Render(IRenderContext renderContext)
         {
