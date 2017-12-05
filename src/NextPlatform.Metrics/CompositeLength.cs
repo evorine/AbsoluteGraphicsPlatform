@@ -173,20 +173,6 @@ namespace NextPlatform.Metrics
             else return false;
         }
 
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return
-                    29 *
-                    19 * lengthType.GetHashCode() *
-                    19 * lengthUnit.GetHashCode() *
-                    19 * lengthPixel.GetHashCode() *
-                    19 * lengthPercentage.GetHashCode() *
-                    19 * lengthRatio.GetHashCode();
-            }
-        }
-
         public static bool operator ==(CompositeLength left, CompositeLength right)
         {
             return
@@ -207,5 +193,19 @@ namespace NextPlatform.Metrics
                 left.lengthRatio != right.lengthRatio;
         }
         #endregion
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return
+                    29 *
+                    19 * lengthType.GetHashCode() *
+                    19 * lengthUnit.GetHashCode() *
+                    19 * lengthPixel.GetHashCode() *
+                    19 * lengthPercentage.GetHashCode() *
+                    19 * lengthRatio.GetHashCode();
+            }
+        }
     }
 }
