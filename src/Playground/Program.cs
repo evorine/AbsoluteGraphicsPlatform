@@ -1,11 +1,11 @@
 ﻿using System;
-using NextPlatform.Core.Layout;
 using NextPlatform.Metrics;
 using NextPlatform.Platforms.WindowsForms;
 using NextPlatform.Controls.Abstractions;
 using NextPlatform.Rendering.Skia;
 using NextPlatform.Abstractions;
 using NextPlatform.Components;
+using NextPlatform.Layout;
 
 namespace Playground
 {

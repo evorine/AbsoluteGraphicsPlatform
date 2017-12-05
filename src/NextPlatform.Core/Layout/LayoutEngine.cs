@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace NextPlatform.Core.Layout
+namespace NextPlatform.Layout
 {
     public class LayoutEngine : ILayoutEngine
     {

@@ -1,13 +1,8 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using NextPlatform.Abstractions;
-using NextPlatform.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NextPlatform.Abstractions;
 
 namespace NextPlatform.Platforms.WindowsForms
 {

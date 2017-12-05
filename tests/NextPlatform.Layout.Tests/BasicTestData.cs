@@ -4,7 +4,6 @@
 using System;
 using NextPlatform.Abstractions;
 using NextPlatform.Components;
-using NextPlatform.Core;
 using NextPlatform.Metrics;
 
 namespace NextPlatform.Layout.Tests

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using NextPlatform.Controls.Abstractions;
 
-namespace NextPlatform.Core
+namespace NextPlatform
 {
     public class ComponentFactory : IComponentFactory
     {

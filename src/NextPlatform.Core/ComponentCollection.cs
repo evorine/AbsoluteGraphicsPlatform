@@ -7,7 +7,7 @@ using NextPlatform.Controls.Abstractions;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace NextPlatform.Core
+namespace NextPlatform
 {
     public class ComponentCollection : IComponentCollection
     {

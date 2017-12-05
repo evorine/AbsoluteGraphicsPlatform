@@ -1,12 +1,9 @@
 // Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using NextPlatform.Controls;
-using NextPlatform.Core;
-using NextPlatform.Core.Layout;
-using NextPlatform.Metrics;
 using System;
 using Xunit;
+using NextPlatform.Metrics;
 
 namespace NextPlatform.Layout.Tests
 {

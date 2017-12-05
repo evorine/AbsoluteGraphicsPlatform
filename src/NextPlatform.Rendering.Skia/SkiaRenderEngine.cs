@@ -1,15 +1,11 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using NextPlatform.Abstractions;
 using NextPlatform.Controls.Abstractions;
-using NextPlatform.Core;
-using NextPlatform.Core.Layout;
+using NextPlatform.Layout;
 using SkiaSharp;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace NextPlatform.Rendering.Skia
 {

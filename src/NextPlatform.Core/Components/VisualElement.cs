@@ -43,7 +43,7 @@ namespace NextPlatform.Components
         private Color randomColor()
         {
             var bytes = new byte[3];
-            Core.DUMMY.rnd.NextBytes(bytes);
+            DUMMY.rnd.NextBytes(bytes);
             return new Color(bytes[0], bytes[1], bytes[2], 255);
         }
     }

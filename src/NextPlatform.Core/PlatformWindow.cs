@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using NextPlatform.Metrics;
 
-namespace NextPlatform.Core
+namespace NextPlatform
 {
     public abstract class PlatformWindow : IPlatformWindow
     {

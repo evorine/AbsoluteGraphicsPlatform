@@ -8,7 +8,7 @@ using System.Text;
 using NextPlatform.Controls.Abstractions;
 using System.Linq;
 
-namespace NextPlatform.Core
+namespace NextPlatform
 {
     public class ComponentTree : IComponentTree
     {
