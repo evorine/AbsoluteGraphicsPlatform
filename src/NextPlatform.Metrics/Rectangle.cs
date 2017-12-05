@@ -21,6 +21,12 @@ namespace NextPlatform.Metrics
             Width = width;
             Height = height;
         }
+
+        public bool HasUnitOf(UnitType unit)
+        {
+            return Top[unit] != 0 || Left[unit] != 0 || Width[unit] != 0 || Height[unit] != 0;
+        }
+
         public override string ToString()
         {
             return $"Rectangle: {Width}x{Height}@{Left},{Top}";

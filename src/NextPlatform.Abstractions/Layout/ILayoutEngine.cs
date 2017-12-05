@@ -11,6 +11,6 @@ namespace NextPlatform.Abstractions.Layout
 {
     public interface ILayoutEngine
     {
-        void ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree);
+        LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree);
     }
 }

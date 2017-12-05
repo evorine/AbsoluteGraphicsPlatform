@@ -37,7 +37,7 @@ namespace NextPlatform.Metrics
             lengthPixel = 0;
             lengthPercentage = 0;
             lengthRatio = 0;
-            Append(length, unit);
+            Append(unit, length);
         }
         public CompositeLength(params (float Length, UnitType Unit)[] lengths)
         {
@@ -46,8 +46,8 @@ namespace NextPlatform.Metrics
             lengthPixel = 0;
             lengthPercentage = 0;
             lengthRatio = 0;
-            foreach(var length in lengths)
-                Append(length.Length, length.Unit);
+            foreach (var length in lengths)
+                Append(length.Unit, length.Length);
         }
 
 
@@ -61,43 +61,53 @@ namespace NextPlatform.Metrics
         }
 
         // Maybe remove this method to make this immutable?
-        public void Append(float length, UnitType unit)
+        public void Append(UnitType unit, float length)
+        {
+            Set(unit, this[unit] + length);
+        }
+
+        // Maybe remove this method to make this immutable?
+        public void Set(UnitType unit, float length)
         {
             switch (unit)
             {
                 case UnitType.Unit:
-                    lengthUnit += length;
+                    lengthUnit = length;
                     break;
 
                 case UnitType.Pixel:
-                    lengthPixel += length;
+                    lengthPixel = length;
                     break;
 
                 case UnitType.Percentage:
-                    lengthPercentage += length;
+                    lengthPercentage = length;
                     break;
 
                 case UnitType.Ratio:
-                    lengthRatio += length;
+                    lengthRatio = length;
                     break;
 
                 default: throw new ArgumentException("Invalid unit type!");
             }
         }
 
+        public float Get(UnitType unit)
+        {
+            switch (unit)
+            {
+                case UnitType.Unit: return lengthUnit;
+                case UnitType.Pixel: return lengthPixel;
+                case UnitType.Percentage: return lengthPercentage;
+                case UnitType.Ratio: return lengthRatio;
+                default: throw new ArgumentException("Invalid unit type!");
+            }
+
+        }
+
         public float this[UnitType unit]
         {
-            get
-            {
-                switch (unit)
-                {
-                    case UnitType.Unit: return lengthUnit;
-                    case UnitType.Pixel: return lengthPixel;
-                    case UnitType.Percentage: return lengthPercentage;
-                    case UnitType.Ratio: return lengthRatio;
-                    default: throw new ArgumentException("Invalid unit type!");
-                }
-            }
+            get => Get(unit);
+            set => Set(unit, value);
         }
 
 
@@ -132,6 +142,11 @@ namespace NextPlatform.Metrics
                 if (lengthPercentage != 0) yield return (lengthPercentage, UnitType.Percentage);
                 if (lengthRatio != 0) yield return (lengthRatio, UnitType.Ratio);
             }
+        }
+
+        public bool HasUnitOf(UnitType unit)
+        {
+            return this[unit] != 0;
         }
 
         public static CompositeLength Parse(string value)

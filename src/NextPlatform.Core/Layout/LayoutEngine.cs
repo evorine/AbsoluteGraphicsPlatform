@@ -1,127 +1,194 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
+using System.Linq;
 using NextPlatform.Abstractions;
 using NextPlatform.Abstractions.Components;
 using NextPlatform.Abstractions.Layout;
 using NextPlatform.Metrics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace NextPlatform.Layout
 {
+    /* TODO: We are doing the same calculations for all the siblings.
+     * It is possible to do the calculation at once for a component's children.
+     * Currently I'm leaving this like this as it is enough to proceed.
+     * Optimizations will come later. */
     public class LayoutEngine : ILayoutEngine
     {
-        public IDictionary<IComponent, LayoutBoxInformation> layoutData = new Dictionary<IComponent, LayoutBoxInformation>();
-
-        public void ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
+        float unitToPixel(float unit)
         {
-            generateLayoutDatas(componentTree);
-            var rootComponent = componentTree.RootComponent;
-            layoutData[rootComponent].AbsoluteBox = new AbsoluteRectangle(0, 0, clientSize.Width, clientSize.Height);
-            layoutData[rootComponent].AbsoluteMarginBox = layoutData[rootComponent].AbsoluteBox;
-            layoutData[rootComponent].AbsolutePaddingBox = layoutData[rootComponent].AbsoluteBox;
-            layoutData[rootComponent].LayoutDirection = LayoutDirection.Vertical;
-
-            var offset = new AbsoluteRectangle();
-            foreach (var component in rootComponent.Components)
-                processComponent(component, rootComponent.Components, ref offset);
+            return unit;
+        }
+        float pixelToUnit(float pixel)
+        {
+            return pixel;
         }
 
-
-        private float calculateLength(CompositeLength componentLength, CompositeLength totalLength, float absoluteClientLength)
+        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
         {
-            // Calculate unrelated length in pixel
-            // TODO: Temporarly Unit type is calculated as Pixel type.
-            var lengthUnrelated = componentLength[UnitType.Pixel] + componentLength[UnitType.Unit] + (absoluteClientLength * componentLength[UnitType.Percentage] / 100);
-            var totalUnrelated = totalLength[UnitType.Pixel] + totalLength[UnitType.Unit] + (absoluteClientLength * totalLength[UnitType.Percentage] / 100);
+            componentTree.Restructure();
+            var context = new LayoutCalculationContext();
 
-            /*
-            // If there is a sibling using Ratio, all Fills are targeted as Shrink
-            if (componentLength[UnitType.Ratio] != 0 && componentLength == LengthExpression.Fill)
-                return ...;
-            */
-            
-            // If there is a related length we have to calculate it with siblings
-            if (componentLength[UnitType.Ratio] != 0)
+            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.RootComponent);
+            rootComponentBox.AbsoluteBox = new AbsoluteRectangle(0, 0, clientSize.Width, clientSize.Height);
+            rootComponentBox.AbsoluteMarginBox = rootComponentBox.AbsoluteBox;
+            rootComponentBox.AbsolutePaddingBox = rootComponentBox.AbsoluteBox;
+            rootComponentBox.LayoutDirection = LayoutDirection.Vertical;
+
+            var childrenOffset = new AbsolutePoint();
+            foreach (var component in componentTree.RootComponent.Components)
+                processComponent(component, context, ref childrenOffset);
+
+            var filteredBoxes = context.LayoutBoxes.ToDictionary(x => (ILayoutBox)x.Key, x => x.Value);
+            return new LayoutCalculationResult(filteredBoxes);
+        }
+
+        private void validateMeasures(ILayoutBox layoutComponent)
+        {
+            // Currently margins and paddings don't support related lengths (Ratios like 1x, 5x).
+            if (layoutComponent.Margin.HasUnitOf(UnitType.Ratio))
+                throw new NotSupportedException("Siblings related lengths are not supported on margins");
+            if (layoutComponent.Padding.HasUnitOf(UnitType.Ratio))
+                throw new NotSupportedException("Siblings related lengths are not supported on paddings");
+        }
+
+        private void processComponent(IComponent component, LayoutCalculationContext context, ref AbsolutePoint currentOffset)
+        {
+            if (component is ILayoutBox layoutComponent)
             {
+                validateMeasures(layoutComponent);
+                var parentLayoutBox = context.GetLayoutBoxInformation(component.Parent);
 
+                var layoutBox = calculateRelativeLayoutBoxes(layoutComponent, parentLayoutBox.AbsolutePaddingBox.Size);
+                
+                // Convert relative location to absolute location
+                layoutBox.AbsoluteMarginBox.Offset(parentLayoutBox.AbsolutePaddingBox.Location);
+                layoutBox.AbsoluteBox.Offset(parentLayoutBox.AbsolutePaddingBox.Location);
+                layoutBox.AbsolutePaddingBox.Offset(parentLayoutBox.AbsolutePaddingBox.Location);
+
+                // Adjust location because of previous siblings
+                layoutBox.AbsoluteMarginBox.Offset(currentOffset);
+                layoutBox.AbsoluteBox.Offset(currentOffset);
+                layoutBox.AbsolutePaddingBox.Offset(currentOffset);
+
+                // Add this component to offset too to adjust next siblings (based on margin box).
+                currentOffset += layoutBox.AbsoluteMarginBox.Size;
+
+                context.SetLayoutBoxInformation(component, layoutBox);
+            }
+            else
+            {
+                // If this is not an ILayoutBox (layoutable) component, set it's client from it's parent.
+                context.SetLayoutBoxInformation(component, context.GetLayoutBoxInformation(component.Parent));
+            }
+
+            var childrenOffset = new AbsolutePoint();
+            // Continue with the children
+            foreach (var child in component.Components)
+                processComponent(child, context, ref childrenOffset);
+        }
+
+        private LayoutBoxInformation calculateRelativeLayoutBoxes(ILayoutBox layoutComponent, AbsoluteSize clientSize)
+        {
+            CompositeLength width = layoutComponent.Width;
+            CompositeLength height = layoutComponent.Height;
+
+            var component = (IComponent)layoutComponent;
+
+            var siblings = component.Parent.Components.Where(x => x != component);
+            var totalSiblingsWidth = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Width).Aggregate((total, sibling) => { return total + sibling; });
+            var totalSiblingsHeight = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Height).Aggregate((total, sibling) => { return total + sibling; });
+
+            var totalWidth = totalSiblingsWidth + width;
+            var totalHeight = totalSiblingsHeight + height;
+
+            // Does it have related length (Like 1x or 5x)?
+            var hasRelatedWidth = width[UnitType.Ratio] != 0;
+            var hasRelatedHeight = height[UnitType.Ratio] != 0;
+
+            // Assume siblings related lengths to '0' if this component is 'Fill'
+            if (width == CompositeLength.Fill) totalSiblingsWidth[UnitType.Ratio] = 0;
+            if (height == CompositeLength.Fill) totalSiblingsHeight[UnitType.Ratio] = 0;
+
+            // Assume the length as 'Fill' if this component have related length but siblings don't.
+            if (hasRelatedWidth && !totalSiblingsWidth.HasUnitOf(UnitType.Ratio)) width = CompositeLength.Fill;
+            if (hasRelatedHeight && !totalSiblingsHeight.HasUnitOf(UnitType.Ratio)) height = CompositeLength.Fill;
+
+            // Assume the length as 0 if this component is 'Shrink' and at least one of the siblings has related or fill length.
+            if (width == CompositeLength.Shrink && (totalSiblingsWidth.HasUnitOf(UnitType.Ratio) || totalSiblingsWidth == CompositeLength.Fill)) width = CompositeLength.Zero;
+            if (height == CompositeLength.Shrink && (totalSiblingsHeight.HasUnitOf(UnitType.Ratio) || totalSiblingsHeight == CompositeLength.Fill)) height = CompositeLength.Zero;
+
+
+            // Calculate size
+            var absoluteWidth = calculateLength(width, totalWidth, clientSize.Width);
+            var absoluteHeight = calculateLength(height, totalHeight, clientSize.Height);
+
+            // Calculate margins (based on parent client area)
+            var marginTop = calculateLength(layoutComponent.Margin.Top, clientSize.Height);
+            var marginRight = calculateLength(layoutComponent.Margin.Right, clientSize.Width);
+            var marginBottom = calculateLength(layoutComponent.Margin.Bottom, clientSize.Height);
+            var marginLeft = calculateLength(layoutComponent.Margin.Left, clientSize.Width);
+
+            // Calculate paddings (based on self client area)
+            var paddingTop = calculateLength(layoutComponent.Padding.Top, absoluteHeight);
+            var paddingRight = calculateLength(layoutComponent.Padding.Right, absoluteWidth);
+            var paddingBottom = calculateLength(layoutComponent.Padding.Bottom, absoluteHeight);
+            var paddingLeft = calculateLength(layoutComponent.Padding.Left, absoluteWidth);
+
+            return new LayoutBoxInformation()
+            {
+                AbsoluteMarginBox = new AbsoluteRectangle(
+                    0,
+                    0,
+                    absoluteWidth + marginLeft + marginRight,
+                    absoluteHeight + marginTop + marginBottom
+                ),
+                AbsoluteBox = new AbsoluteRectangle(
+                    marginLeft,
+                    marginTop,
+                    absoluteWidth,
+                    absoluteHeight
+                ),
+                AbsolutePaddingBox = new AbsoluteRectangle(
+                    marginLeft + paddingLeft,
+                    marginTop + paddingTop,
+                    absoluteWidth - paddingLeft - paddingRight,
+                    absoluteHeight - paddingTop - paddingBottom
+                )
+            };
+        }
+        private float calculateLength(CompositeLength length, CompositeLength totalLength, float absoluteClientLength)
+        {
+            var independentLength =
+                length[UnitType.Pixel] +
+                unitToPixel(length[UnitType.Unit]) +
+                (absoluteClientLength * length[UnitType.Percentage] / 100);
+
+            var totalIndependentLength =
+                totalLength[UnitType.Pixel] +
+                unitToPixel(totalLength[UnitType.Unit]) +
+                (absoluteClientLength * totalLength[UnitType.Percentage] / 100);
+
+            if (length.HasUnitOf(UnitType.Ratio))
+            {
                 // Get the dynamic length
-                var rest = absoluteClientLength - totalUnrelated;
+                var rest = absoluteClientLength - totalIndependentLength;
                 var totalDynamicLength = totalLength[UnitType.Ratio];
 
-
-
-                var factor = rest / totalDynamicLength;
-                return lengthUnrelated + (factor * componentLength[UnitType.Ratio]);
+                var factor = rest / totalLength[UnitType.Ratio];
+                return independentLength + (factor * length[UnitType.Ratio]);
             }
-            else if (componentLength == CompositeLength.Fill)
-            {
-                return absoluteClientLength - totalUnrelated + lengthUnrelated;
-            }
-            else
-            {
-                // Calculate unrelated length in pixel
-                // TODO: Temporarly Unit type is calculated as Pixel type.
-                return lengthUnrelated;
-            }
+            else if (length == CompositeLength.Zero) return 0;
+            else if (length == CompositeLength.Fill) return absoluteClientLength - totalIndependentLength;
+            else if (length == CompositeLength.Shrink) throw new NotImplementedException();
+            else return independentLength;
         }
 
-        private void processComponent(IComponent component, IEnumerable<IComponent> siblings, ref AbsoluteRectangle offset)
+        private float calculateLength(CompositeLength length, float absoluteClientLength)
         {
-            var parentLayoutData = layoutData[component.Parent];
-            if (component is ILayoutBox box)
-            {
-                var hasClientWidth = box.Width != CompositeLength.Shrink;
-                var clientWidth = parentLayoutData.AbsolutePaddingBox.Right - parentLayoutData.AbsolutePaddingBox.Left;
-                var hasClientHeight = box.Height != CompositeLength.Shrink;
-                var clientHeight = parentLayoutData.AbsolutePaddingBox.Bottom - parentLayoutData.AbsolutePaddingBox.Top;
-
-                var totalWidth = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Width).Aggregate((total, sibling) => { return total + sibling; });
-                var width = calculateLength(box.Width, totalWidth, clientWidth);
-
-                var totalHeight = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Height).Aggregate((total, sibling) => { return total + sibling; });
-                var height = calculateLength(box.Height, totalHeight, clientHeight);
-
-                layoutData[component].AbsoluteMarginBox = new AbsoluteRectangle(
-                    parentLayoutData.AbsoluteMarginBox.Top + offset.Top,
-                    parentLayoutData.AbsoluteMarginBox.Left + width + offset.Left,
-                    parentLayoutData.AbsoluteMarginBox.Top + height + offset.Top,
-                    parentLayoutData.AbsoluteMarginBox.Left + offset.Left
-                );
-                layoutData[component].AbsoluteBox = layoutData[component].AbsoluteMarginBox;
-                layoutData[component].AbsolutePaddingBox = layoutData[component].AbsoluteMarginBox;
-                layoutData[component].LayoutDirection = box.LayoutDirection;
-
-                if (parentLayoutData.LayoutDirection == LayoutDirection.Horizontal) offset.X += width;
-                else offset.Y += height;
-            }
-            else
-            {
-                layoutData[component].AbsoluteMarginBox = parentLayoutData.AbsoluteMarginBox;
-                layoutData[component].AbsoluteBox = parentLayoutData.AbsoluteBox;
-                layoutData[component].AbsolutePaddingBox = parentLayoutData.AbsolutePaddingBox;
-                layoutData[component].LayoutDirection = parentLayoutData.LayoutDirection;
-            }
-
-            var childOffset = new AbsoluteRectangle();
-            foreach (var child in component.Components)
-                processComponent(child, component.Components, ref childOffset);
-        }
-
-        private void generateLayoutDatas(IComponentTree componentTree)
-        {
-            foreach(var component in componentTree.AllComponents)
-            {
-                layoutData[component] = new LayoutBoxInformation()
-                {
-                    AbsoluteBox = new AbsoluteRectangle(),
-                    AbsoluteMarginBox = new AbsoluteRectangle(),
-                    AbsolutePaddingBox = new AbsoluteRectangle()
-                };
-            }
+            return length[UnitType.Pixel] + unitToPixel(length[UnitType.Unit]) + (absoluteClientLength * length[UnitType.Percentage] / 100);
         }
     }
 }

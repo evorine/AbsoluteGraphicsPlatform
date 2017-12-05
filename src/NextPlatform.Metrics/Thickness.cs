@@ -29,6 +29,12 @@ namespace NextPlatform.Metrics
             Left = new CompositeLength(left);
         }
 
+        public bool HasUnitOf(UnitType unit)
+        {
+            return Top[unit] != 0 || Left[unit] != 0 || Bottom[unit] != 0 || Left[unit] != 0;
+        }
+
+
         public override string ToString()
         {
             return $"Rectangle: {Top} {Right} {Bottom} {Left}";

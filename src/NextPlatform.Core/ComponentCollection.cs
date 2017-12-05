@@ -26,6 +26,7 @@ namespace NextPlatform
         {
             componentList.Add(component);
             component.Parent = owner;
+            owner.RegisteredComponentTree.MarkAsDirty();
         }
 
         public void Clear()
@@ -33,6 +34,7 @@ namespace NextPlatform
             foreach (var component in componentList)
                 component.Parent = null;
             componentList.Clear();
+            owner.RegisteredComponentTree.MarkAsDirty();
         }
 
         public bool Contains(IComponent item)
@@ -45,10 +47,12 @@ namespace NextPlatform
             if (componentList.Remove(item))
             {
                 item.Parent = null;
+                owner.RegisteredComponentTree.MarkAsDirty();
                 return true;
             }
             else return false;
         }
+
 
         public IEnumerator<IComponent> GetEnumerator()
         {

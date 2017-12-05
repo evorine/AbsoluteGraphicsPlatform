@@ -20,24 +20,25 @@ namespace NextPlatform.Rendering.Skia
 
         public override void RenderFrame(FrameBitmapBuffer buffer, IPlatformWindow owner)
         {
-            var ly = (LayoutEngine)layoutEngine;
-            layoutEngine.ProcessLayout(owner.ClientSize, owner.ComponentTree);
+            var layoutResult = layoutEngine.ProcessLayout(owner.ClientSize, owner.ComponentTree);
 
             var info = new SKImageInfo(buffer.Width, buffer.Height, SKImageInfo.PlatformColorType, SKAlphaType.Premul);
             using (var surface = SKSurface.Create(info, buffer.Pixels, buffer.RowBytes))
             {
                 foreach (var component in owner.ComponentTree.AllComponents)
                 {
-                    var frameRenderer = new FrameRenderer(owner.ClientSize, surface);
-                    var renderContext = new RenderContext()
+                    if (component is ILayoutBox layoutBox && component is IVisualElement element)
                     {
-                        FrameRenderer = frameRenderer,
-                        ClientSize = owner.ClientSize,
-                        LayoutInfo = ly.layoutData[component]
-                    };
+                        var frameRenderer = new FrameRenderer(owner.ClientSize, surface);
+                        var renderContext = new RenderContext()
+                        {
+                            FrameRenderer = frameRenderer,
+                            ClientSize = owner.ClientSize,
+                            LayoutInfo = layoutResult.GetLayoutBoxInformation(layoutBox)
+                        };
 
-                    if (component is IVisualElement element)
                         element.Render(renderContext);
+                    }
                 }
             }
         }

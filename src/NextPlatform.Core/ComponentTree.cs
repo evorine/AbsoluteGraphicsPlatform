@@ -13,6 +13,7 @@ namespace NextPlatform
 {
     public class ComponentTree : IComponentTree
     {
+        bool isDirty;
         IComponent rootComponent;
         IList<IComponent> allComponents;
         IList<IComponent> leafComponents;
@@ -22,6 +23,7 @@ namespace NextPlatform
             ComponentFactory = new ComponentFactory(this);
             allComponents = new List<IComponent>();
             leafComponents = new List<IComponent>();
+            isDirty = true;
         }
 
         public IComponentFactory ComponentFactory { get; }
@@ -42,15 +44,19 @@ namespace NextPlatform
                 if (rootComponent is Component component)
                     component.RegisteredComponentTree = this;
 
-                Restructure();
+                isDirty = true;
             }
         }
 
         public void Restructure()
         {
-            allComponents.Clear();
-            leafComponents.Clear();
-            setAllAndLeafComponents(rootComponent);
+            if (isDirty)
+            {
+                allComponents.Clear();
+                leafComponents.Clear();
+                setAllAndLeafComponents(rootComponent);
+                isDirty = false;
+            }
         }
 
         private void setAllAndLeafComponents(IComponent component)
@@ -62,6 +68,12 @@ namespace NextPlatform
                 foreach (var child in component.Components)
                     setAllAndLeafComponents(child);
             }
+        }
+
+
+        public void MarkAsDirty()
+        {
+            isDirty = true;
         }
     }
 }
