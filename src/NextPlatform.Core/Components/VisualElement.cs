@@ -3,11 +3,11 @@
 
 using System;
 using NextPlatform.Controls.Abstractions;
-using NextPlatform.Styling;
 using NextPlatform.Abstractions;
 using NextPlatform.Metrics;
+using NextPlatform.Styling;
 
-namespace NextPlatform.Controls
+namespace NextPlatform.Components
 {
     public class VisualElement : Component, IVisualElement, ILayoutBox
     {

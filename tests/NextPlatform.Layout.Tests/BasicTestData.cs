@@ -1,13 +1,11 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using NextPlatform.Abstractions;
-using NextPlatform.Controls;
+using NextPlatform.Components;
 using NextPlatform.Core;
 using NextPlatform.Metrics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NextPlatform.Layout.Tests
 {

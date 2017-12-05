@@ -6,7 +6,7 @@ using NextPlatform.Core;
 using System;
 using System.Reflection;
 
-namespace NextPlatform.Controls
+namespace NextPlatform.Components
 {
     public class Component : IComponent
     {
