@@ -45,7 +45,7 @@ namespace NextPlatform.Layout.Tests
             var componentTree = new ComponentTree();
             var testData = new BasicTestData(componentTree);
 
-            layoutEngine.ProcessLayout(new Size(800, 600, UnitType.Pixel), componentTree);
+            layoutEngine.ProcessLayout(new AbsoluteSize(800, 600), componentTree);
 
             Assert.Equal(0, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Top[UnitType.Pixel]);
             Assert.Equal(800, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Right[UnitType.Pixel]);

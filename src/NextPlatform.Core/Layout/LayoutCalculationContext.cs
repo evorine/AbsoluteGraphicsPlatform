@@ -14,6 +14,5 @@ namespace NextPlatform.Layout
         {
             layoutBoxes = new Dictionary<IComponent, LayoutBoxInformation>();
         }
-
     }
 }

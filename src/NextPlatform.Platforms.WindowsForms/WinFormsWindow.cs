@@ -66,6 +66,6 @@ namespace NextPlatform.Platforms.WindowsForms
             form.Show();
         }
 
-        public override Metrics.Size ClientSize => new Metrics.Size(new Length2(form.ClientSize.Width, UnitType.Pixel), new Length2(form.ClientSize.Height, UnitType.Pixel));
+        public override AbsoluteSize ClientSize => new AbsoluteSize(form.ClientSize.Width, form.ClientSize.Height);
     }
 }

@@ -19,7 +19,7 @@ namespace NextPlatform
 
         public IComponentTree ComponentTree { get; }
 
-        public abstract Size ClientSize { get; }
+        public abstract AbsoluteSize ClientSize { get; }
         public abstract void Dispose();
         public abstract void Show();
     }

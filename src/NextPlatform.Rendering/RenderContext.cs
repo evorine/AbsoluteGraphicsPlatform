@@ -12,7 +12,7 @@ namespace NextPlatform.Rendering
 {
     public class RenderContext : IRenderContext
     {
-        public Size ClientSize { get; set; }
+        public AbsoluteSize ClientSize { get; set; }
         public IFrameRenderer FrameRenderer { get; set; }
         public LayoutBoxInformation LayoutInfo { get; set; }
     }

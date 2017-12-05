@@ -14,8 +14,9 @@ namespace NextPlatform.Rendering.Skia
     {
         readonly SKSurface surface;
         readonly SKCanvas canvas;
-        readonly Size clientSize;
-        public FrameRenderer(Size clientSize, SKSurface surface)
+        readonly AbsoluteSize clientSize;
+
+        public FrameRenderer(AbsoluteSize clientSize, SKSurface surface)
         {
             this.clientSize = clientSize;
             this.surface = surface;

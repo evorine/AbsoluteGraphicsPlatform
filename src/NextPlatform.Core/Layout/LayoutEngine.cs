@@ -16,11 +16,11 @@ namespace NextPlatform.Layout
     {
         public IDictionary<IComponent, LayoutBoxInformation> layoutData = new Dictionary<IComponent, LayoutBoxInformation>();
 
-        public void ProcessLayout(Size clientSize, IComponentTree componentTree)
+        public void ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
         {
             generateLayoutDatas(componentTree);
             var rootComponent = componentTree.RootComponent;
-            layoutData[rootComponent].AbsoluteBox = new Thickness((0, UnitType.Pixel), (clientSize.Width.Magnitude, UnitType.Pixel), (clientSize.Height.Magnitude, UnitType.Pixel), (0, UnitType.Pixel));
+            layoutData[rootComponent].AbsoluteBox = new Thickness((0, UnitType.Pixel), (clientSize.Width, UnitType.Pixel), (clientSize.Height, UnitType.Pixel), (0, UnitType.Pixel));
             layoutData[rootComponent].AbsoluteMarginBox = layoutData[rootComponent].AbsoluteBox;
             layoutData[rootComponent].AbsolutePaddingBox = layoutData[rootComponent].AbsoluteBox;
             layoutData[rootComponent].LayoutDirection = LayoutDirection.Vertical;

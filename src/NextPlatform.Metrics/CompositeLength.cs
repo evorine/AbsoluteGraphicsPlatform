@@ -133,6 +133,11 @@ namespace NextPlatform.Metrics
                 if (lengthRatio != 0) yield return (lengthRatio, UnitType.Ratio);
             }
         }
+
+        public static CompositeLength Parse(string value)
+        {
+            throw new NotImplementedException();
+        }
         
         #region Operators
         public static CompositeLength operator +(CompositeLength left, CompositeLength right)

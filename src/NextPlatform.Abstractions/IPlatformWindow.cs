@@ -13,6 +13,6 @@ namespace NextPlatform.Abstractions
     {
         IComponentTree ComponentTree { get; }
         void Show();
-        Size ClientSize { get; }
+        AbsoluteSize ClientSize { get; }
     }
 }

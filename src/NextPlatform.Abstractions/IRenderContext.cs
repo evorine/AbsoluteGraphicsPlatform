@@ -11,7 +11,7 @@ namespace NextPlatform.Abstractions
 {
     public interface IRenderContext
     {
-        Size ClientSize { get; }
+        AbsoluteSize ClientSize { get; }
         IFrameRenderer FrameRenderer { get; }
         LayoutBoxInformation LayoutInfo { get; }
     }
