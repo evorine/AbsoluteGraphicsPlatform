@@ -7,9 +7,13 @@ using Castle.DynamicProxy;
 using NextPlatform.Abstractions;
 using NextPlatform.Abstractions.Components;
 using NextPlatform.Proxy;
+using NextPlatform.Components;
 
 namespace NextPlatform
 {
+    /// <summary>
+    /// Default factory class to create reactive components.
+    /// </summary>
     public class ComponentFactory : IComponentFactory
     {
         private readonly ComponentInterceptor interceptor;

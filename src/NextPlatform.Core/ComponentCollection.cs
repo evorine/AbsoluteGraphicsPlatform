@@ -11,10 +11,12 @@ namespace NextPlatform
 {
     public class ComponentCollection : IComponentCollection
     {
-        readonly List<IComponent> componentList;
+        private readonly IComponent owner;
+        private readonly List<IComponent> componentList;
 
-        public ComponentCollection()
+        public ComponentCollection(IComponent owner)
         {
+            this.owner = owner;
             componentList = new List<IComponent>();
         }
 
@@ -23,10 +25,13 @@ namespace NextPlatform
         public void Append(IComponent component)
         {
             componentList.Add(component);
+            component.Parent = owner;
         }
 
         public void Clear()
         {
+            foreach (var component in componentList)
+                component.Parent = null;
             componentList.Clear();
         }
 
@@ -37,7 +42,12 @@ namespace NextPlatform
 
         public bool Remove(IComponent item)
         {
-            return componentList.Remove(item);
+            if (componentList.Remove(item))
+            {
+                item.Parent = null;
+                return true;
+            }
+            else return false;
         }
 
         public IEnumerator<IComponent> GetEnumerator()

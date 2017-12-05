@@ -9,14 +9,26 @@ namespace NextPlatform.Components
 {
     public class Component : IComponent
     {
+        private IComponent parent;
+
         public Component()
         {
-            Components = new ComponentCollection();
+            Components = new ComponentCollection(this);
         }
 
         public string Name { get; set; }
 
-        public IComponent Parent { get; set; }
+
+        public IComponent Parent
+        {
+            get => parent;
+            set
+            {
+                parent = value;
+                RegisteredComponentTree = parent?.RegisteredComponentTree;
+            }
+        }
+        public IComponentTree RegisteredComponentTree { get; internal set; }
 
         public virtual void Emit(object payload)
         {

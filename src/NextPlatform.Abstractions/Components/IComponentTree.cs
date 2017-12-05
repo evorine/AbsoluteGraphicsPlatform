@@ -14,5 +14,6 @@ namespace NextPlatform.Abstractions.Components
         IEnumerable<IComponent> AllComponents { get; }
         IComponent RootComponent { get; set; }
         IEnumerable<IComponent> LeafComponents { get; }
+        void Restructure();
     }
 }

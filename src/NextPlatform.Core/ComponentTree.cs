@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using NextPlatform.Abstractions.Components;
 using System.Linq;
+using NextPlatform.Components;
 
 namespace NextPlatform
 {
@@ -23,7 +24,6 @@ namespace NextPlatform
             leafComponents = new List<IComponent>();
         }
 
-        // TODO: Fix
         public IComponentFactory ComponentFactory { get; }
         public IEnumerable<IComponent> AllComponents => allComponents.AsEnumerable();
         public IEnumerable<IComponent> LeafComponents => leafComponents.AsEnumerable();
@@ -32,13 +32,21 @@ namespace NextPlatform
             get => rootComponent;
             set
             {
+                if (rootComponent != null && rootComponent is Component oldComponent)
+                    oldComponent.RegisteredComponentTree = null;
+
                 rootComponent = value;
-                reStructure();
+                // Maybe setting RegisteredComponentTree by casting to Compoentn is a bad idea.
+                // A custom implementation of IComponent's ComponentTree won't be set automatcally as happening here.
+                // This might be unexpected and lead to bug.
+                if (rootComponent is Component component)
+                    component.RegisteredComponentTree = this;
+
+                Restructure();
             }
         }
 
-        
-        private void reStructure()
+        public void Restructure()
         {
             allComponents.Clear();
             leafComponents.Clear();
@@ -47,8 +55,8 @@ namespace NextPlatform
 
         private void setAllAndLeafComponents(IComponent component)
         {
-            allComponents.Add(component);
-            if (!component.Components.Any()) leafComponents.Add(component);
+            allComponents.Append(component);
+            if (!component.Components.Any()) leafComponents.Append(component);
             else
             {
                 foreach (var child in component.Components)

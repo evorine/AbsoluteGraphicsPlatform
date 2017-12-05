@@ -24,7 +24,12 @@ namespace NextPlatform.Abstractions.Components
         /// <summary>
         /// Parent component
         /// </summary>
-        IComponent Parent { get; }
+        IComponent Parent { get; set; }
+
+        /// <summary>
+        /// Gets the registered component tree.
+        /// </summary>
+        IComponentTree RegisteredComponentTree { get; }
 
         /// <summary>
         /// Emits an event to it's parent.

@@ -37,80 +37,74 @@ namespace NextPlatform.Layout.Tests
         public VisualElement ComponentRight1 { get; }
         public VisualElement ComponentRight2 { get; }
 
-        public BasicTestData(ComponentTree ComponentTree)
+        public BasicTestData(ComponentTree componentTree)
         {
-            ComponentRoot = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentRoot = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentRoot.Name = "Root";
             ComponentRoot.Width = CompositeLength.Fill;
             ComponentRoot.Height = CompositeLength.Fill;
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
-            ComponentTree.RootComponent = ComponentRoot;
+            componentTree.RootComponent = ComponentRoot;
 
-            ComponentTop = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentTop = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentTop.Name = "Top";
             ComponentTop.Width = CompositeLength.Fill;
             ComponentTop.Height = new CompositeLength(50, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRoot.Components.Append(ComponentTop);
-            ComponentTop.Parent = ComponentRoot;
 
-            ComponentBottom = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentBottom = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentBottom.Name = "Bottom";
             ComponentBottom.Width = CompositeLength.Fill;
             ComponentBottom.Height = CompositeLength.Fill;
             ComponentBottom.LayoutDirection = LayoutDirection.Horizontal;
             ComponentRoot.Components.Append(ComponentBottom);
-            ComponentBottom.Parent = ComponentRoot;
 
             // LEFT
-            ComponentLeft = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentLeft = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentLeft.Name = "Left";
             ComponentLeft.Width = new CompositeLength(1, UnitType.Ratio);
             ComponentLeft.Height = CompositeLength.Shrink;
             ComponentLeft.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Components.Append(ComponentLeft);
-            ComponentLeft.Parent = ComponentBottom;
 
-            ComponentLeft1 = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentLeft1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentLeft1.Name = "Left1";
             ComponentLeft1.Width = CompositeLength.Fill;
             ComponentLeft1.Height = new CompositeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentLeft.Components.Append(ComponentLeft1);
-            ComponentLeft1.Parent = ComponentLeft;
 
-            ComponentLeft2 = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentLeft2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentLeft2.Name = "Left2";
             ComponentLeft2.Width = CompositeLength.Fill;
             ComponentLeft2.Height = new CompositeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentLeft.Components.Append(ComponentLeft2);
-            ComponentLeft2.Parent = ComponentLeft;
 
             // RIGHT
-            ComponentRight = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentRight = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentRight.Name = "Right";
             ComponentRight.Width = new CompositeLength(3, UnitType.Ratio);
             ComponentRight.Height = CompositeLength.Fill;
             ComponentRight.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Components.Append(ComponentRight);
-            ComponentRight.Parent = ComponentBottom;
 
-            ComponentRight1 = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentRight1 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentRight1.Name = "Right1";
             ComponentRight1.Width = CompositeLength.Fill;
             ComponentRight1.Height = new CompositeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Components.Append(ComponentRight1);
-            ComponentRight1.Parent = ComponentRight;
 
-            ComponentRight2 = ComponentTree.ComponentFactory.CreateComponent<VisualElement>();
+            ComponentRight2 = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentRight2.Name = "Right2";
             ComponentRight2.Width = CompositeLength.Fill;
             ComponentRight2.Height = new CompositeLength(80, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Components.Append(ComponentRight2);
-            ComponentRight2.Parent = ComponentRight;
+
+            componentTree.Restructure();
         }
     }
 }

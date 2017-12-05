@@ -36,8 +36,6 @@ namespace NextPlatform.Layout.Tests
             Assert.DoesNotContain(testData.ComponentBottom, componentTree.LeafComponents);
             Assert.DoesNotContain(testData.ComponentLeft, componentTree.LeafComponents);
             Assert.DoesNotContain(testData.ComponentRight, componentTree.LeafComponents);
-
-            layoutEngine.ProcessLayout(new Size(800, 600, UnitType.Pixel), componentTree);
         }
 
         [Fact]
