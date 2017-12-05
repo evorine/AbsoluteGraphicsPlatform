@@ -2,10 +2,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform.Abstractions;
 using NextPlatform.Components;
 using NextPlatform.Metrics;
 using NextPlatform.Abstractions.Layout;
+using NextPlatform.Abstractions.Components;
 
 namespace NextPlatform.Layout.Tests
 {
@@ -37,7 +37,7 @@ namespace NextPlatform.Layout.Tests
         public VisualElement ComponentRight1 { get; }
         public VisualElement ComponentRight2 { get; }
 
-        public BasicTestData(ComponentTree componentTree)
+        public BasicTestData(IComponentTree componentTree)
         {
             ComponentRoot = componentTree.ComponentFactory.CreateComponent<VisualElement>();
             ComponentRoot.Name = "Root";

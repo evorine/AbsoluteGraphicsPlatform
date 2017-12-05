@@ -74,7 +74,10 @@ namespace NextPlatform.Layout
                 layoutBox.AbsolutePaddingBox.Offset(currentOffset);
 
                 // Add this component to offset too to adjust next siblings (based on margin box).
-                currentOffset += layoutBox.AbsoluteMarginBox.Size;
+                if (parentLayoutBox.LayoutDirection == LayoutDirection.Vertical)
+                    currentOffset.Y += layoutBox.AbsoluteMarginBox.Size.Height;
+                if (parentLayoutBox.LayoutDirection == LayoutDirection.Horizontal)
+                    currentOffset.X += layoutBox.AbsoluteMarginBox.Size.Width;
 
                 context.SetLayoutBoxInformation(component, layoutBox);
             }
@@ -116,9 +119,9 @@ namespace NextPlatform.Layout
             if (hasRelatedWidth && !totalSiblingsWidth.HasUnitOf(UnitType.Ratio)) width = CompositeLength.Fill;
             if (hasRelatedHeight && !totalSiblingsHeight.HasUnitOf(UnitType.Ratio)) height = CompositeLength.Fill;
 
-            // Assume the length as 0 if this component is 'Shrink' and at least one of the siblings has related or fill length.
-            if (width == CompositeLength.Shrink && (totalSiblingsWidth.HasUnitOf(UnitType.Ratio) || totalSiblingsWidth == CompositeLength.Fill)) width = CompositeLength.Zero;
-            if (height == CompositeLength.Shrink && (totalSiblingsHeight.HasUnitOf(UnitType.Ratio) || totalSiblingsHeight == CompositeLength.Fill)) height = CompositeLength.Zero;
+            // Assume the length as 'content length' if this component is 'Shrink' and at least one of the siblings has related or fill length.
+            if (width == CompositeLength.Shrink && (totalSiblingsWidth.HasUnitOf(UnitType.Ratio) || totalSiblingsWidth == CompositeLength.Fill)) width = calculateContentWidth(layoutComponent);
+            if (height == CompositeLength.Shrink && (totalSiblingsHeight.HasUnitOf(UnitType.Ratio) || totalSiblingsHeight == CompositeLength.Fill)) height = calculateContentHeight(layoutComponent);
 
 
             // Calculate size
@@ -156,9 +159,21 @@ namespace NextPlatform.Layout
                     marginTop + paddingTop,
                     absoluteWidth - paddingLeft - paddingRight,
                     absoluteHeight - paddingTop - paddingBottom
-                )
+                ),
+                LayoutDirection = layoutComponent.LayoutDirection
             };
         }
+
+        private CompositeLength calculateContentHeight(ILayoutBox layoutComponent)
+        {
+            return CompositeLength.Zero;
+        }
+
+        private CompositeLength calculateContentWidth(ILayoutBox layoutComponent)
+        {
+            return CompositeLength.Zero;
+        }
+
         private float calculateLength(CompositeLength length, CompositeLength totalLength, float absoluteClientLength)
         {
             var independentLength =

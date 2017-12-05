@@ -61,8 +61,8 @@ namespace NextPlatform
 
         private void setAllAndLeafComponents(IComponent component)
         {
-            allComponents.Append(component);
-            if (!component.Components.Any()) leafComponents.Append(component);
+            allComponents.Add(component);
+            if (!component.Components.Any()) leafComponents.Add(component);
             else
             {
                 foreach (var child in component.Components)

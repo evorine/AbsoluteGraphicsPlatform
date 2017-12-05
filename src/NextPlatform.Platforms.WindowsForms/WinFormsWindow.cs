@@ -19,7 +19,7 @@ namespace NextPlatform.Platforms.WindowsForms
         public WinFormsWindow(IApplication app)
         {
             this.app = app;
-            form = new Form() { Width = 1280, Height = 900 };
+            form = new Form() { Width = 1296, Height = 939 }; // 1280x900
             form.Resize += Form_Resize;
             form.Paint += formPaint;
             form.KeyPress += Form_KeyPress;

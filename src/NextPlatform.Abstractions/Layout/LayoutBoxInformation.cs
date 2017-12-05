@@ -11,9 +11,9 @@ namespace NextPlatform.Abstractions.Layout
 {
     public class LayoutBoxInformation
     {
-        public AbsoluteRectangle AbsoluteBox { get; set; }
-        public AbsoluteRectangle AbsoluteMarginBox { get; set; }
-        public AbsoluteRectangle AbsolutePaddingBox { get; set; }
+        public AbsoluteRectangle AbsoluteBox;
+        public AbsoluteRectangle AbsoluteMarginBox;
+        public AbsoluteRectangle AbsolutePaddingBox;
         public LayoutDirection LayoutDirection { get; set; }
     }
 }
