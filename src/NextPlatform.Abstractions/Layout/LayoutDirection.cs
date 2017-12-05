@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Abstractions
+namespace NextPlatform.Abstractions.Layout
 {
     public enum LayoutDirection
     {

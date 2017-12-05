@@ -2,7 +2,8 @@
 // See the LICENSE file in the project root for more information.
 
 using NextPlatform.Abstractions;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
+using NextPlatform.Abstractions.Layout;
 using NextPlatform.Metrics;
 using System;
 using System.Collections.Generic;

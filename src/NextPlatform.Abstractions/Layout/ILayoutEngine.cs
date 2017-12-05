@@ -4,10 +4,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
 using NextPlatform.Metrics;
 
-namespace NextPlatform.Abstractions
+namespace NextPlatform.Abstractions.Layout
 {
     public interface ILayoutEngine
     {

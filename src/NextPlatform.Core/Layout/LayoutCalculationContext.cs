@@ -1,5 +1,6 @@
 ﻿using NextPlatform.Abstractions;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
+using NextPlatform.Abstractions.Layout;
 using System;
 using System.Collections.Generic;
 

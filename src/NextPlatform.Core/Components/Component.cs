@@ -3,7 +3,7 @@
 
 using System;
 using System.Reflection;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
 
 namespace NextPlatform.Components
 {

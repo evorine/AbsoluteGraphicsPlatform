@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using NextPlatform.Abstractions;
+using NextPlatform.Abstractions.Layout;
 
 namespace NextPlatform.Rendering
 {

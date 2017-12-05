@@ -2,10 +2,11 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
 using NextPlatform.Abstractions;
 using NextPlatform.Metrics;
 using NextPlatform.Styling;
+using NextPlatform.Abstractions.Layout;
 
 namespace NextPlatform.Components
 {

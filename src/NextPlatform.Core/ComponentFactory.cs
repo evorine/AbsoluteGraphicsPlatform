@@ -6,7 +6,7 @@ using NextPlatform.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using NextPlatform.Controls.Abstractions;
+using NextPlatform.Abstractions.Components;
 
 namespace NextPlatform
 {
