@@ -33,14 +33,14 @@ namespace NextPlatform.Rendering.Skia
             canvas.DrawRect(new SKRect(0, 0, clientSize.Width.Magnitude, clientSize.Height.Magnitude), paint);*/
         }
 
-        public void DrawRectangle(Thickness rect, Color fillColor)
+        public void DrawRectangle(AbsoluteRectangle rectangle, Color fillColor)
         {
             canvas.Save();
             var paint = new SKPaint();
             paint.IsAntialias = true;
             paint.Color = fillColor.ToSKColor();
             paint.StrokeWidth = 3;
-            canvas.DrawRect(new SKRect(rect.Left[UnitType.Pixel], rect.Top[UnitType.Pixel], rect.Right[UnitType.Pixel], rect.Bottom[UnitType.Pixel]), paint);
+            canvas.DrawRect(new SKRect(rectangle.X, rectangle.Y, rectangle.Right, rectangle.Bottom), paint);
             canvas.Restore();
         }
     }

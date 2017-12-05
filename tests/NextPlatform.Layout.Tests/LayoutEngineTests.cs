@@ -47,45 +47,45 @@ namespace NextPlatform.Layout.Tests
 
             layoutEngine.ProcessLayout(new AbsoluteSize(800, 600), componentTree);
 
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Top);
+            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Right);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Bottom);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentTop].AbsoluteBox.Left);
 
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(600, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Top);
+            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Right);
+            Assert.Equal(600, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Bottom);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentBottom].AbsoluteBox.Left);
 
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(130, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Top);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Right);
+            Assert.Equal(130, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Bottom);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft].AbsoluteBox.Left);
 
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Top);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Right);
+            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Bottom);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft1].AbsoluteBox.Left);
 
-            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(130, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Top);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Right);
+            Assert.Equal(130, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Bottom);
+            Assert.Equal(0, layoutEngine.layoutData[testData.ComponentLeft2].AbsoluteBox.Left);
 
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(600, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Top);
+            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Right);
+            Assert.Equal(600, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Bottom);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight].AbsoluteBox.Left);
 
-            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(50, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Top);
+            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Right);
+            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Bottom);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight1].AbsoluteBox.Left);
 
-            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Top[UnitType.Pixel]);
-            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Right[UnitType.Pixel]);
-            Assert.Equal(170, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Bottom[UnitType.Pixel]);
-            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Left[UnitType.Pixel]);
+            Assert.Equal(90, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Top);
+            Assert.Equal(800, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Right);
+            Assert.Equal(170, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Bottom);
+            Assert.Equal(200, layoutEngine.layoutData[testData.ComponentRight2].AbsoluteBox.Left);
         }
     }
 }
