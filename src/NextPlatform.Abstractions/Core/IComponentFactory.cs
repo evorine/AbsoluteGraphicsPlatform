@@ -8,8 +8,15 @@ using System.Text;
 
 namespace NextPlatform.Abstractions
 {
+    /// <summary>
+    /// Factory class to create reactive components.
+    /// </summary>
     public interface IComponentFactory
     {
+        /// <summary>
+        /// Creates a new component instance for the specified component.
+        /// </summary>
+        /// <typeparam name="TComponent">Type of the component</typeparam>
         TComponent CreateComponent<TComponent>() where TComponent : class, IComponent;
     }
 }

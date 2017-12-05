@@ -11,11 +11,25 @@ namespace NextPlatform.Abstractions.Components
 {
     public interface IComponent
     {
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         string Name { get; set; }
+
+        /// <summary>
+        /// Children components
+        /// </summary>
         IComponentCollection Components { get; }
+
+        /// <summary>
+        /// Parent component
+        /// </summary>
         IComponent Parent { get; }
 
-        // This may be protected.
+        /// <summary>
+        /// Emits an event to it's parent.
+        /// </summary>
+        /// <param name="payload">The payload to send.</param>
         void Emit(object payload);
     }
 }
