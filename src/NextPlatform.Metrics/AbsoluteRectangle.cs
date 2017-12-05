@@ -1,11 +1,10 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-// This code is taken from .NET Core library which is MIT licensed.
+// This code is taken from .NET Core library which is under MIT licensed.
 // See https://github.com/dotnet/corefx
 
 using System;
-using System.ComponentModel;
 using System.Diagnostics.Contracts;
 
 namespace NextPlatform.Metrics
@@ -73,7 +72,6 @@ namespace NextPlatform.Metrics
         ///       the rectangular region represented by this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public AbsolutePoint Location
         {
             get { return new AbsolutePoint(X, Y); }
@@ -89,7 +87,6 @@ namespace NextPlatform.Metrics
         ///       Gets or sets the size of this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public AbsoluteSize Size
         {
             get { return new AbsoluteSize(Width, Height); }
@@ -154,7 +151,6 @@ namespace NextPlatform.Metrics
         ///       rectangular region defined by this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/> .
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public float Left => X;
 
         /// <summary>
@@ -163,7 +159,6 @@ namespace NextPlatform.Metrics
         ///       rectangular region defined by this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public float Top => Y;
 
         /// <summary>
@@ -172,7 +167,6 @@ namespace NextPlatform.Metrics
         ///       rectangular region defined by this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public float Right => X + Width;
 
         /// <summary>
@@ -181,7 +175,6 @@ namespace NextPlatform.Metrics
         ///       rectangular region defined by this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public float Bottom => Y + Height;
 
         /// <summary>
@@ -189,7 +182,6 @@ namespace NextPlatform.Metrics
         ///       Tests whether this <see cref='NextPlatform.Metrics.AbsoluteRectangle'/> has a <see cref='NextPlatform.Metrics.AbsoluteRectangle.Width'/> or a <see cref='NextPlatform.Metrics.AbsoluteRectangle.Height'/> of 0.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public bool IsEmpty => (Width <= 0) || (Height <= 0);
 
         /// <summary>

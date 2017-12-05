@@ -1,8 +1,7 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
+﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-// This code is taken from .NET Core library which is MIT licensed.
+// This code is taken from .NET Core library which is under MIT licensed.
 // See https://github.com/dotnet/corefx
 
 using System;

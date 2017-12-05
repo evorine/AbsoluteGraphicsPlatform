@@ -1,11 +1,10 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-// This code is taken from .NET Core library which is MIT licensed.
+// This code is taken from .NET Core library which is under MIT licensed.
 // See https://github.com/dotnet/corefx
 
 using System;
-using System.ComponentModel;
 
 namespace NextPlatform.Metrics
 {
@@ -137,7 +136,6 @@ namespace NextPlatform.Metrics
         ///       width and height.
         ///    </para>
         /// </summary>
-        [Browsable(false)]
         public bool IsEmpty => width == 0 && height == 0;
 
         /**
