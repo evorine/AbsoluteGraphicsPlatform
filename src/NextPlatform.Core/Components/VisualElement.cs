@@ -39,7 +39,7 @@ namespace NextPlatform.Components
 
         public virtual void Render(IRenderContext renderContext)
         {
-            //renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
+            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
 
             var (top, right, bottom, left) = renderContext.LayoutInfo.AbsoluteBox.GetBorders();
             top.Thickness = 3;
