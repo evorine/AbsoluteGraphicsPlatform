@@ -6,7 +6,7 @@ using System;
 namespace NextPlatform.Metrics
 {
     /// <summary>
-    ///     Stores the coordinates of a line.
+    ///     Stores the coordinates of a line and its thickness.
     /// </summary>
     [Serializable]
     public struct AbsoluteLine : IEquatable<AbsoluteLine>
@@ -21,6 +21,7 @@ namespace NextPlatform.Metrics
         private float y1;
         private float x2;
         private float y2;
+        private float thickness;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref='NextPlatform.Metrics.AbsoluteLine'/>.
@@ -31,17 +32,27 @@ namespace NextPlatform.Metrics
             this.y1 = y1;
             this.x2 = x2;
             this.y2 = y2;
+            thickness = 1;
+        }
+        public AbsoluteLine(float x1, float y1, float x2, float y2, float thickness)
+        {
+            this.x1 = x1;
+            this.y1 = y1;
+            this.x2 = x2;
+            this.y2 = y2;
+            this.thickness = thickness;
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref='NextPlatform.Metrics.AbsoluteLine'/>.
         /// </summary>
-        public AbsoluteLine(AbsolutePoint point1, AbsolutePoint point2)
+        public AbsoluteLine(AbsolutePoint point1, AbsolutePoint point2, float thickness)
         {
             this.x1 = point1.X;
             this.y1 = point1.Y;
             this.x2 = point2.X;
             this.y2 = point2.Y;
+            this.thickness = thickness;
         }
 
         /// <summary>
@@ -68,6 +79,15 @@ namespace NextPlatform.Metrics
                 X1 = value.X;
                 Y1 = value.Y;
             }
+        }
+
+        /// <summary>
+        ///    Gets or sets the thickness of the line.
+        /// </summary>
+        public float Thickness
+        {
+            get { return thickness; }
+            set { thickness = value; }
         }
 
         /// <summary>
@@ -115,20 +135,23 @@ namespace NextPlatform.Metrics
         }
 
         /// <summary>
-        ///     Tests whether <paramref name="obj"/> is a <see cref='NextPlatform.Metrics.AbsoluteLine'/> with the same location and length of this <see cref='NextPlatform.Metrics.AbsoluteLine'/>.
+        ///     Tests whether <paramref name="obj"/> is a <see cref='NextPlatform.Metrics.AbsoluteLine'/> with the same coordinates and thickness of this <see cref='NextPlatform.Metrics.AbsoluteLine'/>.
         /// </summary>
         public override bool Equals(object obj) => obj is AbsoluteLine && Equals((AbsoluteLine)obj);
 
+        /// <summary>
+        ///     Tests whether <paramref name="other"/> has the same coordinates and thickness of this <see cref='NextPlatform.Metrics.AbsoluteLine'/>.
+        /// </summary>
         public bool Equals(AbsoluteLine other) => this == other;
 
         /// <summary>
-        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteLine'/> objects have equal location and length.
+        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteLine'/> objects have equal coordinates and thickness.
         /// </summary>
         public static bool operator ==(AbsoluteLine left, AbsoluteLine right) =>
             left.X1 == right.X1 && left.Y1 == right.Y1 && left.X2 == right.X2 && left.Y2 == right.Y2;
 
         /// <summary>
-        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteLine'/> objects differ in location or length.
+        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteLine'/> objects differ in coordinates or thickness.
         /// </summary>
         public static bool operator !=(AbsoluteLine left, AbsoluteLine right) => !(left == right);
 
@@ -167,6 +190,6 @@ namespace NextPlatform.Metrics
         /// <summary>
         ///    Converts this line to a human-readable string.
         /// </summary>
-        public override string ToString() => $"{{X1={X1},Y1={Y1},X2={X2},Y2={Y2}}}";
+        public override string ToString() => $"{{X1={X1},Y1={Y1},X2={X2},Y2={Y2},Thickness={Thickness}}}";
     }
 }
