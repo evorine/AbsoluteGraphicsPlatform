@@ -39,7 +39,18 @@ namespace NextPlatform.Components
 
         public virtual void Render(IRenderContext renderContext)
         {
-            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
+            //renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
+
+            var (top, right, bottom, left) = renderContext.LayoutInfo.AbsoluteBox.GetBorders();
+            top.Thickness = 3;
+            right.Thickness = 3;
+            bottom.Thickness = 3;
+            left.Thickness = 3;
+            var borderColor = randomColor();
+            renderContext.FrameRenderer.DrawLine(top, borderColor);
+            renderContext.FrameRenderer.DrawLine(right, borderColor);
+            renderContext.FrameRenderer.DrawLine(bottom, borderColor);
+            renderContext.FrameRenderer.DrawLine(left, borderColor);
         }
 
         private Color randomColor()

@@ -14,6 +14,12 @@ namespace NextPlatform.Abstractions.Layout
         public AbsoluteRectangle AbsoluteBox;
         public AbsoluteRectangle AbsoluteMarginBox;
         public AbsoluteRectangle AbsolutePaddingBox;
+
+        public AbsoluteLine TopBorder;
+        public AbsoluteLine RightBorder;
+        public AbsoluteLine BottomBorder;
+        public AbsoluteLine LeftBorder;
+
         public LayoutDirection LayoutDirection { get; set; }
     }
 }

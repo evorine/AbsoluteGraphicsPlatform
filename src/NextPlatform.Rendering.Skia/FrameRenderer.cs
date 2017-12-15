@@ -43,5 +43,16 @@ namespace NextPlatform.Rendering.Skia
             canvas.DrawRect(new SKRect(rectangle.X, rectangle.Y, rectangle.Right, rectangle.Bottom), paint);
             canvas.Restore();
         }
+
+        public void DrawLine(AbsoluteLine line, Color fillColor)
+        {
+            canvas.Save();
+            var paint = new SKPaint();
+            paint.IsAntialias = true;
+            paint.Color = fillColor.ToSKColor();
+            paint.StrokeWidth = line.Thickness;
+            canvas.DrawLine(line.X1, line.Y1, line.X2, line.Y2, paint);
+            canvas.Restore();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-// This code is taken from .NET Core library which is under MIT licensed.
+// This file is forked from .NET Core library which is under MIT licensed.
 // See https://github.com/dotnet/corefx
 
 using System;
