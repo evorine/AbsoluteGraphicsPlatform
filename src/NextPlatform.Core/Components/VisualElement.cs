@@ -36,6 +36,7 @@ namespace NextPlatform.Components
 
         public LayoutBoxInformation CalculatedLayoutBox { get; set; }
 
+
         public virtual void Render(IRenderContext renderContext)
         {
             renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
@@ -45,7 +46,7 @@ namespace NextPlatform.Components
         {
             var bytes = new byte[3];
             DUMMY.rnd.NextBytes(bytes);
-            return new Color(bytes[0], bytes[1], bytes[2], 255);
+            return new Color(bytes[0], bytes[1], bytes[2], 200);
         }
     }
 }
