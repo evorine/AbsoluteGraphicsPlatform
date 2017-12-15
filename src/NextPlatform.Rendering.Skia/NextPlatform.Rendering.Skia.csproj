@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NextPlatform.Drawing\NextPlatform.Drawing.csproj" />
     <ProjectReference Include="..\NextPlatform.Rendering\NextPlatform.Rendering.csproj" />
   </ItemGroup>
 

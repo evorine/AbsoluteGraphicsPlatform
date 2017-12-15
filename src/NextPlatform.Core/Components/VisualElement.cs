@@ -7,6 +7,7 @@ using NextPlatform.Abstractions;
 using NextPlatform.Metrics;
 using NextPlatform.Styling;
 using NextPlatform.Abstractions.Layout;
+using NextPlatform.Drawing;
 
 namespace NextPlatform.Components
 {
@@ -39,18 +40,18 @@ namespace NextPlatform.Components
 
         public virtual void Render(IRenderContext renderContext)
         {
-            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, randomColor());
+            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, new SolidColorBrush(randomColor()));
 
             var (top, right, bottom, left) = renderContext.LayoutInfo.AbsoluteBox.GetBorders();
             top.Thickness = 3;
             right.Thickness = 3;
             bottom.Thickness = 3;
             left.Thickness = 3;
-            var borderColor = randomColor();
-            renderContext.FrameRenderer.DrawLine(top, borderColor);
-            renderContext.FrameRenderer.DrawLine(right, borderColor);
-            renderContext.FrameRenderer.DrawLine(bottom, borderColor);
-            renderContext.FrameRenderer.DrawLine(left, borderColor);
+            var borderBrush = new SolidColorBrush(randomColor());
+            renderContext.FrameRenderer.DrawLine(top, borderBrush);
+            renderContext.FrameRenderer.DrawLine(right, borderBrush);
+            renderContext.FrameRenderer.DrawLine(bottom, borderBrush);
+            renderContext.FrameRenderer.DrawLine(left, borderBrush);
         }
 
         private Color randomColor()

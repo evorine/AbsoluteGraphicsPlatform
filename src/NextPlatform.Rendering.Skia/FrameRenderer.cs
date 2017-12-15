@@ -2,6 +2,8 @@
 // See the LICENSE file in the project root for more information.
 
 using NextPlatform.Abstractions;
+using NextPlatform.Abstractions.Drawing;
+using NextPlatform.Drawing;
 using NextPlatform.Metrics;
 using SkiaSharp;
 using System;
@@ -33,26 +35,32 @@ namespace NextPlatform.Rendering.Skia
             canvas.DrawRect(new SKRect(0, 0, clientSize.Width.Magnitude, clientSize.Height.Magnitude), paint);*/
         }
 
-        public void DrawRectangle(AbsoluteRectangle rectangle, Color fillColor)
+        public void DrawRectangle(AbsoluteRectangle rectangle, IBrush fill)
         {
-            canvas.Save();
-            var paint = new SKPaint();
-            paint.IsAntialias = true;
-            paint.Color = fillColor.ToSKColor();
-            paint.StrokeWidth = 3;
-            canvas.DrawRect(new SKRect(rectangle.X, rectangle.Y, rectangle.Right, rectangle.Bottom), paint);
-            canvas.Restore();
+            if (fill is SolidColorBrush solidBrush)
+            {
+                canvas.Save();
+                var paint = new SKPaint();
+                paint.IsAntialias = true;
+                paint.Color = solidBrush.Color.ToSKColor();
+                paint.StrokeWidth = 3;
+                canvas.DrawRect(new SKRect(rectangle.X, rectangle.Y, rectangle.Right, rectangle.Bottom), paint);
+                canvas.Restore();
+            }
         }
 
-        public void DrawLine(AbsoluteLine line, Color fillColor)
+        public void DrawLine(AbsoluteLine line, IBrush fill)
         {
-            canvas.Save();
-            var paint = new SKPaint();
-            paint.IsAntialias = true;
-            paint.Color = fillColor.ToSKColor();
-            paint.StrokeWidth = line.Thickness;
-            canvas.DrawLine(line.X1, line.Y1, line.X2, line.Y2, paint);
-            canvas.Restore();
+            if (fill is SolidColorBrush solidBrush)
+            {
+                canvas.Save();
+                var paint = new SKPaint();
+                paint.IsAntialias = true;
+                paint.Color = solidBrush.Color.ToSKColor();
+                paint.StrokeWidth = line.Thickness;
+                canvas.DrawLine(line.X1, line.Y1, line.X2, line.Y2, paint);
+                canvas.Restore();
+            }
         }
     }
 }

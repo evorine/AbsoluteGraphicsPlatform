@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
+    <ProjectReference Include="..\NextPlatform.Drawing\NextPlatform.Drawing.csproj" />
     <ProjectReference Include="..\NextPlatform.Styling\NextPlatform.Styling.csproj" />
   </ItemGroup>
 
