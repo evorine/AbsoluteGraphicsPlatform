@@ -73,11 +73,11 @@ namespace NextPlatform.Metrics
         /// </summary>
         public AbsolutePoint Point2
         {
-            get { return new AbsolutePoint(X1, Y1); }
+            get { return new AbsolutePoint(X2, Y2); }
             set
             {
-                X1 = value.X;
-                Y1 = value.Y;
+                X2 = value.X;
+                Y2 = value.Y;
             }
         }
 
@@ -130,8 +130,8 @@ namespace NextPlatform.Metrics
         /// </summary>
         public float Y2
         {
-            get { return y1; }
-            set { y1 = value; }
+            get { return y2; }
+            set { y2 = value; }
         }
 
         /// <summary>
