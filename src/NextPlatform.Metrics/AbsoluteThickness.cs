@@ -2,7 +2,6 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Diagnostics.Contracts;
 
 namespace NextPlatform.Metrics
 {
@@ -19,10 +18,10 @@ namespace NextPlatform.Metrics
         /// </summary>
         public static readonly AbsoluteThickness Empty = new AbsoluteThickness();
 
-        private float top; // Do not rename (binary serialization) 
-        private float right; // Do not rename (binary serialization) 
-        private float bottom; // Do not rename (binary serialization) 
-        private float left; // Do not rename (binary serialization) 
+        private float top;
+        private float right;
+        private float bottom;
+        private float left;
 
         /// <summary>
         ///    <para>
@@ -100,18 +99,13 @@ namespace NextPlatform.Metrics
         public bool Equals(AbsoluteThickness other) => this == other;
 
         /// <summary>
-        ///    <para>
-        ///       Tests whether two <see cref='NextPlatform.Metrics.AbsoluteThickness'/> objects have border sizes.
-        ///    </para>
+        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteThickness'/> objects have border sizes.
         /// </summary>
         public static bool operator ==(AbsoluteThickness left, AbsoluteThickness right) =>
             left.Top == right.Top && left.Right == right.Right && left.Bottom == right.Bottom && left.Left == right.Left;
 
         /// <summary>
-        ///    <para>
-        ///       Tests whether two <see cref='NextPlatform.Metrics.AbsoluteThickness'/>
-        ///       objects differ in border sizes.
-        ///    </para>
+        ///     Tests whether two <see cref='NextPlatform.Metrics.AbsoluteThickness'/> objects differ in border sizes.
         /// </summary>
         public static bool operator !=(AbsoluteThickness left, AbsoluteThickness right) => !(left == right);
 
@@ -132,9 +126,7 @@ namespace NextPlatform.Metrics
         }
 
         /// <summary>
-        ///    <para>
-        ///       Inflates this <see cref='NextPlatform.Metrics.AbsoluteThickness'/> by the specified amount.
-        ///    </para>
+        ///     Inflates this <see cref='NextPlatform.Metrics.AbsoluteThickness'/> by the specified amount.
         /// </summary>
         public void Inflate(float value)
         {
@@ -145,9 +137,8 @@ namespace NextPlatform.Metrics
         }
 
         /// <summary>
-        ///    Converts the <see cref='NextPlatform.Metrics.AbsoluteThickness.Location'/> and <see cref='NextPlatform.Metrics.AbsoluteThickness.Size'/> of this <see cref='NextPlatform.Metrics.AbsoluteThickness'/> to a
-        ///    human-readable string.
+        ///    Converts this to a human-readable string.
         /// </summary>
-        public override string ToString() => $"{{Top={Top.ToString()},Right={Right.ToString()},Bottom={Bottom.ToString()},Left={Left.ToString()}}}";
+        public override string ToString() => $"{{Top={Top},Right={Right},Bottom={Bottom},Left={Left}}}";
     }
 }
