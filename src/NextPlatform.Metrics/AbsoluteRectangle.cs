@@ -357,6 +357,20 @@ namespace NextPlatform.Metrics
         }
 
         /// <summary>
+        /// Returns <see cref='NextPlatform.Metrics.AbsoluteLine'/> for each border witch thickness set to 0.
+        /// </summary>
+        public (AbsoluteLine top, AbsoluteLine right, AbsoluteLine bottom, AbsoluteLine left) GetBorders()
+        {
+            return
+            (
+                new AbsoluteLine(X, Y, X + Width, Y, 0),
+                new AbsoluteLine(X + Width, Y, X + Width, Y + Height, 0),
+                new AbsoluteLine(X + Width, Y + Height, X, Y + Height, 0),
+                new AbsoluteLine(X, Y + Height, X, Y, 0)
+            );
+        }
+
+        /// <summary>
         ///    Converts the specified <see cref='System.Drawing.Rectangle'/> to a
         /// <see cref='NextPlatform.Metrics.AbsoluteRectangle'/>.
         /// </summary>
