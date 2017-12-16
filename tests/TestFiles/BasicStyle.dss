@@ -1,0 +1,9 @@
+﻿.class-1 {
+	prop-1: 1px;
+	prop-2: 5%;
+	prop-3: 5;
+}
+
+.class-2 {
+	prop-1: none;
+}

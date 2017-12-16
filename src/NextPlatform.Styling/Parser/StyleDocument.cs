@@ -5,11 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Styling
+namespace NextPlatform.Styling.Parser
 {
-    public struct StyleItem
+    public class StyleDocument
     {
-        public string Key { get; set; }
-        public IStyleValue Value { get; set; }
+        public string Filename { get; set; }
+
+        public IEnumerable<Block> Blocks { get; set; }
     }
 }
