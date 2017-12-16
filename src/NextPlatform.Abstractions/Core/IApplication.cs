@@ -9,8 +9,10 @@ namespace NextPlatform.Abstractions
 {
     public interface IApplication
     {
-        IRenderEngine RenderEngine { get; }
         IPlatformWindow CreatePlatformWindow();
         void Start(IPlatformWindow window);
+
+        TService GetService<TService>() where TService : class;
+        TOptions GetOptions<TOptions>() where TOptions : class, new();
     }
 }

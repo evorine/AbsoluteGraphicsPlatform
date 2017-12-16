@@ -9,6 +9,6 @@ namespace NextPlatform.Styling
 {
     public interface IStyle
     {
-        IEnumerable<StyleItem> StyleItems { get; }
+        IEnumerable<StylePropertySetter> StyleItems { get; }
     }
 }

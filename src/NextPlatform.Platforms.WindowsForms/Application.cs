@@ -8,9 +8,8 @@ namespace NextPlatform.Platforms.WindowsForms
 {
     public class Application : ApplicationBase
     {
-        readonly IRenderEngine renderEngine;
-        public Application(IRenderEngine renderEngine)
-            : base(renderEngine)
+        public Application(IServiceProvider services)
+            : base(services)
         {
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);

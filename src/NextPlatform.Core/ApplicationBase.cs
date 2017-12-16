@@ -1,23 +1,34 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using NextPlatform.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using NextPlatform.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace NextPlatform
 {
     public abstract class ApplicationBase : IApplication
     {
-        public ApplicationBase(IRenderEngine renderEngine)
+        readonly IServiceProvider services;
+        public ApplicationBase(IServiceProvider services)
         {
-            RenderEngine = renderEngine;
+            this.services = services;
         }
 
-        public IRenderEngine RenderEngine { get; }
-
         public abstract IPlatformWindow CreatePlatformWindow();
+
         public abstract void Start(IPlatformWindow window);
+
+        public TService GetService<TService>() where TService : class
+        {
+            return services.GetService<TService>();
+        }
+        public TOptions GetOptions<TOptions>() where TOptions : class, new()
+        {
+            return services.GetService<IOptions<TOptions>>().Value;
+        }
     }
 }

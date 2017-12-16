@@ -16,7 +16,7 @@ namespace NextPlatform.Styling.DSS.Tests
         public void TestConversion()
         {
             var element = ComponentMocks.CreateSimpleVisualElement();
-            var widthStyleItem = new StyleItem("Width", "hey");
+            var widthStyleItem = new StylePropertySetter("Width", "hey");
 
             widthStyleItem.Apply(element);
             //Assert.Equal("hey", element.DummyThing);

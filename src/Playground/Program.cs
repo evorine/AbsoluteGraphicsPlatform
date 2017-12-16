@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
+using NextPlatform;
 using NextPlatform.Metrics;
 using NextPlatform.Platforms.WindowsForms;
 using NextPlatform.Abstractions.Components;
@@ -15,10 +19,11 @@ namespace Playground
         [STAThread]
         static void Main(string[] args)
         {
-            var layoutEngine = new LayoutEngine();
-            var renderEngine = new SkiaRenderEngine(layoutEngine);
+            var appBuilder = new ApplicationBuilder();
+            appBuilder.UseSkia();
+            
+            var app = appBuilder.Build();
 
-            var app = new Application(renderEngine);
             var window = app.CreatePlatformWindow();
             var testData = new BasicTestData(window.ComponentTree);
 

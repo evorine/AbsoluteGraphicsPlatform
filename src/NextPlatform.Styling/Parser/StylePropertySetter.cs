@@ -9,16 +9,16 @@ using System.Text;
 
 namespace NextPlatform.Styling.Parser
 {
-    public class StyleItem
+    public class StylePropertySetter
     {
-        public StyleItem(string property, string value)
+        public StylePropertySetter(string property, string rawValue)
         {
             Property = property;
-            Value = value;
+            RawValue = rawValue;
         }
 
         public string Property { get; }
-        public string Value { get; }
+        public string RawValue { get; }
 
         public virtual void Apply(IComponent component)
         {
@@ -28,7 +28,7 @@ namespace NextPlatform.Styling.Parser
                 var attributes = Attribute.GetCustomAttributes(property, typeof(ComponentPropertyAttribute), true);
                 if (attributes.Any())
                 {
-                    property.SetValue(component, Value);
+                    property.SetValue(component, RawValue);
                 }
             }
         }

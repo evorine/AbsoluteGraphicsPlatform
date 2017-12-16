@@ -49,7 +49,7 @@ namespace NextPlatform.Styling.DSS
             from value in Parse.AnyChar.Except(TokenStatementEnder.Or(TokenPropertySetter)).Many()
             select value.CreateString();
 
-        static readonly Parser<StyleItem> StyleProperty =
+        static readonly Parser<StylePropertySetter> StyleProperty =
             from _1 in Parse.WhiteSpace.Many()
             from property in Identifier
             from _2 in Parse.WhiteSpace.Many()
@@ -58,9 +58,9 @@ namespace NextPlatform.Styling.DSS
             from value in PropertyValue
             from _ender in TokenStatementEnder
             from _4 in Parse.WhiteSpace.Many()
-            select new StyleItem(property, value);
+            select new StylePropertySetter(property, value);
 
-        static readonly Parser<StyleItem[]> StyleProperties =
+        static readonly Parser<StylePropertySetter[]> StyleProperties =
             from _1 in Parse.WhiteSpace.Many()
             from properties in StyleProperty.Many()
             from _2 in Parse.WhiteSpace.Many()

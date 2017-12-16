@@ -12,11 +12,11 @@ namespace NextPlatform.Styling
     {
         public Style()
         {
-            styleItems = new List<StyleItem>();
+            styleItems = new List<StylePropertySetter>();
         }
 
-        List<StyleItem> styleItems;
-        public IEnumerable<StyleItem> StyleItems
+        List<StylePropertySetter> styleItems;
+        public IEnumerable<StylePropertySetter> StyleItems
         {
             get { return styleItems.AsEnumerable(); }
         }

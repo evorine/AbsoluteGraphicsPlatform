@@ -49,7 +49,7 @@ namespace NextPlatform.Platforms.WindowsForms
                 Pixels = data.Scan0
             };
 
-            app.RenderEngine.RenderFrame(buffer, this);
+            app.GetService<IRenderEngine>().RenderFrame(buffer, this);
 
             bitmap.UnlockBits(data);
             e.Graphics.DrawImage(bitmap, 0, 0);

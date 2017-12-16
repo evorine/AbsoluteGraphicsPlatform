@@ -15,7 +15,7 @@ namespace NextPlatform.Styling.Parser
 
         public override BlockType BlockType => BlockType.Style;
 
-        public IEnumerable<StyleItem> Items { get; set; }
+        public IEnumerable<StylePropertySetter> Items { get; set; }
 
         public StyleSelector Selector { get; set; }
     }
