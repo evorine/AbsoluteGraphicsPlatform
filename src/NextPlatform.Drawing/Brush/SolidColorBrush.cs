@@ -1,5 +1,4 @@
-﻿using NextPlatform.Abstractions.Drawing;
-using NextPlatform.Metrics;
+﻿using NextPlatform.Metrics;
 using System;
 
 namespace NextPlatform.Drawing
@@ -7,7 +6,7 @@ namespace NextPlatform.Drawing
     /// <summary>
     /// Paints with a solid color.
     /// </summary>
-    public class SolidColorBrush : Brush
+    public class SolidColorBrush : IBrush
     {
         public SolidColorBrush(Color color)
         {
@@ -15,7 +14,7 @@ namespace NextPlatform.Drawing
         }
 
         /// <inheritdoc cref="IBrush.Opacity" />
-        public override double Opacity { get; set; }
+        public double Opacity { get; set; }
 
         /// <summary>
         /// Gets or sets the color.

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NextPlatform.Drawing\NextPlatform.Drawing.csproj" />
     <ProjectReference Include="..\NextPlatform.Metrics\NextPlatform.Metrics.csproj" />
   </ItemGroup>
 
