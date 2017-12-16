@@ -4,4 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>
