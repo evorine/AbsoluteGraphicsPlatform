@@ -59,8 +59,7 @@ namespace NextPlatform.Components
 
             // Text
             var typeface = new Typeface("Roboto", 12, false, FontWeight.Normal);
-            renderContext.FrameRenderer.DrawMultilineText(renderContext.LayoutInfo.AbsoluteBox, typeface, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit amet velit vitae eros laoreet tempus. Ut ac lectus ornare, auctor nulla quis, vulputate tellus. Maecenas ultrices mattis massa, vel gravida ipsum tristique vel. Vestibulum facilisis ullamcorper augue non porta. Quisque sollicitudin, nunc sit amet rhoncus hendrerit, odio lectus laoreet neque, ut pharetra elit purus ac quam. Etiam facilisis porta augue, a sollicitudin lorem tincidunt auctor. Ut quis felis consectetur elit varius consectetur sit amet malesuada orci. Donec arcu nisl, commodo sed vehicula vestibulum, congue eu leo. Vivamus accumsan tincidunt hendrerit. Integer iaculis mauris ex, et tincidunt arcu bibendum quis. Donec ultricies diam eu arcu dapibus, sed porttitor mi fermentum.",
-                new SolidColorBrush(randomColor()));
+            renderContext.FrameRenderer.DrawMultilineText(renderContext.LayoutInfo.AbsoluteBox, typeface, string.Join(" ", System.Linq.Enumerable.Repeat(Name, 10)), new SolidColorBrush(randomColor()));
         }
 
         private Color randomColorTransparent()
