@@ -7,7 +7,7 @@ using System.Text;
 using NextPlatform.Abstractions.Styling;
 using NextPlatform.Metrics;
 
-namespace NextPlatform.Styling.Binders
+namespace NextPlatform.Styling.ValueBinders
 {
     public class CompositeLengthValueBinder : IStyleValueBinder
     {

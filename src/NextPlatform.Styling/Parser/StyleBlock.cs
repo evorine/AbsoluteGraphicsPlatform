@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NextPlatform.Styling.Parser
+namespace NextPlatform.Styling.Models
 {
     public class StyleBlock : Block
     {
@@ -15,7 +15,7 @@ namespace NextPlatform.Styling.Parser
 
         public override BlockType BlockType => BlockType.Style;
 
-        public IEnumerable<StylePropertySetter> Items { get; set; }
+        public IEnumerable<StyleDeclaration> Items { get; set; }
 
         public StyleSelector Selector { get; set; }
     }

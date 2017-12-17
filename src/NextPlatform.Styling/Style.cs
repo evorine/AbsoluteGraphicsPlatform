@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NextPlatform.Styling.Parser;
+using NextPlatform.Styling.Models;
 
 namespace NextPlatform.Styling
 {
@@ -12,11 +12,11 @@ namespace NextPlatform.Styling
     {
         public Style()
         {
-            styleItems = new List<StylePropertySetter>();
+            styleItems = new List<StyleDeclaration>();
         }
 
-        List<StylePropertySetter> styleItems;
-        public IEnumerable<StylePropertySetter> StyleItems
+        List<StyleDeclaration> styleItems;
+        public IEnumerable<StyleDeclaration> StyleItems
         {
             get { return styleItems.AsEnumerable(); }
         }

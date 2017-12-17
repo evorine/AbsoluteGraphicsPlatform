@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using NextPlatform.Styling.Parser;
+using NextPlatform.Styling.Models;
 using NextPlatform.Tests.Common;
 using System.Linq;
 using Microsoft.Extensions.Options;

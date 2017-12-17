@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using NextPlatform.Abstractions.Components;
 using NextPlatform.Abstractions.Styling;
-using NextPlatform.Styling.Parser;
+using NextPlatform.Styling.Models;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

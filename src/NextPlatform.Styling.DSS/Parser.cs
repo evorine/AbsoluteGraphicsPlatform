@@ -3,7 +3,7 @@
 
 using System;
 using Sprache;
-using NextPlatform.Styling.Parser;
+using NextPlatform.Styling.Models;
 using System.Linq;
 
 namespace NextPlatform.Styling.DSS
@@ -49,7 +49,7 @@ namespace NextPlatform.Styling.DSS
             from value in Parse.AnyChar.Except(TokenStatementEnder.Or(TokenPropertySetter)).Many()
             select value.CreateString();
 
-        static readonly Parser<StylePropertySetter> StyleProperty =
+        static readonly Parser<StyleDeclaration> StyleProperty =
             from _1 in Parse.WhiteSpace.Many()
             from property in Identifier
             from _2 in Parse.WhiteSpace.Many()
@@ -58,9 +58,9 @@ namespace NextPlatform.Styling.DSS
             from value in PropertyValue
             from _ender in TokenStatementEnder
             from _4 in Parse.WhiteSpace.Many()
-            select new StylePropertySetter(property, value);
+            select new StyleDeclaration(property, value);
 
-        static readonly Parser<StylePropertySetter[]> StyleProperties =
+        static readonly Parser<StyleDeclaration[]> StyleProperties =
             from _1 in Parse.WhiteSpace.Many()
             from properties in StyleProperty.Many()
             from _2 in Parse.WhiteSpace.Many()

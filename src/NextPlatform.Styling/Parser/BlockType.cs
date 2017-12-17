@@ -3,7 +3,7 @@
 
 using System;
 
-namespace NextPlatform.Styling.Parser
+namespace NextPlatform.Styling.Models
 {
     public enum BlockType
     {

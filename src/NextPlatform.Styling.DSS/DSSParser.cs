@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform.Styling.Parser;
+using NextPlatform.Styling.Models;
 using System.IO;
 using Sprache;
 

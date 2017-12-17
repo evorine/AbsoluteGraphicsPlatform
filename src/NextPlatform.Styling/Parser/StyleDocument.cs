@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace NextPlatform.Styling.Parser
+namespace NextPlatform.Styling.Models
 {
     public class StyleDocument
     {
