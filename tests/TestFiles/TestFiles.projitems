@@ -5,9 +5,7 @@
     <HasSharedItems>true</HasSharedItems>
     <SharedGUID>b7730317-cf4c-4f21-88ba-8587ecac71a4</SharedGUID>
   </PropertyGroup>
-  <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>TestFiles</Import_RootNamespace>
-  </PropertyGroup>
+  <PropertyGroup Label="Configuration" />
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)BasicStyle.dss" />
   </ItemGroup>
