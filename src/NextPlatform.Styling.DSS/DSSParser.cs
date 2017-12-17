@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform.Styling.Models;
+using NextPlatform.Styling;
 using System.IO;
 using Sprache;
 
@@ -10,7 +10,7 @@ namespace NextPlatform.Styling.DSS
 {
     public class DSSParser
     {
-        public StyleDocument Parse(Stream stream)
+        public IStyle Parse(Stream stream)
         {
             using (var sr = new StreamReader(stream))
             {

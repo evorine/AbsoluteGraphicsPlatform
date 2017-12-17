@@ -2,13 +2,13 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform.Styling.Models;
+using NextPlatform.Styling;
 using System.Collections.Generic;
 
 namespace NextPlatform.Styling
 {
     public interface IStyle
     {
-        IEnumerable<StyleDeclaration> StyleItems { get; }
+        IEnumerable<RuleSet> RuleSets { get; }
     }
 }

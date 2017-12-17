@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using NextPlatform.Abstractions.Components;
 using NextPlatform.Abstractions.Styling;
-using NextPlatform.Styling.Models;
+using NextPlatform.Styling;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -18,9 +18,9 @@ namespace NextPlatform.Styling
             this.stylingOptions = stylingOptions.Value;
         }
 
-        public void ApplyStyle(StyleBlock styleBlock, IComponent component)
+        public void ApplyStyle(RuleSet styleBlock, IComponent component)
         {
-            foreach (var setter in styleBlock.Items)
+            foreach (var setter in styleBlock.Declarations)
             {
                 var property = component.GetType().GetProperty(setter.Property);
                 var result = findBinderResult(component, property, setter.RawValue);

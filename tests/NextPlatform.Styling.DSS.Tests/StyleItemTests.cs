@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-using NextPlatform.Styling.Models;
+using NextPlatform.Styling;
 using NextPlatform.Tests.Common;
 using System.Linq;
 using Microsoft.Extensions.Options;
@@ -21,14 +21,14 @@ namespace NextPlatform.Styling.DSS.Tests
             var dssParser = new DSSParser();
             using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
             {
-                var document = dssParser.Parse(stream);
+                var style = dssParser.Parse(stream);
 
                 var element = ComponentMocks.CreateSimpleVisualElement();
                 var styleOptions = OptionsMocks.CreateStylingOptions();
                 var styleSetter = new StyleSetter(Options.Create(styleOptions));
-                var styleBlock = (StyleBlock)document.Blocks.First();
+                var ruleSet = (RuleSet)style.RuleSets.First();
 
-                styleSetter.ApplyStyle(styleBlock, element);
+                styleSetter.ApplyStyle(ruleSet, element);
             }
             //Assert.Equal("hey", element.DummyThing);
         }

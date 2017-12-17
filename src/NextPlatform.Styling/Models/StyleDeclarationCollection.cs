@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace NextPlatform.Styling
 {
@@ -15,6 +16,10 @@ namespace NextPlatform.Styling
         public StyleDeclarationCollection()
         {
             declarations = new Collection<StyleDeclaration>();
+        }
+        public StyleDeclarationCollection(StyleDeclaration[] declarations)
+        {
+            this.declarations = new Collection<StyleDeclaration>(declarations.ToList());
         }
 
         /// <summary>

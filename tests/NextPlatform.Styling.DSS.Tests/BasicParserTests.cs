@@ -15,7 +15,7 @@ namespace NextPlatform.Styling.DSS.Tests
             var dssParser = new DSSParser();
             using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
             {
-                var document = dssParser.Parse(stream);
+                var style = dssParser.Parse(stream);
             }
         }
     }

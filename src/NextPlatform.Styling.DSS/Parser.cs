@@ -3,7 +3,6 @@
 
 using System;
 using Sprache;
-using NextPlatform.Styling.Models;
 using System.Linq;
 
 namespace NextPlatform.Styling.DSS
@@ -66,7 +65,7 @@ namespace NextPlatform.Styling.DSS
             from _2 in Parse.WhiteSpace.Many()
             select properties.ToArray();
 
-        public static Parser<StyleBlock> StyleBlock =
+        public static Parser<RuleSet> StyleBlock =
             from _1 in Parse.WhiteSpace.Many()
             from selector in StyleSelector
             from _2 in Parse.WhiteSpace.Many()
@@ -76,18 +75,18 @@ namespace NextPlatform.Styling.DSS
             from _4 in Parse.WhiteSpace.Many()
             from end in TokenBlockEnd
             from _5 in Parse.WhiteSpace.Many()
-            select new StyleBlock() { Selector = selector, Items = properties };
+            select new RuleSet(properties.ToArray()) { Selector = selector };
 
-        static readonly Parser<Block> Block =
+        static readonly Parser<IStyleObject> StyleObject =
             from _1 in Parse.WhiteSpace.Many()
             from block in StyleBlock
             from _2 in Parse.WhiteSpace.Many()
             select block;
 
-        internal static Parser<StyleDocument> Document =
+        internal static Parser<IStyle> Document =
             from _1 in Parse.WhiteSpace.Many()
-            from blocks in Block.Many()
+            from blocks in StyleObject.Many()
             from _2 in Parse.WhiteSpace.Many()
-            select new StyleDocument() { Blocks = blocks };
+            select new Style(blocks.Where(x => x is RuleSet).Cast<RuleSet>().ToArray());
     }
 }

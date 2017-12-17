@@ -1,0 +1,24 @@
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
+using System.Collections.Generic;
+
+namespace NextPlatform.Styling
+{
+    public class RuleSet : IStyleObject
+    {
+        public RuleSet()
+        {
+            Declarations = new StyleDeclarationCollection();
+        }
+        public RuleSet(StyleDeclaration[] declarations)
+        {
+            Declarations = new StyleDeclarationCollection(declarations);
+        }
+
+        public StyleDeclarationCollection Declarations { get; }
+
+        public StyleSelector Selector { get; set; }
+    }
+}

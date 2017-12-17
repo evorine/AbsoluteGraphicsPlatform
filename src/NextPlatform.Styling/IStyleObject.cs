@@ -2,12 +2,12 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace NextPlatform.Styling.Models
+namespace NextPlatform.Styling
 {
-    public enum BlockType
+    public class IStyleObject
     {
-        Style,
-        Comment
     }
 }

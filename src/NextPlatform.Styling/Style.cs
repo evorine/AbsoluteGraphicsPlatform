@@ -4,21 +4,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NextPlatform.Styling.Models;
+using NextPlatform.Styling;
 
 namespace NextPlatform.Styling
 {
     public class Style : IStyle
     {
+        readonly RuleSet[] ruleSets;
+
         public Style()
         {
-            styleItems = new List<StyleDeclaration>();
+            ruleSets = new RuleSet[0];
+        }
+        public Style(RuleSet[] ruleSets)
+        {
+            this.ruleSets = ruleSets;
         }
 
-        List<StyleDeclaration> styleItems;
-        public IEnumerable<StyleDeclaration> StyleItems
+        public IEnumerable<RuleSet> RuleSets
         {
-            get { return styleItems.AsEnumerable(); }
+            get { return RuleSets.AsEnumerable(); }
         }
     }
 }
