@@ -11,6 +11,13 @@ namespace NextPlatform.Abstractions.Styling
 {
     public class StyleValueBinderContext
     {
+        public StyleValueBinderContext(IComponent component, PropertyInfo property, string rawValue)
+        {
+            Component = component;
+            Property = property;
+            RawValue = rawValue;
+        }
+
         public IComponent Component { get; }
         public PropertyInfo Property { get; }
         public string RawValue { get; }

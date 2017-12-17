@@ -1,7 +1,6 @@
 ﻿.class-1 {
-	prop-1: 1px;
-	prop-2: 5%;
-	prop-3: 5;
+	Width: 1px;
+	Height: 5%;
 }
 
 .class-2 {

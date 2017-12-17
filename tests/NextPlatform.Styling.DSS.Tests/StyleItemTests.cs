@@ -7,6 +7,8 @@ using System.Text;
 using Xunit;
 using NextPlatform.Styling.Parser;
 using NextPlatform.Tests.Common;
+using System.Linq;
+using Microsoft.Extensions.Options;
 
 namespace NextPlatform.Styling.DSS.Tests
 {
@@ -15,10 +17,19 @@ namespace NextPlatform.Styling.DSS.Tests
         [Fact]
         public void TestConversion()
         {
-            var element = ComponentMocks.CreateSimpleVisualElement();
-            var widthStyleItem = new StylePropertySetter("Width", "hey");
+            var fileProvider = IO.GetTestFileProvider();
+            var dssParser = new DSSParser();
+            using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
+            {
+                var document = dssParser.Parse(stream);
 
-            widthStyleItem.Apply(element);
+                var element = ComponentMocks.CreateSimpleVisualElement();
+                var styleOptions = OptionsMocks.CreateStylingOptions();
+                var styleSetter = new StyleSetter(Options.Create(styleOptions));
+                var styleBlock = (StyleBlock)document.Blocks.First();
+
+                styleSetter.ApplyStyle(styleBlock, element);
+            }
             //Assert.Equal("hey", element.DummyThing);
         }
     }

@@ -30,14 +30,12 @@ namespace NextPlatform
         protected virtual void RegisterCoreServices()
         {
             serviceCollection.AddOptions();
+            serviceCollection.AddSingleton<StyleSetter>();
         }
 
         protected virtual void ConfigureCoreOptions()
         {
-            serviceCollection.Configure<StylingOptions>(options => 
-            {
-                options.ValueBinders.Add(new Styling.Binders.CompositeLengthValueBinder());
-            });
+            serviceCollection.Configure<StylingOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
         }
 
         public virtual void ConfigureStyling(Action<StylingOptions> configure)
