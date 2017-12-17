@@ -1,0 +1,15 @@
+﻿
+$colors: {
+    red: #f44336,
+    blue: #2196F3,
+    teal: #009688,
+    green: #4CAF50,
+    yellow: #FFEB3B,
+    amber: #FFC107,
+    brown: #795548,
+    gray: #9E9E9E,
+    blue-gray: #607D8B,
+    black: #000000,
+    white: #ffffff
+};
+

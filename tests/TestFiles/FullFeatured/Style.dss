@@ -1,0 +1,11 @@
+﻿// Test for including from a path
+@import "Config/Config.dss";
+// Test for including from same directory
+@import "Helpers.dss";
+
+Button {
+    Border: 3u $colors["blue"];
+
+    Border.Stroke: 3u;
+    Border.Brush: solid($colors["blue"]);
+}

@@ -1,0 +1,4 @@
+﻿
+@function opposite-color ($color) {
+    @return $color;
+}

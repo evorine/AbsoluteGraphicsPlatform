@@ -7,6 +7,11 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" />
   <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)FullFeatured\Config\Breakpoints.dss" />
+    <None Include="$(MSBuildThisFileDirectory)FullFeatured\Config\Config.dss" />
+    <None Include="$(MSBuildThisFileDirectory)FullFeatured\Config\Colors.dss" />
+    <None Include="$(MSBuildThisFileDirectory)FullFeatured\Helpers.dss" />
+    <None Include="$(MSBuildThisFileDirectory)FullFeatured\Style.dss" />
     <None Include="$(MSBuildThisFileDirectory)BasicStyle.dss" />
   </ItemGroup>
 </Project>
