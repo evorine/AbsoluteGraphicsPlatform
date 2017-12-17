@@ -18,6 +18,6 @@ namespace NextPlatform.Styling
 
         public StyleDeclarationCollection Declarations { get; }
 
-        public StyleSelector Selector { get; set; }
+        public RuleSelector Selector { get; set; }
     }
 }

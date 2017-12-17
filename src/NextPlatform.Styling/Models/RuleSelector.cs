@@ -6,13 +6,13 @@ namespace NextPlatform.Styling
     /// <summary>
     /// Stores the information for a style ruleset's selector (identifier).
     /// </summary>
-    public class StyleSelector
+    public class RuleSelector
     {
-        public StyleSelector(SelectorType selectorType, string identifier)
+        public RuleSelector(SelectorType selectorType, string identifier)
             : this(selectorType, identifier, null)
         {
         }
-        public StyleSelector(SelectorType selectorType, string identifier, StyleSelector parentSelector)
+        public RuleSelector(SelectorType selectorType, string identifier, RuleSelector parentSelector)
         {
             SelectorType = selectorType;
             Identifier = identifier;
@@ -32,6 +32,6 @@ namespace NextPlatform.Styling
         /// <summary>
         /// Gets the parent of the selector if it is declared under another selector. Otherwise <see cref="Parent"/> is null.
         /// </summary>
-        public StyleSelector Parent { get; }
+        public RuleSelector Parent { get; }
     }
 }

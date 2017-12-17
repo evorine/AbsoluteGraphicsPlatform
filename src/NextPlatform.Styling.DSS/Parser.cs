@@ -30,17 +30,17 @@ namespace NextPlatform.Styling.DSS
             from rest in Parse.LetterOrDigit.XOr(Parse.Char('-')).Many()
             select new string(first.Concat(rest).ToArray());
 
-        static readonly Parser<StyleSelector> ClassSelector =
+        static readonly Parser<RuleSelector> ClassSelector =
             from type in TokenClassSelector
             from identifier in Identifier
-            select new StyleSelector(SelectorType.Class, identifier.CreateString());
+            select new RuleSelector(SelectorType.Class, identifier.CreateString());
 
-        static readonly Parser<StyleSelector> IDSelector =
+        static readonly Parser<RuleSelector> IDSelector =
             from type in TokenIDSelector
             from identifier in Identifier
-            select new StyleSelector(SelectorType.ID, identifier.CreateString());
+            select new RuleSelector(SelectorType.ID, identifier.CreateString());
 
-        static readonly Parser<StyleSelector> StyleSelector =
+        static readonly Parser<RuleSelector> StyleSelector =
             from selector in ClassSelector.Or(IDSelector)
             select selector;
 
