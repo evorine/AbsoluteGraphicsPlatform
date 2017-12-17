@@ -40,18 +40,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Core", "src\Ne
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Drawing", "src\NextPlatform.Drawing\NextPlatform.Drawing.csproj", "{210981C6-36E1-46AD-B74E-673160E01D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextPlatform.Styling.DSS", "src\NextPlatform.Styling.DSS\NextPlatform.Styling.DSS.csproj", "{894054FD-BE38-4F48-9185-01528F3207C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Styling.DSS", "src\NextPlatform.Styling.DSS\NextPlatform.Styling.DSS.csproj", "{894054FD-BE38-4F48-9185-01528F3207C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextPlatform.Styling.DSS.Tests", "tests\NextPlatform.Styling.DSS.Tests\NextPlatform.Styling.DSS.Tests.csproj", "{47FA3F61-BB78-472B-9993-2404583AA718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Styling.DSS.Tests", "tests\NextPlatform.Styling.DSS.Tests\NextPlatform.Styling.DSS.Tests.csproj", "{47FA3F61-BB78-472B-9993-2404583AA718}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestFiles", "TestFiles", "{6175B117-8862-447F-9AE2-8F20B53BCFE2}"
-	ProjectSection(SolutionItems) = preProject
-		tests\TestFiles\BasicStyle.dss = tests\TestFiles\BasicStyle.dss
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Tests.Common", "tests\NextPlatform.Tests.Common\NextPlatform.Tests.Common.csproj", "{FB2C4C66-DA95-42FE-92B2-F346D2D4E835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextPlatform.Tests.Common", "tests\NextPlatform.Tests.Common\NextPlatform.Tests.Common.csproj", "{FB2C4C66-DA95-42FE-92B2-F346D2D4E835}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TestFiles", "tests\TestFiles\TestFiles.shproj", "{B7730317-CF4C-4F21-88BA-8587ECAC71A4}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		tests\TestFiles\TestFiles.projitems*{b7730317-cf4c-4f21-88ba-8587ecac71a4}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -262,8 +262,8 @@ Global
 		{B7BC99F3-3573-45DF-BDBA-DF6A4E2B68D8} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
 		{33317308-74AD-4C25-945A-C38944FA7769} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
 		{47FA3F61-BB78-472B-9993-2404583AA718} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
-		{6175B117-8862-447F-9AE2-8F20B53BCFE2} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
 		{FB2C4C66-DA95-42FE-92B2-F346D2D4E835} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
+		{B7730317-CF4C-4F21-88BA-8587ECAC71A4} = {76178D36-DEF4-4AC9-92C3-1799280C43B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CC02FEE-6E39-40A2-AE23-D470D8F032AD}
