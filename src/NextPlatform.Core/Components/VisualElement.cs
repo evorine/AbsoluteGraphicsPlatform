@@ -17,7 +17,7 @@ namespace NextPlatform.Components
         {
             Style = new Style();
         }
-        public virtual IStyle Style { get; set; }
+        public virtual Style Style { get; set; }
 
 
         [ComponentProperty]

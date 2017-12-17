@@ -25,10 +25,10 @@ namespace NextPlatform.Styling.DSS.Tests
 
                 var element = ComponentMocks.CreateSimpleVisualElement();
                 var styleOptions = OptionsMocks.CreateStylingOptions();
-                var styleSetter = new StyleSetter(Options.Create(styleOptions));
+                var styleSetter = new RuleSetSetter(Options.Create(styleOptions));
                 var ruleSet = (RuleSet)style.RuleSets.First();
 
-                styleSetter.ApplyStyle(ruleSet, element);
+                styleSetter.ApplyRuleSet(ruleSet, element);
             }
             //Assert.Equal("hey", element.DummyThing);
         }

@@ -30,7 +30,7 @@ namespace NextPlatform
         protected virtual void RegisterCoreServices()
         {
             serviceCollection.AddOptions();
-            serviceCollection.AddSingleton<StyleSetter>();
+            serviceCollection.AddSingleton<RuleSetSetter>();
         }
 
         protected virtual void ConfigureCoreOptions()

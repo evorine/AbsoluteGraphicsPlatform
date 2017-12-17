@@ -83,7 +83,7 @@ namespace NextPlatform.Styling.DSS
             from _2 in Parse.WhiteSpace.Many()
             select block;
 
-        internal static Parser<IStyle> Document =
+        internal static Parser<Style> Document =
             from _1 in Parse.WhiteSpace.Many()
             from blocks in StyleObject.Many()
             from _2 in Parse.WhiteSpace.Many()

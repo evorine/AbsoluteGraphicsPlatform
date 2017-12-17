@@ -9,18 +9,18 @@ using System.Text;
 
 namespace NextPlatform.Styling
 {
-    public class StyleSetter
+    public class RuleSetSetter
     {
         readonly StylingOptions stylingOptions;
 
-        public StyleSetter(IOptions<StylingOptions> stylingOptions)
+        public RuleSetSetter(IOptions<StylingOptions> stylingOptions)
         {
             this.stylingOptions = stylingOptions.Value;
         }
 
-        public void ApplyStyle(RuleSet styleBlock, IComponent component)
+        public void ApplyRuleSet(RuleSet ruleset, IComponent component)
         {
-            foreach (var setter in styleBlock.Declarations)
+            foreach (var setter in ruleset.Declarations)
             {
                 var property = component.GetType().GetProperty(setter.Property);
                 var result = findBinderResult(component, property, setter.RawValue);

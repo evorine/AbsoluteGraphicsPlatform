@@ -10,7 +10,7 @@ namespace NextPlatform.Styling.DSS
 {
     public class DSSParser
     {
-        public IStyle Parse(Stream stream)
+        public Style Parse(Stream stream)
         {
             using (var sr = new StreamReader(stream))
             {
