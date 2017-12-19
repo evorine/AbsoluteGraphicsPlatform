@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NextPlatform.Styling\NextPlatform.Styling.csproj" />
+    <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj" />
   </ItemGroup>
 
 </Project>

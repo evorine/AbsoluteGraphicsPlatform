@@ -13,7 +13,7 @@ namespace NextPlatform.Rendering.Skia
 {
     public static class ApplicationBuilderExtensions
     {
-        public static ApplicationBuilderBase UseSkia(this ApplicationBuilderBase applicationBuilder)
+        public static IApplicationBuilderBase UseSkia(this IApplicationBuilderBase applicationBuilder)
         {
             var layoutEngine = new Layout.LayoutEngine();
             var renderEngine = new SkiaRenderEngine(layoutEngine);

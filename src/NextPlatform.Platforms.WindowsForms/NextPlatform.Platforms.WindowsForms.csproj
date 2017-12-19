@@ -63,12 +63,16 @@
       <Name>NextPlatform.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj">
-      <Project>{3F408A39-3AD9-47B8-8EA3-4A158AB9149A}</Project>
+      <Project>{3f408a39-3ad9-47b8-8ea3-4a158ab9149a}</Project>
       <Name>NextPlatform.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\NextPlatform.Metrics\NextPlatform.Metrics.csproj">
-      <Project>{3CB32C64-7F8A-4EA9-913F-B11898A47E61}</Project>
+      <Project>{3cb32c64-7f8a-4ea9-913f-b11898a47e61}</Project>
       <Name>NextPlatform.Metrics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NextPlatform\NextPlatform.csproj">
+      <Project>{8382eee2-ba7f-48a8-be57-2b44c4b81582}</Project>
+      <Name>NextPlatform</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

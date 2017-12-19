@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\NextPlatform.Core\NextPlatform.Core.csproj" />
+    <ProjectReference Include="..\..\src\NextPlatform\NextPlatform.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,9 +5,9 @@ using System;
 using NextPlatform.Abstractions.Components;
 using NextPlatform.Abstractions;
 using NextPlatform.Metrics;
-using NextPlatform.Styling;
 using NextPlatform.Abstractions.Layout;
 using NextPlatform.Drawing;
+using NextPlatform.Styling;
 
 namespace NextPlatform.Components
 {

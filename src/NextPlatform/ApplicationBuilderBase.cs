@@ -10,7 +10,7 @@ using NextPlatform.Styling;
 
 namespace NextPlatform
 {
-    public abstract class ApplicationBuilderBase
+    public abstract class ApplicationBuilderBase : IApplicationBuilderBase
     {
         readonly ServiceCollection serviceCollection;
 

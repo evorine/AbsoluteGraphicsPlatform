@@ -8,7 +8,7 @@ using NextPlatform.Styling;
 
 namespace NextPlatform.Styling
 {
-    public class Style : IStyle
+    public class Style
     {
         readonly RuleSet[] ruleSets;
 
