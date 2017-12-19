@@ -7,18 +7,18 @@ using System.Text;
 using NextPlatform.Abstractions.Styling;
 using NextPlatform.Metrics;
 
-namespace NextPlatform.Styling.ValueBinders
+namespace NextPlatform.ValueProviders
 {
-    public class CompositeLengthValueBinder : IStyleValueBinder
+    public class CompositeLengthValueProvider : IStyleValueProvider
     {
-        public StyleValueBinderResult BindValue(StyleValueBinderContext context)
+        public StyleValueProviderResult GetValue(StyleValueProviderContext context)
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
                 if (int.TryParse(context.RawValue, out int value))
-                    return StyleValueBinderResult.Success(new CompositeLength(value, UnitType.Pixel));
+                    return StyleValueProviderResult.Success(new CompositeLength(value, UnitType.Pixel));
             }
-            return StyleValueBinderResult.Fail;
+            return StyleValueProviderResult.Fail;
         }
     }
 }

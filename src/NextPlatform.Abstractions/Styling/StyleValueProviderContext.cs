@@ -9,9 +9,9 @@ using System.Reflection;
 
 namespace NextPlatform.Abstractions.Styling
 {
-    public class StyleValueBinderContext
+    public class StyleValueProviderContext
     {
-        public StyleValueBinderContext(IComponent component, PropertyInfo property, string rawValue)
+        public StyleValueProviderContext(IComponent component, PropertyInfo property, string rawValue)
         {
             Component = component;
             Property = property;

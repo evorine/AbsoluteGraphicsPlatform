@@ -31,15 +31,15 @@ namespace NextPlatform.Styling
             }
         }
 
-        private StyleValueBinderResult findBinderResult(IComponent component, PropertyInfo property, string rawValue)
+        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, string rawValue)
         {
             foreach (var binder in stylingOptions.ValueBinders)
             {
-                var context = new StyleValueBinderContext(component, property, rawValue);
-                var bindResult = binder.BindValue(context);
+                var context = new StyleValueProviderContext(component, property, rawValue);
+                var bindResult = binder.GetValue(context);
                 if (bindResult.IsSuccess) return bindResult;
             }
-            return StyleValueBinderResult.Fail;
+            return StyleValueProviderResult.Fail;
         }
     }
 }

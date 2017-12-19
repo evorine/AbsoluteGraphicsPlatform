@@ -7,12 +7,12 @@ using System.Text;
 
 namespace NextPlatform.Abstractions.Styling
 {
-    public class StyleValueBinderResult
+    public class StyleValueProviderResult
     {
         private bool isSuccess;
         private object value;
 
-        private StyleValueBinderResult(bool isSuccess, object value)
+        private StyleValueProviderResult(bool isSuccess, object value)
         {
             this.isSuccess = isSuccess;
             this.value = value;
@@ -21,8 +21,8 @@ namespace NextPlatform.Abstractions.Styling
         public bool IsSuccess => isSuccess;
         public object Value => value;
 
-        public static StyleValueBinderResult Success(object value) => new StyleValueBinderResult(true, value);
+        public static StyleValueProviderResult Success(object value) => new StyleValueProviderResult(true, value);
 
-        public static StyleValueBinderResult Fail { get; } = new StyleValueBinderResult(false, null);
+        public static StyleValueProviderResult Fail { get; } = new StyleValueProviderResult(false, null);
     }
 }

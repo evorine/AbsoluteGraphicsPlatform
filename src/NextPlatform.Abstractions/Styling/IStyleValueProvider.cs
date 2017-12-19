@@ -7,8 +7,8 @@ using System.Text;
 
 namespace NextPlatform.Abstractions.Styling
 {
-    public interface IStyleValueBinder
+    public interface IStyleValueProvider
     {
-        StyleValueBinderResult BindValue(StyleValueBinderContext context);
+        StyleValueProviderResult GetValue(StyleValueProviderContext context);
     }
 }

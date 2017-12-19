@@ -9,7 +9,7 @@ namespace NextPlatform.Configurators
     {
         public static void Configure(StylingOptions options)
         {
-            options.ValueBinders.Add(new Styling.ValueBinders.CompositeLengthValueBinder());
+            options.ValueBinders.Add(new ValueProviders.CompositeLengthValueProvider());
         }
     }
 }

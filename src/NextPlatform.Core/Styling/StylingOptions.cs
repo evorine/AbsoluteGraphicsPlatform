@@ -11,13 +11,13 @@ namespace NextPlatform.Styling
 {
     public class StylingOptions
     {
-        readonly ICollection<IStyleValueBinder> valueBinders;
+        readonly ICollection<IStyleValueProvider> valueBinders;
 
         public StylingOptions()
         {
-            valueBinders = new List<IStyleValueBinder>();
+            valueBinders = new List<IStyleValueProvider>();
         }
 
-        public ICollection<IStyleValueBinder> ValueBinders => valueBinders;
+        public ICollection<IStyleValueProvider> ValueBinders => valueBinders;
     }
 }
