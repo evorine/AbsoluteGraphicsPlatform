@@ -7,6 +7,7 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using NextPlatform.Abstractions;
 using NextPlatform.Styling;
+using NextPlatform.Abstractions.Layout;
 
 namespace NextPlatform
 {
@@ -31,7 +32,7 @@ namespace NextPlatform
         {
             serviceCollection.AddOptions();
             serviceCollection.AddSingleton<RuleSetSetter>();
-            serviceCollection.AddSingleton<Layout.LayoutEngine>();
+            serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
         }
 
         protected virtual void ConfigureCoreOptions()
