@@ -5,13 +5,9 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Metrics", "src\NextPlatform.Metrics\NextPlatform.Metrics.csproj", "{3CB32C64-7F8A-4EA9-913F-B11898A47E61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Controls", "src\NextPlatform.Controls\NextPlatform.Controls.csproj", "{E3E423C7-0737-4C50-805E-8337AE5F96AA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Abstractions", "src\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj", "{4165034B-DBA3-4DB7-ACD5-5995D6EBBDC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Rendering", "src\NextPlatform.Rendering\NextPlatform.Rendering.csproj", "{C49B0DD9-F160-4679-BD54-E9E3E7FCE94A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NextPlatform.Input", "src\NextPlatform.Input\NextPlatform.Input.csproj", "{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "src\Playground\Playground.csproj", "{16D2A35E-D6D3-44ED-8F09-9E0204F7AA4F}"
 EndProject
@@ -73,18 +69,6 @@ Global
 		{3CB32C64-7F8A-4EA9-913F-B11898A47E61}.Release|x64.Build.0 = Release|Any CPU
 		{3CB32C64-7F8A-4EA9-913F-B11898A47E61}.Release|x86.ActiveCfg = Release|Any CPU
 		{3CB32C64-7F8A-4EA9-913F-B11898A47E61}.Release|x86.Build.0 = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|x64.Build.0 = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Debug|x86.Build.0 = Debug|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|x64.ActiveCfg = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|x64.Build.0 = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|x86.ActiveCfg = Release|Any CPU
-		{E3E423C7-0737-4C50-805E-8337AE5F96AA}.Release|x86.Build.0 = Release|Any CPU
 		{4165034B-DBA3-4DB7-ACD5-5995D6EBBDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4165034B-DBA3-4DB7-ACD5-5995D6EBBDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4165034B-DBA3-4DB7-ACD5-5995D6EBBDC6}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -109,18 +93,6 @@ Global
 		{C49B0DD9-F160-4679-BD54-E9E3E7FCE94A}.Release|x64.Build.0 = Release|Any CPU
 		{C49B0DD9-F160-4679-BD54-E9E3E7FCE94A}.Release|x86.ActiveCfg = Release|Any CPU
 		{C49B0DD9-F160-4679-BD54-E9E3E7FCE94A}.Release|x86.Build.0 = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|x64.Build.0 = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Debug|x86.Build.0 = Debug|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|x64.ActiveCfg = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|x64.Build.0 = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|x86.ActiveCfg = Release|Any CPU
-		{C5A9765E-1FC3-46AA-95FC-7AA450E1B5D8}.Release|x86.Build.0 = Release|Any CPU
 		{16D2A35E-D6D3-44ED-8F09-9E0204F7AA4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{16D2A35E-D6D3-44ED-8F09-9E0204F7AA4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16D2A35E-D6D3-44ED-8F09-9E0204F7AA4F}.Debug|x64.ActiveCfg = Debug|Any CPU

@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
-    <ProjectReference Include="..\NextPlatform.Drawing\NextPlatform.Drawing.csproj" />
   </ItemGroup>
 
 </Project>

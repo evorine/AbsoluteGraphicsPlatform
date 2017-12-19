@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\NextPlatform.Controls\NextPlatform.Controls.csproj" />
     <ProjectReference Include="..\..\src\NextPlatform.Core\NextPlatform.Core.csproj" />
     <ProjectReference Include="..\..\src\NextPlatform.Metrics\NextPlatform.Metrics.csproj" />
   </ItemGroup>
