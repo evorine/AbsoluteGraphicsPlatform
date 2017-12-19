@@ -4,7 +4,6 @@
 using System;
 using NextPlatform.Abstractions;
 using NextPlatform.Abstractions.Components;
-using NextPlatform.Layout;
 using SkiaSharp;
 using NextPlatform.Abstractions.Layout;
 

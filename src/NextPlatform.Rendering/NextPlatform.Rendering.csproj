@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NextPlatform.Abstractions\NextPlatform.Abstractions.csproj" />
-    <ProjectReference Include="..\NextPlatform.Core\NextPlatform.Core.csproj" />
   </ItemGroup>
 
 </Project>

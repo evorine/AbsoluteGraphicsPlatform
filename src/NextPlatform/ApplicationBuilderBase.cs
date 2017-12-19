@@ -31,6 +31,7 @@ namespace NextPlatform
         {
             serviceCollection.AddOptions();
             serviceCollection.AddSingleton<RuleSetSetter>();
+            serviceCollection.AddSingleton<Layout.LayoutEngine>();
         }
 
         protected virtual void ConfigureCoreOptions()
@@ -44,11 +45,17 @@ namespace NextPlatform
         }
 
 
+
+        public void RegisterService<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService
+        {
+            serviceCollection.AddSingleton<TService, TImplementation>();
+        }
         public virtual void RegisterService<TService>(TService service) where TService : class
         {
             serviceCollection.AddSingleton(service);
         }
-
         public virtual void RegisterService<TService, TImplementation>(TImplementation service)
             where TService : class
             where TImplementation : class, TService
