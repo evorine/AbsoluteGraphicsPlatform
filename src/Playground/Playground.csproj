@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NextPlatform.Platforms.WindowsForms\NextPlatform.Platforms.WindowsForms.csproj" />
-    <ProjectReference Include="..\NextPlatform.Rendering.Skia\NextPlatform.Rendering.Skia.csproj" />
-    <ProjectReference Include="..\NextPlatform\NextPlatform.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Platforms.WindowsForms\AbsoluteGraphicsPlatform.Platforms.WindowsForms.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Rendering.Skia\AbsoluteGraphicsPlatform.Rendering.Skia.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform\AbsoluteGraphicsPlatform.csproj" />
   </ItemGroup>
 
 </Project>

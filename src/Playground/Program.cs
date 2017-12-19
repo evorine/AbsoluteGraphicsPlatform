@@ -2,15 +2,15 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using NextPlatform;
-using NextPlatform.Metrics;
-using NextPlatform.Platforms.WindowsForms;
-using NextPlatform.Abstractions.Components;
-using NextPlatform.Rendering.Skia;
-using NextPlatform.Abstractions;
-using NextPlatform.Components;
-using NextPlatform.Layout;
-using NextPlatform.Abstractions.Layout;
+using AbsoluteGraphicsPlatform;
+using AbsoluteGraphicsPlatform.Metrics;
+using AbsoluteGraphicsPlatform.Platforms.WindowsForms;
+using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Rendering.Skia;
+using AbsoluteGraphicsPlatform.Abstractions;
+using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.Layout;
+using AbsoluteGraphicsPlatform.Abstractions.Layout;
 
 namespace Playground
 {
