@@ -1,0 +1,51 @@
+# BorderColor
+# BorderColor
+# TextColor
+
+
+// WPF Style
+<template>
+	<Border size="{BorderSize}" Color="{BorderColor}">
+		<Block Colore="TextColor">
+			@content
+		</Block>
+	</Border>
+</template>
+
+
+// Vue.js Style
+<template>
+	<Border :Size="BorderSize" :Color="BorderColor">
+		<Block Color="TextColor">
+			@content
+		</Block>
+	</Border>
+</template>
+
+
+
+<Button TextColor="red">
+	<TextBlock>Hello</TextBlock>
+</Button>
+
+
+
+
+Button {
+	TextColor: orange;
+	BorderColor: red;
+	
+	TextBlock {
+		FontStyle: Italic;
+	}
+	
+	@{
+		Border {
+			Padding: 3px;
+			
+			Block {
+				HorizontalAlign: Center;
+			}
+		}
+	}
+}

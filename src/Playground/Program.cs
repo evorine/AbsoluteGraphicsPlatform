@@ -47,7 +47,7 @@ namespace Playground
              *   </component>
              * </component>
              * */
-
+            
             public VisualElement ComponentRoot { get; }
             public VisualElement ComponentTop { get; }
             public VisualElement ComponentBottom { get; }
