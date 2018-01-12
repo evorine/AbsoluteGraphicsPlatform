@@ -78,7 +78,7 @@ WS                  : (' '|'\t'|'\n'|'\r'|'\r\n')+ -> skip;
 
 SL_COMMENT          : '//' (~('\n'|'\r'))* ('\n'|'\r'('\n')?) -> skip;
 
-COMMENT             : '/*' .*? '*/' -> skip;
+ML_COMMENT          : '/*' .*? '*/' -> skip;
 
 
 mode MODE_IDENTIFY;
