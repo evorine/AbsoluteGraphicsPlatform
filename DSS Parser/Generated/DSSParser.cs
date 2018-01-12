@@ -19,6 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
+namespace AbsoluteGraphicsPlatform.DSS {
 using System;
 using System.IO;
 using System.Text;
@@ -43,7 +44,7 @@ public partial class DSSParser : Parser {
 		MINUS=26, PERCENT=27, DOUBLE_EQUAL=28, NOT_EQUAL=29, EQUAL=30, MIXIN=31, 
 		FUNCTION=32, ELSE=33, IF=34, FOR=35, WHILE=36, EACH=37, INCLUDE=38, IMPORT=39, 
 		RETURN=40, POUND_DEFAULT=41, IDENTIFIER=42, STRING_LITERAL=43, NUMBER=44, 
-		COLOR=45, WS=46, SL_COMMENT=47, COMMENT=48, SPACE=49, INTERPOLATION_START_AFTER=50, 
+		COLOR=45, WS=46, SL_COMMENT=47, ML_COMMENT=48, SPACE=49, INTERPOLATION_START_AFTER=50, 
 		IDENTIFIER_AFTER=51;
 	public const int
 		RULE_stylesheet = 0, RULE_statement = 1, RULE_ruleset = 2, RULE_block = 3, 
@@ -71,7 +72,7 @@ public partial class DSSParser : Parser {
 		"MINUS", "PERCENT", "DOUBLE_EQUAL", "NOT_EQUAL", "EQUAL", "MIXIN", "FUNCTION", 
 		"ELSE", "IF", "FOR", "WHILE", "EACH", "INCLUDE", "IMPORT", "RETURN", "POUND_DEFAULT", 
 		"IDENTIFIER", "STRING_LITERAL", "NUMBER", "COLOR", "WS", "SL_COMMENT", 
-		"COMMENT", "SPACE", "INTERPOLATION_START_AFTER", "IDENTIFIER_AFTER"
+		"ML_COMMENT", "SPACE", "INTERPOLATION_START_AFTER", "IDENTIFIER_AFTER"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -896,3 +897,4 @@ public partial class DSSParser : Parser {
 
 
 }
+} // namespace AbsoluteGraphicsPlatform.DSS

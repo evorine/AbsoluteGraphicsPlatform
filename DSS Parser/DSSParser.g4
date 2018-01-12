@@ -4,7 +4,9 @@
  */
 parser grammar DSSParser;
 
-options { tokenVocab=DSSLexer; }
+options {
+  tokenVocab = DSSLexer;
+}
 
 
 stylesheet
