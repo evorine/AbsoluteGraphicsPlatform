@@ -3,6 +3,7 @@
 
 using System;
 using Xunit;
+using AbsoluteGraphicsPlatform.DSS;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
@@ -12,10 +13,10 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         public void Test1()
         {
             var fileProvider = AbsoluteGraphicsPlatform.Tests.Common.IO.GetTestFileProvider();
-            //var dssParser = new DSSParser();
+            var dssParser = new StyleParser();
             using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
             {
-                //var style = dssParser.Parse(stream);
+                var style = dssParser.Parse(stream);
             }
         }
     }
