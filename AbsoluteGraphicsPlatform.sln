@@ -44,7 +44,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TestFiles", "tests\TestFile
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform", "src\AbsoluteGraphicsPlatform\AbsoluteGraphicsPlatform.csproj", "{8382EEE2-BA7F-48A8-BE57-2B44C4B81582}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.DSSParser", "DSS Parser\AbsoluteGraphicsPlatform.DSSParser.csproj", "{42CD05E6-C9B2-4F8F-B15E-C3BD36752A1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.DSS", "DSS Parser\AbsoluteGraphicsPlatform.DSS.csproj", "{42CD05E6-C9B2-4F8F-B15E-C3BD36752A1F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
