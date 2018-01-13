@@ -9,20 +9,15 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
 {
     public class Stylesheet
     {
-        readonly Ruleset[] rulesets;
+        readonly IList<Ruleset> rulesets;
 
         public Stylesheet()
         {
-            rulesets = new Ruleset[0];
-        }
-        public Stylesheet(Ruleset[] rulesets)
-        {
-            this.rulesets = rulesets;
+            rulesets = new List<Ruleset>();
         }
 
-        public IEnumerable<Ruleset> Rulesets
-        {
-            get { return Rulesets.AsEnumerable(); }
-        }
+        public IEnumerable<Ruleset> Rulesets => rulesets.AsEnumerable();
+
+        public void AddRuleset(Ruleset ruleset) => rulesets.Add(ruleset);
     }
 }

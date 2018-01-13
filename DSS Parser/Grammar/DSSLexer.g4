@@ -2,6 +2,7 @@
  * Licensed under the MIT license.
  * See the LICENSE file in the project root for more information.
  */
+
 lexer grammar DSSLexer;
 
 NULL                : 'null';
@@ -57,7 +58,7 @@ RETURN              : '@return';
 POUND_DEFAULT       : '!default';
 
 
-IDENTIFIER          : ('_' | 'a'..'z'| 'A'..'Z' ) ('_' | 'a'..'z'| 'A'..'Z' | '0'..'9')*
+IDENTIFIER          : ('_' | 'a'..'z'| 'A'..'Z' ) ('-' | '_' | 'a'..'z'| 'A'..'Z' | '0'..'9')*
                       -> pushMode(MODE_IDENTIFY);
 
 
@@ -76,9 +77,9 @@ COLOR               : '#' ('0'..'9'|'a'..'f'|'A'..'F')+;
 
 WS                  : (' '|'\t'|'\n'|'\r'|'\r\n')+ -> skip;
 
-SL_COMMENT          : '//' (~('\n'|'\r'))* ('\n'|'\r'('\n')?) -> skip;
+LINE_COMMENT        : '//' (~('\n'|'\r'))* ('\n'|'\r'('\n')?) -> skip;
 
-ML_COMMENT          : '/*' .*? '*/' -> skip;
+BLOCK_COMMENT       : '/*' .*? '*/' -> skip;
 
 
 mode MODE_IDENTIFY;

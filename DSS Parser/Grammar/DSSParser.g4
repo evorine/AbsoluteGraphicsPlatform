@@ -24,13 +24,13 @@ ruleset
 
 block
   : BEGIN_BRACE
-      (property SEMICOLON | statement)* 
+      (propertySetter SEMICOLON | statement)*
     END_BRACE
   ;
 
-selector                
-  : selectorPart+
-    (selectorSeparatorType selectorPart)*
+selector
+  : selectorPart
+    //(selectorSeparatorType selectorPart)*
   ;
 
 selectorSeparatorType
@@ -38,10 +38,9 @@ selectorSeparatorType
   ;
 
 selectorPart
-  : identifier
-  | HASH identifier
-  | DOT identifier
-  | AMPERSAND
+  : COMPONENT=identifier
+  | (HASH NAME=identifier)
+  | (DOT CLASS=identifier)
   ;
 
 
@@ -50,8 +49,8 @@ identifier
   ;
 
 
-property
-  : identifier COLON expression
+propertySetter
+  : PROPERTY_NAME=identifier COLON EXPRESSION=expression
   ;
 
 

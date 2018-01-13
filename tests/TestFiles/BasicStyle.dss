@@ -3,6 +3,6 @@
 	Height: 5%;
 }
 
-.class-2 {
+#RuleByName {
 	prop-1: none;
 }

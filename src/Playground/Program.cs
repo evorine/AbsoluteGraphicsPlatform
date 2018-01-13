@@ -19,6 +19,9 @@ namespace Playground
         [STAThread]
         static void Main(string[] args)
         {
+            runDSSTest();
+            return;
+
             var appBuilder = new ApplicationBuilder();
             appBuilder.UseSkia();
             
@@ -28,6 +31,15 @@ namespace Playground
             var testData = new BasicTestData(window.ComponentTree);
 
             app.Start(window);
+        }
+
+        private static void runDSSTest()
+        {
+            var dssParser = new AbsoluteGraphicsPlatform.DSS.StyleParser();
+            using (var stream = System.IO.File.OpenRead(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\BasicStyle.dss"))
+            {
+                var style = dssParser.Parse("BasicStyle.dss", stream);
+            }
         }
 
         public class BasicTestData

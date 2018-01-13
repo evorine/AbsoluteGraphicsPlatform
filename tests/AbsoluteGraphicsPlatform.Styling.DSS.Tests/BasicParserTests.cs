@@ -16,7 +16,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             var dssParser = new StyleParser();
             using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
             {
-                var style = dssParser.Parse(stream);
+                var style = dssParser.Parse("BasicStyle.dss", stream);
             }
         }
     }

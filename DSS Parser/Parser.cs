@@ -10,14 +10,19 @@ namespace AbsoluteGraphicsPlatform.DSS
 {
     public class StyleParser
     {
-        public Stylesheet Parse(Stream dssStream)
+        public Stylesheet Parse(string stylesheetSourceName, Stream dssStream)
         {
             var lexer = new DSSLexer(new AntlrInputStream(dssStream));
             var tokens = new CommonTokenStream(lexer);
             var parser = new DSSParser(tokens);
 
-            var visitor = new StylesheetVisitor();
-            return visitor.Visit(parser.stylesheet());
+            var errorListener = new ErrorListener(stylesheetSourceName);
+            //parser.RemoveErrorListeners();
+            parser.AddErrorListener(errorListener);
+
+            var visitor = new StylesheetVisitor(stylesheetSourceName);
+            var stylesheet = visitor.Visit(parser.stylesheet());
+            return stylesheet;
         }
     }
 }
