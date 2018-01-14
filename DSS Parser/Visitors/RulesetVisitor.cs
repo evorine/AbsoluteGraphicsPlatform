@@ -18,7 +18,6 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             return ruleset;
         }
 
-
         public class RulesetSelectorVisitor : DSSParserBaseVisitor<RuleSelector>
         {
             public override RuleSelector VisitSelector([NotNull] DSSParser.SelectorContext context)
@@ -40,12 +39,14 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
         {
             public override Ruleset VisitBlock([NotNull] DSSParser.BlockContext context)
             {
+                var statementVisitor = new StatementVisitor();
+                var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
+
                 var ruleset = new Ruleset();
-
-                var propertySetters = context.propertySetter().Select(x => x.Accept(new PropertySetterVisitor()));
-                foreach (var setter in propertySetters)
-                    ruleset.PropertySetters.Add(setter);
-
+                foreach (var statement in statements)
+                    if (statement is StylePropertySetter propertySetter)
+                        ruleset.PropertySetters.Add(propertySetter);
+                    
                 return ruleset;
             }
         }

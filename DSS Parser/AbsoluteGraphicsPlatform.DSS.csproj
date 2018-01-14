@@ -8,4 +8,8 @@
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\AbsoluteGraphicsPlatform.Metrics\AbsoluteGraphicsPlatform.Metrics.csproj" />
+  </ItemGroup>
+
 </Project>

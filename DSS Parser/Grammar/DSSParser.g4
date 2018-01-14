@@ -15,6 +15,7 @@ stylesheet
 
 statement
   : ruleset
+  | propertyStatement
   ;
 
 
@@ -23,18 +24,12 @@ ruleset
   ;
 
 block
-  : BEGIN_BRACE
-      (propertySetter SEMICOLON | statement)*
-    END_BRACE
+  : '{' statement* '}'
   ;
 
 selector
   : selectorPart
     //(selectorSeparatorType selectorPart)*
-  ;
-
-selectorSeparatorType
-  : GREATER_THAN
   ;
 
 selectorPart
@@ -49,20 +44,27 @@ identifier
   ;
 
 
-propertySetter
-  : PROPERTY_NAME=identifier COLON EXPRESSION=expression
+propertyStatement
+  : PROPERTY_NAME=identifier ':' EXPRESSION=expression ';'
   ;
 
 
 expression
-  : measurement
-  | identifier
-  | NULL
+  : '(' expression ')'
+  | LEFT=expression OP=('*'|'/'|'%') RIGHT=expression
+  | LEFT=expression OP=('+'|'-') RIGHT=expression
+  | LEFT=expression OP=('<=' | '>=' | '>' | '<') RIGHT=expression
+  | LEFT=expression OP=('==' | '!=') RIGHT=expression
+  | literal
   | variable
   ;
 
-measurement
-  : NUMBER UNIT?
+
+literal
+  : NUMBER
+  | NUMBER UNIT
+  | NULL
+  | NONE
   ;
 
 variable

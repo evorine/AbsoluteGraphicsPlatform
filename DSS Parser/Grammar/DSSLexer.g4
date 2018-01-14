@@ -6,8 +6,9 @@
 lexer grammar DSSLexer;
 
 NULL                : 'null';
+NONE                : 'none';
 
-UNIT                : ('%'|'px'|'u'|'vw'|'x');
+UNIT                : ('%'|'px'|'u'|'x');
 
 AND                 : '&&';
 OR                  : '||';
@@ -21,7 +22,9 @@ END_BRACE           : '}';
 BEGIN_BRACKET       : '[';
 END_BRACKET         : ']';
 
+LESSER_EQUAL_THAN   : '<=';
 LESSER_THAN         : '<';
+GREATER_EQUAL_THAN  : '>=';
 GREATER_THAN        : '>';
 TILDE               : '~';
 COLON               : ':';

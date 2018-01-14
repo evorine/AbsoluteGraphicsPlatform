@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.DSS.Models
 {
-    public class Ruleset
+    public class Ruleset : Statement
     {
         public Ruleset()
         {

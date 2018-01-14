@@ -8,9 +8,12 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
     public class PropertySetterVisitor : DSSParserBaseVisitor<StylePropertySetter>
     {
-        public override StylePropertySetter VisitPropertySetter([NotNull] DSSParser.PropertySetterContext context)
+        public override StylePropertySetter VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context)
         {
-            var setter = new StylePropertySetter(context.PROPERTY_NAME.GetText(), context.EXPRESSION.GetText());
+            var expressionVisitor = new ExpressionVisitor();
+            var expression = context.EXPRESSION.Accept(expressionVisitor);
+
+            var setter = new StylePropertySetter(context.PROPERTY_NAME.GetText(), expression);
             return setter;
         }
     }

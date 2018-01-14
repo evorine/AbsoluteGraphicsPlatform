@@ -63,12 +63,6 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitSelector([NotNull] DSSParser.SelectorContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.selectorSeparatorType"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitSelectorSeparatorType([NotNull] DSSParser.SelectorSeparatorTypeContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.selectorPart"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -81,11 +75,11 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitIdentifier([NotNull] DSSParser.IdentifierContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.propertySetter"/>.
+	/// Visit a parse tree produced by <see cref="DSSParser.propertyStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPropertySetter([NotNull] DSSParser.PropertySetterContext context);
+	Result VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// </summary>
@@ -93,11 +87,11 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitExpression([NotNull] DSSParser.ExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.measurement"/>.
+	/// Visit a parse tree produced by <see cref="DSSParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitMeasurement([NotNull] DSSParser.MeasurementContext context);
+	Result VisitLiteral([NotNull] DSSParser.LiteralContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.variable"/>.
 	/// </summary>

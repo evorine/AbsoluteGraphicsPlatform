@@ -1,8 +1,9 @@
 ﻿.class-1 {
-	Width: 1;
-	Height: 5%;
+    Width: 1;
+    Height: 5%;
+    Sum: 3 * (1px + 2);
 }
 
 #RuleByName {
-	prop-1: none;
+	//prop-1: none;
 }

@@ -18,13 +18,14 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
 
         public override Stylesheet VisitStylesheet([NotNull] DSSParser.StylesheetContext context)
         {
-            var rulesetVisitor = new RulesetVisitor();
-            var rulesets = context.statement().Select(x => x.Accept(rulesetVisitor)).ToArray();
+            var statementVisitor = new StatementVisitor();
+            var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
 
             var stylesheet = new Stylesheet();
+            /*
             foreach (var ruleset in rulesets)
                 stylesheet.AddRuleset(ruleset);
-
+                */
             return stylesheet;
         }
     }

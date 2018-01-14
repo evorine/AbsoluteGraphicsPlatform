@@ -1,14 +1,16 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Linq.Expressions;
+
 namespace AbsoluteGraphicsPlatform.DSS.Models
 {
     /// <summary>
     /// Stores the information for a style declaration.
     /// </summary>
-    public class StylePropertySetter
+    public class StylePropertySetter : Statement
     {
-        public StylePropertySetter(string property, string rawValue)
+        public StylePropertySetter(string property, Expression rawValue)
         {
             Property = property;
             RawValue = rawValue;
@@ -22,6 +24,6 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// <summary>
         /// Gets the value of the style declaration.
         /// </summary>
-        public string RawValue { get; }
+        public Expression RawValue { get; }
     }
 }
