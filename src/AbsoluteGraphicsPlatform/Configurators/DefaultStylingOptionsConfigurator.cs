@@ -1,10 +1,8 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.Styling;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using AbsoluteGraphicsPlatform.Styling;
 
 namespace AbsoluteGraphicsPlatform.Configurators
 {

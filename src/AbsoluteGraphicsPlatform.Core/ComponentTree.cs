@@ -2,11 +2,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using AbsoluteGraphicsPlatform.Abstractions;
-using System.Collections.Generic;
-using System.Text;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
 using System.Linq;
+using System.Collections.Generic;
+using AbsoluteGraphicsPlatform.Abstractions;
+using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform
