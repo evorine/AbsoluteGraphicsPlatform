@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.DSS.Models;
+using System.Linq.Expressions;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {

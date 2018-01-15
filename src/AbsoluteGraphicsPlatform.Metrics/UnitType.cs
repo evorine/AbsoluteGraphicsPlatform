@@ -9,9 +9,10 @@ namespace AbsoluteGraphicsPlatform.Metrics
 {
     public enum UnitType
     {
-        Unit,
-        Pixel,
-        Percentage,
-        Ratio
+        Unitless = 0,
+        Unit = 1,
+        Pixel = 2,
+        Percentage = 3,
+        Ratio = 4
     }
 }

@@ -21,10 +21,10 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
         static Expression<Func<DSSValue, DSSValue, bool>> equalsExpression = (left, right) => left == right;
         static Expression<Func<DSSValue, DSSValue, bool>> notEqualsExpression = (left, right) => left != right;
 
-        static Expression<Func<DSSValue, DSSValue, bool>> lesserExpression = (left, right) => left < right;
-        static Expression<Func<DSSValue, DSSValue, bool>> greaterExpression = (left, right) => left > right;
-        static Expression<Func<DSSValue, DSSValue, bool>> lesserEqualsExpression = (left, right) => left <= right;
-        static Expression<Func<DSSValue, DSSValue, bool>> greaterEqualsExpression = (left, right) => left >= right;
+        //static Expression<Func<DSSValue, DSSValue, bool>> lesserExpression = (left, right) => left < right;
+        //static Expression<Func<DSSValue, DSSValue, bool>> greaterExpression = (left, right) => left > right;
+        //static Expression<Func<DSSValue, DSSValue, bool>> lesserEqualsExpression = (left, right) => left <= right;
+        //static Expression<Func<DSSValue, DSSValue, bool>> greaterEqualsExpression = (left, right) => left >= right;
 
 
         public override Expression VisitExpression([NotNull] DSSParser.ExpressionContext context)
@@ -46,10 +46,10 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                     case "+": return Expression.Invoke(addExpression, left, right);
                     case "-": return Expression.Invoke(subtractExpression, left, right);
 
-                    case "<=": return Expression.Invoke(lesserEqualsExpression, left, right);
-                    case ">=": return Expression.Invoke(greaterEqualsExpression, left, right);
-                    case ">": return Expression.Invoke(greaterExpression, left, right);
-                    case "<": return Expression.Invoke(lesserExpression, left, right);
+                    //case "<=": return Expression.Invoke(lesserEqualsExpression, left, right);
+                    //case ">=": return Expression.Invoke(greaterEqualsExpression, left, right);
+                    //case ">": return Expression.Invoke(greaterExpression, left, right);
+                    //case "<": return Expression.Invoke(lesserExpression, left, right);
 
                     case "==": return Expression.Invoke(equalsExpression, left, right);
                     case "!=": return Expression.Invoke(notEqualsExpression, left, right);
@@ -88,7 +88,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                     else if (rawUnit == "u") unitType = UnitType.Unit;
                     else throw new Exception("Unexpected unit type!");
 
-                    return Expression.Constant(new DSSValue(value));
+                    return Expression.Constant(new DSSValue(rawUnit, value));
                     //return Expression.Constant(new CompositeLength(value, unitType));
                 }
                 else if (number != null)
