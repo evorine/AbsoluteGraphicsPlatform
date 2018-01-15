@@ -1,8 +1,10 @@
-﻿using AbsoluteGraphicsPlatform.Abstractions.Styling;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 
 namespace AbsoluteGraphicsPlatform.Styling
 {
