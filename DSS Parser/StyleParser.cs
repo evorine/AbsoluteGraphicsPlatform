@@ -1,4 +1,7 @@
-﻿using AbsoluteGraphicsPlatform.DSS.Models;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using AbsoluteGraphicsPlatform.DSS.Models;
 using AbsoluteGraphicsPlatform.DSS.Visitors;
 using Antlr4.Runtime;
 using System;
