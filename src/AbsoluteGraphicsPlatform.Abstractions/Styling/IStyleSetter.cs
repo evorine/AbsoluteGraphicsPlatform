@@ -11,6 +11,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Styling
 {
     public interface IStyleSetter
     {
-        void ApplyStyle(StyleCollection styles, IComponent component);
+        void ApplyStyle(IComponent component);
     }
 }

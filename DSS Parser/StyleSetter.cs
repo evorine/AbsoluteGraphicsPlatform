@@ -45,9 +45,9 @@ namespace AbsoluteGraphicsPlatform.DSS
             return StyleValueProviderResult.Fail;
         }*/
 
-        public void ApplyStyle(StyleCollection styles, IComponent component)
+        public void ApplyStyle(IComponent component)
         {
-            foreach(var style in styles)
+            foreach(var style in stylingOptions.Styles)
             {
                 if (style is Stylesheet stylesheet)
                 {
