@@ -1,13 +1,14 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.DSS.Models
 {
-    public class Stylesheet
+    public class Stylesheet : IStyle
     {
         readonly IList<Ruleset> rulesets;
 

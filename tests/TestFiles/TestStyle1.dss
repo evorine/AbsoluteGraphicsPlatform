@@ -1,0 +1,10 @@
+﻿.class-1 {
+    Width: 1;
+    Height: 5px;
+    Sum: 3 * (1px + 2);
+}
+
+#DemoComp {
+    Width: 100px;
+    Height: 35px;
+}

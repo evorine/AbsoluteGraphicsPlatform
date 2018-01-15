@@ -11,6 +11,8 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
+using AbsoluteGraphicsPlatform.Styling;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 
 namespace Playground
 {
@@ -19,14 +21,10 @@ namespace Playground
         [STAThread]
         static void Main(string[] args)
         {
-            /*
-            runDSSTest();
-            return;
-            */
             var appBuilder = new ApplicationBuilder();
             appBuilder.ConfigureStyling((options) => 
             {
-                
+                options.Styles.Add(parseTestStyle());
             });
             appBuilder.UseSkia();
             
@@ -38,12 +36,13 @@ namespace Playground
             app.Start(window);
         }
 
-        private static void runDSSTest()
+        private static IStyle parseTestStyle()
         {
             var dssParser = new AbsoluteGraphicsPlatform.DSS.StyleParser();
-            using (var stream = System.IO.File.OpenRead(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\BasicStyle.dss"))
+            using (var stream = System.IO.File.OpenRead(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\TestStyle1.dss"))
             {
-                var style = dssParser.Parse("BasicStyle.dss", stream);
+                var style = dssParser.Parse("TestStyle1.dss", stream);
+                return style;
             }
         }
 

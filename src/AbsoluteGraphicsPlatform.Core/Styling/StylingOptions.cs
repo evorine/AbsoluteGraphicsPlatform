@@ -16,8 +16,11 @@ namespace AbsoluteGraphicsPlatform.Styling
         public StylingOptions()
         {
             valueBinders = new List<IStyleValueProvider>();
+            Styles = new StyleCollection();
         }
 
         public ICollection<IStyleValueProvider> ValueBinders => valueBinders;
+
+        public StyleCollection Styles { get; }
     }
 }
