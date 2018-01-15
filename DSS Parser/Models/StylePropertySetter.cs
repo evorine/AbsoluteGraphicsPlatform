@@ -10,10 +10,10 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
     /// </summary>
     public class StylePropertySetter : Statement
     {
-        public StylePropertySetter(string property, Expression rawValue)
+        public StylePropertySetter(string property, Expression value)
         {
             Property = property;
-            RawValue = rawValue;
+            Value = value;
         }
 
         /// <summary>
@@ -24,6 +24,6 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// <summary>
         /// Gets the value of the style declaration.
         /// </summary>
-        public Expression RawValue { get; }
+        public Expression Value { get; }
     }
 }

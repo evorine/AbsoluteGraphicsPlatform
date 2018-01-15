@@ -55,6 +55,7 @@ namespace AbsoluteGraphicsPlatform.DSS
                     {
                         foreach (var setter in ruleset.PropertySetters)
                         {
+                            
                         }
                     }
                 }
