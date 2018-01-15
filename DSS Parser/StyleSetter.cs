@@ -8,6 +8,7 @@ using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Styling;
 using Microsoft.Extensions.Options;
+using AbsoluteGraphicsPlatform.DSS.Models;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
@@ -44,9 +45,21 @@ namespace AbsoluteGraphicsPlatform.DSS
             return StyleValueProviderResult.Fail;
         }*/
 
-        public void ApplyStyle(IStyle style, IComponent component)
+        public void ApplyStyle(StyleCollection styles, IComponent component)
         {
-            throw new NotImplementedException();
+            foreach(var style in styles)
+            {
+                if (style is Stylesheet stylesheet)
+                {
+                    foreach (var ruleset in stylesheet.Rulesets)
+                    {
+                        foreach (var setter in ruleset.PropertySetters)
+                        {
+                        }
+                    }
+                }
+                else throw new ArgumentException($"Argument '{nameof(style)}' is not a valid DSS style implementation!");
+            }
         }
     }
 }
