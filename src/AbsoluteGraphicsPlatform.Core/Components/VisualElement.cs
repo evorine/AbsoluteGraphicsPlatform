@@ -15,9 +15,7 @@ namespace AbsoluteGraphicsPlatform.Components
     {
         public VisualElement()
         {
-            Style = new Style();
         }
-        public virtual Style Style { get; set; }
 
 
         [ComponentProperty]

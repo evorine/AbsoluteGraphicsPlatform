@@ -34,8 +34,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.Drawing", "src\AbsoluteGraphicsPlatform.Drawing\AbsoluteGraphicsPlatform.Drawing.csproj", "{210981C6-36E1-46AD-B74E-673160E01D62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.Styling.DSS", "src\AbsoluteGraphicsPlatform.Styling.DSS\AbsoluteGraphicsPlatform.Styling.DSS.csproj", "{894054FD-BE38-4F48-9185-01528F3207C2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.Styling.DSS.Tests", "tests\AbsoluteGraphicsPlatform.Styling.DSS.Tests\AbsoluteGraphicsPlatform.Styling.DSS.Tests.csproj", "{47FA3F61-BB78-472B-9993-2404583AA718}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbsoluteGraphicsPlatform.Tests.Common", "tests\AbsoluteGraphicsPlatform.Tests.Common\AbsoluteGraphicsPlatform.Tests.Common.csproj", "{FB2C4C66-DA95-42FE-92B2-F346D2D4E835}"
@@ -179,18 +177,6 @@ Global
 		{210981C6-36E1-46AD-B74E-673160E01D62}.Release|x64.Build.0 = Release|Any CPU
 		{210981C6-36E1-46AD-B74E-673160E01D62}.Release|x86.ActiveCfg = Release|Any CPU
 		{210981C6-36E1-46AD-B74E-673160E01D62}.Release|x86.Build.0 = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|x64.Build.0 = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Debug|x86.Build.0 = Debug|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|x64.ActiveCfg = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|x64.Build.0 = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|x86.ActiveCfg = Release|Any CPU
-		{894054FD-BE38-4F48-9185-01528F3207C2}.Release|x86.Build.0 = Release|Any CPU
 		{47FA3F61-BB78-472B-9993-2404583AA718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47FA3F61-BB78-472B-9993-2404583AA718}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47FA3F61-BB78-472B-9993-2404583AA718}.Debug|x64.ActiveCfg = Debug|Any CPU

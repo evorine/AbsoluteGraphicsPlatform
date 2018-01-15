@@ -1,23 +1,22 @@
-﻿using Microsoft.Extensions.Options;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+﻿using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Styling;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.Styling
+namespace AbsoluteGraphicsPlatform.DSS
 {
-    public class RuleSetSetter
+    public class StyleSetter : IStyleSetter
     {
         readonly StylingOptions stylingOptions;
 
-        public RuleSetSetter(IOptions<StylingOptions> stylingOptions)
+        public StyleSetter(IOptions<StylingOptions> stylingOptions)
         {
             this.stylingOptions = stylingOptions.Value;
         }
-
+        /*
         public void ApplyRuleSet(RuleSet ruleset, IComponent component)
         {
             foreach (var setter in ruleset.Declarations)
@@ -40,6 +39,11 @@ namespace AbsoluteGraphicsPlatform.Styling
                 if (bindResult.IsSuccess) return bindResult;
             }
             return StyleValueProviderResult.Fail;
+        }*/
+
+        public void ApplyStyle(IStyle style, IComponent component)
+        {
+            throw new NotImplementedException();
         }
     }
 }

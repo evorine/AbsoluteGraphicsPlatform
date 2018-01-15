@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -31,7 +32,7 @@ namespace AbsoluteGraphicsPlatform
         protected virtual void RegisterCoreServices()
         {
             serviceCollection.AddOptions();
-            serviceCollection.AddSingleton<RuleSetSetter>();
+            serviceCollection.AddSingleton<IStyleSetter, DSS.StyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
         }
 

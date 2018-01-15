@@ -19,10 +19,15 @@ namespace Playground
         [STAThread]
         static void Main(string[] args)
         {
+            /*
             runDSSTest();
             return;
-
+            */
             var appBuilder = new ApplicationBuilder();
+            appBuilder.ConfigureStyling((options) => 
+            {
+                
+            });
             appBuilder.UseSkia();
             
             var app = appBuilder.Build();
