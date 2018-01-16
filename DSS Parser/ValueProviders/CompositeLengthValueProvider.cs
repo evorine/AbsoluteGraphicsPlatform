@@ -2,12 +2,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Metrics;
 
-namespace AbsoluteGraphicsPlatform.ValueProviders
+namespace AbsoluteGraphicsPlatform.DSS.ValueProviders
 {
     public class CompositeLengthValueProvider : IStyleValueProvider
     {
@@ -15,8 +13,8 @@ namespace AbsoluteGraphicsPlatform.ValueProviders
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
-                if (int.TryParse(context.RawValue, out int value))
-                    return StyleValueProviderResult.Success(new CompositeLength(value, UnitType.Pixel));
+                if (context.Value is DSSValue dssValue)
+                    return StyleValueProviderResult.Success(dssValue.ToCompositeLength());
             }
             return StyleValueProviderResult.Fail;
         }

@@ -13,8 +13,11 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [Fact]
         public void BasicSetterTest()
         {
-            var options = Common.MoqOptions(Common.GetStyle("TestStyle1.dss"));
-            var setter = new StyleSetter(options);
+            var options = OptionsMocks.CreateDSSOptions();
+            options.Styles.Add(OptionsMocks.GetStyle("TestStyle1.dss"));
+            var wrappedOptions = OptionsMocks.WrapOptions(options);
+
+            var setter = new StyleSetter(wrappedOptions);
 
             var component = ComponentMocks.CreateSimpleVisualElement();
             component.Name = "DemoComp";

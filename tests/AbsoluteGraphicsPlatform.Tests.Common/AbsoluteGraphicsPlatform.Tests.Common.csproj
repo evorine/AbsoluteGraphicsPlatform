@@ -6,9 +6,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.0.0" />
+    <PackageReference Include="Moq" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DSS Parser\AbsoluteGraphicsPlatform.DSS.csproj" />
     <ProjectReference Include="..\..\src\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />
     <ProjectReference Include="..\..\src\AbsoluteGraphicsPlatform\AbsoluteGraphicsPlatform.csproj" />
   </ItemGroup>

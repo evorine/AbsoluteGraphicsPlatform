@@ -7,6 +7,7 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using AbsoluteGraphicsPlatform.DSS;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -36,10 +37,10 @@ namespace AbsoluteGraphicsPlatform
 
         protected virtual void ConfigureCoreOptions()
         {
-            serviceCollection.Configure<StylingOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
+            serviceCollection.Configure<DSSOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
         }
 
-        public virtual void ConfigureStyling(Action<StylingOptions> configure)
+        public virtual void ConfigureStyling(Action<DSSOptions> configure)
         {
             serviceCollection.PostConfigure(configure);
         }

@@ -1,7 +1,7 @@
 ﻿.class-1 {
-    Width: 1;
+    //Width: 1u;
     Height: 5px;
-    Sum: 3 * (1px + 2);
+    Width: 3 * (1px + 2%);
 }
 
 #DemoComp {

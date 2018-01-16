@@ -25,10 +25,10 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
 
             var stylesheet = new Stylesheet();
-            /*
-            foreach (var ruleset in rulesets)
+            foreach (var statement in statements)
+                if (statement is Ruleset ruleset)
                 stylesheet.AddRuleset(ruleset);
-                */
+
             return stylesheet;
         }
     }

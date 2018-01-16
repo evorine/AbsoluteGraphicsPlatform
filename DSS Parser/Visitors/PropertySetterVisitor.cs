@@ -17,7 +17,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             var expressionVisitor = new ExpressionVisitor();
             var expression = context.EXPRESSION.Accept(expressionVisitor);
 
-            var setter = new StylePropertySetter(context.PROPERTY_NAME.GetText(), expression);
+            var setter = new StylePropertySetter(context.PROPERTY_NAME.GetText(), expression, context.Start.Line, "unknown source! fix here");
             return setter;
         }
     }

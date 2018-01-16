@@ -3,17 +3,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
-using System.Linq;
+using AbsoluteGraphicsPlatform.Styling;
 
-namespace AbsoluteGraphicsPlatform.Styling
+namespace AbsoluteGraphicsPlatform.DSS
 {
-    public class StylingOptions
+    public class DSSOptions
     {
         readonly ICollection<IStyleValueProvider> valueBinders;
 
-        public StylingOptions()
+        public DSSOptions()
         {
             valueBinders = new List<IStyleValueProvider>();
             Styles = new StyleCollection();

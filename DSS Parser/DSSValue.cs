@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
-    public struct DSSValue
+    public class DSSValue
     {
         readonly Dictionary<string, float> values;
 
@@ -51,14 +51,14 @@ namespace AbsoluteGraphicsPlatform.DSS
         public IEnumerable<string> Units => values.Keys;
         
 
-        public bool IsUnitless => values.Keys.Any(x => x != "");
+        public bool IsUnitless => !values.Keys.Any(x => x != "");
 
         public override string ToString()
         {
             if (IsInfinity(this)) return "fill";
             else if (IsNaN(this)) return "shrink";
             else if (IsZero(this)) return "0";
-            else return string.Join(" ", values.Select(x => $"{x.Value}{x.Key}"));
+            else return string.Join("+", values.Select(x => $"{x.Value}{x.Key}"));
         }
 
         public static bool IsInfinity(DSSValue value) => value.values.Any(x => float.IsInfinity(x.Value));
@@ -72,7 +72,7 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             if (left.IsUnitless) return left[""] * right;
             if (right.IsUnitless) return left * right[""];
-            throw new NotSupportedException("Multiply operation is not supported between both unitless values!");
+            throw new NotSupportedException("Multiply operation is not supported between both unit values!");
         }
         public static DSSValue operator *(float left, DSSValue right) => new DSSValue(right.values.Select(x => (x.Key, left * x.Value)).ToArray());
         public static DSSValue operator *(DSSValue left, float right) => new DSSValue(left.values.Select(x => (x.Key, x.Value * right)).ToArray());
@@ -80,7 +80,7 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             if (left.IsUnitless) return left[""] / right;
             if (right.IsUnitless) return left / right[""];
-            throw new NotSupportedException("Division operation is not supported between both unitless values!");
+            throw new NotSupportedException("Division operation is not supported between both unit values!");
         }
         public static DSSValue operator /(float left, DSSValue right) => new DSSValue(right.values.Select(x => (x.Key, left / x.Value)).ToArray());
         public static DSSValue operator /(DSSValue left, float right) => new DSSValue(left.values.Select(x => (x.Key, x.Value / right)).ToArray());

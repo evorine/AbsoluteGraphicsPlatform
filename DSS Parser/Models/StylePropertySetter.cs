@@ -10,10 +10,12 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
     /// </summary>
     public class StylePropertySetter : Statement
     {
-        public StylePropertySetter(string property, Expression value)
+        public StylePropertySetter(string property, Expression value, int line, string source)
         {
             Property = property;
             Value = value;
+            Line = line;
+            Source = source;
         }
 
         /// <summary>
@@ -25,5 +27,15 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// Gets the value of the style declaration.
         /// </summary>
         public Expression Value { get; }
+
+        /// <summary>
+        /// Gets the line number of the statement.
+        /// </summary>
+        public int Line { get; }
+
+        /// <summary>
+        /// Gets the source of this statement.
+        /// </summary>
+        public string Source { get; }
     }
 }
