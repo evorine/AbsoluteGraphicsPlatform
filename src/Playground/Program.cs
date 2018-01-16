@@ -23,8 +23,8 @@ namespace Playground
         [STAThread]
         static void Main(string[] args)
         {
-            AnotherPlayground.Play();
-            return;
+            //AnotherPlayground.Play();
+            //return;
 
             var appBuilder = new ApplicationBuilder();
             appBuilder.UseLayoutLoader();

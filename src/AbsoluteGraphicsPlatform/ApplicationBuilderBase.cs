@@ -13,10 +13,12 @@ namespace AbsoluteGraphicsPlatform
     public abstract class ApplicationBuilderBase : IApplicationBuilderBase
     {
         readonly ServiceCollection serviceCollection;
+        readonly ApplicationOptions applicationOptions;
 
         public ApplicationBuilderBase()
         {
             serviceCollection = new ServiceCollection();
+            applicationOptions = new ApplicationOptions();
             RegisterCoreServices();
             ConfigureCoreOptions();
         }
@@ -30,6 +32,7 @@ namespace AbsoluteGraphicsPlatform
         protected virtual void RegisterCoreServices()
         {
             serviceCollection.AddOptions();
+            serviceCollection.AddSingleton(applicationOptions);
             serviceCollection.AddSingleton<IComponentFactory, ComponentFactory>();
             serviceCollection.AddSingleton<IStyleSetter, DSS.StyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
@@ -37,7 +40,7 @@ namespace AbsoluteGraphicsPlatform
 
         protected virtual void ConfigureCoreOptions()
         {
-            serviceCollection.Configure<DSS.DSSOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
+            Configurators.DefaultValueProoviderConfigurator.AddDefaultValueProviders(applicationOptions.ValueProviders);
         }
 
         public virtual void ConfigureStyling(Action<DSS.DSSOptions> configure)

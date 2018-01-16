@@ -12,16 +12,19 @@ using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq.Expressions;
 using System.Linq;
 using System.Reflection;
+using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
     public class StyleSetter : IStyleSetter
     {
         readonly DSSOptions stylingOptions;
+        readonly PropertySetter propertySetter;
 
-        public StyleSetter(IOptions<DSSOptions> stylingOptions)
+        public StyleSetter(IOptions<DSSOptions> stylingOptions, PropertySetter propertySetter)
         {
             this.stylingOptions = stylingOptions.Value;
+            this.propertySetter = propertySetter;
         }
 
         public void ApplyStyle(IComponent component)
@@ -43,12 +46,8 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             foreach (var setter in ruleset.PropertySetters)
             {
-                var property = component.GetType().GetProperty(setter.Property);
-                if (property == null) throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
-
-                var result = findBinderResult(component, property, getValue(setter.Value));
-                if (result.IsSuccess)
-                    property.SetValue(component, result.Value);
+                if (propertySetter.SetValue(component, setter.Property, getValue(setter.Value)))
+                    throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
             }
         }
 
@@ -74,17 +73,6 @@ namespace AbsoluteGraphicsPlatform.DSS
             var result = compiled.DynamicInvoke(args);
 
             return result;
-        }
-
-        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, object value)
-        {
-            foreach (var binder in stylingOptions.ValueBinders)
-            {
-                var context = new StyleValueProviderContext(component, property, value);
-                var bindResult = binder.GetValue(context);
-                if (bindResult.IsSuccess) return bindResult;
-            }
-            return StyleValueProviderResult.Fail;
         }
     }
 }

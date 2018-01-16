@@ -7,6 +7,7 @@ using AbsoluteGraphicsPlatform.DSS;
 using Microsoft.Extensions.Options;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using Moq;
+using AbsoluteGraphicsPlatform.Abstractions;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common
 {
@@ -19,13 +20,19 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
             return mock.Object;
         }
 
+        public static ApplicationOptions CreateApplicationOptions()
+        {
+            var applicationOptions = new ApplicationOptions();
+            Configurators.DefaultValueProoviderConfigurator.AddDefaultValueProviders(applicationOptions.ValueProviders);
+            return applicationOptions;
+        }
+
         public static DSSOptions CreateDSSOptions()
         {
             var styleOptions = new DSSOptions();
-            Configurators.DefaultStylingOptionsConfigurator.Configure(styleOptions);
             return styleOptions;
         }
-        
+
 
         public static IStyle GetStyle(string filename)
         {

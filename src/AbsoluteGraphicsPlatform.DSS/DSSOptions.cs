@@ -10,15 +10,10 @@ namespace AbsoluteGraphicsPlatform.DSS
 {
     public class DSSOptions
     {
-        readonly ICollection<IStyleValueProvider> valueBinders;
-
         public DSSOptions()
         {
-            valueBinders = new List<IStyleValueProvider>();
             Styles = new StyleCollection();
         }
-
-        public ICollection<IStyleValueProvider> ValueBinders => valueBinders;
 
         public StyleCollection Styles { get; }
     }
