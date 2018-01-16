@@ -3,7 +3,7 @@
 
 using System;
 using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DSS.ValueProviders;
+using AbsoluteGraphicsPlatform.Styling.ValueProviders;
 
 namespace AbsoluteGraphicsPlatform.Configurators
 {

@@ -1,4 +1,5 @@
 ﻿using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;
 using System.Linq;

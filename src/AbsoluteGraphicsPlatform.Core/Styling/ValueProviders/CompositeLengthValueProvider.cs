@@ -1,18 +1,26 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.Metrics;
 using System;
-using System.Collections.Generic;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using AbsoluteGraphicsPlatform.Metrics;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform.Styling.ValueProviders
 {
-    public static class PropertyValueExtensions
+    public class CompositeLengthValueProvider : IStyleValueProvider
     {
-        public static CompositeLength ToCompositeLength(this PropertyValue value)
+        public StyleValueProviderResult GetValue(StyleValueProviderContext context)
+        {
+            if (context.Property.PropertyType == typeof(CompositeLength))
+            {
+                if (context.Value is PropertyValue propertyValue)
+                    return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
+            }
+            return StyleValueProviderResult.Fail;
+        }
+
+        private static CompositeLength toCompositeLength(PropertyValue value)
         {
             var args = value.Units.Select(x => (value[x], toUnitType(x))).ToArray();
             return new CompositeLength(args);
@@ -20,7 +28,7 @@ namespace AbsoluteGraphicsPlatform.DSS
 
         private static UnitType toUnitType(string unit)
         {
-            switch(unit)
+            switch (unit)
             {
                 case "%": return UnitType.Percentage;
                 case "px": return UnitType.Pixel;

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform.Styling
 {
     public class PropertyValue
     {
