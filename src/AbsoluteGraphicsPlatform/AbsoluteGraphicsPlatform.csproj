@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DSS Parser\AbsoluteGraphicsPlatform.DSS.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.DSS\AbsoluteGraphicsPlatform.DSS.csproj" />
   </ItemGroup>
 
 </Project>
