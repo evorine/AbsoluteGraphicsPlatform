@@ -12,7 +12,7 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
             get
             {
                 // NetStandard does not support Assembly.Location. So AppContext.BaseDirectory will be used here.
-                return Path.GetFullPath(System.IO.Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+                return Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
             }
         }
 

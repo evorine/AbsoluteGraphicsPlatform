@@ -36,6 +36,7 @@ namespace Playground
             app.Start(window);
         }
 
+
         private static IStyle parseTestStyle()
         {
             var dssParser = new AbsoluteGraphicsPlatform.DSS.StyleParser();
