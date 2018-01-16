@@ -12,10 +12,10 @@ namespace Playground
     {
         public static void Play()
         {
-            Expression<Func<DSSValue, DSSValue, DSSValue>> multiplyExpression = (left, right) => left * right;
+            Expression<Func<PropertyValue, PropertyValue, PropertyValue>> multiplyExpression = (left, right) => left * right;
 
-            var v1 = new DSSValue(7);
-            var v2 = new DSSValue(3);
+            var v1 = new PropertyValue(7);
+            var v2 = new PropertyValue(3);
 
             var eV1 = Expression.Constant(v1);
             var eV2 = Expression.Constant(v2);

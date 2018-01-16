@@ -9,27 +9,27 @@ using System.Text.RegularExpressions;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
-    public class DSSValue
+    public class PropertyValue
     {
         readonly Dictionary<string, float> values;
 
-        static DSSValue positiveInfinity = new DSSValue(float.PositiveInfinity);
-        static DSSValue negativeInfinity = new DSSValue(float.NegativeInfinity);
-        static DSSValue zero = new DSSValue(0);
-        static DSSValue nan = new DSSValue(float.NaN);
+        static PropertyValue positiveInfinity = new PropertyValue(float.PositiveInfinity);
+        static PropertyValue negativeInfinity = new PropertyValue(float.NegativeInfinity);
+        static PropertyValue zero = new PropertyValue(0);
+        static PropertyValue nan = new PropertyValue(float.NaN);
 
         
-        public DSSValue(float unitlessValue)
+        public PropertyValue(float unitlessValue)
         {
             values = new Dictionary<string, float>();
             values[""] = unitlessValue;
         }
-        public DSSValue(string unitType, float value)
+        public PropertyValue(string unitType, float value)
         {
             values = new Dictionary<string, float>();
             values[unitType] = value;
         }
-        public DSSValue(params (string unit, float value)[] values)
+        public PropertyValue(params (string unit, float value)[] values)
         {
             this.values = new Dictionary<string, float>();
             foreach (var value in values)
@@ -37,10 +37,10 @@ namespace AbsoluteGraphicsPlatform.DSS
         }
 
 
-        public static DSSValue PositiveInfinity => positiveInfinity;
-        public static DSSValue NegativeInfinity => negativeInfinity;
-        public static DSSValue Zero => zero;
-        public static DSSValue NaN => nan;
+        public static PropertyValue PositiveInfinity => positiveInfinity;
+        public static PropertyValue NegativeInfinity => negativeInfinity;
+        public static PropertyValue Zero => zero;
+        public static PropertyValue NaN => nan;
 
         public float this[string unit]
         {
@@ -61,39 +61,39 @@ namespace AbsoluteGraphicsPlatform.DSS
             else return string.Join("+", values.Select(x => $"{x.Value}{x.Key}"));
         }
 
-        public static bool IsInfinity(DSSValue value) => value.values.Any(x => float.IsInfinity(x.Value));
-        public static bool IsNaN(DSSValue value) => value.values.Any(x => float.IsNaN(x.Value));
-        public static bool IsZero(DSSValue value) => !value.values.Any(x => x.Value != 0);
+        public static bool IsInfinity(PropertyValue value) => value.values.Any(x => float.IsInfinity(x.Value));
+        public static bool IsNaN(PropertyValue value) => value.values.Any(x => float.IsNaN(x.Value));
+        public static bool IsZero(PropertyValue value) => !value.values.Any(x => x.Value != 0);
 
 
 
         #region Math Operators
-        public static DSSValue operator *(DSSValue left, DSSValue right)
+        public static PropertyValue operator *(PropertyValue left, PropertyValue right)
         {
             if (left.IsUnitless) return left[""] * right;
             if (right.IsUnitless) return left * right[""];
             throw new NotSupportedException("Multiply operation is not supported between both unit values!");
         }
-        public static DSSValue operator *(float left, DSSValue right) => new DSSValue(right.values.Select(x => (x.Key, left * x.Value)).ToArray());
-        public static DSSValue operator *(DSSValue left, float right) => new DSSValue(left.values.Select(x => (x.Key, x.Value * right)).ToArray());
-        public static DSSValue operator /(DSSValue left, DSSValue right)
+        public static PropertyValue operator *(float left, PropertyValue right) => new PropertyValue(right.values.Select(x => (x.Key, left * x.Value)).ToArray());
+        public static PropertyValue operator *(PropertyValue left, float right) => new PropertyValue(left.values.Select(x => (x.Key, x.Value * right)).ToArray());
+        public static PropertyValue operator /(PropertyValue left, PropertyValue right)
         {
             if (left.IsUnitless) return left[""] / right;
             if (right.IsUnitless) return left / right[""];
             throw new NotSupportedException("Division operation is not supported between both unit values!");
         }
-        public static DSSValue operator /(float left, DSSValue right) => new DSSValue(right.values.Select(x => (x.Key, left / x.Value)).ToArray());
-        public static DSSValue operator /(DSSValue left, float right) => new DSSValue(left.values.Select(x => (x.Key, x.Value / right)).ToArray());
-        public static DSSValue operator %(DSSValue left, DSSValue right)
+        public static PropertyValue operator /(float left, PropertyValue right) => new PropertyValue(right.values.Select(x => (x.Key, left / x.Value)).ToArray());
+        public static PropertyValue operator /(PropertyValue left, float right) => new PropertyValue(left.values.Select(x => (x.Key, x.Value / right)).ToArray());
+        public static PropertyValue operator %(PropertyValue left, PropertyValue right)
         {
             if (right.IsUnitless) return left % right[""];
             throw new NotSupportedException("Modulo operation is only supported unitless value on the right side!");
         }
-        public static DSSValue operator %(DSSValue left, float right) => new DSSValue(left.values.Select(x => (x.Key, x.Value % right)).ToArray());
+        public static PropertyValue operator %(PropertyValue left, float right) => new PropertyValue(left.values.Select(x => (x.Key, x.Value % right)).ToArray());
 
-        public static DSSValue operator +(DSSValue left, DSSValue right)
+        public static PropertyValue operator +(PropertyValue left, PropertyValue right)
         {
-            var newValue = new DSSValue();
+            var newValue = new PropertyValue();
             foreach (var value in left.values)
                 newValue[value.Key] += value.Value;
             foreach (var value in right.values)
@@ -101,9 +101,9 @@ namespace AbsoluteGraphicsPlatform.DSS
 
             return newValue;
         }
-        public static DSSValue operator -(DSSValue left, DSSValue right)
+        public static PropertyValue operator -(PropertyValue left, PropertyValue right)
         {
-            var newValue = new DSSValue();
+            var newValue = new PropertyValue();
             foreach (var value in left.values)
                 newValue[value.Key] += value.Value;
             foreach (var value in right.values)
@@ -115,13 +115,13 @@ namespace AbsoluteGraphicsPlatform.DSS
 
         #region Comparison
 
-        public static bool operator ==(DSSValue left, DSSValue right) => left.Equals(right);
-        public static bool operator !=(DSSValue left, DSSValue right) => !left.Equals(right);
+        public static bool operator ==(PropertyValue left, PropertyValue right) => left.Equals(right);
+        public static bool operator !=(PropertyValue left, PropertyValue right) => !left.Equals(right);
 
 
-        public override bool Equals(object obj) => (obj is DSSValue other) ? Equals(other) : false;
+        public override bool Equals(object obj) => (obj is PropertyValue other) ? Equals(other) : false;
 
-        public bool Equals(DSSValue other)
+        public bool Equals(PropertyValue other)
         {
             var allKeys = values.Keys.Concat(other.values.Keys);
             foreach (var key in allKeys)

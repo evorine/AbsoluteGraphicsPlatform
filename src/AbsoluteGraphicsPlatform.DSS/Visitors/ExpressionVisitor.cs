@@ -14,15 +14,15 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
     {
         LiteralVisitor literalVisitor = new LiteralVisitor();
 
-        static Expression<Func<DSSValue, DSSValue, DSSValue>> multiplyExpression = (left, right) => left * right;
-        static Expression<Func<DSSValue, DSSValue, DSSValue>> divideExpression = (left, right) => left / right;
-        static Expression<Func<DSSValue, DSSValue, DSSValue>> moduloExpression = (left, right) => left % right;
+        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> multiplyExpression = (left, right) => left * right;
+        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> divideExpression = (left, right) => left / right;
+        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> moduloExpression = (left, right) => left % right;
 
-        static Expression<Func<DSSValue, DSSValue, DSSValue>> addExpression = (left, right) => left + right;
-        static Expression<Func<DSSValue, DSSValue, DSSValue>> subtractExpression = (left, right) => left - right;
+        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> addExpression = (left, right) => left + right;
+        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> subtractExpression = (left, right) => left - right;
 
-        static Expression<Func<DSSValue, DSSValue, bool>> equalsExpression = (left, right) => left == right;
-        static Expression<Func<DSSValue, DSSValue, bool>> notEqualsExpression = (left, right) => left != right;
+        static Expression<Func<PropertyValue, PropertyValue, bool>> equalsExpression = (left, right) => left == right;
+        static Expression<Func<PropertyValue, PropertyValue, bool>> notEqualsExpression = (left, right) => left != right;
 
         //static Expression<Func<DSSValue, DSSValue, bool>> lesserExpression = (left, right) => left < right;
         //static Expression<Func<DSSValue, DSSValue, bool>> greaterExpression = (left, right) => left > right;
@@ -91,7 +91,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                     else if (rawUnit == "u") unitType = UnitType.Unit;
                     else throw new Exception("Unexpected unit type!");
 
-                    return Expression.Constant(new DSSValue(rawUnit, value));
+                    return Expression.Constant(new PropertyValue(rawUnit, value));
                     //return Expression.Constant(new CompositeLength(value, unitType));
                 }
                 else if (number != null)
@@ -100,7 +100,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                     if (!float.TryParse(number.GetText(), out value))
                         throw new Exception("Invalid number");
                     
-                    return Expression.Constant(new DSSValue(value));
+                    return Expression.Constant(new PropertyValue(value));
                 }
 
                 throw new Exception("Unexpected literal expression!");

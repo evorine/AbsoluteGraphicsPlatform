@@ -10,9 +10,9 @@ using System.Text.RegularExpressions;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
-    public static class DSSValueExtensions
+    public static class PropertyValueExtensions
     {
-        public static CompositeLength ToCompositeLength(this DSSValue value)
+        public static CompositeLength ToCompositeLength(this PropertyValue value)
         {
             var args = value.Units.Select(x => (value[x], toUnitType(x))).ToArray();
             return new CompositeLength(args);

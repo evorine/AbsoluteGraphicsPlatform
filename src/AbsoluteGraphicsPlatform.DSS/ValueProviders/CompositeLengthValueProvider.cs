@@ -13,8 +13,8 @@ namespace AbsoluteGraphicsPlatform.DSS.ValueProviders
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
-                if (context.Value is DSSValue dssValue)
-                    return StyleValueProviderResult.Success(dssValue.ToCompositeLength());
+                if (context.Value is PropertyValue propertyValue)
+                    return StyleValueProviderResult.Success(propertyValue.ToCompositeLength());
             }
             return StyleValueProviderResult.Fail;
         }
