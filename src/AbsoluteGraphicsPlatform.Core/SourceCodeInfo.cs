@@ -1,6 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Extensions.FileProviders;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +15,12 @@ namespace AbsoluteGraphicsPlatform
         readonly Func<Stream> streamGetter;
 
 
-        public SourceCodeInfo(FileInfo fileInfo)
+        public SourceCodeInfo(IFileInfo fileInfo)
         {
             if (fileInfo == null) throw new ArgumentNullException(nameof(fileInfo));
 
             sourceName = fileInfo.Name;
-            streamGetter = () => fileInfo.OpenRead();
+            streamGetter = () => fileInfo.CreateReadStream();
         }
 
         public SourceCodeInfo(string sourceName, Stream stream)

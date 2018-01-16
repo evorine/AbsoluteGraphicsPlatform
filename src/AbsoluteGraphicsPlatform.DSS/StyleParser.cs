@@ -13,17 +13,20 @@ namespace AbsoluteGraphicsPlatform.DSS
 {
     public class StyleParser
     {
-        public Stylesheet Parse(string stylesheetSourceName, Stream dssStream)
+        public Stylesheet Parse(SourceCodeInfo sourceInfo)
         {
-            var lexer = new DSSLexer(new AntlrInputStream(dssStream));
+            DSSLexer lexer;
+            using (var stream = sourceInfo.GetStream())
+                lexer = new DSSLexer(new AntlrInputStream(stream));
+
             var tokens = new CommonTokenStream(lexer);
             var parser = new DSSParser(tokens);
 
-            var errorListener = new ErrorListener(stylesheetSourceName);
+            var errorListener = new ErrorListener(sourceInfo.SourceName);
             //parser.RemoveErrorListeners();
             parser.AddErrorListener(errorListener);
 
-            var visitor = new StylesheetVisitor(stylesheetSourceName);
+            var visitor = new StylesheetVisitor(sourceInfo.SourceName);
             var stylesheet = visitor.Visit(parser.stylesheet());
             return stylesheet;
         }

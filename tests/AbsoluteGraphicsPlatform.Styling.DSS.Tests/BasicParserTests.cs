@@ -14,10 +14,10 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         {
             var fileProvider = AbsoluteGraphicsPlatform.Tests.Common.IO.GetTestFileProvider();
             var dssParser = new StyleParser();
-            using (var stream = fileProvider.GetFileInfo("BasicStyle.dss").CreateReadStream())
-            {
-                var style = dssParser.Parse("BasicStyle.dss", stream);
-            }
+
+            var fileInfo = fileProvider.GetFileInfo("BasicStyle.dss");
+            var sourceInfo = new SourceCodeInfo(fileInfo);
+            var style = dssParser.Parse(sourceInfo);
         }
     }
 }

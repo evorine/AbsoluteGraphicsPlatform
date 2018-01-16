@@ -13,6 +13,7 @@ using AbsoluteGraphicsPlatform.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using Microsoft.Extensions.FileProviders.Physical;
 
 namespace Playground
 {
@@ -42,12 +43,12 @@ namespace Playground
 
         private static IStyle parseTestStyle()
         {
+            var fileInfo = new PhysicalFileInfo(new System.IO.FileInfo(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\TestStyle1.dss"));
             var dssParser = new AbsoluteGraphicsPlatform.DSS.StyleParser();
-            using (var stream = System.IO.File.OpenRead(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\TestStyle1.dss"))
-            {
-                var style = dssParser.Parse("TestStyle1.dss", stream);
-                return style;
-            }
+
+            var sourceInfo = new SourceCodeInfo(fileInfo);
+            var style = dssParser.Parse(sourceInfo);
+            return style;
         }
 
         public class BasicTestData

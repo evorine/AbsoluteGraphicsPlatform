@@ -29,14 +29,13 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
 
         public static IStyle GetStyle(string filename)
         {
-            var fileProvider = AbsoluteGraphicsPlatform.Tests.Common.IO.GetTestFileProvider();
+            var fileProvider = IO.GetTestFileProvider();
             var dssParser = new StyleParser();
 
-            using (var stream = fileProvider.GetFileInfo(filename).CreateReadStream())
-            {
-                var style = dssParser.Parse(filename, stream);
-                return style;
-            }
+            var fileInfo = fileProvider.GetFileInfo(filename);
+            var sourceInfo = new SourceCodeInfo(fileInfo);
+            var style = dssParser.Parse(sourceInfo);
+            return style;
         }
     }
 }
