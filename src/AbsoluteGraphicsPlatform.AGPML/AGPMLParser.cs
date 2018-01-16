@@ -15,9 +15,12 @@ namespace AbsoluteGraphicsPlatform.AGPML
     public class AGPMLParser
     {
         readonly IComponentFactory componentFactory;
-        public AGPMLParser(IComponentFactory componentFactory)
+        readonly PropertySetter propertySetter;
+
+        public AGPMLParser(IComponentFactory componentFactory, PropertySetter propertySetter)
         {
             this.componentFactory = componentFactory;
+            this.propertySetter = propertySetter;
         }
 
         public Component Parse(SourceCodeInfo sourceInfo)
@@ -56,6 +59,14 @@ namespace AbsoluteGraphicsPlatform.AGPML
             }
 
             return component;
+        }
+
+        private void setProperties(IComponent component, XmlNode node)
+        {
+            foreach(XmlAttribute attribute in node.Attributes)
+            {
+                //propertySetter.SetValue(component, attribute.Name)
+            }
         }
     }
 }
