@@ -53,15 +53,24 @@ namespace AbsoluteGraphicsPlatform
         {
             serviceCollection.AddSingleton<TService, TImplementation>();
         }
-        public virtual void RegisterService<TService>(TService service) where TService : class
+
+        public virtual void RegisterService<TService>(TService service) 
+            where TService : class
         {
             serviceCollection.AddSingleton(service);
         }
+
         public virtual void RegisterService<TService, TImplementation>(TImplementation service)
             where TService : class
             where TImplementation : class, TService
         {
             serviceCollection.AddSingleton<TService>(service);
+        }
+
+        public void Configure<TOptions>(Action<TOptions> configure) 
+            where TOptions : class
+        {
+            serviceCollection.PostConfigure(configure);
         }
     }
 }

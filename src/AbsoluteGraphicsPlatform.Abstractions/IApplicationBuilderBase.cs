@@ -1,4 +1,8 @@
-﻿using AbsoluteGraphicsPlatform.Abstractions;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using AbsoluteGraphicsPlatform.Abstractions;
+using System;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -6,6 +10,8 @@ namespace AbsoluteGraphicsPlatform
     {
         IApplication Build();
 
+        void Configure<TOptions>(Action<TOptions> configure)
+            where TOptions : class;
 
         void RegisterService<TService, TImplementation>()
             where TService : class

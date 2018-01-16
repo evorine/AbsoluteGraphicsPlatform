@@ -13,6 +13,7 @@ using AbsoluteGraphicsPlatform.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using AbsoluteGraphicsPlatform.AGPML;
 using Microsoft.Extensions.FileProviders.Physical;
 
 namespace Playground
@@ -26,7 +27,8 @@ namespace Playground
             return;
 
             var appBuilder = new ApplicationBuilder();
-            appBuilder.ConfigureStyling((options) => 
+            appBuilder.UseLayoutLoader();
+            appBuilder.ConfigureStyling((options) =>
             {
                 options.Styles.Add(parseTestStyle());
             });
