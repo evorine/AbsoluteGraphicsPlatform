@@ -5,6 +5,7 @@ using System;
 using Xunit;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.Tests.Common;
+using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
@@ -14,15 +15,18 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         public void BasicSetterTest()
         {
             var options = OptionsMocks.CreateDSSOptions();
-            options.Styles.Add(OptionsMocks.GetStyle("TestStyle1.dss"));
+            options.Styles.Add(OptionsMocks.GetStyle("SingleRule.dss"));
             var wrappedOptions = OptionsMocks.WrapOptions(options);
 
             var setter = new StyleSetter(wrappedOptions);
 
             var component = ComponentMocks.CreateSimpleVisualElement();
-            component.Name = "DemoComp";
+            component.Name = "TestComponent";
 
             setter.ApplyStyle(component);
+
+            Assert.Equal(new CompositeLength(5, UnitType.Pixel), component.Height);
+            Assert.Equal(new CompositeLength((3, UnitType.Pixel), (6, UnitType.Percentage)), component.Width);
         }
     }
 }

@@ -1,0 +1,4 @@
+﻿#TestComponent {
+    Height: 5px;
+    Width: 3 * (1px + 2%);
+}

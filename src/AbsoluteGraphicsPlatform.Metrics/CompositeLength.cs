@@ -129,7 +129,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
                     }
                 });
                 if (!strings.Any()) return "0";
-                return string.Join(" ", strings);
+                return string.Join("+", strings);
             }
         }
 
