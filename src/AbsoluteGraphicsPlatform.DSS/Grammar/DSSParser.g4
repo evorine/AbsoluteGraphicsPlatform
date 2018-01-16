@@ -63,6 +63,7 @@ expression
 literal
   : NUMBER
   | NUMBER UNIT
+  | COLOR
   | NULL
   | NONE
   ;
