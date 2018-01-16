@@ -7,7 +7,6 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
-using AbsoluteGraphicsPlatform.DSS;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -31,16 +30,17 @@ namespace AbsoluteGraphicsPlatform
         protected virtual void RegisterCoreServices()
         {
             serviceCollection.AddOptions();
+            serviceCollection.AddSingleton<IComponentFactory, ComponentFactory>();
             serviceCollection.AddSingleton<IStyleSetter, DSS.StyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
         }
 
         protected virtual void ConfigureCoreOptions()
         {
-            serviceCollection.Configure<DSSOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
+            serviceCollection.Configure<DSS.DSSOptions>(Configurators.DefaultStylingOptionsConfigurator.Configure);
         }
 
-        public virtual void ConfigureStyling(Action<DSSOptions> configure)
+        public virtual void ConfigureStyling(Action<DSS.DSSOptions> configure)
         {
             serviceCollection.PostConfigure(configure);
         }
@@ -52,6 +52,12 @@ namespace AbsoluteGraphicsPlatform
             where TImplementation : class, TService
         {
             serviceCollection.AddSingleton<TService, TImplementation>();
+        }
+
+        public void RegisterService<TService>()
+            where TService : class
+        {
+            serviceCollection.AddSingleton<TService>();
         }
 
         public virtual void RegisterService<TService>(TService service) 

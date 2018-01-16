@@ -8,6 +8,7 @@
   <PropertyGroup Label="Configuration" />
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Errors.dss" />
+    <None Include="$(MSBuildThisFileDirectory)BasicAGPML.agpml" />
     <None Include="$(MSBuildThisFileDirectory)SingleRule.dss" />
     <None Include="$(MSBuildThisFileDirectory)FullFeatured\Config\General.dss" />
     <None Include="$(MSBuildThisFileDirectory)FullFeatured\Config\Config.dss" />

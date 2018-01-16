@@ -15,6 +15,8 @@ namespace AbsoluteGraphicsPlatform.DSS
     {
         public Stylesheet Parse(SourceCodeInfo sourceInfo)
         {
+            if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
+
             DSSLexer lexer;
             using (var stream = sourceInfo.GetStream())
                 lexer = new DSSLexer(new AntlrInputStream(stream));

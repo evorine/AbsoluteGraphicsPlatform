@@ -5,11 +5,11 @@ using System;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {
-    public static class BuilderExtensions
+    public static class ApplicationBuilderExtensions
     {
         public static void UseLayoutLoader(this IApplicationBuilderBase builder)
         {
-            
+            builder.RegisterService<AGPMLParser>();
         }
     }
 }

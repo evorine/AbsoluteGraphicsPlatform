@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform
 
         public ComponentTree()
         {
-            ComponentFactory = new ComponentFactory(this);
+            ComponentFactory = new ComponentFactory();
             allComponents = new List<IComponent>();
             leafComponents = new List<IComponent>();
             isDirty = true;

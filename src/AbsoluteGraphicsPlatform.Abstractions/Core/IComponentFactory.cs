@@ -18,5 +18,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions
         /// </summary>
         /// <typeparam name="TComponent">Type of the component</typeparam>
         TComponent CreateComponent<TComponent>() where TComponent : class, IComponent;
+        object CreateComponent(Type componentType);
     }
 }

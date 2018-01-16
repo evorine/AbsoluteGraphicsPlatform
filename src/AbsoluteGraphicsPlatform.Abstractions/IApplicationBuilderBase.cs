@@ -17,6 +17,9 @@ namespace AbsoluteGraphicsPlatform
             where TService : class
             where TImplementation : class, TService;
 
+        void RegisterService<TService>()
+            where TService : class;
+
         void RegisterService<TService, TImplementation>(TImplementation service)
             where TService : class
             where TImplementation : class, TService;

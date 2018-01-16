@@ -17,9 +17,8 @@ namespace AbsoluteGraphicsPlatform
         private readonly ComponentInterceptor interceptor;
         private readonly ProxyGenerationOptions proxyOptions;
         private readonly ProxyGenerator proxyGenerator;
-        private readonly ComponentTree componentTree;
 
-        public ComponentFactory(ComponentTree componentTree)
+        public ComponentFactory()
         {
             interceptor = new ComponentInterceptor();
             proxyOptions = new ProxyGenerationOptions()
@@ -27,13 +26,17 @@ namespace AbsoluteGraphicsPlatform
                 Hook = new ComponentHook()
             };
             proxyGenerator = new ProxyGenerator();
-            this.componentTree = componentTree;
         }
         
         /// <inheritdoc cref="IComponentFactory.CreateComponent{TComponent}"/>
         public TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
         {
-            var component = proxyGenerator.CreateClassProxy<TComponent>(proxyOptions, interceptor);
+            return (TComponent)CreateComponent(typeof(TComponent));
+        }
+
+        public object CreateComponent(Type componentType)
+        {
+            var component = proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
             return component;
         }
     }

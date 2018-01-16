@@ -1,0 +1,15 @@
+﻿<component-template Name="TestElement">
+  <Component Width="Fill" Height="Fill" LayoutDirection="Vertical">
+    <Component Width="Fill" Height="50px" />
+    <Component Width="Fill" Height="Fill" LayoutDirection="Horizontal">
+      <Component Width="1x" Height="Shrink" LayoutDirection="Vertical">
+        <Component Width="Fill" Height="40px" />
+        <Component Width="Fill" Height="40px" />
+      </Component>
+      <Component Width="3x" Height="Fill" LayoutDirection="Vertical">
+        <Component Width="Fill" Height="40px" />
+        <Component Width="Fill" Height="80px" />
+      </Component>
+    </Component>
+  </Component>
+</component-template>
