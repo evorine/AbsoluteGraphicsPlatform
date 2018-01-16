@@ -9,8 +9,8 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
     {
         public static VisualElement CreateSimpleVisualElement()
         {
-            var componentTree = new ComponentTree();
-            return componentTree.ComponentFactory.CreateComponent<VisualElement>();
+            var componentFactory = new ComponentFactory();
+            return componentFactory.CreateComponent<VisualElement>();
         }
     }
 }

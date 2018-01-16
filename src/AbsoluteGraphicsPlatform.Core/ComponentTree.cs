@@ -19,13 +19,11 @@ namespace AbsoluteGraphicsPlatform
 
         public ComponentTree()
         {
-            ComponentFactory = new ComponentFactory();
             allComponents = new List<IComponent>();
             leafComponents = new List<IComponent>();
             isDirty = true;
         }
-
-        public IComponentFactory ComponentFactory { get; }
+        
         public IEnumerable<IComponent> AllComponents => allComponents.AsEnumerable();
         public IEnumerable<IComponent> LeafComponents => leafComponents.AsEnumerable();
         public IComponent RootComponent
