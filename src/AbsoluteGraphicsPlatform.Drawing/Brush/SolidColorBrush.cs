@@ -1,4 +1,7 @@
-﻿using AbsoluteGraphicsPlatform.Metrics;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using AbsoluteGraphicsPlatform.Metrics;
 using System;
 
 namespace AbsoluteGraphicsPlatform.Drawing
