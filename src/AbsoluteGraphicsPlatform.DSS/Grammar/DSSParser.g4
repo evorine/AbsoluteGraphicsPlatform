@@ -57,12 +57,14 @@ expression
   | LEFT=expression OP=('==' | '!=') RIGHT=expression
   | literal
   | variable
+  | MULIPLE=expression+
   ;
 
 
 literal
   : NUMBER
-  | NUMBER UNIT
+  | NUMBER UNIT_LENGTH
+  | NUMBER UNIT_SECOND
   | COLOR
   | NULL
   | NONE

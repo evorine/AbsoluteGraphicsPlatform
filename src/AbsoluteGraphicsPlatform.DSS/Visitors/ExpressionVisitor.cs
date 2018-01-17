@@ -7,7 +7,7 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Metrics;
-using AbsoluteGraphicsPlatform.Styling;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
@@ -15,15 +15,15 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
     {
         LiteralVisitor literalVisitor = new LiteralVisitor();
 
-        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> multiplyExpression = (left, right) => left * right;
-        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> divideExpression = (left, right) => left / right;
-        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> moduloExpression = (left, right) => left % right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> multiplyExpression = (left, right) => left * right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> divideExpression = (left, right) => left / right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> moduloExpression = (left, right) => left % right;
 
-        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> addExpression = (left, right) => left + right;
-        static Expression<Func<PropertyValue, PropertyValue, PropertyValue>> subtractExpression = (left, right) => left - right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> addExpression = (left, right) => left + right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> subtractExpression = (left, right) => left - right;
 
-        static Expression<Func<PropertyValue, PropertyValue, bool>> equalsExpression = (left, right) => left == right;
-        static Expression<Func<PropertyValue, PropertyValue, bool>> notEqualsExpression = (left, right) => left != right;
+        static Expression<Func<IPropertyValue, IPropertyValue, bool>> equalsExpression = (left, right) => left == right;
+        static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => left != right;
 
         //static Expression<Func<DSSValue, DSSValue, bool>> lesserExpression = (left, right) => left < right;
         //static Expression<Func<DSSValue, DSSValue, bool>> greaterExpression = (left, right) => left > right;
@@ -76,7 +76,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             public override ConstantExpression VisitLiteral([NotNull] DSSParser.LiteralContext context)
             {
                 var number = context.NUMBER();
-                var unit = context.UNIT();
+                var unit = context.UNIT_LENGTH();
 
                 if (number != null && unit != null)
                 {

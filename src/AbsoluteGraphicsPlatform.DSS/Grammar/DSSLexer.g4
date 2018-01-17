@@ -8,7 +8,8 @@ lexer grammar DSSLexer;
 NULL                : 'null';
 NONE                : 'none';
 
-UNIT                : ('%'|'px'|'u'|'x');
+UNIT_LENGTH         : ('%'|'px'|'u'|'x');
+UNIT_SECOND         : 's';
 
 AND                 : '&&';
 OR                  : '||';
