@@ -23,7 +23,7 @@ namespace AbsoluteGraphicsPlatform.DSS
 
             var tokens = new CommonTokenStream(lexer);
             var parser = new DSSParser(tokens);
-
+            
             var errorListener = new ErrorListener(sourceInfo.SourceName);
             //parser.RemoveErrorListeners();
             parser.AddErrorListener(errorListener);

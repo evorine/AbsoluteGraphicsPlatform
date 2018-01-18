@@ -45,9 +45,16 @@ identifier
 
 
 propertyStatement
-  : PROPERTY_NAME=identifier ':' EXPRESSION=expression ';'
+  : propertyKey ':' propertyValue ';'
   ;
 
+propertyKey
+  : identifier ('.' SUBKEY=identifier)?
+  ;
+
+propertyValue
+  : expression+
+  ;
 
 expression
   : '(' expression ')'
@@ -57,19 +64,21 @@ expression
   | LEFT=expression OP=('==' | '!=') RIGHT=expression
   | literal
   | variable
-  | MULIPLE=expression+
   ;
 
 
 literal
-  : NUMBER
-  | NUMBER UNIT_LENGTH
-  | NUMBER UNIT_SECOND
-  | COLOR
+  : NUMBER UNIT
+  | NUMBER
+  | color
   | NULL
   | NONE
   ;
 
+color
+  : '#' HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL
+  ;
+  
 variable
   : DOLLAR IDENTIFIER
   ;

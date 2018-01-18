@@ -13,6 +13,7 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Reflection;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
@@ -46,21 +47,19 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             foreach (var setter in ruleset.PropertySetters)
             {
-                if (propertySetter.SetValue(component, setter.Property, getValue(setter.Value)))
+                if (propertySetter.SetValue(component, setter.Property, getValues(setter.Values)))
                     throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
             }
         }
 
-        private object getValue(Expression expression)
+        private IEnumerable<IPropertyValue> getValues(Expression[] expressions)
         {
-            switch(expression)
+            foreach (var expression in expressions)
             {
-                case ConstantExpression constantExpression:
-                    return constantExpression.Value;
-                case InvocationExpression invocationExpression:
-                    return getValueFromInvocation(invocationExpression);
-                default:
-                    throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
+                if (expression is ConstantExpression constantExpression) yield return (IPropertyValue)constantExpression.Value;
+                if (expression is InvocationExpression invocationExpression) yield return (IPropertyValue)getValueFromInvocation(invocationExpression);
+
+                throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
             }
         }
 
@@ -69,7 +68,7 @@ namespace AbsoluteGraphicsPlatform.DSS
             var lambdaExpression = (LambdaExpression)invocationExpression.Expression;
 
             var compiled = lambdaExpression.Compile();
-            var args = invocationExpression.Arguments.Select(x => getValue(x)).ToArray();
+            var args = getValues(invocationExpression.Arguments.ToArray());
             var result = compiled.DynamicInvoke(args);
 
             return result;

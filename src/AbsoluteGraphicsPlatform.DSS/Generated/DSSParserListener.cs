@@ -112,6 +112,26 @@ public interface IDSSParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -131,6 +151,16 @@ public interface IDSSParserListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitLiteral([NotNull] DSSParser.LiteralContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.color"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterColor([NotNull] DSSParser.ColorContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.color"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitColor([NotNull] DSSParser.ColorContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.variable"/>.
 	/// </summary>

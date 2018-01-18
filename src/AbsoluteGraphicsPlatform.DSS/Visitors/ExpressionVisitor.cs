@@ -15,20 +15,15 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
     {
         LiteralVisitor literalVisitor = new LiteralVisitor();
 
-        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> multiplyExpression = (left, right) => left * right;
-        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> divideExpression = (left, right) => left / right;
-        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> moduloExpression = (left, right) => left % right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> multiplyExpression = (left, right) => operationMultiply(left, right);
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> divideExpression = (left, right) => operationDivide(left, right);
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> moduloExpression = (left, right) => operationModulo(left, right);
 
-        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> addExpression = (left, right) => left + right;
-        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> subtractExpression = (left, right) => left - right;
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> addExpression = (left, right) => operationAdd(left, right);
+        static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> subtractExpression = (left, right) => operationSubtract(left, right);
 
-        static Expression<Func<IPropertyValue, IPropertyValue, bool>> equalsExpression = (left, right) => left == right;
-        static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => left != right;
-
-        //static Expression<Func<DSSValue, DSSValue, bool>> lesserExpression = (left, right) => left < right;
-        //static Expression<Func<DSSValue, DSSValue, bool>> greaterExpression = (left, right) => left > right;
-        //static Expression<Func<DSSValue, DSSValue, bool>> lesserEqualsExpression = (left, right) => left <= right;
-        //static Expression<Func<DSSValue, DSSValue, bool>> greaterEqualsExpression = (left, right) => left >= right;
+        static Expression<Func<IPropertyValue, IPropertyValue, bool>> equalsExpression = (left, right) => operatorEquals(left, right);
+        static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => operatorNotEquals(left, right);
 
 
         public override Expression VisitExpression([NotNull] DSSParser.ExpressionContext context)
@@ -71,41 +66,104 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             throw new Exception("Unexpected expression!");
         }
 
-        public class LiteralVisitor : DSSParserBaseVisitor<ConstantExpression>
+
+        static private IPropertyValue operationMultiply(IPropertyValue left, IPropertyValue right)
         {
-            public override ConstantExpression VisitLiteral([NotNull] DSSParser.LiteralContext context)
-            {
-                var number = context.NUMBER();
-                var unit = context.UNIT_LENGTH();
+            // scalar * scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left) * ((ScalarPropertyValue)right);
 
-                if (number != null && unit != null)
-                {
-                    float value;
-                    if (!float.TryParse(number.GetText(), out value))
-                        throw new Exception("Invalid number");
-                    
-                    UnitType unitType;
-                    string rawUnit = unit.GetText();
-                    if (rawUnit == "%") unitType = UnitType.Percentage;
-                    else if (rawUnit == "px") unitType = UnitType.Pixel;
-                    else if (rawUnit == "x") unitType = UnitType.Ratio;
-                    else if (rawUnit == "u") unitType = UnitType.Unit;
-                    else throw new Exception("Unexpected unit type!");
+            // scalar * length
+            if (left is ScalarPropertyValue && right is LengthPropertyValue) return ((ScalarPropertyValue)left) * ((LengthPropertyValue)right);
 
-                    return Expression.Constant(new PropertyValue(rawUnit, value));
-                    //return Expression.Constant(new CompositeLength(value, unitType));
-                }
-                else if (number != null)
-                {
-                    float value;
-                    if (!float.TryParse(number.GetText(), out value))
-                        throw new Exception("Invalid number");
-                    
-                    return Expression.Constant(new PropertyValue(value));
-                }
+            // length * scalar
+            if (left is LengthPropertyValue && right is ScalarPropertyValue) return ((LengthPropertyValue)left) * ((ScalarPropertyValue)right);
 
-                throw new Exception("Unexpected literal expression!");
-            }
+            // scalar * time
+            if (left is ScalarPropertyValue && right is TimeSpanPropertyValue) return ((ScalarPropertyValue)left) * ((TimeSpanPropertyValue)right);
+
+            // time * scalar
+            if (left is TimeSpanPropertyValue && right is ScalarPropertyValue) return ((TimeSpanPropertyValue)left) * ((ScalarPropertyValue)right);
+
+            throw new Exception("Invalid operation!");
+        }
+        static private IPropertyValue operationDivide(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar / scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left) / ((ScalarPropertyValue)right);
+
+            // length / scalar
+            if (left is LengthPropertyValue && right is ScalarPropertyValue) return ((LengthPropertyValue)left) / ((ScalarPropertyValue)right);
+
+            // time / scalar
+            if (left is TimeSpanPropertyValue && right is ScalarPropertyValue) return ((TimeSpanPropertyValue)left) / ((ScalarPropertyValue)right);
+
+            throw new Exception("Invalid operation!");
+        }
+        static private IPropertyValue operationModulo(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar % scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left) % ((ScalarPropertyValue)right);
+
+            // length % scalar
+            if (left is LengthPropertyValue && right is ScalarPropertyValue) return ((LengthPropertyValue)left) % ((ScalarPropertyValue)right);
+
+            // time % scalar
+            if (left is TimeSpanPropertyValue && right is ScalarPropertyValue) return ((TimeSpanPropertyValue)left) % ((ScalarPropertyValue)right);
+
+            throw new Exception("Invalid operation!");
+        }
+        static private IPropertyValue operationAdd(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar + scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left) + ((ScalarPropertyValue)right);
+
+            // length + length
+            if (left is LengthPropertyValue && right is LengthPropertyValue) return ((LengthPropertyValue)left) + ((LengthPropertyValue)right);
+
+            // time + time
+            if (left is TimeSpanPropertyValue && right is TimeSpanPropertyValue) return ((TimeSpanPropertyValue)left) + ((TimeSpanPropertyValue)right);
+
+            throw new Exception("Invalid operation!");
+        }
+        static private IPropertyValue operationSubtract(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar - scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left) - ((ScalarPropertyValue)right);
+
+            // length - length
+            if (left is LengthPropertyValue && right is LengthPropertyValue) return ((LengthPropertyValue)left) - ((LengthPropertyValue)right);
+
+            // time - time
+            if (left is TimeSpanPropertyValue && right is TimeSpanPropertyValue) return ((TimeSpanPropertyValue)left) - ((TimeSpanPropertyValue)right);
+
+            throw new Exception("Invalid operation!");
+        }
+
+        static private bool operatorEquals(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar == scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left).Equals(((ScalarPropertyValue)right));
+
+            // length == length
+            if (left is LengthPropertyValue && right is LengthPropertyValue) return ((LengthPropertyValue)left).Equals(((LengthPropertyValue)right));
+
+            // time == time
+            if (left is TimeSpanPropertyValue && right is TimeSpanPropertyValue) return ((TimeSpanPropertyValue)left).Equals(((TimeSpanPropertyValue)right));
+
+            throw new Exception("Invalid operation!");
+        }
+        static private bool operatorNotEquals(IPropertyValue left, IPropertyValue right)
+        {
+            // scalar != scalar
+            if (left is ScalarPropertyValue && right is ScalarPropertyValue) return ((ScalarPropertyValue)left).Equals(((ScalarPropertyValue)right));
+
+            // length != length
+            if (left is LengthPropertyValue && right is LengthPropertyValue) return ((LengthPropertyValue)left).Equals(((LengthPropertyValue)right));
+
+            // time != time
+            if (left is TimeSpanPropertyValue && right is TimeSpanPropertyValue) return ((TimeSpanPropertyValue)left).Equals(((TimeSpanPropertyValue)right));
+
+            throw new Exception("Invalid operation!");
         }
     }
 }

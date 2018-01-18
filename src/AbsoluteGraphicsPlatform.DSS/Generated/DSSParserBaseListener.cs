@@ -132,6 +132,30 @@ public partial class DSSParserBaseListener : IDSSParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPropertyKey([NotNull] DSSParser.PropertyKeyContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPropertyKey([NotNull] DSSParser.PropertyKeyContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterPropertyValue([NotNull] DSSParser.PropertyValueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitPropertyValue([NotNull] DSSParser.PropertyValueContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -155,6 +179,18 @@ public partial class DSSParserBaseListener : IDSSParserListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLiteral([NotNull] DSSParser.LiteralContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.color"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterColor([NotNull] DSSParser.ColorContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.color"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitColor([NotNull] DSSParser.ColorContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.variable"/>.
 	/// <para>The default implementation does nothing.</para>

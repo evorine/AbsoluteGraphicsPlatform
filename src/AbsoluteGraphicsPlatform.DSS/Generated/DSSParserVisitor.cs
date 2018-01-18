@@ -81,6 +81,18 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -92,6 +104,12 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitLiteral([NotNull] DSSParser.LiteralContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DSSParser.color"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitColor([NotNull] DSSParser.ColorContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.variable"/>.
 	/// </summary>

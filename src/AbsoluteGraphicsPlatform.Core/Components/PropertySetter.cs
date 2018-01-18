@@ -4,6 +4,7 @@
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace AbsoluteGraphicsPlatform.Components
             this.applicationOptions = applicationOptions;
         }
 
-        public bool SetValue(IComponent component, string propertyName, object value)
+        public bool SetValue(IComponent component, string propertyName, IPropertyValue value)
         {
             var property = component.GetType().GetProperty(propertyName);
             if (property == null) return false;
@@ -33,8 +34,12 @@ namespace AbsoluteGraphicsPlatform.Components
             }
             return false;
         }
+        public bool SetValue(IComponent component, string propertyName, IEnumerable<IPropertyValue> values)
+        {
+            return false;
+        }
 
-        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, object value)
+        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, IPropertyValue value)
         {
             foreach (var provider in applicationOptions.ValueProviders)
             {

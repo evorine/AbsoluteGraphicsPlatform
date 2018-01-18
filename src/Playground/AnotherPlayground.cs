@@ -1,4 +1,5 @@
 ﻿using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace Playground
     public static class AnotherPlayground
     {
         public static void Play()
-        {
-            Expression<Func<PropertyValue, PropertyValue, PropertyValue>> multiplyExpression = (left, right) => left * right;
+        {/*
+            Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> multiplyExpression = (left, right) => left * right;
 
-            var v1 = new PropertyValue(7);
-            var v2 = new PropertyValue(3);
+            var v1 = new ScalarPropertyValue(7);
+            var v2 = new ScalarPropertyValue(3);
 
             var eV1 = Expression.Constant(v1);
             var eV2 = Expression.Constant(v2);
@@ -27,7 +28,7 @@ namespace Playground
 
             var compiled = lambdaExpression.Compile();
             var args = invokeExpression.Arguments.Select(x => x is ConstantExpression constant ? constant.Value : x).ToArray();
-            var result = compiled.DynamicInvoke(args);
+            var result = compiled.DynamicInvoke(args);*/
         }
     }
 }

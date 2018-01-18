@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using System.Reflection;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.Abstractions.Styling
 {
     public class StyleValueProviderContext
     {
-        public StyleValueProviderContext(IComponent component, PropertyInfo property, object value)
+        public StyleValueProviderContext(IComponent component, PropertyInfo property, IPropertyValue value)
         {
             Component = component;
             Property = property;
@@ -20,6 +21,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Styling
 
         public IComponent Component { get; }
         public PropertyInfo Property { get; }
-        public object Value { get; }
+        public IPropertyValue Value { get; }
     }
 }

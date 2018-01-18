@@ -5,8 +5,9 @@ using System;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Metrics;
 using System.Linq;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
-namespace AbsoluteGraphicsPlatform.Styling.ValueProviders
+namespace AbsoluteGraphicsPlatform.ValueProviders
 {
     public class CompositeLengthValueProvider : IStyleValueProvider
     {
@@ -14,13 +15,13 @@ namespace AbsoluteGraphicsPlatform.Styling.ValueProviders
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
-                if (context.Value is PropertyValue propertyValue)
+                if (context.Value is LengthPropertyValue propertyValue)
                     return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
             }
             return StyleValueProviderResult.Fail;
         }
 
-        private static CompositeLength toCompositeLength(PropertyValue value)
+        private static CompositeLength toCompositeLength(LengthPropertyValue value)
         {
             var args = value.Units.Select(x => (value[x], toUnitType(x))).ToArray();
             return new CompositeLength(args);

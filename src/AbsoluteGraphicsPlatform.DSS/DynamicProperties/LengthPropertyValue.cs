@@ -1,6 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using AbsoluteGraphicsPlatform.DynamicProperties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,12 @@ namespace AbsoluteGraphicsPlatform.DynamicProperties
         public static LengthPropertyValue operator *(LengthPropertyValue left, ScalarPropertyValue right) => new LengthPropertyValue(left.values.Select(x => (x.Key, x.Value * right.Value)).ToArray());
         public static LengthPropertyValue operator /(ScalarPropertyValue left, LengthPropertyValue right) => new LengthPropertyValue(right.values.Select(x => (x.Key, left.Value / x.Value)).ToArray());
         public static LengthPropertyValue operator /(LengthPropertyValue left, ScalarPropertyValue right) => new LengthPropertyValue(left.values.Select(x => (x.Key, x.Value / right.Value)).ToArray());
+        public static ScalarPropertyValue operator /(LengthPropertyValue left, LengthPropertyValue right)
+        {
+            if (left.values.Keys.Count == 1 && right.values.Keys.Count == 1 && left.values.Keys.First() == right.values.Keys.First())
+                return new ScalarPropertyValue(left.values.Values.First() / right.values.Values.First());
+            throw new InvalidOperationException("Can not divide different units!");
+        }
         public static LengthPropertyValue operator %(LengthPropertyValue left, ScalarPropertyValue right) => new LengthPropertyValue(left.values.Select(x => (x.Key, x.Value % right.Value)).ToArray());
 
         public static LengthPropertyValue operator +(LengthPropertyValue left, LengthPropertyValue right)
@@ -93,10 +100,6 @@ namespace AbsoluteGraphicsPlatform.DynamicProperties
 
         #region Comparison
 
-        public static bool operator ==(LengthPropertyValue left, LengthPropertyValue right) => left.Equals(right);
-        public static bool operator !=(LengthPropertyValue left, LengthPropertyValue right) => !left.Equals(right);
-
-
         public override bool Equals(object obj) => (obj is LengthPropertyValue other) ? Equals(other) : false;
 
         public bool Equals(LengthPropertyValue other)
@@ -106,7 +109,6 @@ namespace AbsoluteGraphicsPlatform.DynamicProperties
                 if (this[key] != other[key]) return false;
             return true;
         }
-        #endregion
 
         public override int GetHashCode()
         {
@@ -115,6 +117,6 @@ namespace AbsoluteGraphicsPlatform.DynamicProperties
                 return values.Aggregate(29, (value, item) => value * item.Value.GetHashCode());
             }
         }
-
+        #endregion
     }
 }

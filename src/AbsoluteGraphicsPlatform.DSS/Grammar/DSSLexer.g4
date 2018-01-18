@@ -8,8 +8,7 @@ lexer grammar DSSLexer;
 NULL                : 'null';
 NONE                : 'none';
 
-UNIT_LENGTH         : ('%'|'px'|'u'|'x');
-UNIT_SECOND         : 's';
+UNIT                : ('%'|'px'|'u'|'x'|'s');
 
 AND                 : '&&';
 OR                  : '||';
@@ -75,7 +74,7 @@ STRING_LITERAL      : STRING;
 NUMBER              : '-' (('0'..'9')* '.')? ('0'..'9')+
                     | (('0'..'9')* '.')? ('0'..'9')+;
 
-COLOR               : '#' ('0'..'9'|'a'..'f'|'A'..'F')+;
+HEXADECIMAL         : ('0'..'9'|'a'..'f'|'A'..'F')+;
 
 
 

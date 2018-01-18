@@ -3,7 +3,7 @@
 
 using System;
 using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.Styling.ValueProviders;
+using AbsoluteGraphicsPlatform.ValueProviders;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
