@@ -15,6 +15,24 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
     public class SetterTests
     {
         [Theory]
+        [InlineData(0)]
+        [InlineData(1.5)]
+        [InlineData(5)]
+        [InlineData(-5)]
+        public void PropertySetter_SetScalar(float value)
+        {
+            var applicationOptions = OptionsMocks.CreateApplicationOptions();
+            var propertySetter = new PropertySetter(applicationOptions);
+            var component = ComponentMocks.CreateComponent<BasicComponent>();
+            component.Name = "TestComponent";
+
+            var propertyValue = new ScalarPropertyValue(value);
+            propertySetter.SetValue(component, nameof(BasicComponent.Length), propertyValue);
+
+            Assert.Equal(value, component.Single);
+        }
+
+        [Theory]
         [InlineData("px", 1)]
         [InlineData("px", 5.2)]
         [InlineData("%", 1)]

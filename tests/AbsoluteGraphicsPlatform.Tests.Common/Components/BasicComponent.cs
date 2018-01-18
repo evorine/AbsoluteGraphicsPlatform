@@ -14,5 +14,9 @@ namespace AbsoluteGraphicsPlatform.Tests.Common.Components
 
         [ComponentProperty]
         public TimeSpan TimeSpan { get; set; }
+
+
+        [ComponentProperty]
+        public float Single { get; set; }
     }
 }
