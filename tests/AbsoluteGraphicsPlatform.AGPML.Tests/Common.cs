@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.Tests.Common;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
@@ -13,7 +14,8 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var appOptions = OptionsMocks.CreateApplicationOptions();
             var componentFactory = new ComponentFactory();
             var propertySetter = new PropertySetter(appOptions);
-            var agpmlParser = new AGPMLParser(componentFactory, propertySetter);
+            var dssParser = new StyleParser();
+            var agpmlParser = new AGPMLParser(componentFactory, propertySetter, dssParser);
 
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             return agpmlParser.ParseComponentTemplate(sourceInfo);

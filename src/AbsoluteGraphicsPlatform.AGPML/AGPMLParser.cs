@@ -6,6 +6,9 @@ using System.Xml;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.DSS.Models;
+using System.Linq.Expressions;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {
@@ -15,11 +18,13 @@ namespace AbsoluteGraphicsPlatform.AGPML
 
         readonly IComponentFactory componentFactory;
         readonly PropertySetter propertySetter;
+        readonly StyleParser styleParser;
 
-        public AGPMLParser(IComponentFactory componentFactory, PropertySetter propertySetter)
+        public AGPMLParser(IComponentFactory componentFactory, PropertySetter propertySetter, StyleParser styleParser)
         {
             this.componentFactory = componentFactory;
             this.propertySetter = propertySetter;
+            this.styleParser = styleParser;
         }
 
         public ComponentTemplate ParseComponentTemplate(SourceCodeInfo sourceInfo)
@@ -36,35 +41,39 @@ namespace AbsoluteGraphicsPlatform.AGPML
             var componentName = xml.DocumentElement.Attributes["Name"];
             if (componentName == null)
                 throw new AGPMLException($"'{componentTemplateTag}' must have 'Name' attribute!");
-
+            
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
             var rootTemplate = new ComponentTemplate(rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootTemplate.ChildrenTemplates.Append(ParseComponent(node));
+                rootTemplate.ChildrenTemplates.Append(ParseNode(node));
 
             return rootTemplate;
         }
 
-        private ComponentTemplate ParseComponent(XmlNode node)
+        private ComponentTemplate ParseNode(XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
             var template = new ComponentTemplate(componentType);
+            ParsePropertiesSetters(template, node);
 
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                var childTemplate = ParseComponent(childNode);
+                var childTemplate = ParseNode(childNode);
                 template.ChildrenTemplates.Append(childTemplate);
             }
 
             return template;
         }
 
-        private void SetProperties(ComponentTemplate template, XmlNode node)
+        private void ParsePropertiesSetters(ComponentTemplate template, XmlNode node)
         {
             foreach(XmlAttribute attribute in node.Attributes)
             {
-                //propertySetter.SetValue(component, attribute.Name)
+                var expression = styleParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
+                var propertySetterInfo = new PropertySetterInfo(attribute.Name, new Expression[] { expression }, 0, "");
+
+                template.PropertySetters.Add(propertySetterInfo);
             }
         }
     }

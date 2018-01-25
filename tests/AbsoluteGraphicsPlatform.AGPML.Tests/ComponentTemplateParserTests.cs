@@ -53,8 +53,8 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         {
             var code = @"
 <component-template Name=""BasicComponent"">
-    <Component>
-    </Component>
+    <Foo>
+    </Foo>
 </component-template>
 ";
             var template = Common.ParseComponentTemplateCode(code);
