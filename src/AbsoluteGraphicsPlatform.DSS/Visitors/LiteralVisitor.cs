@@ -22,6 +22,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             var number = context.NUMBER();
             var unit = context.UNIT();
             var color = context.color();
+            var none = context.NONE();
 
             if (number != null)
             {
@@ -59,6 +60,10 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                     throw new Exception("Unexpected color code!");
 
                 return Expression.Constant(new ColorPropertyValue(red, green, blue, 1));
+            }
+            else if (none != null)
+            {
+                return Expression.Constant(PropertyValue.None);
             }
 
             throw new Exception("Unexpected literal expression!");
