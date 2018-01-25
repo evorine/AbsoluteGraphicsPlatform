@@ -4,9 +4,6 @@
 using System;
 using System.Linq;
 using Xunit;
-using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DSS.Models;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
@@ -26,7 +23,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 
 
         [Theory]
-        [InlineData("0123-starting-with-number")]
+        [InlineData("0123-cannot-starting-with-a-number")]
         [InlineData("underscore_is_not_valid")]
         [InlineData("or/special_characters_like?isnotsupported!!!")]
         public void Variable_InvalidVariableNames(string variableName)
