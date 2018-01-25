@@ -1,14 +1,11 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
+using System.Xml;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {
@@ -42,26 +39,26 @@ namespace AbsoluteGraphicsPlatform.AGPML
             var rootComponent = (Component)componentFactory.CreateComponent(rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootComponent.Components.Append(parseComponent(node));
+                rootComponent.Components.Append(ParseComponent(node));
 
             return rootComponent;
         }
 
-        private Component parseComponent(XmlNode node)
+        private Component ParseComponent(XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
             var component = (Component)componentFactory.CreateComponent(componentType);
 
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                var childComponent = parseComponent(childNode);
+                var childComponent = ParseComponent(childNode);
                 component.Components.Append(childComponent);
             }
 
             return component;
         }
 
-        private void setProperties(IComponent component, XmlNode node)
+        private void SetProperties(IComponent component, XmlNode node)
         {
             foreach(XmlAttribute attribute in node.Attributes)
             {
