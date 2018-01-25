@@ -13,17 +13,18 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
     public class BasicParserTests
     {
-        private static Stylesheet parseCode(string code)
+        private static Stylesheet ParseCode(string code)
         {
             var dssParser = new StyleParser();
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             return dssParser.Parse(sourceInfo);
         }
+        
 
         [Fact]
         public void EmptyCode_ShouldNotCreateAnyRulesets()
         {
-            var style = parseCode(" ");
+            var style = ParseCode(" ");
 
             Assert.Empty(style.Rulesets);
         }
@@ -31,19 +32,16 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [Fact]
         public void EmtyRuleset_ShouldCreateRulesetWithtoutSetter()
         {
-            var style = parseCode(".rule { }");
+            var style = ParseCode(".rule { }");
 
-            Assert.Single(style.Rulesets);
-            var ruleset = style.Rulesets.First();
-
+            var ruleset = style.Rulesets.Single();
             Assert.Empty(style.Rulesets.First().PropertySetters);
         }
-
 
         [Fact]
         public void EmtyRuleset_ShouldParseBasicSelector()
         {
-            var style = parseCode(".rule { }");
+            var style = ParseCode(".rule { }");
 
             var ruleset = style.Rulesets.First();
 
@@ -54,19 +52,17 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         }
 
         [Fact]
-        public void EmtyRuleset_ShouldCreateSetterWithValueNone()
+        public void EmtyRuleset_ShouldCreateBasicSetterWithValueNone()
         {
-            var style = parseCode(".rule { property: none; }");
+            var style = ParseCode(".rule { property: none; }");
+            var expressionExecutor = new ExpressionExecutor();
 
-            Assert.Single(style.Rulesets);
-            var ruleset = style.Rulesets.First();
-
-            Assert.Single(style.Rulesets.First().PropertySetters);
-            var setter = style.Rulesets.First().PropertySetters.First();
+            var ruleset = style.Rulesets.Single();
+            var setter = ruleset.PropertySetters.Single();
 
             Assert.Equal("property", setter.Property);
             Assert.Single(setter.Values);
-            Assert.Equal(PropertyValue.None, ((ConstantExpression)setter.Values.First()).Value);
+            Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(setter.Values).Single());
         }
     }
 }

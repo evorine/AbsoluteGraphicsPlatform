@@ -21,8 +21,9 @@ namespace AbsoluteGraphicsPlatform.DSS
     {
         readonly DSSOptions stylingOptions;
         readonly PropertySetter propertySetter;
+        readonly ExpressionExecutor expressionExecuter;
 
-        public StyleSetter(IOptions<DSSOptions> stylingOptions, PropertySetter propertySetter)
+        public StyleSetter(IOptions<DSSOptions> stylingOptions, PropertySetter propertySetter, ExpressionExecutor expressionExecuter)
         {
             this.stylingOptions = stylingOptions.Value;
             this.propertySetter = propertySetter;
@@ -47,31 +48,9 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             foreach (var setter in ruleset.PropertySetters)
             {
-                if (propertySetter.SetValue(component, setter.Property, getValues(setter.Values)))
+                if (propertySetter.SetValue(component, setter.Property, expressionExecuter.GetValues(setter.Values)))
                     throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
             }
-        }
-
-        private IEnumerable<IPropertyValue> getValues(Expression[] expressions)
-        {
-            foreach (var expression in expressions)
-            {
-                if (expression is ConstantExpression constantExpression) yield return (IPropertyValue)constantExpression.Value;
-                if (expression is InvocationExpression invocationExpression) yield return (IPropertyValue)getValueFromInvocation(invocationExpression);
-
-                throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
-            }
-        }
-
-        private object getValueFromInvocation(InvocationExpression invocationExpression)
-        {
-            var lambdaExpression = (LambdaExpression)invocationExpression.Expression;
-
-            var compiled = lambdaExpression.Compile();
-            var args = getValues(invocationExpression.Arguments.ToArray());
-            var result = compiled.DynamicInvoke(args);
-
-            return result;
         }
     }
 }
