@@ -4,11 +4,26 @@
 using System;
 using Xunit;
 using AbsoluteGraphicsPlatform.DSS;
+using System.IO;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
     public class BasicParserTests
     {
+        [Fact]
+        public void ParseEmptyCode()
+        {
+            var code = " ";
+
+            var dssParser = new StyleParser();
+            var sourceInfo = new SourceCodeInfo("TestCode", code);
+
+            var style = dssParser.Parse(sourceInfo);
+
+            Assert.Empty(style.Rulesets);
+        }
+
+        /*
         [Fact]
         public void Test1()
         {
@@ -19,5 +34,6 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             var sourceInfo = new SourceCodeInfo(fileInfo);
             var style = dssParser.Parse(sourceInfo);
         }
+        */
     }
 }
