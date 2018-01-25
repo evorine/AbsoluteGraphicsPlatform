@@ -3,7 +3,6 @@
 
 using System;
 using System.Linq;
-using System.Linq.Expressions;
 using Xunit;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.DSS.Models;
@@ -13,18 +12,10 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
     public class BasicParserTests
     {
-        private static Stylesheet ParseCode(string code)
-        {
-            var dssParser = new StyleParser();
-            var sourceInfo = new SourceCodeInfo("TestCode", code);
-            return dssParser.Parse(sourceInfo);
-        }
-        
-
         [Fact]
         public void EmptyCode_ShouldNotCreateAnyRulesets()
         {
-            var style = ParseCode(" ");
+            var style = Common.ParseCode(" ");
 
             Assert.Empty(style.Rulesets);
         }
@@ -32,7 +23,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [Fact]
         public void EmtyRuleset_ShouldCreateRulesetWithtoutSetter()
         {
-            var style = ParseCode(".rule { }");
+            var style = Common.ParseCode(".rule { }");
 
             var ruleset = style.Rulesets.Single();
             Assert.Empty(style.Rulesets.First().PropertySetters);
@@ -41,7 +32,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [Fact]
         public void EmtyRuleset_ShouldParseBasicSelector()
         {
-            var style = ParseCode(".rule { }");
+            var style = Common.ParseCode(".rule { }");
 
             var ruleset = style.Rulesets.First();
 
@@ -52,9 +43,9 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         }
 
         [Fact]
-        public void EmtyRuleset_ShouldCreateBasicSetterWithValueNone()
+        public void Setter_ShouldCreateBasicSetterWithValueNone()
         {
-            var style = ParseCode(".rule { property: none; }");
+            var style = Common.ParseCode(".rule { property: none; }");
             var expressionExecutor = new ExpressionExecutor();
 
             var ruleset = style.Rulesets.Single();
@@ -63,6 +54,18 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             Assert.Equal("property", setter.Property);
             Assert.Single(setter.Values);
             Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(setter.Values).Single());
+        }
+
+        [Fact]
+        public void MathOperation_ShouldCalculateBasicOperations()
+        {
+            var style = Common.ParseCode(".rule { property: 1 + 7 * (3 + 5); }");
+            var expressionExecutor = new ExpressionExecutor();
+
+            var ruleset = style.Rulesets.Single();
+            var setter = ruleset.PropertySetters.Single();
+
+            Assert.Equal(new ScalarPropertyValue(57), expressionExecutor.GetValues(setter.Values).Single());
         }
     }
 }

@@ -21,9 +21,8 @@ namespace AbsoluteGraphicsPlatform.DSS
             foreach (var expression in expressions)
             {
                 if (expression is ConstantExpression constantExpression) yield return (IPropertyValue)constantExpression.Value;
-                if (expression is InvocationExpression invocationExpression) yield return (IPropertyValue)GetValueFromInvocation(invocationExpression);
-
-                throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
+                else if (expression is InvocationExpression invocationExpression) yield return (IPropertyValue)GetValueFromInvocation(invocationExpression);
+                else throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
             }
         }
 
@@ -32,7 +31,7 @@ namespace AbsoluteGraphicsPlatform.DSS
             var lambdaExpression = (LambdaExpression)invocationExpression.Expression;
 
             var compiled = lambdaExpression.Compile();
-            var args = GetValues(invocationExpression.Arguments.ToArray());
+            var args = GetValues(invocationExpression.Arguments.ToArray()).ToArray();
             var result = compiled.DynamicInvoke(args);
 
             return result;

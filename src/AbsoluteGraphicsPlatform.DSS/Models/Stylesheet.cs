@@ -19,6 +19,8 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
 
         public IEnumerable<Ruleset> Rulesets => rulesets.AsEnumerable();
 
+        public IEnumerable<Variable> GlobalVariables => throw new NotImplementedException();
+
         public void AddRuleset(Ruleset ruleset) => rulesets.Add(ruleset);
     }
 }
