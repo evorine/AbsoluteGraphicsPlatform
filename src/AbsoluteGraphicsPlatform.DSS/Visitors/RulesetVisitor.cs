@@ -47,7 +47,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
 
                 var ruleset = new Ruleset();
                 foreach (var statement in statements)
-                    if (statement is StylePropertySetter propertySetter)
+                    if (statement is PropertySetterInfo propertySetter)
                         ruleset.PropertySetters.Add(propertySetter);
                     
                 return ruleset;

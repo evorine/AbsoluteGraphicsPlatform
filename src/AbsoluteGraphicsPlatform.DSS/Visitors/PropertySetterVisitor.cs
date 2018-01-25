@@ -11,9 +11,9 @@ using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
-    public class PropertySetterVisitor : DSSParserBaseVisitor<StylePropertySetter>
+    public class PropertySetterVisitor : DSSParserBaseVisitor<PropertySetterInfo>
     {
-        public override StylePropertySetter VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context)
+        public override PropertySetterInfo VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
 
@@ -22,7 +22,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             var expressionVisitor = new ExpressionVisitor();
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
             
-            var setter = new StylePropertySetter(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");
+            var setter = new PropertySetterInfo(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");
             return setter;
         }
     }

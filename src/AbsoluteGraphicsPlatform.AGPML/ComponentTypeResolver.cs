@@ -17,7 +17,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             {
                 var types = AppDomain.CurrentDomain.GetAssemblies()
                     .SelectMany(x => x.GetTypes())
-                    .Where(x => x.IsSubclassOf(componentType));
+                    .Where(x => x.IsSubclassOf(componentType) || x == componentType);
 
                 componentTypes = types.ToDictionary(x => GetComponentName(x), x => x);
             }

@@ -11,14 +11,14 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
     {
         public Ruleset()
         {
-            PropertySetters = new StylePropertySetterCollection();
+            PropertySetters = new PropertySetterInfoCollection();
         }
-        public Ruleset(StylePropertySetter[] declarations)
+        public Ruleset(PropertySetterInfo[] declarations)
         {
-            PropertySetters = new StylePropertySetterCollection(declarations);
+            PropertySetters = new PropertySetterInfoCollection(declarations);
         }
 
-        public StylePropertySetterCollection PropertySetters { get; }
+        public PropertySetterInfoCollection PropertySetters { get; }
 
         public RuleSelector Selector { get; set; }
     }

@@ -2,15 +2,16 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Linq.Expressions;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.DSS.Models
 {
     /// <summary>
     /// Stores the information for a style declaration.
     /// </summary>
-    public class StylePropertySetter : Statement
+    public class PropertySetterInfo : Statement
     {
-        public StylePropertySetter(string property, Expression[] values, int line, string source)
+        public PropertySetterInfo(string property, Expression[] values, int line, string source)
         {
             Property = property;
             Values = values;

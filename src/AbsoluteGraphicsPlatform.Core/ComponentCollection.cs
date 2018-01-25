@@ -25,7 +25,7 @@ namespace AbsoluteGraphicsPlatform
         {
             componentList.Add(component);
             component.Parent = owner;
-            owner.RegisteredComponentTree.MarkAsDirty();
+            owner.RegisteredComponentTree?.MarkAsDirty();
         }
 
         public void Clear()
@@ -33,7 +33,7 @@ namespace AbsoluteGraphicsPlatform
             foreach (var component in componentList)
                 component.Parent = null;
             componentList.Clear();
-            owner.RegisteredComponentTree.MarkAsDirty();
+            owner.RegisteredComponentTree?.MarkAsDirty();
         }
 
         public bool Contains(IComponent item)
@@ -46,7 +46,7 @@ namespace AbsoluteGraphicsPlatform
             if (componentList.Remove(item))
             {
                 item.Parent = null;
-                owner.RegisteredComponentTree.MarkAsDirty();
+                owner.RegisteredComponentTree?.MarkAsDirty();
                 return true;
             }
             else return false;

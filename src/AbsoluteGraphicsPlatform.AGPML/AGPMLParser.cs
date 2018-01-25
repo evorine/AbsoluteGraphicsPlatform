@@ -22,7 +22,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             this.propertySetter = propertySetter;
         }
 
-        public Component ParseComponent(SourceCodeInfo sourceInfo)
+        public ComponentTemplate ParseComponentTemplate(SourceCodeInfo sourceInfo)
         {
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
 
@@ -38,29 +38,29 @@ namespace AbsoluteGraphicsPlatform.AGPML
                 throw new AGPMLException($"'{componentTemplateTag}' must have 'Name' attribute!");
 
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
-            var rootComponent = (Component)componentFactory.CreateComponent(rootComponentType);
+            var rootTemplate = new ComponentTemplate(rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootComponent.Components.Append(ParseComponent(node));
+                rootTemplate.ChildrenTemplates.Append(ParseComponent(node));
 
-            return rootComponent;
+            return rootTemplate;
         }
 
-        private Component ParseComponent(XmlNode node)
+        private ComponentTemplate ParseComponent(XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
-            var component = (Component)componentFactory.CreateComponent(componentType);
+            var template = new ComponentTemplate(componentType);
 
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                var childComponent = ParseComponent(childNode);
-                component.Components.Append(childComponent);
+                var childTemplate = ParseComponent(childNode);
+                template.ChildrenTemplates.Append(childTemplate);
             }
 
-            return component;
+            return template;
         }
 
-        private void SetProperties(IComponent component, XmlNode node)
+        private void SetProperties(ComponentTemplate template, XmlNode node)
         {
             foreach(XmlAttribute attribute in node.Attributes)
             {

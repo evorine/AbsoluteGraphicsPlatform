@@ -6,7 +6,7 @@ using Xunit;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
-    public class ComponentParserTests
+    public class ComponentTemplateParserTests
     {
         [Fact]
         public void Throws_CodeCanNotBeEmpty()
@@ -14,7 +14,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var code = @" ";
             Assert.Throws<AGPMLException>(() =>
             {
-                Common.ParseComponentCode(code);
+                Common.ParseComponentTemplateCode(code);
             });
         }
 
@@ -27,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 ";
             Assert.Throws<AGPMLException>(() =>
             {
-                Common.ParseComponentCode(code);
+                Common.ParseComponentTemplateCode(code);
             });
         }
 
@@ -43,7 +43,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 ";
             Assert.Throws<AGPMLException>(() => 
             {
-                Common.ParseComponentCode(code);
+                Common.ParseComponentTemplateCode(code);
             });
         }
 
@@ -57,7 +57,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     </Component>
 </component-template>
 ";
-            var component = Common.ParseComponentCode(code);
+            var template = Common.ParseComponentTemplateCode(code);
         }
 
     }

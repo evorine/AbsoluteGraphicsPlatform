@@ -8,7 +8,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
     public static class Common
     {
-        public static Component ParseComponentCode(string code)
+        public static ComponentTemplate ParseComponentTemplateCode(string code)
         {
             var appOptions = OptionsMocks.CreateApplicationOptions();
             var componentFactory = new ComponentFactory();
@@ -16,7 +16,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var agpmlParser = new AGPMLParser(componentFactory, propertySetter);
 
             var sourceInfo = new SourceCodeInfo("TestCode", code);
-            return agpmlParser.ParseComponent(sourceInfo);
+            return agpmlParser.ParseComponentTemplate(sourceInfo);
         }
     }
 }
