@@ -6,12 +6,12 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {
-    internal static class ComponentTypeResolver
+    public static class ComponentTypeResolver
     {
         static Type componentType = typeof(Component);
         static Dictionary<string, Type> componentTypes;
 
-        internal static Type FindComponentType(string name)
+        public static Type FindComponentType(string name)
         {
             if (componentTypes == null)
             {
@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
                     .SelectMany(x => x.GetTypes())
                     .Where(x => x.IsSubclassOf(componentType));
 
-                componentTypes = types.ToDictionary(x => getComponentName(x), x => x);
+                componentTypes = types.ToDictionary(x => GetComponentName(x), x => x);
             }
 
             if (componentTypes.ContainsKey(name))
@@ -27,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             else throw new AGPMLException($"No component named '{name}' is found!");
         }
 
-        private static string getComponentName(Type type)
+        public static string GetComponentName(Type type)
         {
             var attribute = type.GetCustomAttributes(typeof(ComponentNameAttribute), false).FirstOrDefault() as ComponentNameAttribute;
             if (attribute == null) return type.Name;

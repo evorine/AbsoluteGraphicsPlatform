@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPML\AbsoluteGraphicsPlatform.AGPML.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.DSS\AbsoluteGraphicsPlatform.DSS.csproj" />
   </ItemGroup>

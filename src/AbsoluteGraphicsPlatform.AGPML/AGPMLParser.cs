@@ -11,6 +11,8 @@ namespace AbsoluteGraphicsPlatform.AGPML
 {
     public class AGPMLParser
     {
+        const string componentTemplateTag = "component-template";
+
         readonly IComponentFactory componentFactory;
         readonly PropertySetter propertySetter;
 
@@ -20,7 +22,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             this.propertySetter = propertySetter;
         }
 
-        public Component Parse(SourceCodeInfo sourceInfo)
+        public Component ParseComponent(SourceCodeInfo sourceInfo)
         {
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
 
@@ -28,12 +30,12 @@ namespace AbsoluteGraphicsPlatform.AGPML
             using (var stream = sourceInfo.GetStream())
                 xml.Load(stream);
 
-            if (xml.DocumentElement.Name != "component-template")
-                throw new AGPMLException("All elements must be inserted into root element 'template'!");
+            if (xml.DocumentElement.Name != componentTemplateTag)
+                throw new AGPMLException($"All elements must be inserted into root element '{componentTemplateTag}'!");
 
             var componentName = xml.DocumentElement.Attributes["Name"];
             if (componentName == null)
-                throw new AGPMLException("'component-template' must have 'Name' attribute!");
+                throw new AGPMLException($"'{componentTemplateTag}' must have 'Name' attribute!");
 
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
             var rootComponent = (Component)componentFactory.CreateComponent(rootComponentType);
