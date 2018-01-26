@@ -37,11 +37,11 @@ namespace AbsoluteGraphicsPlatform.AGPML
                 xml.Load(stream);
 
             if (xml.DocumentElement.Name != componentTemplateTag)
-                throw new AGPMLException($"All elements must be inserted into root element '{componentTemplateTag}'!");
+                throw new AGPxParserException($"All elements must be inserted into root element '{componentTemplateTag}'!");
 
             var componentName = xml.DocumentElement.Attributes["Name"];
             if (componentName == null)
-                throw new AGPMLException($"'{componentTemplateTag}' must have 'Name' attribute!");
+                throw new AGPxParserException($"'{componentTemplateTag}' must have 'Name' attribute!");
             
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
             var rootTemplate = new ComponentTemplate(rootComponentType);

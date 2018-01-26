@@ -5,13 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform
 {
-    public class DSSParserException : Exception
+    public class AGPxParserException : Exception
     {
         readonly int line;
 
-        public DSSParserException(string message, int line, string source)
+        public AGPxParserException(string message)
+            : this(message, -1, "NOT_IMPLEMENTED")
+        {
+
+        }
+        public AGPxParserException(string message, int line, string source)
             : base(message)
         {
             this.line = line;

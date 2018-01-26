@@ -21,9 +21,9 @@ namespace AbsoluteGraphicsPlatform.DSS
         public override void SyntaxError(TextWriter output, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e)
         {
             if (e is NoViableAltException noViableAlt)
-                throw new DSSParserException($"Unexpected token '{noViableAlt.OffendingToken.Text}' found after '{noViableAlt.StartToken.Text}'.", line, stylesheetSourceName);
+                throw new AGPxParserException($"Unexpected token '{noViableAlt.OffendingToken.Text}' found after '{noViableAlt.StartToken.Text}'.", line, stylesheetSourceName);
             if (e is InputMismatchException inputMismatch)
-                throw new DSSParserException(msg, line, stylesheetSourceName); // TODO: Customize error message
+                throw new AGPxParserException(msg, line, stylesheetSourceName); // TODO: Customize error message
             else
                 throw new NotImplementedException(e.GetType().Name);
         }

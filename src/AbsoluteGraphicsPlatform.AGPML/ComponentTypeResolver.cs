@@ -24,7 +24,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
 
             if (componentTypes.ContainsKey(name))
                 return componentTypes[name];
-            else throw new AGPMLException($"No component named '{name}' is found!");
+            else throw new AGPxParserException($"No component named '{name}' is found!");
         }
 
         public static string GetComponentName(Type type)
