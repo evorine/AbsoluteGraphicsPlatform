@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace AbsoluteGraphicsPlatform.DynamicProperties
 {
-    public sealed class LengthPropertyValue : IPropertyValue
+    public sealed class LengthPropertyValue : IPropertyValue, IEquatable<LengthPropertyValue>
     {
         readonly string specialValueType;
         readonly Dictionary<string, float> values;

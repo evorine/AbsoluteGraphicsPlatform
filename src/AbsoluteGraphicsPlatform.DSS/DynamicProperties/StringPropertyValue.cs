@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace AbsoluteGraphicsPlatform.DynamicProperties
 {
-    public sealed class StringPropertyValue : IPropertyValue
+    public sealed class StringPropertyValue : IPropertyValue, IEquatable<StringPropertyValue>, IEquatable<string>
     {
         readonly string value;
 
@@ -19,16 +19,22 @@ namespace AbsoluteGraphicsPlatform.DynamicProperties
             this.value = value;
         }
 
+        public string Value => value;
+
         public override string ToString() => value;
 
 
         #region Comparison
 
-        public override bool Equals(object obj) => value.Equals(obj);
+        // override object.Equals
+        public override bool Equals(object obj) => obj is StringPropertyValue other ? Equals(other) : false;
 
-        public bool Equals(LengthPropertyValue other) => value.Equals(other);
+        public bool Equals(StringPropertyValue other) => value.Equals(other.value);
+
+        public bool Equals(string other) => value.Equals(other);
 
         public override int GetHashCode() => value.GetHashCode();
+
 
         #endregion
 

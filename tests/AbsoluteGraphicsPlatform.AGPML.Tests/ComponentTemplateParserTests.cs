@@ -1,11 +1,11 @@
 // Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 using System;
 using System.Linq;
 using Xunit;
+using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
@@ -44,7 +44,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     </Component>
 </component-template>
 ";
-            Assert.Throws<AGPMLException>(() => 
+            Assert.Throws<AGPMLException>(() =>
             {
                 Common.ParseComponentTemplateCode(code);
             });
@@ -99,6 +99,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 ";
             var expressionExecutor = new ExpressionExecutor();
             var template = Common.ParseComponentTemplateCode(code);
+
             Assert.Equal(new StringPropertyValue("Comp-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
             Assert.Equal(new StringPropertyValue("Comp-1-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
             Assert.Equal(new StringPropertyValue("Comp-1-1-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].ChildrenTemplates[0].ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
