@@ -9,6 +9,7 @@ using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq.Expressions;
+using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {
@@ -70,7 +71,12 @@ namespace AbsoluteGraphicsPlatform.AGPML
         {
             foreach(XmlAttribute attribute in node.Attributes)
             {
-                var expression = styleParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
+                var propertyType = ComponentTypeResolver.GetPropertyType(template.ComponentType, attribute.Name);
+                if (propertyType == null)
+                    throw new PropertyNotFoundException($"Invalid property: Property '{attribute.Name}' not found!", 0, "");
+
+                var expression = propertyType == typeof(string) ? Expression.Constant(new StringPropertyValue(attribute.Value))
+                                                                : styleParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
                 var propertySetterInfo = new PropertySetterInfo(attribute.Name, new Expression[] { expression }, 0, "");
 
                 template.PropertySetters.Add(propertySetterInfo);

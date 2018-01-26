@@ -48,7 +48,7 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             foreach (var setter in ruleset.PropertySetters)
             {
-                if (propertySetter.SetValue(component, setter.Property, expressionExecuter.GetValues(setter.Values)))
+                if (propertySetter.SetValue(component, setter.PropertyName, expressionExecuter.GetValues(setter.Values)))
                     throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
             }
         }

@@ -51,7 +51,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             var ruleset = style.Rulesets.Single();
             var setter = ruleset.PropertySetters.Single();
 
-            Assert.Equal("property", setter.Property);
+            Assert.Equal("property", setter.PropertyName);
             Assert.Single(setter.Values);
             Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(setter.Values).Single());
         }

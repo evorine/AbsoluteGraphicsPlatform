@@ -14,6 +14,8 @@ namespace AbsoluteGraphicsPlatform.Components
             componentTemplates = new List<ComponentTemplate>();
         }
 
+        public ComponentTemplate this[int index] => componentTemplates[index];
+
         public int Count => componentTemplates.Count;
 
         public void Append(ComponentTemplate component) => componentTemplates.Add(component);

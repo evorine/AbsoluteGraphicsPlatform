@@ -12,16 +12,21 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
 {
     public class PropertySetterInfoCollection : ICollection<PropertySetterInfo>
     {
-        readonly ICollection<PropertySetterInfo> declarations;
+        readonly Dictionary<string, PropertySetterInfo> declarations;
 
         public PropertySetterInfoCollection()
         {
-            declarations = new Collection<PropertySetterInfo>();
+            declarations = new Dictionary<string, PropertySetterInfo>();
         }
         public PropertySetterInfoCollection(PropertySetterInfo[] declarations)
         {
-            this.declarations = new Collection<PropertySetterInfo>(declarations.ToList());
+            this.declarations = new Dictionary<string, PropertySetterInfo>();
+            foreach (var declaration in declarations)
+                this.declarations[declaration.PropertyName] = declaration;
         }
+
+
+        public PropertySetterInfo this[string propertyName] => declarations[propertyName];
 
         /// <summary>
         /// Gets the number of declarations defined in the collection.
@@ -39,7 +44,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// <param name="declaration">The declaration to add.</param>
         public void Add(PropertySetterInfo declaration)
         {
-            declarations.Add(declaration);
+            declarations.Add(declaration.PropertyName, declaration);
         }
 
         /// <summary>
@@ -60,13 +65,13 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// </returns>
         public bool Remove(PropertySetterInfo declaration)
         {
-            return declarations.Remove(declaration);
+            return declarations.Remove(declaration.PropertyName);
         }
 
-        bool ICollection<PropertySetterInfo>.Contains(PropertySetterInfo item) => declarations.Contains(item);
-        void ICollection<PropertySetterInfo>.CopyTo(PropertySetterInfo[] array, int arrayIndex) => declarations.CopyTo(array, arrayIndex);
+        bool ICollection<PropertySetterInfo>.Contains(PropertySetterInfo declaration) => declarations.ContainsValue(declaration);
+        void ICollection<PropertySetterInfo>.CopyTo(PropertySetterInfo[] array, int arrayIndex) => declarations.Values.CopyTo(array, arrayIndex);
 
-        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)declarations).GetEnumerator();
-        public IEnumerator<PropertySetterInfo> GetEnumerator() => declarations.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)declarations.Values).GetEnumerator();
+        public IEnumerator<PropertySetterInfo> GetEnumerator() => declarations.Values.GetEnumerator();
     }
 }

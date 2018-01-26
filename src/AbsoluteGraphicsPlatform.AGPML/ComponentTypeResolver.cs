@@ -33,5 +33,13 @@ namespace AbsoluteGraphicsPlatform.AGPML
             if (attribute == null) return type.Name;
             else return attribute.ComponentName;
         }
+
+        public static Type GetPropertyType(Type typeComponent, string propertyName)
+        {
+            if (componentTypes == null) throw new ArgumentNullException(nameof(typeComponent));
+            if (propertyName == null) throw new ArgumentNullException(nameof(propertyName));
+
+            return typeComponent.GetProperty(propertyName)?.PropertyType;
+        }
     }
 }

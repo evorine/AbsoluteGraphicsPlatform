@@ -11,9 +11,9 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
     /// </summary>
     public class PropertySetterInfo : Statement
     {
-        public PropertySetterInfo(string property, Expression[] values, int line, string source)
+        public PropertySetterInfo(string propertyName, Expression[] values, int line, string source)
         {
-            Property = property;
+            PropertyName = propertyName;
             Values = values;
             Line = line;
             Source = source;
@@ -22,7 +22,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Models
         /// <summary>
         /// Gets the property name of the style declaration.
         /// </summary>
-        public string Property { get; }
+        public string PropertyName { get; }
 
         /// <summary>
         /// Gets the values of the style declaration.
