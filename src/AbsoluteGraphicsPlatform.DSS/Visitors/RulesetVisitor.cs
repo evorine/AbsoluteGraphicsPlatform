@@ -34,7 +34,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
                 else if (selectorPart.COMPONENT != null)
                     return new RuleSelector(SelectorType.Component, selectorPart.COMPONENT.GetText());
 
-                else throw new AGPxParserException("Unexpected parsing error", context.Start.Line, null);
+                else throw new AGPxException("Unexpected parsing error", context.Start.Line, null);
             }
         }
 

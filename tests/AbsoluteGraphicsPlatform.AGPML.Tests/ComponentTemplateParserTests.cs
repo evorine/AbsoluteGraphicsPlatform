@@ -15,7 +15,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void Throws_CodeCanNotBeEmpty()
         {
             var code = @" ";
-            Assert.Throws<AGPxParserException>(() =>
+            Assert.Throws<AGPxException>(() =>
             {
                 Common.ParseComponentTemplateCode(code);
             });
@@ -28,7 +28,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     <Component>
     </Component>
 ";
-            Assert.Throws<AGPxParserException>(() =>
+            Assert.Throws<AGPxException>(() =>
             {
                 Common.ParseComponentTemplateCode(code);
             });
@@ -44,7 +44,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     </Component>
 </component-template>
 ";
-            Assert.Throws<AGPxParserException>(() =>
+            Assert.Throws<AGPxException>(() =>
             {
                 Common.ParseComponentTemplateCode(code);
             });

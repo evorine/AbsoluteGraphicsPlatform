@@ -7,16 +7,16 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform
 {
-    public class AGPxParserException : Exception
+    public class AGPxException : Exception
     {
         readonly int line;
 
-        public AGPxParserException(string message)
+        public AGPxException(string message)
             : this(message, -1, "NOT_IMPLEMENTED")
         {
 
         }
-        public AGPxParserException(string message, int line, string source)
+        public AGPxException(string message, int line, string source)
             : base(message)
         {
             this.line = line;
