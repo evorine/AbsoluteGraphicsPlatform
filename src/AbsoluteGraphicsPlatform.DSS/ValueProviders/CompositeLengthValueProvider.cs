@@ -5,7 +5,7 @@ using System;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Metrics;
 using System.Linq;
-using AbsoluteGraphicsPlatform.DynamicProperties;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.ValueProviders
 {

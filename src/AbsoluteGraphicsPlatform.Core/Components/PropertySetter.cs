@@ -4,7 +4,6 @@
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;

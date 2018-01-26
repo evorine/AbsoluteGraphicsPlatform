@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using System.Reflection;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.Abstractions.Styling
 {

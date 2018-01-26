@@ -6,7 +6,7 @@ using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.DSS.Models;
-using AbsoluteGraphicsPlatform.DynamicProperties;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {

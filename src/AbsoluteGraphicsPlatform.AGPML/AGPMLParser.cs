@@ -9,7 +9,7 @@ using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq.Expressions;
-using AbsoluteGraphicsPlatform.DynamicProperties;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPML
 {

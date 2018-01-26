@@ -7,9 +7,9 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Metrics;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Styling;
 using System.Linq;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {

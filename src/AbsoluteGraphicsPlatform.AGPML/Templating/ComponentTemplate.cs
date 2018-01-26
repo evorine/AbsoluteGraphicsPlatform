@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.DSS.Models;
 

@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DynamicProperties;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {

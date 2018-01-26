@@ -1,5 +1,4 @@
 ﻿using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;

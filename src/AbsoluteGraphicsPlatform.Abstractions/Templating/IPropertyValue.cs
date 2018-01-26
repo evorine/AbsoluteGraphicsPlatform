@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.DynamicProperties
+namespace AbsoluteGraphicsPlatform
 {
     public interface IPropertyValue
     {

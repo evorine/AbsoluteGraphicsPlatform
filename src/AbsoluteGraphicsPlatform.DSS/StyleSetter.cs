@@ -13,7 +13,6 @@ using System.Linq.Expressions;
 using System.Linq;
 using System.Reflection;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.DynamicProperties;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {

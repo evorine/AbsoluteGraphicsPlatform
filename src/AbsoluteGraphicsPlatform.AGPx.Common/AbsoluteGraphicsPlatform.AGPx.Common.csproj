@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>AbsoluteGraphicsPlatform.AGPx</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
