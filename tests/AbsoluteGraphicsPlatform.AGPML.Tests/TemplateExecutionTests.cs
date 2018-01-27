@@ -24,10 +24,10 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 </component-template>
 ";
 
-            var componentTreeGenerator = Common.MockComponentTreeGenerator();
+            var componentTemplateCompiler = Common.MockComponentTemplateCompiler();
             var fooTemplate = Common.ParseComponentTemplateCode(fooTemplateCode);
 
-            var foo = componentTreeGenerator.ProcessTemplate(fooTemplate);
+            var foo = componentTemplateCompiler.ProcessTemplate(fooTemplate);
 
             Assert.True(foo is FooComponent);
             Assert.True(foo.Components[0] is TemplateComponent);
@@ -48,10 +48,10 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 </component-template>
 ";
 
-            var componentTreeGenerator = Common.MockComponentTreeGenerator();
+            var componentTemplateCompiler = Common.MockComponentTemplateCompiler();
             var fooTemplate = Common.ParseComponentTemplateCode(fooTemplateCode);
 
-            var foo = componentTreeGenerator.ProcessTemplate(fooTemplate);
+            var foo = componentTemplateCompiler.ProcessTemplate(fooTemplate);
             Assert.Equal("container", foo.Components[0].Components[0].Name);
         }
     }

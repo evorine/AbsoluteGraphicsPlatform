@@ -6,38 +6,40 @@ using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.ComponentModel;
 using AbsoluteGraphicsPlatform.Components;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class ComponentTreeGenerator
+    public class ComponentTemplateCompiler
     {
         readonly IComponentFactory componentFactory;
         readonly StyleSetter styleSetter;
         readonly PropertySetter propertySetter;
+        readonly AgpxOptions agpxOptions;
 
-        public ComponentTreeGenerator(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter)
+        public ComponentTemplateCompiler(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter, IOptions<AgpxOptions> agpxOptions)
         {
             this.componentFactory = componentFactory;
             this.styleSetter = (StyleSetter)styleSetter;
             this.propertySetter = propertySetter;
+            this.agpxOptions = agpxOptions.Value;
         }
 
-        public IComponent CreateComponentTree(ComponentTemplate rootTemplate)
+        public ComponentTree CreateComponentTree(ComponentTemplate rootTemplate)
         {
-            var component = CreateComponent(rootTemplate);
-            return component;
+            throw new NotImplementedException();
         }
 
         public IComponent ProcessTemplate(ComponentTemplate rootTemplate)
         {
-            var component = CreateComponent(rootTemplate);
+            var component = CreateRootComponent(rootTemplate);
             return component;
         }
 
-        private IComponent CreateComponent(ComponentTemplate componentTemplate)
+        private IComponent CreateRootComponent(ComponentTemplate componentTemplate)
         {
             var component = componentFactory.CreateComponent(componentTemplate.ComponentType);
 
@@ -51,7 +53,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
                 // Iterate and create actual child components. Append them to the current virtual template
                 foreach(var childComponentTemplate in templateComponentTemplate)
-                    templateComponent.Components.Append(CreateComponent(childComponentTemplate));
+                    templateComponent.Components.Append(CreateRootComponent(childComponentTemplate));
             }
 
             styleSetter.ApplyStyle(component);
