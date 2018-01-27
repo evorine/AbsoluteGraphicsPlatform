@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class Statement
+    public interface IStatement
     {
     }
 }

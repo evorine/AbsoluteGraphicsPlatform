@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
-using AbsoluteGraphicsPlatform.DSS.Models;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
@@ -14,7 +14,7 @@ namespace AbsoluteGraphicsPlatform.Components
         {
             ComponentType = componentType;
             PropertySetters = new PropertySetterInfoCollection();
-            ChildrenTemplates = new ComponentTemplateCollection();
+            TemplateScopes = new ComponentTemplateScopeCollection();
         }
 
         public Type ComponentType { get; }
@@ -23,6 +23,6 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public ICollection<IComponentDirective> Directives { get; }
 
-        public ComponentTemplateCollection ChildrenTemplates { get; }
+        public ComponentTemplateScopeCollection TemplateScopes { get; }
     }
 }

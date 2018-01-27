@@ -4,10 +4,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.DSS.Models
 {
-    public class Ruleset : Statement
+    public class Ruleset : IStatement
     {
         public Ruleset()
         {

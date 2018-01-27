@@ -75,7 +75,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 ";
             var expressionExecutor = new ExpressionExecutor();
             var template = Common.ParseComponentTemplateCode(code);
-            var propertySetter = template.ChildrenTemplates.Single().PropertySetters.Single();
+            var propertySetter = template.TemplateScopes["default"].Single().PropertySetters.Single();
             Assert.Equal("Length", propertySetter.PropertyName);
             Assert.Equal(new LengthPropertyValue("px", 3), expressionExecutor.GetValues(propertySetter.Values).Single());
         }
@@ -100,11 +100,11 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var expressionExecutor = new ExpressionExecutor();
             var template = Common.ParseComponentTemplateCode(code);
 
-            Assert.Equal(new StringPropertyValue("Comp-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
-            Assert.Equal(new StringPropertyValue("Comp-1-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
-            Assert.Equal(new StringPropertyValue("Comp-1-1-1"), expressionExecutor.GetValues(template.ChildrenTemplates[0].ChildrenTemplates[0].ChildrenTemplates[0].PropertySetters["Name"].Values).Single());
-            Assert.Equal(new StringPropertyValue("Comp-1-2"), expressionExecutor.GetValues(template.ChildrenTemplates[0].ChildrenTemplates[1].PropertySetters["Name"].Values).Single());
-            Assert.Equal(new StringPropertyValue("Comp-2"), expressionExecutor.GetValues(template.ChildrenTemplates[1].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1"), expressionExecutor.GetValues(template.TemplateScopes["default"][0].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-1"), expressionExecutor.GetValues(template.TemplateScopes["default"][0].TemplateScopes["default"][0].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-1-1"), expressionExecutor.GetValues(template.TemplateScopes["default"][0].TemplateScopes["default"][0].TemplateScopes["default"][0].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-2"), expressionExecutor.GetValues(template.TemplateScopes["default"][0].TemplateScopes["default"][1].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-2"), expressionExecutor.GetValues(template.TemplateScopes["default"][1].PropertySetters["Name"].Values).Single());
         }
     }
 }

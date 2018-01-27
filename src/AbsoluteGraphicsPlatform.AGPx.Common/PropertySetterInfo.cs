@@ -3,12 +3,12 @@
 
 using System.Linq.Expressions;
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     /// <summary>
     /// Stores the information for a style declaration.
     /// </summary>
-    public class PropertySetterInfo : Statement
+    public class PropertySetterInfo : IStatement
     {
         public PropertySetterInfo(string propertyName, Expression[] values, int line, string source)
         {

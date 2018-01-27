@@ -7,7 +7,6 @@ using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DSS.Models;
 using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPML
@@ -46,7 +45,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             var rootTemplate = new ComponentTemplate(rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootTemplate.ChildrenTemplates.Append(ParseNode(node));
+                rootTemplate.TemplateScopes.Add("default", ParseNode(node));
 
             return rootTemplate;
         }
@@ -60,7 +59,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
             foreach (XmlNode childNode in node.ChildNodes)
             {
                 var childTemplate = ParseNode(childNode);
-                template.ChildrenTemplates.Append(childTemplate);
+                template.TemplateScopes.Add("default", childTemplate);
             }
 
             return template;
