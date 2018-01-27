@@ -20,7 +20,7 @@ namespace AbsoluteGraphicsPlatform.DSS
     {
         readonly DSSOptions stylingOptions;
         readonly PropertySetter propertySetter;
-        readonly ExpressionExecutor expressionExecuter;
+        readonly ExpressionExecutor expressionExecutor;
 
         public StyleSetter(IOptions<DSSOptions> stylingOptions, PropertySetter propertySetter, ExpressionExecutor expressionExecuter)
         {
@@ -47,7 +47,7 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             foreach (var setter in ruleset.PropertySetters)
             {
-                if (propertySetter.SetValue(component, setter.PropertyName, expressionExecuter.GetValues(setter.Values)))
+                if (propertySetter.SetValue(component, setter.PropertyName, expressionExecutor.GetValues(setter.Values)))
                     throw new PropertyNotFoundException("Invalid property assignement!", setter.Line, setter.Source);
             }
         }
