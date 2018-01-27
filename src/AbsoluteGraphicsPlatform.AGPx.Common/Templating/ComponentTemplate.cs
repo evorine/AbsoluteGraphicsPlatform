@@ -9,13 +9,15 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class ComponentTemplate
     {
-        public ComponentTemplate(Type componentType)
+        public ComponentTemplate(string componentName, Type componentType)
         {
+            ComponentName = componentName;
             ComponentType = componentType;
             PropertySetters = new PropertySetterInfoCollection();
             TemplateScopes = new ComponentTemplateScopeCollection();
         }
 
+        public string ComponentName { get; }
         public Type ComponentType { get; }
 
         public PropertySetterInfoCollection PropertySetters { get; }

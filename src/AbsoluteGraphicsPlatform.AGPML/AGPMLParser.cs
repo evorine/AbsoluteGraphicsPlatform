@@ -42,7 +42,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
                 throw new AGPxException($"'{componentTemplateTag}' must have 'Name' attribute!");
             
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
-            var rootTemplate = new ComponentTemplate(rootComponentType);
+            var rootTemplate = new ComponentTemplate(componentName.Value, rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
                 rootTemplate.TemplateScopes.Add("default", ParseNode(node));
@@ -53,7 +53,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
         private ComponentTemplate ParseNode(XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
-            var template = new ComponentTemplate(componentType);
+            var template = new ComponentTemplate(componentName.Value, componentType);
             ParsePropertiesSetters(template, node);
 
             foreach (XmlNode childNode in node.ChildNodes)
