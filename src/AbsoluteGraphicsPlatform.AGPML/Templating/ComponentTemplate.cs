@@ -4,9 +4,8 @@
 using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
-using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.Components
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class ComponentTemplate
     {

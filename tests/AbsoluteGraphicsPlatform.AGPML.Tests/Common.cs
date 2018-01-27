@@ -1,6 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.Tests.Common;
