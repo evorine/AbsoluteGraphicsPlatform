@@ -12,13 +12,13 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class VirtualComponentModelGenerator
+    public class ComponentTreeGenerator
     {
         readonly IComponentFactory componentFactory;
         readonly StyleSetter styleSetter;
         readonly PropertySetter propertySetter;
 
-        public VirtualComponentModelGenerator(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter)
+        public ComponentTreeGenerator(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter)
         {
             this.componentFactory = componentFactory;
             this.styleSetter = (StyleSetter)styleSetter;
