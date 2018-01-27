@@ -29,5 +29,23 @@ namespace Playground
             var args = invokeExpression.Arguments.Select(x => x is ConstantExpression constant ? constant.Value : x).ToArray();
             var result = compiled.DynamicInvoke(args);*/
         }
+
+        public static void LoadTemplate()
+        {
+            var agpml = @"
+            <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Vertical"">
+              <Box Width=""Fill"" Height=""50px"" />
+              <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Horizontal"">
+                <Box Width=""1x"" Height=""Shrink"" LayoutDirection=""Vertical"">
+                  <Box Width=""Fill"" Height=""40px"" />
+                  <Box Width=""Fill"" Height=""40px"" />
+                </Box>
+                <Box Width=""3x"" Height=""Fill"" LayoutDirection=""Vertical"">
+                  <Box Width=""Fill"" Height=""40px"" />
+                  <Box Width=""Fill"" Height=""80px"" />
+                </Box>
+              </Box>
+            </Box>";
+        }
     }
 }
