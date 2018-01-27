@@ -34,9 +34,9 @@ namespace AbsoluteGraphicsPlatform
             return (TComponent)CreateComponent(typeof(TComponent));
         }
 
-        public object CreateComponent(Type componentType)
+        public IComponent CreateComponent(Type componentType)
         {
-            var component = proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
+            var component = (IComponent)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
             return component;
         }
     }

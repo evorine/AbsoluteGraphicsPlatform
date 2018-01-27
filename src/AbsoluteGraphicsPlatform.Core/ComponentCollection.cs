@@ -19,6 +19,8 @@ namespace AbsoluteGraphicsPlatform
             componentList = new List<IComponent>();
         }
 
+        public IComponent this[int index] => componentList[index];
+
         public int Count => componentList.Count;
 
         public void Append(IComponent component)

@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Components\AbsoluteGraphicsPlatform.Components.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />
   </ItemGroup>
 
 </Project>

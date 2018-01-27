@@ -21,5 +21,15 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             return agpmlParser.ParseComponentTemplate(sourceInfo);
         }
+
+        public static VirtualComponentModelGenerator MockVirtualComponentModelGenerator()
+        {
+            var componentFactory = new ComponentFactory();
+            var propertySetter = new PropertySetter(OptionsMocks.CreateApplicationOptions());
+            var expressionExecutor = new ExpressionExecutor();
+            var dssStyleSetter = new DssStyleSetter(OptionsMocks.WrapOptions(OptionsMocks.CreateDSSOptions()), propertySetter, expressionExecutor);
+
+            return new VirtualComponentModelGenerator(componentFactory, dssStyleSetter, propertySetter);
+        }
     }
 }

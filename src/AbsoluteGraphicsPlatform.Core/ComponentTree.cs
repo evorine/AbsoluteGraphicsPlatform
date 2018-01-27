@@ -35,7 +35,8 @@ namespace AbsoluteGraphicsPlatform
                     oldComponent.RegisteredComponentTree = null;
 
                 rootComponent = value;
-                // Maybe setting RegisteredComponentTree by casting to Compoentn is a bad idea.
+#warning Check here!
+                // Maybe setting RegisteredComponentTree by casting to Component is a bad idea.
                 // A custom implementation of IComponent's ComponentTree won't be set automatcally as happening here.
                 // This might be unexpected and lead to bug.
                 if (rootComponent is Component component)

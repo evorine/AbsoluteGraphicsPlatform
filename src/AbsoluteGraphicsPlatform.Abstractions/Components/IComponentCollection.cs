@@ -9,6 +9,7 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
 {
     public interface IComponentCollection : IEnumerable<IComponent>
     {
+        IComponent this[int index] { get; }
         int Count { get; }
         void Append(IComponent component);
         bool Contains(IComponent item);
