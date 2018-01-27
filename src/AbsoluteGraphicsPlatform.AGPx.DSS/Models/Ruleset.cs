@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     public class Ruleset : IStatement
     {

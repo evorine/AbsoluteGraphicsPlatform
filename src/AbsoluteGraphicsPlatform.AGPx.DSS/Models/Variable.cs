@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     public class Variable
     {

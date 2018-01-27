@@ -2,20 +2,14 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
-using AbsoluteGraphicsPlatform.Abstractions.Styling;
-using AbsoluteGraphicsPlatform.Styling;
-using Microsoft.Extensions.Options;
-using AbsoluteGraphicsPlatform.DSS.Models;
-using System.Linq.Expressions;
 using System.Linq;
-using System.Reflection;
+using System.Collections.Generic;
+using Microsoft.Extensions.Options;
+using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.AGPx.Models;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class DssStyleSetter : StyleSetter
     {

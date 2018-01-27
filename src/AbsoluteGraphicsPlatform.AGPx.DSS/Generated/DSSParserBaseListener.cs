@@ -19,7 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-namespace AbsoluteGraphicsPlatform.DSS.Internal {
+namespace AbsoluteGraphicsPlatform.AGPx.Internal {
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -217,4 +217,4 @@ public partial class DSSParserBaseListener : IDSSParserListener {
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
-} // namespace AbsoluteGraphicsPlatform.DSS.Internal
+} // namespace AbsoluteGraphicsPlatform.AGPx.Internal

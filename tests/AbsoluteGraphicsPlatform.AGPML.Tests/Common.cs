@@ -3,7 +3,6 @@
 
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.Tests.Common;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests

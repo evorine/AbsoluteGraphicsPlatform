@@ -3,13 +3,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Antlr4.Runtime.Misc;
-using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq;
-using AbsoluteGraphicsPlatform.DSS.Internal;
+using Antlr4.Runtime.Misc;
+using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Internal;
 
-namespace AbsoluteGraphicsPlatform.DSS.Visitors
+namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
     public class StylesheetVisitor : DSSParserBaseVisitor<Stylesheet>
     {

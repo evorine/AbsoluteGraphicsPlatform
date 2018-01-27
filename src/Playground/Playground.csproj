@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPML\AbsoluteGraphicsPlatform.AGPML.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPx.AGPML\AbsoluteGraphicsPlatform.AGPx.AGPML.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Platforms.WindowsForms\AbsoluteGraphicsPlatform.Platforms.WindowsForms.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Rendering.Skia\AbsoluteGraphicsPlatform.Rendering.Skia.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform\AbsoluteGraphicsPlatform.csproj" />

@@ -4,7 +4,7 @@
 using System;
 using System.Linq;
 using Xunit;
-using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Tests.Common.Components;
 using AbsoluteGraphicsPlatform.Components;

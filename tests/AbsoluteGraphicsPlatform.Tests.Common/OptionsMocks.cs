@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Styling;
-using AbsoluteGraphicsPlatform.DSS;
+using AbsoluteGraphicsPlatform.AGPx;
 using Microsoft.Extensions.Options;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using Moq;

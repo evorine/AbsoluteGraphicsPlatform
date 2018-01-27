@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Antlr4.Runtime.Misc;
-using AbsoluteGraphicsPlatform.DSS.Models;
-using AbsoluteGraphicsPlatform.DSS.Internal;
+using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.DSS.Visitors
+namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
     public class RulesetVisitor : DSSParserBaseVisitor<Ruleset>
     {

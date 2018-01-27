@@ -2,10 +2,8 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.ValueProviders;
 using System.Collections.Generic;
-using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 
 namespace AbsoluteGraphicsPlatform.Configurators

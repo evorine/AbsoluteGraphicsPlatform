@@ -1,10 +1,12 @@
-﻿using AbsoluteGraphicsPlatform.Components;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using AbsoluteGraphicsPlatform.Components;
 
-namespace AbsoluteGraphicsPlatform.AGPML
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ComponentTypeResolver
     {

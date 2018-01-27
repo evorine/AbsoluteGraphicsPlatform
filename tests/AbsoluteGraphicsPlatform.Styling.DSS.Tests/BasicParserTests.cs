@@ -4,8 +4,8 @@
 using System;
 using System.Linq;
 using Xunit;
-using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.DSS.Models;
+using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.AGPx.Models;
 using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests

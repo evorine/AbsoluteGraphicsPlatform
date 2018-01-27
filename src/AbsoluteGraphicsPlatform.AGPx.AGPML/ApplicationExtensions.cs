@@ -4,7 +4,7 @@
 using System;
 using AbsoluteGraphicsPlatform.Abstractions;
 
-namespace AbsoluteGraphicsPlatform.AGPML
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationExtensions
     {

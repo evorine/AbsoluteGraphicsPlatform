@@ -2,9 +2,8 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.AGPML
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationBuilderExtensions
     {

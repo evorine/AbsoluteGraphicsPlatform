@@ -6,10 +6,8 @@ using System.Xml;
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.DSS;
-using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.AGPML
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class AGPMLParser
     {

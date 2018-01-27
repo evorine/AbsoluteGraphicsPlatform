@@ -10,9 +10,9 @@ using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Styling;
 using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
-using AbsoluteGraphicsPlatform.DSS.Internal;
+using AbsoluteGraphicsPlatform.AGPx.Internal;
 
-namespace AbsoluteGraphicsPlatform.DSS.Visitors
+namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
     public class LiteralVisitor : DSSParserBaseVisitor<ConstantExpression>
     {

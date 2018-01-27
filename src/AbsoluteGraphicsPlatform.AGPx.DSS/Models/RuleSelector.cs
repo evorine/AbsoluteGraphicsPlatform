@@ -1,7 +1,7 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     /// <summary>
     /// Stores the information for a style ruleset's selector (identifier).

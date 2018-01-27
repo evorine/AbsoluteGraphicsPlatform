@@ -6,7 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using Antlr4.Runtime;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class ErrorListener : BaseErrorListener
     {

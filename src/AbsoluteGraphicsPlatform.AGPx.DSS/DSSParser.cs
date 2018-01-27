@@ -6,10 +6,10 @@ using System.Linq.Expressions;
 using System.IO;
 using System.Text;
 using Antlr4.Runtime;
-using AbsoluteGraphicsPlatform.DSS.Models;
-using AbsoluteGraphicsPlatform.DSS.Visitors;
+using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Visitors;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class DSSParser
     {

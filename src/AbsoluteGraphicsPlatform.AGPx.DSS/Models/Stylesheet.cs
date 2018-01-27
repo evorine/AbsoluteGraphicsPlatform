@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AbsoluteGraphicsPlatform.DSS.Models
+namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     public class Stylesheet : IStyle
     {
