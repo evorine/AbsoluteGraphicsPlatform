@@ -2,9 +2,9 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Linq;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Metrics;
-using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.ValueProviders
