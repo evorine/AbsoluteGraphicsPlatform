@@ -58,11 +58,38 @@ namespace AbsoluteGraphicsPlatform.AGPML
 
             foreach (XmlNode childNode in node.ChildNodes)
             {
-                var childTemplate = ParseNode(childNode);
-                template.TemplateScopes.Add("default", childTemplate);
+                if (IsScopeTemplate(childNode, out string scopeName))
+                {
+                    foreach (XmlNode scopeChildNode in childNode.ChildNodes)
+                    {
+                        var childTemplate = ParseNode(scopeChildNode);
+                        template.TemplateScopes.Add(scopeName, childTemplate);
+                    }
+                }
+                else
+                {
+                    var childTemplate = ParseNode(childNode);
+                    template.TemplateScopes.Add("default", childTemplate);
+                }
             }
 
             return template;
+        }
+        
+
+        private bool IsScopeTemplate(XmlNode node, out string scopeName)
+        {
+            if (node.Name == "template")
+            {
+                var scopeAttribute = node.Attributes["scope"];
+                if (scopeAttribute != null)
+                {
+                    scopeName = scopeAttribute.Value;
+                    return true;
+                }
+            }
+            scopeName = null;
+            return false;
         }
 
         private void ParsePropertiesSetters(ComponentTemplate template, XmlNode node)

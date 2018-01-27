@@ -106,5 +106,53 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             Assert.Equal(new StringPropertyValue("Comp-1-2"), expressionExecutor.GetValues(template.TemplateScopes["default"][0].TemplateScopes["default"][1].PropertySetters["Name"].Values).Single());
             Assert.Equal(new StringPropertyValue("Comp-2"), expressionExecutor.GetValues(template.TemplateScopes["default"][1].PropertySetters["Name"].Values).Single());
         }
+
+
+        [Fact]
+        public void ComponentTemplate_ParsesNamedScope()
+        {
+            var code = @"
+<component-template Name=""BasicComponent"">
+    <Bar Name=""Comp-1"">
+        <Foo Name=""Comp-1-default-1"" />
+        <Foo Name=""Comp-1-default-2"" />
+
+        <template scope=""other"">
+            <Foo Name=""Comp-1-other"">
+            </Foo>
+        </template>
+    </Bar>
+</component-template>
+";
+            var expressionExecutor = new ExpressionExecutor();
+            var template = Common.ParseComponentTemplateCode(code);
+
+            var root = template.TemplateScopes["default"];
+
+            Assert.Equal(new StringPropertyValue("Comp-1"), expressionExecutor.GetValues(root[0].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-default-1"), expressionExecutor.GetValues(root[0].TemplateScopes["default"][0].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-default-2"), expressionExecutor.GetValues(root[0].TemplateScopes["default"][1].PropertySetters["Name"].Values).Single());
+            Assert.Equal(new StringPropertyValue("Comp-1-other"), expressionExecutor.GetValues(root[0].TemplateScopes["other"][0].PropertySetters["Name"].Values).Single());
+        }
+
+
+        [Fact]
+        public void ComponentTemplate_ParsesPlaceholder()
+        {
+            var code = @"
+<component-template Name=""BasicComponent"">
+    <Foo>
+        <Foo Name=""Comp-1"">
+        </Foo>
+        <placeholder />
+    </Foo>
+</component-template>
+";
+            var expressionExecutor = new ExpressionExecutor();
+            var template = Common.ParseComponentTemplateCode(code);
+
+            var placeholder = template.TemplateScopes["default"][0].TemplateScopes["default"][1];
+            Assert.Equal(typeof(Components.PlaceholderComponent), placeholder.ComponentType);
+        }
     }
 }
