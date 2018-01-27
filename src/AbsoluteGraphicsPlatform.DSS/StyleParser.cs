@@ -1,29 +1,28 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.DSS.Models;
-using AbsoluteGraphicsPlatform.DSS.Visitors;
-using Antlr4.Runtime;
 using System;
 using System.Linq.Expressions;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Antlr4.Runtime;
+using AbsoluteGraphicsPlatform.DSS.Models;
+using AbsoluteGraphicsPlatform.DSS.Visitors;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
-    public class StyleParser
+    public class DSSParser
     {
         public Stylesheet Parse(SourceCodeInfo sourceInfo)
         {
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
 
-            DSSLexer lexer;
+            Internal.DSSLexer lexer;
             using (var stream = sourceInfo.GetStream())
-                lexer = new DSSLexer(new AntlrInputStream(stream));
+                lexer = new Internal.DSSLexer(new AntlrInputStream(stream));
 
             var tokens = new CommonTokenStream(lexer);
-            var parser = new DSSParser(tokens);
+            var parser = new Internal.DSSParser(tokens);
             
             var errorListener = new ErrorListener(sourceInfo.SourceName);
             //parser.RemoveErrorListeners();
@@ -38,12 +37,12 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             if (expressionCode == null) throw new ArgumentNullException(nameof(expressionCode));
 
-            DSSLexer lexer;
+            Internal.DSSLexer lexer;
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(expressionCode)))
-                lexer = new DSSLexer(new AntlrInputStream(stream));
+                lexer = new Internal.DSSLexer(new AntlrInputStream(stream));
 
             var tokens = new CommonTokenStream(lexer);
-            var parser = new DSSParser(tokens);
+            var parser = new Internal.DSSParser(tokens);
 
             var errorListener = new ErrorListener(sourceName);
             parser.AddErrorListener(errorListener);

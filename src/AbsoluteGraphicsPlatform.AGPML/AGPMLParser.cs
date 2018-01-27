@@ -3,12 +3,11 @@
 
 using System;
 using System.Xml;
+using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.DSS;
 using AbsoluteGraphicsPlatform.DSS.Models;
-using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPML
@@ -19,13 +18,13 @@ namespace AbsoluteGraphicsPlatform.AGPML
 
         readonly IComponentFactory componentFactory;
         readonly PropertySetter propertySetter;
-        readonly StyleParser styleParser;
+        readonly DSSParser dssParser;
 
-        public AGPMLParser(IComponentFactory componentFactory, PropertySetter propertySetter, StyleParser styleParser)
+        public AGPMLParser(IComponentFactory componentFactory, PropertySetter propertySetter, DSSParser dssParser)
         {
             this.componentFactory = componentFactory;
             this.propertySetter = propertySetter;
-            this.styleParser = styleParser;
+            this.dssParser = dssParser;
         }
 
         public ComponentTemplate ParseComponentTemplate(SourceCodeInfo sourceInfo)
@@ -76,7 +75,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
                     throw new PropertyNotFoundException($"Invalid property: Property '{attribute.Name}' not found!", 0, "");
 
                 var expression = propertyType == typeof(string) ? Expression.Constant(new StringPropertyValue(attribute.Value))
-                                                                : styleParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
+                                                                : dssParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
                 var propertySetterInfo = new PropertySetterInfo(attribute.Name, new Expression[] { expression }, 0, "");
 
                 template.PropertySetters.Add(propertySetterInfo);

@@ -7,12 +7,13 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
     public class StatementVisitor : DSSParserBaseVisitor<Statement>
     {
-        public override Statement VisitStatement([NotNull] DSSParser.StatementContext context)
+        public override Statement VisitStatement([NotNull] Internal.DSSParser.StatementContext context)
         {
             var rulesetVisitor = new RulesetVisitor();
             var ruleset = context.Accept(rulesetVisitor);

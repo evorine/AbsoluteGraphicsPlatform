@@ -46,7 +46,7 @@ namespace Playground
         private static IStyle parseTestStyle()
         {
             var fileInfo = new PhysicalFileInfo(new System.IO.FileInfo(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\TestStyle1.dss"));
-            var dssParser = new AbsoluteGraphicsPlatform.DSS.StyleParser();
+            var dssParser = new AbsoluteGraphicsPlatform.DSS.DSSParser();
 
             var sourceInfo = new SourceCodeInfo(fileInfo);
             var style = dssParser.Parse(sourceInfo);

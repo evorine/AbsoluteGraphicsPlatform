@@ -10,6 +10,7 @@ using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Styling;
 using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
@@ -17,7 +18,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
     {
         static string[] lengthUnits = { "%", "px", "x", "u" };
 
-        public override ConstantExpression VisitLiteral([NotNull] DSSParser.LiteralContext context)
+        public override ConstantExpression VisitLiteral([NotNull] Internal.DSSParser.LiteralContext context)
         {
             var number = context.NUMBER();
             var unit = context.UNIT();

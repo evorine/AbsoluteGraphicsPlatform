@@ -7,12 +7,13 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
     public class RulesetVisitor : DSSParserBaseVisitor<Ruleset>
     {
-        public override Ruleset VisitRuleset([NotNull] DSSParser.RulesetContext context)
+        public override Ruleset VisitRuleset([NotNull] Internal.DSSParser.RulesetContext context)
         {
             var selector = context.selector().Accept(new RulesetSelectorVisitor());
             var ruleset = context.block().Accept(new RulesetBlockVisitor());
@@ -23,7 +24,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
 
         public class RulesetSelectorVisitor : DSSParserBaseVisitor<RuleSelector>
         {
-            public override RuleSelector VisitSelector([NotNull] DSSParser.SelectorContext context)
+            public override RuleSelector VisitSelector([NotNull] Internal.DSSParser.SelectorContext context)
             {
                 var selectorPart = context.selectorPart();
 
@@ -40,7 +41,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
 
         public class RulesetBlockVisitor : DSSParserBaseVisitor<Ruleset>
         {
-            public override Ruleset VisitBlock([NotNull] DSSParser.BlockContext context)
+            public override Ruleset VisitBlock([NotNull] Internal.DSSParser.BlockContext context)
             {
                 var statementVisitor = new StatementVisitor();
                 var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();

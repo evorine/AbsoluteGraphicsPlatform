@@ -7,6 +7,7 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
@@ -19,7 +20,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
             this.stylesheetSourceName = stylesheetSourceName;
         }
 
-        public override Stylesheet VisitStylesheet([NotNull] DSSParser.StylesheetContext context)
+        public override Stylesheet VisitStylesheet([NotNull] Internal.DSSParser.StylesheetContext context)
         {
             var statementVisitor = new StatementVisitor();
             var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();

@@ -10,7 +10,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
     {
         public static Stylesheet ParseCode(string code)
         {
-            var dssParser = new StyleParser();
+            var dssParser = new DSSParser();
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             return dssParser.Parse(sourceInfo);
         }

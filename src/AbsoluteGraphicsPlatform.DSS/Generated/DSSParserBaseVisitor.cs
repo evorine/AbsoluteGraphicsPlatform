@@ -19,7 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-namespace AbsoluteGraphicsPlatform.DSS {
+namespace AbsoluteGraphicsPlatform.DSS.Internal {
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using IToken = Antlr4.Runtime.IToken;
@@ -175,4 +175,4 @@ public partial class DSSParserBaseVisitor<Result> : AbstractParseTreeVisitor<Res
 	/// <return>The visitor result.</return>
 	public virtual Result VisitVariable([NotNull] DSSParser.VariableContext context) { return VisitChildren(context); }
 }
-} // namespace AbsoluteGraphicsPlatform.DSS
+} // namespace AbsoluteGraphicsPlatform.DSS.Internal

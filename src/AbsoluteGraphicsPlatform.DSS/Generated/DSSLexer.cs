@@ -19,7 +19,7 @@
 // Ambiguous reference in cref attribute
 #pragma warning disable 419
 
-namespace AbsoluteGraphicsPlatform.DSS {
+namespace AbsoluteGraphicsPlatform.DSS.Internal {
 using System;
 using System.IO;
 using System.Text;
@@ -521,4 +521,4 @@ public partial class DSSLexer : Lexer {
 
 
 }
-} // namespace AbsoluteGraphicsPlatform.DSS
+} // namespace AbsoluteGraphicsPlatform.DSS.Internal

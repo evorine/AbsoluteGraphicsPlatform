@@ -8,12 +8,13 @@ using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.DSS.Models;
 using System.Linq.Expressions;
 using System.Linq;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
     public class PropertySetterVisitor : DSSParserBaseVisitor<PropertySetterInfo>
     {
-        public override PropertySetterInfo VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context)
+        public override PropertySetterInfo VisitPropertyStatement([NotNull] Internal.DSSParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
 

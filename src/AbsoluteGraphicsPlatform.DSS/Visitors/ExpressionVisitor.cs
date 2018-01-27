@@ -8,6 +8,7 @@ using Antlr4.Runtime.Misc;
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.DSS.Internal;
 
 namespace AbsoluteGraphicsPlatform.DSS.Visitors
 {
@@ -26,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.DSS.Visitors
         static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => operatorNotEquals(left, right);
 
 
-        public override Expression VisitExpression([NotNull] DSSParser.ExpressionContext context)
+        public override Expression VisitExpression([NotNull] Internal.DSSParser.ExpressionContext context)
         {
             var literal = context.literal();
             if (literal != null) return literal.Accept(literalVisitor);
