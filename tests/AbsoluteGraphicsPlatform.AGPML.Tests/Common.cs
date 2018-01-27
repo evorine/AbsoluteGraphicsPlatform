@@ -27,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var componentFactory = new ComponentFactory();
             var propertySetter = new PropertySetter(OptionsMocks.CreateApplicationOptions());
             var expressionExecutor = new ExpressionExecutor();
-            var dssStyleSetter = new DssStyleSetter(OptionsMocks.WrapOptions(OptionsMocks.CreateDSSOptions()), propertySetter, expressionExecutor);
+            var dssStyleSetter = new DssStyleSetter(OptionsMocks.WrapOptions(OptionsMocks.CreateAgpxOptions()), propertySetter, expressionExecutor);
 
             return new ComponentTreeGenerator(componentFactory, dssStyleSetter, propertySetter);
         }

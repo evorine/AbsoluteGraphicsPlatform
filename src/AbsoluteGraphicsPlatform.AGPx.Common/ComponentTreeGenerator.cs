@@ -25,6 +25,12 @@ namespace AbsoluteGraphicsPlatform.AGPx
             this.propertySetter = propertySetter;
         }
 
+        public IComponent CreateComponentTree(ComponentTemplate rootTemplate)
+        {
+            var component = CreateComponent(rootTemplate);
+            return component;
+        }
+
         public IComponent ProcessTemplate(ComponentTemplate rootTemplate)
         {
             var component = CreateComponent(rootTemplate);

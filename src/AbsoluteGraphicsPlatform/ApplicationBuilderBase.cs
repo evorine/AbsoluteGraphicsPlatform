@@ -43,13 +43,7 @@ namespace AbsoluteGraphicsPlatform
         {
             Configurators.DefaultValueProoviderConfigurator.AddDefaultValueProviders(applicationOptions.ValueProviders);
         }
-
-        public virtual void ConfigureStyling(Action<DSS.DSSOptions> configure)
-        {
-            serviceCollection.PostConfigure(configure);
-        }
-
-
+        
 
         public void RegisterService<TService, TImplementation>()
             where TService : class

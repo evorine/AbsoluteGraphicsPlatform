@@ -3,18 +3,20 @@
 
 using System;
 using System.Collections.Generic;
-using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Styling;
+using AbsoluteGraphicsPlatform.AGPx;
 
-namespace AbsoluteGraphicsPlatform.DSS
+namespace AbsoluteGraphicsPlatform
 {
-    public class DSSOptions
+    public class AgpxOptions
     {
-        public DSSOptions()
+        public AgpxOptions()
         {
             Styles = new StyleCollection();
+            ComponentTemplates = new ComponentTemplateCollection();
         }
 
         public StyleCollection Styles { get; }
+        public ComponentTemplateCollection ComponentTemplates { get; }
     }
 }

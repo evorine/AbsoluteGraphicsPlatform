@@ -53,7 +53,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
         private ComponentTemplate ParseNode(XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
-            var template = new ComponentTemplate(componentName.Value, componentType);
+            var template = new ComponentTemplate(node.Name, componentType);
             ParsePropertiesSetters(template, node);
 
             foreach (XmlNode childNode in node.ChildNodes)

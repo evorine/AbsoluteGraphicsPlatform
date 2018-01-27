@@ -19,20 +19,20 @@ namespace AbsoluteGraphicsPlatform.DSS
 {
     public class DssStyleSetter : StyleSetter
     {
-        readonly DSSOptions stylingOptions;
+        readonly AgpxOptions agpxOptions;
         readonly PropertySetter propertySetter;
         readonly ExpressionExecutor expressionExecutor;
 
-        public DssStyleSetter(IOptions<DSSOptions> stylingOptions, PropertySetter propertySetter, ExpressionExecutor expressionExecutor)
+        public DssStyleSetter(IOptions<AgpxOptions> agpxOptions, PropertySetter propertySetter, ExpressionExecutor expressionExecutor)
         {
-            this.stylingOptions = stylingOptions.Value;
+            this.agpxOptions = agpxOptions.Value;
             this.propertySetter = propertySetter;
             this.expressionExecutor = expressionExecutor;
         }
 
         public override void ApplyStyle(IComponent component)
         {
-            foreach(var style in stylingOptions.Styles)
+            foreach(var style in agpxOptions.Styles)
             {
                 if (style is Stylesheet stylesheet)
                 {

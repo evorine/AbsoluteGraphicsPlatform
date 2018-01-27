@@ -30,10 +30,10 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
             return applicationOptions;
         }
 
-        public static DSSOptions CreateDSSOptions()
+        public static AgpxOptions CreateAgpxOptions()
         {
-            var styleOptions = new DSSOptions();
-            return styleOptions;
+            var agpxOptions = new AgpxOptions();
+            return agpxOptions;
         }
 
 

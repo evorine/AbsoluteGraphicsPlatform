@@ -8,11 +8,11 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class ComponentTemplatePool : IEnumerable<ComponentTemplate>
+    public class ComponentTemplateCollection : IEnumerable<ComponentTemplate>
     {
         readonly Dictionary<string, ComponentTemplate> templates;
 
-        public ComponentTemplatePool()
+        public ComponentTemplateCollection()
         {
             templates = new Dictionary<string, ComponentTemplate>();
         }

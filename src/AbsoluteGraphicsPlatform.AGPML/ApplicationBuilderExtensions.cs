@@ -11,7 +11,7 @@ namespace AbsoluteGraphicsPlatform.AGPML
         public static void UseLayoutLoader(this IApplicationBuilderBase builder)
         {
             builder.RegisterService<AGPMLParser>();
-            builder.RegisterService<ComponentTemplatePool>();
+            builder.RegisterService<ComponentTemplateCollection>();
         }
     }
 }

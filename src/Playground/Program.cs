@@ -28,7 +28,7 @@ namespace Playground
 
             var appBuilder = new ApplicationBuilder();
             appBuilder.UseLayoutLoader();
-            appBuilder.ConfigureStyling((options) =>
+            appBuilder.Configure<AgpxOptions>((options) =>
             {
                 options.Styles.Add(parseTestStyle());
             });
