@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var fooTemplateCode = @"
 <component-template Name=""Foo"">
     <Component>
-        <placeholder />
+        <component-placeholder />
     </Component>
 </component-template>
 ";
@@ -33,7 +33,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             Assert.True(foo.Components[0] is TemplateComponent);
             Assert.True(foo.Components[0].Components[0] is Component);
             Assert.True(foo.Components[0].Components[0].Components[0] is TemplateComponent);
-            Assert.True(foo.Components[0].Components[0].Components[0].Components[0] is PlaceholderComponent);
+            Assert.True(foo.Components[0].Components[0].Components[0].Components[0] is ComponentPlaceholderComponent);
         }
 
 
@@ -43,7 +43,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var fooTemplateCode = @"
 <component-template Name=""Foo"">
     <Component Name=""container"">
-        <placeholder />
+        <component-placeholder />
     </Component>
 </component-template>
 ";

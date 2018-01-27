@@ -144,7 +144,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     <Foo>
         <Foo Name=""Comp-1"">
         </Foo>
-        <placeholder />
+        <component-placeholder />
     </Foo>
 </component-template>
 ";
@@ -152,7 +152,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var template = Common.ParseComponentTemplateCode(code);
 
             var placeholder = template.TemplateScopes["default"][0].TemplateScopes["default"][1];
-            Assert.Equal(typeof(Components.PlaceholderComponent), placeholder.ComponentType);
+            Assert.Equal(typeof(Components.ComponentPlaceholderComponent), placeholder.ComponentType);
         }
     }
 }

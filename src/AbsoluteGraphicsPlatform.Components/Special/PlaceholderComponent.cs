@@ -7,8 +7,8 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    [ComponentName("placeholder")]
-    public class PlaceholderComponent : Component
+    [ComponentName("component-placeholder")]
+    public class ComponentPlaceholderComponent : Component
     {
 
     }
