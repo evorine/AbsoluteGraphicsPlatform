@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.AGPx;
-using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Tests.Common.Components;
 using AbsoluteGraphicsPlatform.Components;
 

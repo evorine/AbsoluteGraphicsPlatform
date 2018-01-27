@@ -4,7 +4,6 @@
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
-using AbsoluteGraphicsPlatform.ComponentModel;
 using AbsoluteGraphicsPlatform.Components;
 using Microsoft.Extensions.Options;
 using System;
