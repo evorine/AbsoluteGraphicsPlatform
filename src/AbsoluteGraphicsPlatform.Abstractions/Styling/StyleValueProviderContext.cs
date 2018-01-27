@@ -11,15 +11,15 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Styling
 {
     public class StyleValueProviderContext
     {
-        public StyleValueProviderContext(IComponent component, PropertyInfo property, IPropertyValue value)
+        public StyleValueProviderContext(IComponent component, PropertyInfo property, IPropertyValue[] values)
         {
             Component = component;
             Property = property;
-            Value = value;
+            Values = values;
         }
 
         public IComponent Component { get; }
         public PropertyInfo Property { get; }
-        public IPropertyValue Value { get; }
+        public IPropertyValue[] Values { get; }
     }
 }

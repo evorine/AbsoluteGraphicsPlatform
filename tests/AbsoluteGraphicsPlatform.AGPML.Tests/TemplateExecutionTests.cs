@@ -35,5 +35,24 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             Assert.True(foo.Components[0].Components[0].Components[0] is TemplateComponent);
             Assert.True(foo.Components[0].Components[0].Components[0].Components[0] is PlaceholderComponent);
         }
+
+
+        [Fact]
+        public void ProcessTemplateWithProperties()
+        {
+            var fooTemplateCode = @"
+<component-template Name=""Foo"">
+    <Component Name=""container"">
+        <placeholder />
+    </Component>
+</component-template>
+";
+
+            var virtualComponentModelGenerator = Common.MockVirtualComponentModelGenerator();
+            var fooTemplate = Common.ParseComponentTemplateCode(fooTemplateCode);
+
+            var foo = virtualComponentModelGenerator.ProcessTemplate(fooTemplate);
+            Assert.Equal("container", foo.Components[0].Components[0].Name);
+        }
     }
 }

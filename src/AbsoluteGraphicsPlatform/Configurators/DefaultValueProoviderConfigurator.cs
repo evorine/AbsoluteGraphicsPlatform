@@ -14,6 +14,7 @@ namespace AbsoluteGraphicsPlatform.Configurators
     {
         public static void AddDefaultValueProviders(IList<IStyleValueProvider> valueProviders)
         {
+            valueProviders.Add(new StringValueProvider());
             valueProviders.Add(new CompositeLengthValueProvider());
         }
     }

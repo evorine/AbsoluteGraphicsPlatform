@@ -53,7 +53,7 @@ namespace AbsoluteGraphicsPlatform.DSS
 
         public override void ApplyProperty(IComponent component, PropertySetterInfo propertySetterInfo)
         {
-            if (propertySetter.SetValue(component, propertySetterInfo.PropertyName, expressionExecutor.GetValues(propertySetterInfo.Values)))
+            if (!propertySetter.SetValue(component, propertySetterInfo.PropertyName, expressionExecutor.GetValues(propertySetterInfo.Values).ToArray()))
                 throw new PropertyNotFoundException("Invalid property assignement!", propertySetterInfo.Line, propertySetterInfo.Source);
         }
     }

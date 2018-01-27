@@ -15,7 +15,7 @@ namespace AbsoluteGraphicsPlatform.ValueProviders
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
-                if (context.Value is LengthPropertyValue propertyValue)
+                if (context.Values.Length == 1 && context.Values[0] is LengthPropertyValue propertyValue)
                     return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
             }
             return StyleValueProviderResult.Fail;

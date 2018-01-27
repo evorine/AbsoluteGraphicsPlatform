@@ -7,6 +7,7 @@ using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Styling;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -25,7 +26,7 @@ namespace AbsoluteGraphicsPlatform.Components
             var property = component.GetType().GetProperty(propertyName);
             if (property == null) return false;
 
-            var result = findBinderResult(component, property, value);
+            var result = findBinderResult(component, property, new IPropertyValue[] { value });
             if (result.IsSuccess)
             {
                 property.SetValue(component, result.Value);
@@ -33,16 +34,25 @@ namespace AbsoluteGraphicsPlatform.Components
             }
             return false;
         }
-        public bool SetValue(IComponent component, string propertyName, IEnumerable<IPropertyValue> values)
+        public bool SetValue(IComponent component, string propertyName, IPropertyValue[] values)
         {
+            var property = component.GetType().GetProperty(propertyName);
+            if (property == null) return false;
+
+            var result = findBinderResult(component, property, values);
+            if (result.IsSuccess)
+            {
+                property.SetValue(component, result.Value);
+                return true;
+            }
             return false;
         }
 
-        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, IPropertyValue value)
+        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, IPropertyValue[] values)
         {
             foreach (var provider in applicationOptions.ValueProviders)
             {
-                var context = new StyleValueProviderContext(component, property, value);
+                var context = new StyleValueProviderContext(component, property, values);
                 var bindResult = provider.GetValue(context);
                 if (bindResult.IsSuccess) return bindResult;
             }
