@@ -1,11 +1,10 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Antlr4.Runtime;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
+using System.Collections.Generic;
+using Antlr4.Runtime;
 
 namespace AbsoluteGraphicsPlatform.DSS
 {
@@ -22,6 +21,7 @@ namespace AbsoluteGraphicsPlatform.DSS
         {
             if (e is NoViableAltException noViableAlt)
                 throw new AGPxException($"Unexpected token '{noViableAlt.OffendingToken.Text}' found after '{noViableAlt.StartToken.Text}'.", line, stylesheetSourceName);
+#warning TODO: Customize message
             if (e is InputMismatchException inputMismatch)
                 throw new AGPxException(msg, line, stylesheetSourceName); // TODO: Customize error message
             else

@@ -3,14 +3,15 @@
 
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Metrics;
-using System.Collections.Generic;
 
 namespace AbsoluteGraphicsPlatform.Layout
 {
+#warning TODO: Optimization
     /* TODO: We are doing the same calculations for all the siblings.
      * It is possible to do the calculation at once for a component's children.
      * Currently I'm leaving this like this as it is enough to proceed.
