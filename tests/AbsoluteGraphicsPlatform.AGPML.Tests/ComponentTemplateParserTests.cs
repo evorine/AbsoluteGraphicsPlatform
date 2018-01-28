@@ -5,7 +5,6 @@ using System;
 using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.AGPx;
-using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
