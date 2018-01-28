@@ -10,9 +10,9 @@ using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class PropertySetterVisitor : DSSParserBaseVisitor<PropertySetterInfo>
+    public class PropertySetterVisitor : DSSParserBaseVisitor<PropertySetterStatement>
     {
-        public override PropertySetterInfo VisitPropertyStatement([NotNull] Internal.DSSParser.PropertyStatementContext context)
+        public override PropertySetterStatement VisitPropertyStatement([NotNull] Internal.DSSParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
 
@@ -21,7 +21,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             var expressionVisitor = new ExpressionVisitor();
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
             
-            var setter = new PropertySetterInfo(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");
+            var setter = new PropertySetterStatement(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");
             return setter;
         }
     }

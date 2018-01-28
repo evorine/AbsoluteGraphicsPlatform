@@ -8,6 +8,7 @@ using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.AGPx.Models;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {

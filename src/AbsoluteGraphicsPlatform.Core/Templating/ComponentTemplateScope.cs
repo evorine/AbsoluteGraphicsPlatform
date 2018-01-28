@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace AbsoluteGraphicsPlatform.AGPx
+namespace AbsoluteGraphicsPlatform.Templating
 {
     public class ComponentTemplateScope : IEnumerable<ComponentTemplate>
     {

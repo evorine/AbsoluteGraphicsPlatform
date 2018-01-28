@@ -6,6 +6,7 @@ using System.Xml;
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {

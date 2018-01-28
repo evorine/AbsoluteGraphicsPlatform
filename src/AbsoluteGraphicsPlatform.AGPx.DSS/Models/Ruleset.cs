@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Models
 {

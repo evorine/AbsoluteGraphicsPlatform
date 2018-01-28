@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 
-namespace AbsoluteGraphicsPlatform.AGPx
+namespace AbsoluteGraphicsPlatform.Templating
 {
     public class ComponentTemplate
     {

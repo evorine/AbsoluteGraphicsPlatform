@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AbsoluteGraphicsPlatform.AGPx
+namespace AbsoluteGraphicsPlatform.Templating
 {
     public class PropertySetterInfoCollection : IEnumerable<PropertySetterInfo>
     {

@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Styling;
-using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform
 {

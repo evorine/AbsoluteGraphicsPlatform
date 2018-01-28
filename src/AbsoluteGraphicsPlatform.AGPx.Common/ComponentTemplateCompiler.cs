@@ -8,6 +8,7 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
