@@ -13,7 +13,6 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     {
         IComponent Component { get; }
 
-
         LayoutDirection LayoutDirection { get; set; }
         CompositeLength Width { get; set; }
         CompositeLength Height { get; set; }

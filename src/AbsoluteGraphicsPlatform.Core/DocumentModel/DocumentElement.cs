@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
@@ -9,7 +12,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public class DocumentElement : IDocumentElement
     {
-        public IComponent Component => throw new NotImplementedException();
+        public IComponent Component { get; set; }
 
         public LayoutDirection LayoutDirection { get; set; }
         public CompositeLength Width { get; set; }

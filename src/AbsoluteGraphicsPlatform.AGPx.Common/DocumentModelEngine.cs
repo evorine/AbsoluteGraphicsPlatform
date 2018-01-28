@@ -23,7 +23,8 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         {
             var context = new DocumentModelProcessContext()
             {
-                DocumentModel = (WindowDocumentModel)documentModel
+                DocumentModel = (WindowDocumentModel)documentModel,
+                ComponentPointers = new Dictionary<IComponent, IDocumentElement>()
             };
 
 
@@ -33,13 +34,26 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         {
             var componentTemplate = agpxOptions.ComponentTemplates[component.ComponentMetaInfo.ComponentType];
 
-            
+            foreach(var scope in componentTemplate.TemplateScopes)
+            {
+                foreach(var childComponentTemplate in scope)
+                {
+
+                }
+            }
+
+            var componentElement = new DocumentElement()
+            {
+                Component = component
+            };
+            context.ComponentPointers[component] = componentElement;
         }
 
 
         internal class DocumentModelProcessContext
         {
             public WindowDocumentModel DocumentModel { get; set; }
+            public Dictionary<IComponent, IDocumentElement> ComponentPointers { get; set; }
         }
     }
 }
