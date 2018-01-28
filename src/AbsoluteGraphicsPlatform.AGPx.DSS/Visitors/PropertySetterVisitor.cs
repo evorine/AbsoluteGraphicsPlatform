@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
-using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.AGPx.Models;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {

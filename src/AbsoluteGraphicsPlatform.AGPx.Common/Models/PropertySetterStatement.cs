@@ -4,7 +4,7 @@
 using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Templating;
 
-namespace AbsoluteGraphicsPlatform.AGPx
+namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     /// <summary>
     /// Stores the information for a style declaration.
