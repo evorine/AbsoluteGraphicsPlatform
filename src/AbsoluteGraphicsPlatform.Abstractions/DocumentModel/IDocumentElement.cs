@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 
-namespace AbsoluteGraphicsPlatform.ComponentModel
+namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public interface IDocumentElement
     {

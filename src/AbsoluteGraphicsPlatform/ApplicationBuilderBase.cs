@@ -7,6 +7,7 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
+using AbsoluteGraphicsPlatform.DocumentModel;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -37,6 +38,7 @@ namespace AbsoluteGraphicsPlatform
             serviceCollection.AddSingleton<AGPx.ExpressionExecutor>();
             serviceCollection.AddSingleton<IStyleSetter, AGPx.DssStyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
+            serviceCollection.AddSingleton<DocumentModelEngine>();
         }
 
         protected virtual void ConfigureCoreOptions()

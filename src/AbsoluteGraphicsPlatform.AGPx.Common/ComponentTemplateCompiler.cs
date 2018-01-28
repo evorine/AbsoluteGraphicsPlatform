@@ -26,11 +26,6 @@ namespace AbsoluteGraphicsPlatform.AGPx
             this.agpxOptions = agpxOptions.Value;
         }
 
-        public ComponentTree CreateComponentTree(ComponentTemplate rootTemplate)
-        {
-            throw new NotImplementedException();
-        }
-
         public IComponent ProcessTemplate(ComponentTemplate rootTemplate)
         {
             var component = CreateRootComponent(rootTemplate);
