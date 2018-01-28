@@ -5,16 +5,17 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public class DocumentModelEngine : IDocumentModelEngine
     {
-        readonly AgpxOptions agpxOptions;
+        readonly ComponentTemplateCollection componentTemplateCollection;
 
-        public DocumentModelEngine(IOptions<AgpxOptions> agpxOptions)
+        public DocumentModelEngine(ComponentTemplateCollection componentTemplateCollection)
         {
-            this.agpxOptions = agpxOptions.Value;
+            this.componentTemplateCollection = componentTemplateCollection;
         }
 
 
@@ -31,7 +32,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentElement containerDocumentElement)
         {
-            var componentTemplate = agpxOptions.ComponentTemplates[component.ComponentMetaInfo.ComponentType];
+            var componentTemplate = componentTemplateCollection[component.ComponentMetaInfo.ComponentType];
 
             foreach(var scope in componentTemplate.TemplateScopes)
             {

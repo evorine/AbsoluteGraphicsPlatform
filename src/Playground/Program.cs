@@ -15,6 +15,7 @@ using AbsoluteGraphicsPlatform.Styling;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using Microsoft.Extensions.FileProviders.Physical;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace Playground
 {
@@ -83,7 +84,8 @@ namespace Playground
 
             public BasicTestData(IComponentTree componentTree)
             {
-                var componentFactory = new ComponentFactory();
+                var componentTemplateCollection = new ComponentTemplateCollection();
+                var componentFactory = new ComponentFactory(componentTemplateCollection);
 
                 ComponentRoot = componentFactory.CreateComponent<VisualElement>();
                 ComponentRoot.Name = "Root";

@@ -13,10 +13,8 @@ namespace AbsoluteGraphicsPlatform
         public AgpxOptions()
         {
             Styles = new StyleCollection();
-            ComponentTemplates = new ComponentTemplateCollection();
         }
 
         public StyleCollection Styles { get; }
-        public ComponentTemplateCollection ComponentTemplates { get; }
     }
 }

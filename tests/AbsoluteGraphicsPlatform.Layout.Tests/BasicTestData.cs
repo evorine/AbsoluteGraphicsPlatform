@@ -6,6 +6,7 @@ using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.Layout.Tests
 {
@@ -39,7 +40,8 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
 
         public BasicTestData(IComponentTree componentTree)
         {
-            var componentFactory = new ComponentFactory();
+            var componentTemplateCollection = new ComponentTemplateCollection();
+            var componentFactory = new ComponentFactory(componentTemplateCollection);
 
             ComponentRoot = componentFactory.CreateComponent<VisualElement>();
             ComponentRoot.Name = "Root";

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common
 {
@@ -13,13 +14,15 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
     {
         public static VisualElement CreateSimpleVisualElement()
         {
-            var componentFactory = new ComponentFactory();
+            var componentTemplateCollection = new ComponentTemplateCollection();
+            var componentFactory = new ComponentFactory(componentTemplateCollection);
             return componentFactory.CreateComponent<VisualElement>();
         }
 
         public static TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
         {
-            var componentFactory = new ComponentFactory();
+            var componentTemplateCollection = new ComponentTemplateCollection();
+            var componentFactory = new ComponentFactory(componentTemplateCollection);
             return componentFactory.CreateComponent<TComponent>();
         }
     }

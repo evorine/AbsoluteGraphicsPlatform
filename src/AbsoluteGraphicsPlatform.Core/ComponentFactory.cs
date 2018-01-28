@@ -7,6 +7,7 @@ using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Proxy;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -18,9 +19,11 @@ namespace AbsoluteGraphicsPlatform
         private readonly ComponentInterceptor interceptor;
         private readonly ProxyGenerationOptions proxyOptions;
         private readonly ProxyGenerator proxyGenerator;
+        private readonly ComponentTemplateCollection componentTemplateCollection;
 
-        public ComponentFactory()
+        public ComponentFactory(ComponentTemplateCollection componentTemplateCollection)
         {
+            this.componentTemplateCollection = componentTemplateCollection;
             interceptor = new ComponentInterceptor();
             proxyOptions = new ProxyGenerationOptions()
             {
