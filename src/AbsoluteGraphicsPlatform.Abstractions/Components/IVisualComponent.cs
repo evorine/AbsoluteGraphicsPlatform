@@ -9,7 +9,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Abstractions.Components
 {
-    public interface IVisualElement
+    public interface IVisualComponent
     {
         void Render(IRenderContext renderContext);
     }

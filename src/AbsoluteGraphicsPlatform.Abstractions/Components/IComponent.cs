@@ -31,6 +31,8 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         /// </summary>
         IComponentTree RegisteredComponentTree { get; }
 
+        bool EnableCustomRender { get; }
+
         /// <summary>
         /// Emits an event to it's parent.
         /// </summary>

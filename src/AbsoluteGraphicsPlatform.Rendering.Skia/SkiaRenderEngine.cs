@@ -26,7 +26,7 @@ namespace AbsoluteGraphicsPlatform.Rendering.Skia
             {
                 foreach (var component in owner.ComponentTree.AllComponents)
                 {
-                    if (component is ILayoutBox layoutBox && component is IVisualElement element)
+                    if (component is ILayoutBox layoutBox && component is IVisualComponent element)
                     {
                         var frameRenderer = new FrameRenderer(owner.ClientSize, surface);
                         var renderContext = new RenderContext()

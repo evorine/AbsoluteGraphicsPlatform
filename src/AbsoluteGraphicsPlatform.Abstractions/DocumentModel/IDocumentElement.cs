@@ -4,11 +4,20 @@
 using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Abstractions.Layout;
+using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public interface IDocumentElement
     {
         IComponent Component { get; }
+
+
+        LayoutDirection LayoutDirection { get; set; }
+        CompositeLength Width { get; set; }
+        CompositeLength Height { get; set; }
+        Thickness Margin { get; set; }
+        Thickness Padding { get; set; }
     }
 }

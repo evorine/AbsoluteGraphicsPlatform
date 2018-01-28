@@ -10,26 +10,22 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     public class WindowDocumentModel : IWindowDocumentModel
     {
         readonly IDocumentModelEngine documentModelEngine;
-        IComponent rootComponent;
+        IComponentTree componentTree;
 
         public WindowDocumentModel(IDocumentModelEngine documentModelEngine)
         {
             this.documentModelEngine = documentModelEngine;
         }
 
-        public IComponent RootComponent
-        {
-            get => rootComponent;
-            set
-            {
-                rootComponent = value;
-                Restructure();
-            }
-        }
+        public IComponentTree ComponentTree { get; set; }
 
         public IDocumentElement RootElement { get; set; }
         public IEnumerable<IDocumentElement> AllElements { get; set; }
 
+        public IDocumentElement FindRootElementOfComponent(IComponent component)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Restructure()
         {

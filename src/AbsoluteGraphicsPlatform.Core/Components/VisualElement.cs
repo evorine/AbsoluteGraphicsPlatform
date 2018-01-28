@@ -11,7 +11,7 @@ using AbsoluteGraphicsPlatform.Styling;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public class VisualElement : Component, IVisualElement, ILayoutBox
+    public class VisualElement : Component, IVisualComponent, ILayoutBox
     {
         public VisualElement()
         {

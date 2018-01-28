@@ -21,13 +21,25 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         public void ProcessDocumentModel(IWindowDocumentModel documentModel)
         {
-            
+            var context = new DocumentModelProcessContext()
+            {
+                DocumentModel = (WindowDocumentModel)documentModel
+            };
+
+
         }
 
-        private void ProcessComponent(IComponent component)
+        private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentElement containerDocumentElement)
         {
             var componentTemplate = agpxOptions.ComponentTemplates[component.ComponentMetaInfo.ComponentType];
 
+            
+        }
+
+
+        internal class DocumentModelProcessContext
+        {
+            public WindowDocumentModel DocumentModel { get; set; }
         }
     }
 }
