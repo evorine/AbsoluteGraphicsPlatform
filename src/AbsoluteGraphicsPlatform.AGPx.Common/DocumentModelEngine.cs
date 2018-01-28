@@ -32,7 +32,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentElement containerDocumentElement)
         {
-            var componentTemplate = componentTemplateCollection[component.ComponentMetaInfo.ComponentType];
+            var componentTemplate = componentTemplateCollection.GetTemplateByType(component.ComponentMetaInfo.ComponentType);
 
             foreach(var scope in componentTemplate.TemplateScopes)
             {

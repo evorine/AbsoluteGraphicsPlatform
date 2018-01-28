@@ -44,6 +44,6 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public ComponentMetaInfo ComponentMetaInfo { get; internal set; }
 
-        public virtual bool EnableCustomRender => true;
+        public virtual bool UseTemplate => false;
     }
 }

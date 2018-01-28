@@ -35,13 +35,32 @@ namespace AbsoluteGraphicsPlatform
         /// <inheritdoc cref="IComponentFactory.CreateComponent{TComponent}"/>
         public TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
         {
-            return (TComponent)CreateComponent(typeof(TComponent));
+            return (TComponent)InitializeComponent(typeof(TComponent));
+        }
+
+        public IComponent InitializeComponent(Type componentType)
+        {
+            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
+            var component = (Component)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
+
+            if (!componentTemplateCollection.TryGetTemplateByType(componentType, out ComponentTemplate componentTemplate))
+            {
+                if (component.UseTemplate)
+                {
+                    // ComponentTemplate is required but it doesn't exists!
+                    throw new TemplateNotFoundException(componentType);
+                }
+            }
+            component.ComponentMetaInfo = new ComponentMetaInfo(componentType, componentTemplate);
+
+            return component;
         }
 
         public IComponent CreateComponent(Type componentType)
         {
-            var component = (Component)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
-            component.ComponentMetaInfo = new ComponentMetaInfo(componentType);
+            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
+            var component = InitializeComponent(componentType);
+
             return component;
         }
     }
