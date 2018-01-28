@@ -10,20 +10,20 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class ComponentTemplateCollection : IEnumerable<ComponentTemplate>
     {
-        readonly Dictionary<string, ComponentTemplate> templates;
+        readonly Dictionary<Type, ComponentTemplate> templates;
 
         public ComponentTemplateCollection()
         {
-            templates = new Dictionary<string, ComponentTemplate>();
+            templates = new Dictionary<Type, ComponentTemplate>();
         }
 
-        public IEnumerable<string> ComponentNames => templates.Keys;
+        public IEnumerable<Type> ComponentTypes => templates.Keys;
 
-        public ComponentTemplate this[string componentName] => templates[componentName];
+        public ComponentTemplate this[Type componentType] => templates[componentType];
 
         public int Count => templates.Count;
 
-        public void Add(ComponentTemplate template) => templates.Add(template.ComponentName, template);
+        public void Add(ComponentTemplate template) => templates.Add(template.ComponentType, template);
 
         public IEnumerator<ComponentTemplate> GetEnumerator() => templates.Values.GetEnumerator();
 

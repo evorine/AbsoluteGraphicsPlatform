@@ -9,10 +9,10 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public class WindowDocumentModel : IWindowDocumentModel
     {
-        readonly DocumentModelEngine documentModelEngine;
+        readonly IDocumentModelEngine documentModelEngine;
         IComponent rootComponent;
 
-        public WindowDocumentModel(DocumentModelEngine documentModelEngine)
+        public WindowDocumentModel(IDocumentModelEngine documentModelEngine)
         {
             this.documentModelEngine = documentModelEngine;
         }

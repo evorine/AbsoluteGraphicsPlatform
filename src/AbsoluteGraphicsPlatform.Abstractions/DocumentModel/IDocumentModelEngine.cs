@@ -3,18 +3,12 @@
 
 using System;
 using System.Collections.Generic;
+using AbsoluteGraphicsPlatform.DocumentModel;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
-    public class DocumentModelEngine
+    public interface IDocumentModelEngine
     {
-        public DocumentModelEngine()
-        {
-        }
-
-
-        public void ProcessDocumentModel(IWindowDocumentModel documentModel)
-        {
-        }
+        void ProcessDocumentModel(IWindowDocumentModel documentModel);
     }
 }

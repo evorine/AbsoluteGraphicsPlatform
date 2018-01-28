@@ -1,16 +1,16 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Metrics;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.Abstractions.Components
 {
     public interface IComponent
     {
+        ComponentMetaInfo ComponentMetaInfo { get; }
+
         /// <summary>
         /// Gets or sets the name.
         /// </summary>

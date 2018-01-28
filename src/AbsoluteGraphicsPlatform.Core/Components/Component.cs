@@ -41,5 +41,7 @@ namespace AbsoluteGraphicsPlatform.Components
         }
 
         public IComponentCollection Components { get; }
+
+        public ComponentMetaInfo ComponentMetaInfo { get; internal set; }
     }
 }

@@ -38,7 +38,7 @@ namespace AbsoluteGraphicsPlatform
             serviceCollection.AddSingleton<AGPx.ExpressionExecutor>();
             serviceCollection.AddSingleton<IStyleSetter, AGPx.DssStyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
-            serviceCollection.AddSingleton<DocumentModelEngine>();
+            serviceCollection.AddSingleton<IDocumentModelEngine, DocumentModelEngine>();
         }
 
         protected virtual void ConfigureCoreOptions()

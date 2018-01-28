@@ -6,6 +6,7 @@ using Castle.DynamicProxy;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 using AbsoluteGraphicsPlatform.Proxy;
+using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform
 {
@@ -36,7 +37,8 @@ namespace AbsoluteGraphicsPlatform
 
         public IComponent CreateComponent(Type componentType)
         {
-            var component = (IComponent)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
+            var component = (Component)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
+            component.ComponentMetaInfo = new ComponentMetaInfo(componentType);
             return component;
         }
     }
