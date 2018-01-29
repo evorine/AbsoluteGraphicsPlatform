@@ -12,9 +12,9 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
     {
         public static ComponentTemplate ParseComponentTemplateCode(string code)
         {
-            var componentTemplateCollection = new ComponentTemplateCollection();
+            var componentTemplateProvider = new ComponentTemplateProvider();
             var appOptions = OptionsMocks.CreateApplicationOptions();
-            var componentFactory = new ComponentFactory(componentTemplateCollection);
+            var componentFactory = new ComponentFactory(componentTemplateProvider);
             var propertySetter = new PropertySetter(appOptions);
             var dssParser = new DSSParser();
             var agpmlParser = new AGPMLParser(componentFactory, propertySetter, dssParser);
@@ -25,9 +25,9 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 
         public static ComponentTemplateCompiler MockComponentTemplateCompiler()
         {
-            var componentTemplateCollection = new ComponentTemplateCollection();
+            var componentTemplateProvider = new ComponentTemplateProvider();
             var agpxOptions = OptionsMocks.WrapOptions(OptionsMocks.CreateAgpxOptions());
-            var componentFactory = new ComponentFactory(componentTemplateCollection);
+            var componentFactory = new ComponentFactory(componentTemplateProvider);
             var propertySetter = new PropertySetter(OptionsMocks.CreateApplicationOptions());
             var expressionExecutor = new ExpressionExecutor();
             var dssStyleSetter = new DssStyleSetter(agpxOptions, propertySetter, expressionExecutor);

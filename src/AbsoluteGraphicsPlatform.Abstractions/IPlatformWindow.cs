@@ -11,7 +11,7 @@ namespace AbsoluteGraphicsPlatform.Abstractions
 {
     public interface IPlatformWindow : IDisposable
     {
-        IComponentTree ComponentTree { get; }
+        IComponentCollection ComponentTree { get; }
         void Show();
         AbsoluteSize ClientSize { get; }
     }

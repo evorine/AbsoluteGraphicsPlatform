@@ -27,19 +27,19 @@ namespace AbsoluteGraphicsPlatform.Layout
             return pixel;
         }
 
-        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
+        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentCollection componentTree)
         {
             componentTree.Restructure();
             var context = new LayoutCalculationContext();
 
-            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.Owner);
+            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.RootComponent);
             rootComponentBox.AbsoluteBox = new AbsoluteRectangle(0, 0, clientSize.Width, clientSize.Height);
             rootComponentBox.AbsoluteMarginBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.AbsolutePaddingBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.LayoutDirection = LayoutDirection.Vertical;
 
             var childrenOffset = new AbsolutePoint();
-            foreach (var component in componentTree.Owner.Components)
+            foreach (var component in componentTree.RootComponent.Components)
                 processComponent(component, context, ref childrenOffset);
 
             var filteredBoxes = context.LayoutBoxes.ToDictionary(x => (ILayoutBox)x.Key, x => x.Value);

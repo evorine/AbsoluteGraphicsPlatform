@@ -9,14 +9,16 @@ namespace AbsoluteGraphicsPlatform.Templating
 {
     public class ComponentTemplate
     {
-        public ComponentTemplate(string componentName, Type componentType)
+        public ComponentTemplate(string containerScopeName, string componentName, Type componentType)
         {
+            ContainerScopeName = containerScopeName;
             ComponentName = componentName;
             ComponentType = componentType;
             PropertySetters = new PropertySetterInfoCollection();
-            TemplateScopes = new ComponentTemplateScopeCollection();
+            Templates = new ComponentTemplateCollection();
         }
 
+        public string ContainerScopeName { get; }
         public string ComponentName { get; }
         public Type ComponentType { get; }
 
@@ -24,6 +26,6 @@ namespace AbsoluteGraphicsPlatform.Templating
 
         public ICollection<IComponentDirective> Directives { get; }
 
-        public ComponentTemplateScopeCollection TemplateScopes { get; }
+        public ComponentTemplateCollection Templates { get; }
     }
 }

@@ -14,15 +14,15 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
     {
         public static VisualElement CreateSimpleVisualElement()
         {
-            var componentTemplateCollection = new ComponentTemplateCollection();
-            var componentFactory = new ComponentFactory(componentTemplateCollection);
+            var componentTemplateProvider = new ComponentTemplateProvider();
+            var componentFactory = new ComponentFactory(componentTemplateProvider);
             return componentFactory.CreateComponent<VisualElement>();
         }
 
         public static TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
         {
-            var componentTemplateCollection = new ComponentTemplateCollection();
-            var componentFactory = new ComponentFactory(componentTemplateCollection);
+            var componentTemplateProvider = new ComponentTemplateProvider();
+            var componentFactory = new ComponentFactory(componentTemplateProvider);
             return componentFactory.CreateComponent<TComponent>();
         }
     }

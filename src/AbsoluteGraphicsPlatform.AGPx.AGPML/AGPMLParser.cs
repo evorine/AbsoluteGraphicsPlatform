@@ -41,18 +41,18 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 throw new AGPxException($"'{componentTemplateTag}' must have 'Name' attribute!");
             
             var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
-            var rootTemplate = new ComponentTemplate(componentName.Value, rootComponentType);
+            var rootTemplate = new ComponentTemplate(null, componentName.Value, rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootTemplate.TemplateScopes.Add("default", ParseNode(node));
+                rootTemplate.Templates.Add(ParseNode("default", node));
 
             return rootTemplate;
         }
 
-        private ComponentTemplate ParseNode(XmlNode node)
+        private ComponentTemplate ParseNode(string containerScope, XmlNode node)
         {
             var componentType = ComponentTypeResolver.FindComponentType(node.Name);
-            var template = new ComponentTemplate(node.Name, componentType);
+            var template = new ComponentTemplate(containerScope, node.Name, componentType);
             ParsePropertiesSetters(template, node);
 
             foreach (XmlNode childNode in node.ChildNodes)
@@ -61,14 +61,14 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 {
                     foreach (XmlNode scopeChildNode in childNode.ChildNodes)
                     {
-                        var childTemplate = ParseNode(scopeChildNode);
-                        template.TemplateScopes.Add(scopeName, childTemplate);
+                        var childTemplate = ParseNode(scopeName, scopeChildNode);
+                        template.Templates.Add(childTemplate);
                     }
                 }
                 else
                 {
-                    var childTemplate = ParseNode(childNode);
-                    template.TemplateScopes.Add("default", childTemplate);
+                    var childTemplate = ParseNode("default", childNode);
+                    template.Templates.Add(childTemplate);
                 }
             }
 

@@ -36,9 +36,9 @@ namespace AbsoluteGraphicsPlatform.AGPx
         private IComponent CreateRootComponent(ComponentTemplate componentTemplate)
         {
             var component = componentFactory.CreateComponent(componentTemplate.ComponentType);
-
+            /*
             // Iterate virtual template components
-            foreach (var templateComponentTemplate in componentTemplate.TemplateScopes)
+            foreach (var templateComponentTemplate in componentTemplate.Templates)
             {
                 // Create template components and assign scope name
                 var templateComponent = (TemplateComponent)componentFactory.CreateComponent(typeof(TemplateComponent));
@@ -49,7 +49,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 foreach(var childComponentTemplate in templateComponentTemplate)
                     templateComponent.Components.Append(CreateRootComponent(childComponentTemplate));
             }
-
+            */
             styleSetter.ApplyStyle(component);
             foreach(var property in componentTemplate.PropertySetters)
                 styleSetter.ApplyProperty(component, property);

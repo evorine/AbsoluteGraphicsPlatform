@@ -26,11 +26,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         /// </summary>
         IComponent Parent { get; set; }
 
-        /// <summary>
-        /// Gets the registered component tree.
-        /// </summary>
-        IComponentTree RegisteredComponentTree { get; }
-
         bool UseTemplate { get; }
 
         /// <summary>

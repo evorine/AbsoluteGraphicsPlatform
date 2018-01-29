@@ -12,10 +12,10 @@ namespace AbsoluteGraphicsPlatform
     {
         public PlatformWindow()
         {
-            ComponentTree = new ComponentTree(null);
+            ComponentTree = new ComponentCollection(null);
         }
 
-        public IComponentTree ComponentTree { get; }
+        public IComponentCollection ComponentTree { get; }
 
         public abstract AbsoluteSize ClientSize { get; }
         public abstract void Dispose();

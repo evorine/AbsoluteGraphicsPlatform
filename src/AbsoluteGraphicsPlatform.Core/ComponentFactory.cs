@@ -19,11 +19,11 @@ namespace AbsoluteGraphicsPlatform
         private readonly ComponentInterceptor interceptor;
         private readonly ProxyGenerationOptions proxyOptions;
         private readonly ProxyGenerator proxyGenerator;
-        private readonly ComponentTemplateCollection componentTemplateCollection;
+        private readonly ComponentTemplateProvider componentTemplateProvider;
 
-        public ComponentFactory(ComponentTemplateCollection componentTemplateCollection)
+        public ComponentFactory(ComponentTemplateProvider componentTemplateProvider)
         {
-            this.componentTemplateCollection = componentTemplateCollection;
+            this.componentTemplateProvider = componentTemplateProvider;
             interceptor = new ComponentInterceptor();
             proxyOptions = new ProxyGenerationOptions()
             {
@@ -43,7 +43,7 @@ namespace AbsoluteGraphicsPlatform
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
             var component = (Component)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
 
-            if (!componentTemplateCollection.TryGetTemplateByType(componentType, out ComponentTemplate componentTemplate))
+            if (!componentTemplateProvider.TryGetTemplateByType(componentType, out ComponentTemplate componentTemplate))
             {
                 if (component.UseTemplate)
                 {

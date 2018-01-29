@@ -2,66 +2,107 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
+using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
+using System.Collections;
 
 namespace AbsoluteGraphicsPlatform
 {
     public class ComponentCollection : IComponentCollection
     {
-        private readonly IComponent owner;
-        private readonly List<IComponent> componentList;
+        bool isDirty;
+        IList<IComponent> childrenComponentList;
 
-        public ComponentCollection(IComponent owner)
+        public ComponentCollection(IComponent component)
         {
-            this.owner = owner;
-            componentList = new List<IComponent>();
+            Component = component;
+            childrenComponentList = new List<IComponent>();
+            isDirty = true;
         }
 
-        public IComponent this[int index] => componentList[index];
+        /// <summary>
+        /// Finds and returns all components recursively.
+        /// </summary>
+        public IEnumerable<IComponent> FindAllComponents() => throw new NotImplementedException();
 
-        public int Count => componentList.Count;
+        /// <summary>
+        /// Gets the instance of the root component: The owner of the component template.
+        /// </summary>
+        public IComponent RootComponent => Parent == null ? Component : Parent.Components.RootComponent;
 
-        public void Append(IComponent component)
+        /// <summary>
+        /// Gets the parent instance of <see cref="Component"/> in the component template.
+        /// </summary>
+        public IComponent Parent { get; set; }
+
+        /// <summary>
+        /// Gets the component instance of which this tree targets.
+        /// </summary>
+        public IComponent Component { get; }
+
+
+        /// <summary>
+        /// Scope name of the placeholder of this component.
+        /// </summary>
+        public string ContainerScope { get; }
+
+        public IComponent this[int index] => childrenComponentList[index];
+
+        public int Count => childrenComponentList.Count;
+
+        public void Add(IComponent component)
         {
-            componentList.Add(component);
-            component.Parent = owner;
-            owner.RegisteredComponentTree?.MarkAsDirty();
+            childrenComponentList.Add(component);
+            component.Parent = component;
+            MarkAsDirty();
+        }
+
+        public void Insert(int index, IComponent component)
+        {
+            childrenComponentList.Insert(index, component);
+            component.Parent = component;
+            MarkAsDirty();
         }
 
         public void Clear()
         {
-            foreach (var component in componentList)
+            foreach (var component in childrenComponentList)
                 component.Parent = null;
-            componentList.Clear();
-            owner.RegisteredComponentTree?.MarkAsDirty();
+            childrenComponentList.Clear();
+            MarkAsDirty();
         }
 
-        public bool Contains(IComponent item)
-        {
-            return componentList.Contains(item);
-        }
+        public bool Contains(IComponent item) => childrenComponentList.Contains(item);
 
         public bool Remove(IComponent item)
         {
-            if (componentList.Remove(item))
+            if (childrenComponentList.Remove(item))
             {
                 item.Parent = null;
-                owner.RegisteredComponentTree?.MarkAsDirty();
+                MarkAsDirty();
                 return true;
             }
             else return false;
         }
 
 
-        public IEnumerator<IComponent> GetEnumerator()
+        public void Restructure()
         {
-            return componentList.GetEnumerator();
+            if (isDirty)
+            {
+                isDirty = false;
+            }
         }
-        IEnumerator IEnumerable.GetEnumerator()
+
+        public void MarkAsDirty()
         {
-            return ((IEnumerable)componentList).GetEnumerator();
+            isDirty = true;
         }
+
+        public IEnumerator<IComponent> GetEnumerator() => childrenComponentList.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)childrenComponentList).GetEnumerator();
     }
 }

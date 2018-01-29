@@ -11,9 +11,9 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public class DocumentModelEngine : IDocumentModelEngine
     {
-        readonly ComponentTemplateCollection componentTemplateCollection;
+        readonly ComponentTemplateProvider componentTemplateCollection;
 
-        public DocumentModelEngine(ComponentTemplateCollection componentTemplateCollection)
+        public DocumentModelEngine(ComponentTemplateProvider componentTemplateCollection)
         {
             this.componentTemplateCollection = componentTemplateCollection;
         }
@@ -33,14 +33,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentElement containerDocumentElement)
         {
             var componentTemplate = componentTemplateCollection.GetTemplateByType(component.ComponentMetaInfo.ComponentType);
-
-            foreach(var scope in componentTemplate.TemplateScopes)
-            {
-                foreach(var childComponentTemplate in scope)
-                {
-
-                }
-            }
+            
 
             var componentElement = new DocumentElement()
             {

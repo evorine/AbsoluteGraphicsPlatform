@@ -3,17 +3,19 @@
 
 using System;
 using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
 using AbsoluteGraphicsPlatform.Abstractions.Components;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
     public class Component : IComponent
     {
-        private IComponent parent;
+        readonly ComponentCollection componentTree;
 
         public Component()
         {
-            Components = new ComponentCollection(this);
+            componentTree = new ComponentCollection(this);
         }
 
         public string Name { get; set; }
@@ -21,14 +23,9 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public IComponent Parent
         {
-            get => parent;
-            set
-            {
-                parent = value;
-                RegisteredComponentTree = parent?.RegisteredComponentTree;
-            }
+            get => componentTree.Parent;
+            set => componentTree.Parent = value;
         }
-        public IComponentTree RegisteredComponentTree { get; internal set; }
 
         public virtual void Emit(object payload)
         {
@@ -40,7 +37,7 @@ namespace AbsoluteGraphicsPlatform.Components
             Console.WriteLine("PropertyChanged: {0} = {1}", property.Name, value);
         }
 
-        public IComponentCollection Components { get; }
+        public IComponentCollection Components => componentTree;
 
         public ComponentMetaInfo ComponentMetaInfo { get; internal set; }
 

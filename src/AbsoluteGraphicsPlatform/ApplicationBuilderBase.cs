@@ -36,7 +36,7 @@ namespace AbsoluteGraphicsPlatform
             serviceCollection.AddSingleton(applicationOptions);
             serviceCollection.AddSingleton<IComponentFactory, ComponentFactory>();
             serviceCollection.AddSingleton<AGPx.ExpressionExecutor>();
-            serviceCollection.AddSingleton<Templating.ComponentTemplateCollection>();
+            serviceCollection.AddSingleton<ComponentTemplateProvider>();
             serviceCollection.AddSingleton<IStyleSetter, AGPx.DssStyleSetter>();
             serviceCollection.AddSingleton<ILayoutEngine, Layout.LayoutEngine>();
             serviceCollection.AddSingleton<IDocumentModelEngine, DocumentModelEngine>();
