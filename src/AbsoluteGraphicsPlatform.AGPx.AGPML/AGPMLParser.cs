@@ -16,11 +16,13 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
         readonly PropertySetter propertySetter;
         readonly DSSParser dssParser;
+        readonly ComponentTypeResolver componentTypeResolver;
 
-        public AGPMLParser(PropertySetter propertySetter, DSSParser dssParser)
+        public AGPMLParser(PropertySetter propertySetter, DSSParser dssParser, ComponentTypeResolver componentTypeResolver)
         {
             this.propertySetter = propertySetter;
             this.dssParser = dssParser;
+            this.componentTypeResolver = componentTypeResolver;
         }
 
         public ComponentTemplate ParseComponentTemplate(SourceCodeInfo sourceInfo)
@@ -38,7 +40,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             if (componentName == null)
                 throw new AGPxException($"'{componentTemplateTag}' must have 'Name' attribute!");
             
-            var rootComponentType = ComponentTypeResolver.FindComponentType(componentName.Value);
+            var rootComponentType = componentTypeResolver.FindComponentType(componentName.Value);
             var rootTemplate = new ComponentTemplate(null, componentName.Value, rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
@@ -49,7 +51,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
         private ComponentTemplate ParseNode(string containerScope, XmlNode node)
         {
-            var componentType = ComponentTypeResolver.FindComponentType(node.Name);
+            var componentType = componentTypeResolver.FindComponentType(node.Name);
             var template = new ComponentTemplate(containerScope, node.Name, componentType);
             ParsePropertiesSetters(template, node);
 
@@ -93,7 +95,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
         {
             foreach(XmlAttribute attribute in node.Attributes)
             {
-                var propertyType = ComponentTypeResolver.GetPropertyType(template.ComponentType, attribute.Name);
+                var propertyType = componentTypeResolver.GetPropertyType(template.ComponentType, attribute.Name);
                 if (propertyType == null)
                     throw new PropertyNotFoundException($"Invalid property: Property '{attribute.Name}' not found!", 0, "");
 

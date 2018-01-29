@@ -8,13 +8,16 @@ using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public static class ComponentTypeResolver
+    public class ComponentTypeResolver
     {
-        static Type componentType = typeof(Component);
-        static Dictionary<string, Type> componentTypes;
+        Type componentType = typeof(Component);
+        Dictionary<string, Type> componentTypes;
 
-        public static Type FindComponentType(string name)
+        public Type FindComponentType(string name)
         {
+#warning Fix here: Component assembly is not loaded when we first hit here.
+            new BoxComponent(); // Fix this workaround
+
             if (componentTypes == null)
             {
                 var types = AppDomain.CurrentDomain.GetAssemblies()
@@ -29,14 +32,14 @@ namespace AbsoluteGraphicsPlatform.AGPx
             else throw new AGPxException($"No component named '{name}' is found!");
         }
 
-        public static string GetComponentName(Type type)
+        public string GetComponentName(Type type)
         {
             var attribute = type.GetCustomAttributes(typeof(ComponentNameAttribute), false).FirstOrDefault() as ComponentNameAttribute;
             if (attribute == null) return type.Name;
             else return attribute.ComponentName;
         }
 
-        public static Type GetPropertyType(Type typeComponent, string propertyName)
+        public Type GetPropertyType(Type typeComponent, string propertyName)
         {
             if (componentTypes == null) throw new ArgumentNullException(nameof(typeComponent));
             if (propertyName == null) throw new ArgumentNullException(nameof(propertyName));

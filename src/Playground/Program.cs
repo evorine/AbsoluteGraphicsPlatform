@@ -2,20 +2,13 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using AbsoluteGraphicsPlatform;
-using AbsoluteGraphicsPlatform.Metrics;
-using AbsoluteGraphicsPlatform.Platforms.WindowsForms;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
-using AbsoluteGraphicsPlatform.Rendering.Skia;
-using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Layout;
-using AbsoluteGraphicsPlatform.Abstractions.Layout;
-using AbsoluteGraphicsPlatform.Styling;
-using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using Microsoft.Extensions.FileProviders.Physical;
+using AbsoluteGraphicsPlatform;
+using AbsoluteGraphicsPlatform.Platforms.WindowsForms;
+using AbsoluteGraphicsPlatform.Rendering.Skia;
+using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.AGPx;
-using AbsoluteGraphicsPlatform.Templating;
 
 namespace Playground
 {
@@ -28,7 +21,8 @@ namespace Playground
             //return;
 
             var appBuilder = new ApplicationBuilder();
-            appBuilder.UseLayoutLoader();
+            appBuilder.UseAgpml();
+            appBuilder.UseDSS();
             appBuilder.Configure<AgpxOptions>((options) =>
             {
                 options.Styles.Add(parseTestStyle());
@@ -36,6 +30,9 @@ namespace Playground
             appBuilder.UseSkia();
             
             var app = appBuilder.Build();
+
+            app.LoadLayout(new SourceCodeInfo("Box_Source", boxTemplate));
+            app.LoadLayout(new SourceCodeInfo("MyLayout_Source", layoutTemplate));
 
             var window = app.CreatePlatformWindow();
             var testData = new BasicTestData(window.ComponentTree);
@@ -53,6 +50,31 @@ namespace Playground
             var style = dssParser.Parse(sourceInfo);
             return style;
         }
+
+        const string boxTemplate = @"
+<component-template Name=""Box"">
+    <Component>
+        <component-placeholder />
+    </Component>
+</component-template>";
+
+        const string layoutTemplate = @"
+<component-template Name=""Window"">
+    <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Vertical"">
+        <Box Width=""Fill"" Height=""50px"" />
+        <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Horizontal"">
+        <Box Width=""1x"" Height=""Shrink"" LayoutDirection=""Vertical"">
+            <Box Width=""Fill"" Height=""40px"" />
+            <Box Width=""Fill"" Height=""40px"" />
+        </Box>
+        <Box Width=""3x"" Height=""Fill"" LayoutDirection=""Vertical"">
+            <Box Width=""Fill"" Height=""40px"" />
+            <Box Width=""Fill"" Height=""80px"" />
+        </Box>
+        </Box>
+    </Box>
+</component-template>";
+
 
         public class BasicTestData
         {
@@ -84,6 +106,7 @@ namespace Playground
 
             public BasicTestData(IComponentTree componentTree)
             {
+                /*
                 var componentTemplateCollection = new ComponentTemplateCollection();
                 var componentFactory = new ComponentFactory(componentTemplateCollection);
 
@@ -151,6 +174,7 @@ namespace Playground
                 ComponentRight2.Height = new CompositeLength(80, UnitType.Pixel);
                 ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
                 ComponentRight.Components.Append(ComponentRight2);
+                */
             }
         }
 

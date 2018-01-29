@@ -8,9 +8,10 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationBuilderExtensions
     {
-        public static void UseLayoutLoader(this IApplicationBuilderBase builder)
+        public static void UseAgpml(this IApplicationBuilderBase builder)
         {
             builder.RegisterService<AGPMLParser>();
+            builder.RegisterService<ComponentTypeResolver>();
         }
     }
 }

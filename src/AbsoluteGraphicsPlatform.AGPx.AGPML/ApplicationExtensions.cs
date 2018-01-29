@@ -8,9 +8,13 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationExtensions
     {
-        public static void LoadLayout(this IApplication application)
+        public static void LoadLayout(this IApplication application, SourceCodeInfo code)
         {
-            
+            var parser = application.GetService<AGPMLParser>();
+            var componentTemplateProvider = application.GetService<ComponentTemplateProvider>();
+
+            var template = parser.ParseComponentTemplate(code);
+            componentTemplateProvider.Add(template);
         }
     }
 }
