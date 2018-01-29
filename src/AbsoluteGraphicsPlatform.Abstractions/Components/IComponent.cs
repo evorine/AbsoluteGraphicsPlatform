@@ -26,6 +26,13 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         /// </summary>
         IComponent Parent { get; set; }
 
+
+        /// <summary>
+        /// Scope name of the placeholder of this component.
+        /// </summary>
+        string ContainerScope { get; set; }
+
+
         bool UseTemplate { get; }
 
         /// <summary>

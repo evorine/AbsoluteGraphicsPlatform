@@ -13,8 +13,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         IComponent Parent { get; }
         IComponent Component { get; }
 
-        string ContainerScope { get; }
-
         IComponent this[int index] { get; }
         IEnumerable<IComponent> FindAllComponents();
         

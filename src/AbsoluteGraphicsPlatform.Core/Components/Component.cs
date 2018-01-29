@@ -27,6 +27,9 @@ namespace AbsoluteGraphicsPlatform.Components
             set => componentTree.Parent = value;
         }
 
+        public string ContainerScope { get; set; }
+
+
         public virtual void Emit(object payload)
         {
             Console.WriteLine("Emit: {0}", payload);
@@ -42,5 +45,6 @@ namespace AbsoluteGraphicsPlatform.Components
         public ComponentMetaInfo ComponentMetaInfo { get; internal set; }
 
         public virtual bool UseTemplate => false;
+
     }
 }

@@ -43,12 +43,7 @@ namespace AbsoluteGraphicsPlatform
         /// </summary>
         public IComponent Component { get; }
 
-
-        /// <summary>
-        /// Scope name of the placeholder of this component.
-        /// </summary>
-        public string ContainerScope { get; }
-
+        
         public IComponent this[int index] => childrenComponentList[index];
 
         public int Count => childrenComponentList.Count;

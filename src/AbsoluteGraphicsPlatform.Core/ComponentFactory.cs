@@ -61,6 +61,12 @@ namespace AbsoluteGraphicsPlatform
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
             var component = InitializeComponent(componentType);
 
+            foreach(var childTemplate in component.ComponentMetaInfo.ComponentTemplate.Templates)
+            {
+                var child = CreateComponent(childTemplate.ComponentType);
+                child.ContainerScope = child.ContainerScope;
+                component.Components.Add(child);
+            }
             return component;
         }
     }
