@@ -4,6 +4,7 @@
 using System;
 using Xunit;
 using AbsoluteGraphicsPlatform.Metrics;
+using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.Layout.Tests
 {
@@ -13,7 +14,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
         public void TestComponentTreeStructure()
         {
             var layoutEngine = new LayoutEngine();
-            var componentTree = new ComponentCollection(null);
+            var componentTree = new ComponentTree(null);
             var testData = new BasicTestData(componentTree);
 
             Assert.Contains(testData.ComponentRoot, componentTree.FindAllComponents());
@@ -42,7 +43,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
         public void TestLayoutCalculation_Basic()
         {
             var layoutEngine = new LayoutEngine();
-            var componentTree = new ComponentCollection(null);
+            var componentTree = new ComponentTree(null);
             var testData = new BasicTestData(componentTree);
 
             var result = layoutEngine.ProcessLayout(new AbsoluteSize(800, 600), componentTree);

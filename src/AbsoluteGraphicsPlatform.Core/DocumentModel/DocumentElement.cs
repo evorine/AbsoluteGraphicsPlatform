@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Metrics;
 

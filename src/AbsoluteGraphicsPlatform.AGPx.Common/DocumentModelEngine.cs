@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel

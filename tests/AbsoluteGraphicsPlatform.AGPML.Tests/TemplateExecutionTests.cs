@@ -29,10 +29,10 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var foo = componentTemplateCompiler.ProcessTemplate(fooTemplate);
 
             Assert.True(foo is FooComponent);
-            Assert.True(foo.Components[0] is TemplateComponent);
-            Assert.True(foo.Components[0].Components[0] is Component);
-            Assert.True(foo.Components[0].Components[0].Components[0] is TemplateComponent);
-            Assert.True(foo.Components[0].Components[0].Components[0].Components[0] is ComponentPlaceholderComponent);
+            Assert.True(foo.Children[0] is TemplateComponent);
+            Assert.True(foo.Children[0].Children[0] is Component);
+            Assert.True(foo.Children[0].Children[0].Children[0] is TemplateComponent);
+            Assert.True(foo.Children[0].Children[0].Children[0].Children[0] is ComponentPlaceholderComponent);
         }
 
 
@@ -51,7 +51,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var fooTemplate = Common.ParseComponentTemplateCode(fooTemplateCode);
 
             var foo = componentTemplateCompiler.ProcessTemplate(fooTemplate);
-            Assert.Equal("container", foo.Components[0].Components[0].Name);
+            Assert.Equal("container", foo.Children[0].Children[0].Name);
         }
     }
 }

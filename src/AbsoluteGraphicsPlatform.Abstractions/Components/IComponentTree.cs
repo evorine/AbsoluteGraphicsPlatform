@@ -3,11 +3,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public interface IComponentDirective
+    public interface IComponentTree : IComponentCollection
     {
+        IComponent Owner { get; }
+        IEnumerable<IComponent> FindAllComponents();
     }
 }

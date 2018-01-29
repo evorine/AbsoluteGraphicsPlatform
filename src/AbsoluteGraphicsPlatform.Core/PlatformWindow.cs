@@ -3,7 +3,7 @@
 
 using System;
 using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform
@@ -12,10 +12,10 @@ namespace AbsoluteGraphicsPlatform
     {
         public PlatformWindow()
         {
-            ComponentTree = new ComponentCollection(null);
+            ComponentTree = new ComponentTree(null);
         }
 
-        public IComponentCollection ComponentTree { get; }
+        public IComponentTree ComponentTree { get; }
 
         public abstract AbsoluteSize ClientSize { get; }
         public abstract void Dispose();

@@ -5,24 +5,19 @@ using System;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Components;
 
-namespace AbsoluteGraphicsPlatform.Abstractions.Components
+namespace AbsoluteGraphicsPlatform.Components
 {
     public interface IComponent
     {
-        ComponentMetaInfo ComponentMetaInfo { get; }
-
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
         string Name { get; set; }
 
-        /// <summary>
-        /// Children components
-        /// </summary>
-        IComponentCollection Components { get; }
+        ComponentMetaInfo ComponentMetaInfo { get; }
 
         /// <summary>
-        /// Parent component
+        /// Parent component in this document model
         /// </summary>
         IComponent Parent { get; set; }
 
@@ -31,6 +26,16 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         /// Scope name of the placeholder of this component.
         /// </summary>
         string ContainerScope { get; set; }
+        
+        /// <summary>
+        /// Children components in the same document model
+        /// </summary>
+        IComponentCollection Children { get; }
+
+        /// <summary>
+        /// Component list of the own document model
+        /// </summary>
+        IComponentTree ComponentTree { get; }
 
 
         bool UseTemplate { get; }

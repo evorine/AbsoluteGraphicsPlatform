@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common

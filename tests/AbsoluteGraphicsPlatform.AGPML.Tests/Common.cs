@@ -10,29 +10,31 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
     public static class Common
     {
+        public static ComponentTemplateProvider ComponentTemplateProvider = new ComponentTemplateProvider();
+        public static ComponentFactory ComponentFactory = new ComponentFactory(ComponentTemplateProvider);
+
         public static ComponentTemplate ParseComponentTemplateCode(string code)
         {
-            var componentTemplateProvider = new ComponentTemplateProvider();
             var appOptions = OptionsMocks.CreateApplicationOptions();
-            var componentFactory = new ComponentFactory(componentTemplateProvider);
             var propertySetter = new PropertySetter(appOptions);
             var dssParser = new DSSParser();
-            var agpmlParser = new AGPMLParser(componentFactory, propertySetter, dssParser);
+            var agpmlParser = new AGPMLParser(propertySetter, dssParser);
 
             var sourceInfo = new SourceCodeInfo("TestCode", code);
-            return agpmlParser.ParseComponentTemplate(sourceInfo);
+            var template = agpmlParser.ParseComponentTemplate(sourceInfo);
+
+            ComponentTemplateProvider.Add(template);
+            return template;
         }
 
         public static ComponentTemplateCompiler MockComponentTemplateCompiler()
         {
-            var componentTemplateProvider = new ComponentTemplateProvider();
             var agpxOptions = OptionsMocks.WrapOptions(OptionsMocks.CreateAgpxOptions());
-            var componentFactory = new ComponentFactory(componentTemplateProvider);
             var propertySetter = new PropertySetter(OptionsMocks.CreateApplicationOptions());
             var expressionExecutor = new ExpressionExecutor();
             var dssStyleSetter = new DssStyleSetter(agpxOptions, propertySetter, expressionExecutor);
 
-            return new ComponentTemplateCompiler(componentFactory, dssStyleSetter, propertySetter, agpxOptions);
+            return new ComponentTemplateCompiler(ComponentFactory, dssStyleSetter, propertySetter, agpxOptions);
         }
     }
 }

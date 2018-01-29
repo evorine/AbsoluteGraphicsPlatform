@@ -3,7 +3,7 @@
 
 using System;
 using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using SkiaSharp;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 

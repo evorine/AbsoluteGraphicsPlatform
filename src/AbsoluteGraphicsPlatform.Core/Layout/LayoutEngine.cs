@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Metrics;
 
@@ -27,19 +27,19 @@ namespace AbsoluteGraphicsPlatform.Layout
             return pixel;
         }
 
-        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentCollection componentTree)
+        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
         {
-            componentTree.Restructure();
+            //componentTree.Restructure();
             var context = new LayoutCalculationContext();
 
-            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.RootComponent);
+            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.Owner);
             rootComponentBox.AbsoluteBox = new AbsoluteRectangle(0, 0, clientSize.Width, clientSize.Height);
             rootComponentBox.AbsoluteMarginBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.AbsolutePaddingBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.LayoutDirection = LayoutDirection.Vertical;
 
             var childrenOffset = new AbsolutePoint();
-            foreach (var component in componentTree.RootComponent.Components)
+            foreach (var component in componentTree.Owner.Children)
                 processComponent(component, context, ref childrenOffset);
 
             var filteredBoxes = context.LayoutBoxes.ToDictionary(x => (ILayoutBox)x.Key, x => x.Value);
@@ -90,7 +90,7 @@ namespace AbsoluteGraphicsPlatform.Layout
 
             var childrenOffset = new AbsolutePoint();
             // Continue with the children
-            foreach (var child in component.Components)
+            foreach (var child in component.Children)
                 processComponent(child, context, ref childrenOffset);
         }
 
@@ -101,7 +101,7 @@ namespace AbsoluteGraphicsPlatform.Layout
 
             var component = (IComponent)layoutComponent;
 
-            var siblings = component.Parent.Components.Where(x => x != component);
+            var siblings = component.Parent.Children.Where(x => x != component);
             var totalSiblingsWidth = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Width).Aggregate((total, sibling) => { return total + sibling; });
             var totalSiblingsHeight = siblings.Where(x => x is ILayoutBox).Select(x => ((ILayoutBox)x).Height).Aggregate((total, sibling) => { return total + sibling; });
 

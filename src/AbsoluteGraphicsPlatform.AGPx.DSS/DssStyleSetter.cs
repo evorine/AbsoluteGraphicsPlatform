@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.AGPx.Models;
 using AbsoluteGraphicsPlatform.Templating;

@@ -4,13 +4,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform.Abstractions.Layout
 {
     public interface ILayoutEngine
     {
-        LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentCollection componentTree);
+        LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree);
     }
 }

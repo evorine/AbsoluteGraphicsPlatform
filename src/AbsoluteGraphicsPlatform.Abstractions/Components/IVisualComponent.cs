@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbsoluteGraphicsPlatform.Abstractions.Components
+namespace AbsoluteGraphicsPlatform.Components
 {
     public interface IVisualComponent
     {

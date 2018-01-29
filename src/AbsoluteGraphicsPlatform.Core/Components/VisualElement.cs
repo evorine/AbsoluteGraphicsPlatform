@@ -2,7 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;

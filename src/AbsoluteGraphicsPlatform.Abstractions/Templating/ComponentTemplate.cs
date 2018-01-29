@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.Templating
 {
@@ -27,5 +27,7 @@ namespace AbsoluteGraphicsPlatform.Templating
         public ICollection<IComponentDirective> Directives { get; }
 
         public ComponentTemplateCollection Templates { get; }
+
+        public override string ToString() => $"ComponentTemplate: '{ComponentType.Name}'";
     }
 }

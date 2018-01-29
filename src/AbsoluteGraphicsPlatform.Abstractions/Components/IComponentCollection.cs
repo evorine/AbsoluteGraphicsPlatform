@@ -1,20 +1,14 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using AbsoluteGraphicsPlatform.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace AbsoluteGraphicsPlatform.Abstractions.Components
+namespace AbsoluteGraphicsPlatform.Components
 {
     public interface IComponentCollection : IEnumerable<IComponent>
     {
-        IComponent RootComponent { get; }
-        IComponent Parent { get; }
-        IComponent Component { get; }
-
         IComponent this[int index] { get; }
-        IEnumerable<IComponent> FindAllComponents();
         
         int Count { get; }
         void Add(IComponent component);
@@ -22,9 +16,5 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
         bool Contains(IComponent item);
         void Clear();
         bool Remove(IComponent item);
-
-        void Restructure();
-        void MarkAsDirty();
-
     }
 }

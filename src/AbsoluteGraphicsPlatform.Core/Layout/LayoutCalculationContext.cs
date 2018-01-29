@@ -1,5 +1,5 @@
 ﻿using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
 using AbsoluteGraphicsPlatform.Metrics;
 using System;

@@ -4,7 +4,7 @@
 using System;
 using Castle.DynamicProxy;
 using AbsoluteGraphicsPlatform.Abstractions;
-using AbsoluteGraphicsPlatform.Abstractions.Components;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Proxy;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
@@ -31,11 +31,34 @@ namespace AbsoluteGraphicsPlatform
             };
             proxyGenerator = new ProxyGenerator();
         }
-        
+
         /// <inheritdoc cref="IComponentFactory.CreateComponent{TComponent}"/>
         public TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
         {
-            return (TComponent)InitializeComponent(typeof(TComponent));
+            return (TComponent)CreateComponent(typeof(TComponent));
+        }
+
+        /// <inheritdoc cref="IComponentFactory.CreateComponent(Type)"/>
+        public IComponent CreateComponent(Type componentType)
+        {
+            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
+            var template = componentTemplateProvider.GetTemplateByType(componentType);
+
+            return ProcessTemplate(template);
+        }
+        
+
+        private IComponent ProcessTemplate(ComponentTemplate componentTemplate)
+        {
+            var component = InitializeComponent(componentTemplate.ComponentType);
+            
+            foreach (var childTemplate in componentTemplate.Templates)
+            {
+                var child = ProcessTemplate(childTemplate);
+                child.ContainerScope = childTemplate.ContainerScopeName;
+                component.Children.Add(child);
+            }
+            return component;
         }
 
         public IComponent InitializeComponent(Type componentType)
@@ -56,18 +79,5 @@ namespace AbsoluteGraphicsPlatform
             return component;
         }
 
-        public IComponent CreateComponent(Type componentType)
-        {
-            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
-            var component = InitializeComponent(componentType);
-
-            foreach(var childTemplate in component.ComponentMetaInfo.ComponentTemplate.Templates)
-            {
-                var child = CreateComponent(childTemplate.ComponentType);
-                child.ContainerScope = child.ContainerScope;
-                component.Components.Add(child);
-            }
-            return component;
-        }
     }
 }
