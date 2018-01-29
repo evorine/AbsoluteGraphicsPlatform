@@ -3,7 +3,6 @@
 
 using System;
 using Xunit;
-using AbsoluteGraphicsPlatform.AGPML.Tests;
 using AbsoluteGraphicsPlatform.Tests.Common.Components;
 using AbsoluteGraphicsPlatform.Components;
 

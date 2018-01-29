@@ -3,12 +3,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Xunit;
-using AbsoluteGraphicsPlatform.Styling;
-using AbsoluteGraphicsPlatform.Tests.Common;
 using System.Linq;
-using Microsoft.Extensions.Options;
+using Xunit;
+using AbsoluteGraphicsPlatform.Tests.Common;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {

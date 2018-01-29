@@ -8,7 +8,6 @@ using AbsoluteGraphicsPlatform.Tests.Common;
 using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Tests.Common.Components;
-using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {

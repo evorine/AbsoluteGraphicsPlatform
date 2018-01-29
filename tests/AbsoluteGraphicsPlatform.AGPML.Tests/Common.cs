@@ -1,11 +1,11 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 using AbsoluteGraphicsPlatform.Tests.Common;
-using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {

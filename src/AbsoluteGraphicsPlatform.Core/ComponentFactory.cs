@@ -6,7 +6,6 @@ using Castle.DynamicProxy;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Proxy;
-using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform

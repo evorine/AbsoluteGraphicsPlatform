@@ -1,10 +1,9 @@
 ﻿// Licensed under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.Extensions.FileProviders;
 using System;
 using System.IO;
-using System.Reflection;
+using Microsoft.Extensions.FileProviders;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common
 {

@@ -2,11 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common
 {

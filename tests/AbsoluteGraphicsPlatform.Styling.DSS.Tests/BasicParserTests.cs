@@ -6,7 +6,6 @@ using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.AGPx.Models;
-using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {

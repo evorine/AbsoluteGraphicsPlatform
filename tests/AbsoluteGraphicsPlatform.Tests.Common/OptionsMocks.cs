@@ -2,14 +2,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Styling;
-using AbsoluteGraphicsPlatform.AGPx;
-using Microsoft.Extensions.Options;
-using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using Moq;
+using Microsoft.Extensions.Options;
+using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.Abstractions;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common
