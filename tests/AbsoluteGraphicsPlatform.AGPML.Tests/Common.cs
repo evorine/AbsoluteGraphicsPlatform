@@ -5,6 +5,7 @@ using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 using AbsoluteGraphicsPlatform.Tests.Common;
+using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
@@ -23,7 +24,9 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             var template = agpmlParser.ParseComponentTemplate(sourceInfo);
 
-            ComponentTemplateProvider.Add(template);
+            if(!ComponentTemplateProvider.ComponentTypes.Contains(template.ComponentType))
+                ComponentTemplateProvider.Add(template);
+
             return template;
         }
 

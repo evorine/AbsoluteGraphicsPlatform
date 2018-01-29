@@ -51,7 +51,7 @@ namespace AbsoluteGraphicsPlatform
         private IComponent ProcessTemplate(ComponentTemplate componentTemplate)
         {
             var component = InitializeComponent(componentTemplate.ComponentType);
-            
+
             foreach (var childTemplate in componentTemplate.Templates)
             {
                 var child = ProcessTemplate(childTemplate);
@@ -61,17 +61,28 @@ namespace AbsoluteGraphicsPlatform
             return component;
         }
 
-        public IComponent InitializeComponent(Type componentType)
+        private IComponent InitializeComponent(Type componentType)
         {
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
             var component = (Component)proxyGenerator.CreateClassProxy(componentType, proxyOptions, interceptor);
 
             if (!componentTemplateProvider.TryGetTemplateByType(componentType, out ComponentTemplate componentTemplate))
             {
+                // We don't have template. So this component won't have a document model.
                 if (component.UseTemplate)
                 {
                     // ComponentTemplate is required but it doesn't exists!
                     throw new TemplateNotFoundException(componentType);
+                }
+            }
+            // Template exists. So process also document model.
+            else
+            {
+                foreach (var childTemplate in componentTemplate.Templates)
+                {
+                    var child = ProcessTemplate(childTemplate);
+                    child.ContainerScope = childTemplate.ContainerScopeName;
+                    component.ComponentTree.Add(child);
                 }
             }
             component.ComponentMetaInfo = new ComponentMetaInfo(componentType, componentTemplate);

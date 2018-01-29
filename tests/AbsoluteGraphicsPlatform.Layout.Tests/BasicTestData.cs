@@ -5,7 +5,6 @@ using System;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Metrics;
 using AbsoluteGraphicsPlatform.Abstractions.Layout;
-using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.Layout.Tests

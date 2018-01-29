@@ -32,7 +32,6 @@ namespace AbsoluteGraphicsPlatform.Tests
 
             Assert.Equal(typeof(Component), foo_Component.ComponentMetaInfo.ComponentType);
             Assert.Equal(1, foo_Component.Children.Count);
-            //Assert.Equal("Container", foo_Component.Name);
 
             Assert.Equal(typeof(ComponentPlaceholderComponent), foo_Component_Placeholder.ComponentMetaInfo.ComponentType);
             Assert.Equal(0, foo_Component_Placeholder.Children.Count);
@@ -68,6 +67,10 @@ namespace AbsoluteGraphicsPlatform.Tests
             var bar_Component_Foo = bar_Component.Children[1];
             var bar_Component_Foo_Component = bar_Component_Foo.Children[0];
 
+            var foo_Component = bar_Component_Foo.ComponentTree[0];
+            var foo_Component_Placeholder = foo_Component.Children[0];
+
+            // Bar
             Assert.Equal(typeof(BarComponent), bar.ComponentMetaInfo.ComponentType);
             Assert.Equal(1, bar.Children.Count);
 
@@ -82,6 +85,13 @@ namespace AbsoluteGraphicsPlatform.Tests
 
             Assert.Equal(typeof(Component), bar_Component_Foo_Component.ComponentMetaInfo.ComponentType);
             Assert.Equal(0, bar_Component_Foo_Component.Children.Count);
+
+            // Foo
+            Assert.Equal(typeof(Component), foo_Component.ComponentMetaInfo.ComponentType);
+            Assert.Equal(1, foo_Component.Children.Count);
+
+            Assert.Equal(typeof(ComponentPlaceholderComponent), foo_Component_Placeholder.ComponentMetaInfo.ComponentType);
+            Assert.Equal(0, foo_Component_Placeholder.Children.Count);
         }
     }
 }

@@ -22,5 +22,7 @@ namespace AbsoluteGraphicsPlatform.Tests.Common.Components
 
         [ComponentProperty]
         public float Single { get; set; }
+
+        public override bool UseTemplate => true;
     }
 }
