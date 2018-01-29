@@ -17,8 +17,9 @@ namespace AbsoluteGraphicsPlatform
         IList<IComponent> allComponents;
         IList<IComponent> leafComponents;
 
-        public ComponentTree()
+        public ComponentTree(IComponent ownerComponent)
         {
+            Owner = ownerComponent;
             allComponents = new List<IComponent>();
             leafComponents = new List<IComponent>();
             isDirty = true;
@@ -26,6 +27,8 @@ namespace AbsoluteGraphicsPlatform
         
         public IEnumerable<IComponent> AllComponents => allComponents.AsEnumerable();
         public IEnumerable<IComponent> LeafComponents => leafComponents.AsEnumerable();
+        
+        /*
         public IComponent RootComponent
         {
             get => rootComponent;
@@ -45,6 +48,38 @@ namespace AbsoluteGraphicsPlatform
                 isDirty = true;
             }
         }
+        */
+
+        /// <summary>
+        /// Gets the instance of the component template's owner.
+        /// </summary>
+        public IComponent Owner { get; }
+
+        /// <summary>
+        /// Gets the parent instance of <see cref="Component"/> in the component template.
+        /// </summary>
+        public IComponent Parent { get; }
+
+        /// <summary>
+        /// Gets the component instance of which this tree targets.
+        /// </summary>
+        public IComponent Component { get; }
+
+        public string ContainerScope { get; }
+
+        /// <summary>
+        /// Gets the children tree of <see cref="Component"/> in the component template.
+        /// </summary>
+        public IEnumerable<IComponentTree> Children { get; }
+
+
+        private void asd()
+        {
+            foreach(var scope in Owner.ComponentMetaInfo.ComponentTemplate.TemplateScopes)
+            {
+
+            }
+        }
 
         public void Restructure()
         {
@@ -52,7 +87,7 @@ namespace AbsoluteGraphicsPlatform
             {
                 allComponents.Clear();
                 leafComponents.Clear();
-                setAllAndLeafComponents(rootComponent);
+                setAllAndLeafComponents(Component);
                 isDirty = false;
             }
         }

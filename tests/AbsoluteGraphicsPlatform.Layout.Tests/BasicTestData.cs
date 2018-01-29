@@ -48,7 +48,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
             ComponentRoot.Width = CompositeLength.Fill;
             ComponentRoot.Height = CompositeLength.Fill;
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
-            componentTree.RootComponent = ComponentRoot;
+            //componentTree.RootComponent = ComponentRoot;
 
             ComponentTop = componentFactory.CreateComponent<VisualElement>();
             ComponentTop.Name = "Top";

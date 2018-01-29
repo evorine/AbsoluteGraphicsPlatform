@@ -32,14 +32,14 @@ namespace AbsoluteGraphicsPlatform.Layout
             componentTree.Restructure();
             var context = new LayoutCalculationContext();
 
-            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.RootComponent);
+            var rootComponentBox = context.GetLayoutBoxInformation(componentTree.Owner);
             rootComponentBox.AbsoluteBox = new AbsoluteRectangle(0, 0, clientSize.Width, clientSize.Height);
             rootComponentBox.AbsoluteMarginBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.AbsolutePaddingBox = rootComponentBox.AbsoluteBox;
             rootComponentBox.LayoutDirection = LayoutDirection.Vertical;
 
             var childrenOffset = new AbsolutePoint();
-            foreach (var component in componentTree.RootComponent.Components)
+            foreach (var component in componentTree.Owner.Components)
                 processComponent(component, context, ref childrenOffset);
 
             var filteredBoxes = context.LayoutBoxes.ToDictionary(x => (ILayoutBox)x.Key, x => x.Value);

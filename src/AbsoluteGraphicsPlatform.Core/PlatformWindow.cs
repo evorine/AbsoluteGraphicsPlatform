@@ -12,7 +12,7 @@ namespace AbsoluteGraphicsPlatform
     {
         public PlatformWindow()
         {
-            ComponentTree = new ComponentTree();
+            ComponentTree = new ComponentTree(null);
         }
 
         public IComponentTree ComponentTree { get; }

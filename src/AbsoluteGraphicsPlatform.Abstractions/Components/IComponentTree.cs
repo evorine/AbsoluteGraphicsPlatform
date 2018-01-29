@@ -9,9 +9,11 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Components
 {
     public interface IComponentTree
     {
+        IComponent Owner { get; }
+        IComponent Component { get; }
+        string ContainerScope { get; }
+        IEnumerable<IComponentTree> Children { get; }
         IEnumerable<IComponent> AllComponents { get; }
-        IComponent RootComponent { get; set; }
-        IEnumerable<IComponent> LeafComponents { get; }
         void Restructure();
         void MarkAsDirty();
     }
