@@ -43,7 +43,10 @@ namespace AbsoluteGraphicsPlatform
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
             var template = componentTemplateProvider.GetTemplateByType(componentType);
 
-            return ProcessTemplate(template);
+            var component = ProcessTemplate(template);
+#warning Fix here!
+            component.Children.Clear(); // Fix here. We shouldn't populate Children for root component.
+            return component;
         }
         
 
@@ -51,12 +54,16 @@ namespace AbsoluteGraphicsPlatform
         {
             var component = InitializeComponent(componentTemplate.ComponentType);
 
-            foreach (var childTemplate in componentTemplate.Templates)
+            component.ComponentMetaInfo.InstancePropertySetters = componentTemplate.PropertySetters;
+            component.ComponentMetaInfo.InstanceDirectives = componentTemplate.Directives;
+
+            foreach (var instanceChildTemplate in componentTemplate.Templates)
             {
-                var child = ProcessTemplate(childTemplate);
-                child.ContainerScope = childTemplate.ContainerScopeName;
-                component.Children.Add(child);
+                var instanceChild = ProcessTemplate(instanceChildTemplate);
+                instanceChild.ContainerScope = instanceChildTemplate.ContainerScopeName;
+                component.Children.Add(instanceChild);
             }
+
             return component;
         }
 
@@ -82,6 +89,18 @@ namespace AbsoluteGraphicsPlatform
                     var child = ProcessTemplate(childTemplate);
                     child.ContainerScope = childTemplate.ContainerScopeName;
                     component.ComponentTree.Add(child);
+
+                    // Root component won't have children as it is not part of another component model (aka tree)
+                    if (component.Parent != null)
+                    {
+                        // Populate children
+                        //foreach (var instanceChildTemplate in childTemplate.Templates)
+                        //{
+                        //    var instanceChild = ProcessTemplate(instanceChildTemplate);
+                        //    instanceChild.ContainerScope = instanceChildTemplate.ContainerScopeName;
+                        //    child.Children.Add(instanceChild);
+                        //}
+                    }
                 }
             }
             component.ComponentMetaInfo = new ComponentMetaInfo(componentType, componentTemplate);

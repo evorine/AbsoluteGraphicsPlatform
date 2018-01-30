@@ -25,5 +25,16 @@ namespace AbsoluteGraphicsPlatform.Components
         /// Gets the component template of the component.
         /// </summary>
         public ComponentTemplate ComponentTemplate { get; }
+
+
+        /// <summary>
+        /// Gets the property setters for current component model.
+        /// </summary>
+        public PropertySetterInfoCollection InstancePropertySetters { get; set; }
+
+        /// <summary>
+        /// Gets the directives for current component model.
+        /// </summary>
+        public ICollection<IComponentDirective> InstanceDirectives { get; set; }
     }
 }

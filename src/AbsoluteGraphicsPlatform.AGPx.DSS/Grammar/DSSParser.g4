@@ -73,6 +73,7 @@ literal
   | color
   | NULL
   | NONE
+  | OTHER=IDENTIFIER
   ;
 
 color

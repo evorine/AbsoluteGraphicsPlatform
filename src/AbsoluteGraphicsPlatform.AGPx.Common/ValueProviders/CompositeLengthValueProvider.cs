@@ -15,8 +15,16 @@ namespace AbsoluteGraphicsPlatform.ValueProviders
         {
             if (context.Property.PropertyType == typeof(CompositeLength))
             {
-                if (context.Values.Length == 1 && context.Values[0] is LengthPropertyValue propertyValue)
-                    return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
+                if (context.Values.Length == 1)
+                {
+                    if (context.Values[0] is LengthPropertyValue propertyValue)
+                        return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
+                    if (context.Values[0] is StringPropertyValue stringPropertyValue)
+                    {
+                        if (stringPropertyValue.Value == "fill") return StyleValueProviderResult.Success(CompositeLength.Fill);
+                        if (stringPropertyValue.Value == "shrink") return StyleValueProviderResult.Success(CompositeLength.Shrink);
+                    }
+                }
             }
             return StyleValueProviderResult.Fail;
         }

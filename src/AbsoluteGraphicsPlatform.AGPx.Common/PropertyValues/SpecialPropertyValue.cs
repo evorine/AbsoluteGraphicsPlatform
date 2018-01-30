@@ -12,6 +12,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
         readonly string value;
 
         public static PropertyValue None = new PropertyValue("none");
+        public static PropertyValue Fill = new PropertyValue("fill");
 
         private PropertyValue(string value)
         {

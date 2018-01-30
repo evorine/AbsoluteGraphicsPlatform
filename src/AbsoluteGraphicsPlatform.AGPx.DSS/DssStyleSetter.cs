@@ -6,7 +6,6 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using AbsoluteGraphicsPlatform.Components;
-using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.AGPx.Models;
 using AbsoluteGraphicsPlatform.Templating;
 
@@ -50,6 +49,32 @@ namespace AbsoluteGraphicsPlatform.AGPx
         {
             if (!propertySetter.SetValue(component, propertySetterInfo.PropertyName, expressionExecutor.GetValues(propertySetterInfo.Values).ToArray()))
                 throw new PropertyNotFoundException("Invalid property assignement!", propertySetterInfo.Line, propertySetterInfo.Source);
+        }
+
+
+        public void ApplyFullStyleRecursivly(IComponentTree componentTree)
+        {
+            foreach (var component in componentTree)
+                ApplyFullStyleRecursivly(component);
+        }
+        private void ApplyFullStyleRecursivly(IComponent component)
+        {
+            foreach (var style in agpxOptions.Styles)
+            {
+                if (style is Stylesheet stylesheet)
+                {
+                    foreach (var ruleset in stylesheet.Rulesets)
+                    {
+                        ApplyRule(component, ruleset);
+                    }
+                }
+                else throw new ArgumentException($"Argument '{nameof(style)}' is not a valid DSS style implementation!");
+            }
+            foreach (var propertySetterInfo in component.ComponentMetaInfo.InstancePropertySetters)
+                ApplyProperty(component, propertySetterInfo);
+
+            foreach (var childComponent in component.Children)
+                ApplyFullStyleRecursivly(childComponent);
         }
     }
 }

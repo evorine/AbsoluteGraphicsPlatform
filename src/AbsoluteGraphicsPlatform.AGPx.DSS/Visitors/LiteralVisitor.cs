@@ -24,6 +24,8 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             var unit = context.UNIT();
             var color = context.color();
             var none = context.NONE();
+            var other = context.IDENTIFIER();
+
 
             if (number != null)
             {
@@ -65,6 +67,10 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             else if (none != null)
             {
                 return Expression.Constant(PropertyValue.None);
+            }
+            else if (other != null)
+            {
+                return Expression.Constant(new StringPropertyValue(other.GetText()));
             }
 
             throw new Exception("Unexpected literal expression!");

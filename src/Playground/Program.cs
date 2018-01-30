@@ -9,6 +9,7 @@ using AbsoluteGraphicsPlatform.Rendering.Skia;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.Abstractions;
 
 namespace Playground
 {
@@ -25,7 +26,7 @@ namespace Playground
             appBuilder.UseDSS();
             appBuilder.Configure<AgpxOptions>((options) =>
             {
-                options.Styles.Add(parseTestStyle());
+                //options.Styles.Add(parseTestStyle());
             });
             appBuilder.UseSkia();
             
@@ -34,8 +35,16 @@ namespace Playground
             app.LoadLayout(new SourceCodeInfo("Box_Source", boxTemplate));
             app.LoadLayout(new SourceCodeInfo("MyLayout_Source", layoutTemplate));
 
-            var window = app.CreatePlatformWindow();
-            var testData = new BasicTestData(window.ComponentTree);
+            var factory = app.GetService<IComponentFactory>();
+            var windowComponent = factory.CreateComponent<WindowComponent>();
+
+            var window = (PlatformWindow)app.CreatePlatformWindow();
+            window.ComponentTree = windowComponent.ComponentTree;
+
+
+            var styleSetter = (DssStyleSetter)app.GetService<IStyleSetter>();
+            styleSetter.ApplyFullStyleRecursivly(windowComponent.ComponentTree);
+
 
             app.Start(window);
         }
@@ -60,17 +69,17 @@ namespace Playground
 
         const string layoutTemplate = @"
 <component-template Name=""Window"">
-    <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Vertical"">
-        <Box Width=""Fill"" Height=""50px"" />
-        <Box Width=""Fill"" Height=""Fill"" LayoutDirection=""Horizontal"">
-        <Box Width=""1x"" Height=""Shrink"" LayoutDirection=""Vertical"">
-            <Box Width=""Fill"" Height=""40px"" />
-            <Box Width=""Fill"" Height=""40px"" />
-        </Box>
-        <Box Width=""3x"" Height=""Fill"" LayoutDirection=""Vertical"">
-            <Box Width=""Fill"" Height=""40px"" />
-            <Box Width=""Fill"" Height=""80px"" />
-        </Box>
+    <Box Width=""fill"" Height=""fill"" LayoutDirection=""Vertical"">
+        <Box Width=""fill"" Height=""50px"" />
+        <Box Width=""fill"" Height=""fill"" LayoutDirection=""Horizontal"">
+            <Box Width=""1x"" Height=""shrink"" LayoutDirection=""Vertical"">
+                <Box Width=""fill"" Height=""40px"" />
+                <Box Width=""fill"" Height=""40px"" />
+            </Box>
+            <Box Width=""3x"" Height=""fill"" LayoutDirection=""Vertical"">
+                <Box Width=""fill"" Height=""40px"" />
+                <Box Width=""fill"" Height=""80px"" />
+            </Box>
         </Box>
     </Box>
 </component-template>";
