@@ -45,7 +45,12 @@ namespace AbsoluteGraphicsPlatform
 
             var component = ProcessTemplate(template);
 #warning Fix here!
-            component.Children.Clear(); // Fix here. We shouldn't populate Children for root component.
+            // Fix here. We shouldn't populate Children for root component.
+            component.Children.Clear();
+            //foreach (var child in component.ComponentTree)
+            //    component.Children.Add(child);
+            // End of bug
+
             return component;
         }
         

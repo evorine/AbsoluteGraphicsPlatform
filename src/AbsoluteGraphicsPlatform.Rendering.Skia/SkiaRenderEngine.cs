@@ -24,7 +24,7 @@ namespace AbsoluteGraphicsPlatform.Rendering.Skia
             var info = new SKImageInfo(buffer.Width, buffer.Height, SKImageInfo.PlatformColorType, SKAlphaType.Premul);
             using (var surface = SKSurface.Create(info, buffer.Pixels, buffer.RowBytes))
             {
-                foreach (var component in owner.ComponentTree.FindAllComponents())
+                foreach (var component in owner.ComponentTree.FindAllChildren())
                 {
                     if (component is ILayoutBox layoutBox && component is IVisualComponent element)
                     {

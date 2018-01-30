@@ -45,7 +45,6 @@ namespace Playground
             var styleSetter = (DssStyleSetter)app.GetService<IStyleSetter>();
             styleSetter.ApplyFullStyleRecursivly(windowComponent.ComponentTree);
 
-
             app.Start(window);
         }
 

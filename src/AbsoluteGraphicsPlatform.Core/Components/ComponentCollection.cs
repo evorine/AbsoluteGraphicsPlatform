@@ -10,7 +10,7 @@ namespace AbsoluteGraphicsPlatform.Components
 {
     public class ComponentCollection : IComponentCollection
     {
-        IList<IComponent> childrenComponentList;
+        protected readonly IList<IComponent> childrenComponentList;
 
         public ComponentCollection()
         {

@@ -9,6 +9,6 @@ namespace AbsoluteGraphicsPlatform.Components
     public interface IComponentTree : IComponentCollection
     {
         IComponent Owner { get; }
-        IEnumerable<IComponent> FindAllComponents();
+        IEnumerable<IComponent> FindAllChildren();
     }
 }
