@@ -52,10 +52,11 @@ namespace AbsoluteGraphicsPlatform.AGPx
         }
 
 
-        public void ApplyFullStyleRecursivly(IComponentTree componentTree)
+        public void ApplyFullStyleRecursivly(IElementTree elementTree)
         {
-            foreach (var component in componentTree)
-                ApplyFullStyleRecursivly(component);
+            foreach (var element in elementTree.Children)
+                if (element is IComponent component)
+                    ApplyFullStyleRecursivly(component);
         }
         private void ApplyFullStyleRecursivly(IComponent component)
         {
@@ -73,8 +74,9 @@ namespace AbsoluteGraphicsPlatform.AGPx
             foreach (var propertySetterInfo in component.ComponentMetaInfo.InstancePropertySetters)
                 ApplyProperty(component, propertySetterInfo);
 
-            foreach (var childComponent in component.Children)
-                ApplyFullStyleRecursivly(childComponent);
+            foreach (var childElement in component.Children)
+                if (childElement is IComponent childComponent)
+                    ApplyFullStyleRecursivly(childComponent);
         }
     }
 }

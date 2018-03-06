@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj" />
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Common\AbsoluteGraphicsPlatform.Common.csproj" />
   </ItemGroup>
 
 </Project>

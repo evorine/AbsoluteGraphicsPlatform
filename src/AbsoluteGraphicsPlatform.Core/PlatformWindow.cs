@@ -14,7 +14,7 @@ namespace AbsoluteGraphicsPlatform
         {
         }
 
-        public IComponentTree ComponentTree { get; set; }
+        public IElementTree ComponentTree { get; set; }
 
         public abstract AbsoluteSize ClientSize { get; }
         public abstract void Dispose();

@@ -39,11 +39,11 @@ namespace Playground
             var windowComponent = factory.CreateComponent<WindowComponent>();
 
             var window = (PlatformWindow)app.CreatePlatformWindow();
-            window.ComponentTree = windowComponent.ComponentTree;
+            window.ComponentTree = windowComponent.ElementTree;
 
 
             var styleSetter = (DssStyleSetter)app.GetService<IStyleSetter>();
-            styleSetter.ApplyFullStyleRecursivly(windowComponent.ComponentTree);
+            styleSetter.ApplyFullStyleRecursivly(windowComponent.ElementTree);
 
             app.Start(window);
         }
@@ -112,7 +112,7 @@ namespace Playground
             public VisualElement ComponentRight1 { get; }
             public VisualElement ComponentRight2 { get; }
 
-            public BasicTestData(IComponentTree componentTree)
+            public BasicTestData(IElementTree componentTree)
             {
                 /*
                 var componentTemplateCollection = new ComponentTemplateCollection();

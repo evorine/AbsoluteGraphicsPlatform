@@ -9,24 +9,24 @@ namespace AbsoluteGraphicsPlatform.Layout
 {
     internal class LayoutCalculationContext
     {
-        internal readonly IDictionary<IComponent, LayoutBoxInformation> LayoutBoxes;
+        internal readonly IDictionary<IElement, LayoutBoxInformation> LayoutBoxes;
 
         internal LayoutCalculationContext()
         {
-            LayoutBoxes = new Dictionary<IComponent, LayoutBoxInformation>();
+            LayoutBoxes = new Dictionary<IElement, LayoutBoxInformation>();
         }
 
-        internal LayoutBoxInformation GetLayoutBoxInformation(IComponent component)
+        internal LayoutBoxInformation GetLayoutBoxInformation(IElement element)
         {
-            if (LayoutBoxes.TryGetValue(component, out var box))
+            if (LayoutBoxes.TryGetValue(element, out var box))
                 return box;
 
             box = new LayoutBoxInformation();
-            LayoutBoxes[component] = box;
+            LayoutBoxes[element] = box;
             return box;
         }
 
-        internal void SetLayoutBoxInformation(IComponent component, LayoutBoxInformation boxInformation)
+        internal void SetLayoutBoxInformation(IElement component, LayoutBoxInformation boxInformation)
         {
             LayoutBoxes[component] = boxInformation;
         }

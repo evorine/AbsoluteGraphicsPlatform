@@ -37,7 +37,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
         public VisualElement ComponentRight1 { get; }
         public VisualElement ComponentRight2 { get; }
 
-        public BasicTestData(IComponentTree componentTree)
+        public BasicTestData(IElementTree componentTree)
         {
             var componentTemplateCollection = new ComponentTemplateProvider();
             var componentFactory = new ComponentFactory(componentTemplateCollection);

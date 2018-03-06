@@ -23,8 +23,8 @@ namespace AbsoluteGraphicsPlatform.Tests
             var fooTemplate = AGPML.Tests.Common.ParseComponentTemplateCode(fooTemplateCode);
 
             var foo = AGPML.Tests.Common.ComponentFactory.CreateComponent<FooComponent>();
-            var foo_Component = foo.Children[0];
-            var foo_Component_Placeholder = foo_Component.Children[0];
+            var foo_Component = foo.Children[0] as IComponent;
+            var foo_Component_Placeholder = foo_Component.Children[0] as IComponent;
 
             Assert.Equal(typeof(FooComponent), foo.ComponentMetaInfo.ComponentType);
             Assert.Equal(1, foo.Children.Count);
@@ -61,13 +61,13 @@ namespace AbsoluteGraphicsPlatform.Tests
             var barTemplate = AGPML.Tests.Common.ParseComponentTemplateCode(barTemplateCode);
 
             var bar = AGPML.Tests.Common.ComponentFactory.CreateComponent<BarComponent>();
-            var bar_Component = bar.Children[0];
-            var bar_Component_Placeholder = bar_Component.Children[0];
-            var bar_Component_Foo = bar_Component.Children[1];
-            var bar_Component_Foo_Component = bar_Component_Foo.Children[0];
+            var bar_Component = bar.Children[0] as IComponent;
+            var bar_Component_Placeholder = bar_Component.Children[0] as IComponent;
+            var bar_Component_Foo = bar_Component.Children[1] as IComponent;
+            var bar_Component_Foo_Component = bar_Component_Foo.Children[0] as IComponent;
 
-            var foo_Component = bar_Component_Foo.ComponentTree[0];
-            var foo_Component_Placeholder = foo_Component.Children[0];
+            var foo_Component = bar_Component_Foo.Children[0] as IComponent;
+            var foo_Component_Placeholder = foo_Component.Children[0] as IComponent;
 
             // Bar
             Assert.Equal(typeof(BarComponent), bar.ComponentMetaInfo.ComponentType);

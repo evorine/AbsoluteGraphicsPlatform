@@ -8,10 +8,13 @@ using System.Collections;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public class ComponentTree : ComponentCollection, IComponentTree
+    public class ElementTree : IElementTree
     {
-        public ComponentTree(IComponent owner)
+        private readonly ElementCollection elementCollection;
+
+        public ElementTree(IComponent owner)
         {
+            elementCollection = new ElementCollection();
             Owner = owner;
         }
 
@@ -21,28 +24,28 @@ namespace AbsoluteGraphicsPlatform.Components
         /// </summary>
         public IComponent Owner { get; }
 
+        public IElementCollection Children => elementCollection;
+
 
         /// <summary>
         /// Finds and returns all child components recursively.
         /// </summary>
-        public IEnumerable<IComponent> FindAllChildren()
+        public IEnumerable<IElement> FindAllChildren()
         {
             yield return Owner;
 
-            foreach (var child in this)
-                foreach (var _child in ((ComponentTree)child.ComponentTree)._FindAllChildren())
+            foreach (var child in Children)
+                foreach (var _child in FindAllChildren(child))
                     yield return _child;
         }
 
-        private IEnumerable<IComponent> _FindAllChildren()
+        private static IEnumerable<IElement> FindAllChildren(IElement element)
         {
-            yield return Owner;
+            yield return element;
 
-            foreach (var child in Owner.Children)
-            {
-                foreach (var _child in ((ComponentTree)child.ComponentTree)._FindAllChildren())
+            foreach (var child in element.Children)
+                foreach (var _child in FindAllChildren(child))
                     yield return _child;
-            }
         }
     }
 }

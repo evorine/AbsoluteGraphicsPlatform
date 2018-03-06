@@ -14,7 +14,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
         public void TestComponentTreeStructure()
         {
             var layoutEngine = new LayoutEngine();
-            var componentTree = new ComponentTree(null);
+            var componentTree = new ElementTree(null);
             var testData = new BasicTestData(componentTree);
 
             Assert.Contains(testData.ComponentRoot, componentTree.FindAllChildren());
@@ -43,7 +43,7 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
         public void TestLayoutCalculation_Basic()
         {
             var layoutEngine = new LayoutEngine();
-            var componentTree = new ComponentTree(null);
+            var componentTree = new ElementTree(null);
             var testData = new BasicTestData(componentTree);
 
             var result = layoutEngine.ProcessLayout(new AbsoluteSize(800, 600), componentTree);

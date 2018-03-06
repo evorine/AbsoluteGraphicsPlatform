@@ -65,7 +65,7 @@ namespace AbsoluteGraphicsPlatform
             foreach (var instanceChildTemplate in componentTemplate.Templates)
             {
                 var instanceChild = ProcessTemplate(instanceChildTemplate);
-                instanceChild.ContainerScope = instanceChildTemplate.ContainerScopeName;
+                //instanceChild.ContainerScope = instanceChildTemplate.ContainerScopeName;
                 component.Children.Add(instanceChild);
             }
 
@@ -92,8 +92,8 @@ namespace AbsoluteGraphicsPlatform
                 foreach (var childTemplate in componentTemplate.Templates)
                 {
                     var child = ProcessTemplate(childTemplate);
-                    child.ContainerScope = childTemplate.ContainerScopeName;
-                    component.ComponentTree.Add(child);
+                    //child.ContainerScope = childTemplate.ContainerScopeName;
+                    component.ElementTree.Children.Add(child);
 
                     // Root component won't have children as it is not part of another component model (aka tree)
                     if (component.Parent != null)

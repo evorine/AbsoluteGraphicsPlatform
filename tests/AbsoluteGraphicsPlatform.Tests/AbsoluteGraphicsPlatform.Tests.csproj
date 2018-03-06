@@ -13,7 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj" />
     <ProjectReference Include="..\..\src\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPML.Tests\AbsoluteGraphicsPlatform.AGPML.Tests.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Tests.Common\AbsoluteGraphicsPlatform.Tests.Common.csproj" />

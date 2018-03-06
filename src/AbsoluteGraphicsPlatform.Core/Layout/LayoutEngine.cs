@@ -27,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.Layout
             return pixel;
         }
 
-        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree)
+        public LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IElementTree componentTree)
         {
             //componentTree.Restructure();
             var context = new LayoutCalculationContext();
@@ -55,12 +55,12 @@ namespace AbsoluteGraphicsPlatform.Layout
                 throw new NotSupportedException("Siblings related lengths are not supported on paddings");
         }
 
-        private void processComponent(IComponent component, LayoutCalculationContext context, ref AbsolutePoint currentOffset)
+        private void processComponent(IElement element, LayoutCalculationContext context, ref AbsolutePoint currentOffset)
         {
-            if (component is ILayoutBox layoutComponent)
+            if (element is ILayoutBox layoutComponent)
             {
                 validateMeasures(layoutComponent);
-                var parentLayoutBox = context.GetLayoutBoxInformation(component.Parent);
+                var parentLayoutBox = context.GetLayoutBoxInformation(element.Parent);
 
                 var layoutBox = calculateRelativeLayoutBoxes(layoutComponent, parentLayoutBox.AbsolutePaddingBox.Size);
                 
@@ -80,17 +80,17 @@ namespace AbsoluteGraphicsPlatform.Layout
                 if (parentLayoutBox.LayoutDirection == LayoutDirection.Horizontal)
                     currentOffset.X += layoutBox.AbsoluteMarginBox.Size.Width;
 
-                context.SetLayoutBoxInformation(component, layoutBox);
+                context.SetLayoutBoxInformation(element, layoutBox);
             }
             else
             {
                 // If this is not an ILayoutBox (layoutable) component, set it's client from it's parent.
-                context.SetLayoutBoxInformation(component, context.GetLayoutBoxInformation(component.Parent));
+                context.SetLayoutBoxInformation(element, context.GetLayoutBoxInformation(element.Parent));
             }
 
             var childrenOffset = new AbsolutePoint();
             // Continue with the children
-            foreach (var child in component.Children)
+            foreach (var child in element.Children)
                 processComponent(child, context, ref childrenOffset);
         }
 

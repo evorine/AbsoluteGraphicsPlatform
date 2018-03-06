@@ -8,38 +8,41 @@ using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public class Component : IComponent
+    public class Component : Element, IComponent
     {
         public Component()
         {
-            Children = new ComponentCollection();
-            ComponentTree = new ComponentTree(this);
+            ElementTree = new ElementTree(this);
         }
 
-        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets metadata of the component type
+        /// </summary>
         public ComponentMetaInfo ComponentMetaInfo { get; internal set; }
-        public IComponent Parent { get; set; }
 
-
-
-        public string ContainerScope { get; set; }
-        public IComponentCollection Children { get; }
-
-        public IComponentTree ComponentTree { get; }
+        /// <summary>
+        /// Gets the own element tree of this component instance.
+        /// </summary>
+        public IElementTree ElementTree { get; }
 
         public virtual bool UseTemplate => false;
 
+
+        /// <summary>
+        /// Emits an event to it's parent.
+        /// </summary>
+        /// <param name="payload">The payload to send.</param>
+        public virtual void Emit(object payload)
+        {
+            Console.WriteLine("Emit: {0}", payload);
+        }
 
         protected virtual void PropertyChanged(PropertyInfo property, object value)
         {
             Console.WriteLine("PropertyChanged: {0} = {1}", property.Name, value);
         }
 
-
-        public virtual void Emit(object payload)
-        {
-            Console.WriteLine("Emit: {0}", payload);
-        }
 
         public override string ToString() => $"Component: '{ComponentMetaInfo.ComponentType.Name}'";
     }

@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPx.Common\AbsoluteGraphicsPlatform.AGPx.Common.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.AGPx.DSS\AbsoluteGraphicsPlatform.AGPx.DSS.csproj" />
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj" />

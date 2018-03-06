@@ -11,6 +11,6 @@ namespace AbsoluteGraphicsPlatform.Abstractions.Layout
 {
     public interface ILayoutEngine
     {
-        LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IComponentTree componentTree);
+        LayoutCalculationResult ProcessLayout(AbsoluteSize clientSize, IElementTree componentTree);
     }
 }

@@ -6,9 +6,10 @@ using System.Collections.Generic;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public interface IComponentTree : IComponentCollection
+    public interface IElementTree
     {
         IComponent Owner { get; }
-        IEnumerable<IComponent> FindAllChildren();
+        IElementCollection Children { get; }
+        IEnumerable<IElement> FindAllChildren();
     }
 }

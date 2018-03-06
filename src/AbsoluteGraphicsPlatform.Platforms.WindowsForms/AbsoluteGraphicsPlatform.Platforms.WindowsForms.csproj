@@ -58,9 +58,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Abstractions\AbsoluteGraphicsPlatform.Abstractions.csproj">
-      <Project>{4165034B-DBA3-4DB7-ACD5-5995D6EBBDC6}</Project>
-      <Name>AbsoluteGraphicsPlatform.Abstractions</Name>
+    <ProjectReference Include="..\AbsoluteGraphicsPlatform.Common\AbsoluteGraphicsPlatform.Common.csproj">
+      <Project>{0b2fba97-04bd-4d16-99e1-d5349b742dfe}</Project>
+      <Name>AbsoluteGraphicsPlatform.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbsoluteGraphicsPlatform.Core\AbsoluteGraphicsPlatform.Core.csproj">
       <Project>{3f408a39-3ad9-47b8-8ea3-4a158ab9149a}</Project>
