@@ -26,7 +26,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             this.agpxOptions = agpxOptions.Value;
         }
 
-        public IComponent ProcessTemplate(ComponentTemplate rootTemplate)
+        public IComponent ExecuteTemplate(ComponentTemplate rootTemplate)
         {
             var component = CreateComponent(rootTemplate);
             return component;
