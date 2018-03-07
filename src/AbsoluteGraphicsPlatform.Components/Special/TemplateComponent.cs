@@ -7,7 +7,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    [ComponentName("template")]
+    [ComponentName("template", false)]
     public class TemplateComponent : Component
     {
         [ComponentProperty]

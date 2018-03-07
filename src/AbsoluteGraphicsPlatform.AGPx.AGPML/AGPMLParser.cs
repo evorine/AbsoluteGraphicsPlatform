@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using AbsoluteGraphicsPlatform.Abstractions;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
+using System.Linq;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
@@ -30,28 +31,43 @@ namespace AbsoluteGraphicsPlatform.AGPx
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
 
             var xml = new XmlDocument();
-            using (var stream = sourceInfo.GetStream())
-                xml.Load(stream);
+            try
+            {
+                using (var stream = sourceInfo.GetStream())
+                    xml.Load(stream);
+            }
+            catch (XmlException ex)
+            {
+                throw new AGPxException(ex.Message);
+            }
 
             if (xml.DocumentElement.Name != componentTemplateTag)
                 throw new AGPxException($"All elements must be inserted into root element '{componentTemplateTag}'!");
+
+            var namespaces = ParseNamespaces(xml);
 
             var componentName = xml.DocumentElement.Attributes["Name"];
             if (componentName == null)
                 throw new AGPxException($"'{componentTemplateTag}' must have 'Name' attribute!");
             
-            var rootComponentType = componentTypeResolver.FindComponentType(componentName.Value);
+            var rootComponentType = componentTypeResolver.FindComponentType(componentName.Value, namespaces);
             var rootTemplate = new ComponentTemplate(null, componentName.Value, rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootTemplate.Templates.Add(ParseNode("default", node));
+                rootTemplate.Templates.Add(ParseNode("default", node, namespaces));
 
             return rootTemplate;
         }
 
-        private ComponentTemplate ParseNode(string containerScope, XmlNode node)
+        private string[] ParseNamespaces(XmlDocument xml)
         {
-            var componentType = componentTypeResolver.FindComponentType(node.Name);
+            var instructions = xml.ChildNodes.Cast<XmlNode>().Where(x => x is XmlProcessingInstruction).Cast<XmlProcessingInstruction>();
+            return instructions.Select(x => x.Data.Trim()).ToArray();
+        }
+
+        private ComponentTemplate ParseNode(string containerScope, XmlNode node, string[] namespaces)
+        {
+            var componentType = componentTypeResolver.FindComponentType(node.Name, namespaces);
             var template = new ComponentTemplate(containerScope, node.Name, componentType);
             ParsePropertiesSetters(template, node);
 
@@ -61,20 +77,19 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 {
                     foreach (XmlNode scopeChildNode in childNode.ChildNodes)
                     {
-                        var childTemplate = ParseNode(scopeName, scopeChildNode);
+                        var childTemplate = ParseNode(scopeName, scopeChildNode, namespaces);
                         template.Templates.Add(childTemplate);
                     }
                 }
                 else
                 {
-                    var childTemplate = ParseNode("default", childNode);
+                    var childTemplate = ParseNode("default", childNode, namespaces);
                     template.Templates.Add(childTemplate);
                 }
             }
 
             return template;
         }
-        
 
         private bool IsScopeTemplate(XmlNode node, out string scopeName)
         {

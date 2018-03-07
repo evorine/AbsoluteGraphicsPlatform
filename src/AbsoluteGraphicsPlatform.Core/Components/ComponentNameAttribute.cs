@@ -12,8 +12,16 @@ namespace AbsoluteGraphicsPlatform.Components
         public ComponentNameAttribute(string componentName)
         {
             ComponentName = componentName;
+            HasNamespace = true;
+        }
+
+        public ComponentNameAttribute(string componentName, bool hasNamespace)
+        {
+            ComponentName = componentName;
+            HasNamespace = hasNamespace;
         }
 
         public string ComponentName { get; }
+        public bool HasNamespace { get; }
     }
 }

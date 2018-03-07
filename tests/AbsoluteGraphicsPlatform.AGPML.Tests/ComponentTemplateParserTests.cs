@@ -51,9 +51,26 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 
 
         [Fact]
+        public void ComponentTemplate_ShouldNotFoundComponent()
+        {
+            var code = @"
+<component-template Name=""BasicComponent"">
+    <Foo>
+    </Foo>
+</component-template>
+";
+            Assert.Throws<AGPxException>(() =>
+            {
+                Common.ParseComponentTemplateCode(code);
+            });
+        }
+
+
+        [Fact]
         public void ComponentTemplate_ShouldParseSuccessfully()
         {
             var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""BasicComponent"">
     <Foo>
     </Foo>
@@ -67,6 +84,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ComponentTemplate_ShouldSetProperty()
         {
             var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""BasicComponent"">
     <Foo Length=""3px"">
     </Foo>
@@ -84,6 +102,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ComponentTemplate_ParsesTreeStructure()
         {
             var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""BasicComponent"">
     <Foo Name=""Comp-1"">
         <Foo Name=""Comp-1-1"">
@@ -111,6 +130,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ComponentTemplate_ParsesNamedScope()
         {
             var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""BasicComponent"">
     <Bar Name=""Comp-1"">
         <Foo Name=""Comp-1-default-1"" />
@@ -139,6 +159,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ComponentTemplate_ParsesPlaceholder()
         {
             var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""BasicComponent"">
     <Foo>
         <Foo Name=""Comp-1"">

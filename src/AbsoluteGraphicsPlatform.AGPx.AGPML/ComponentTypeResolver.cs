@@ -13,8 +13,10 @@ namespace AbsoluteGraphicsPlatform.AGPx
         Type componentType = typeof(Component);
         Dictionary<string, Type> componentTypes;
 
-        public Type FindComponentType(string name)
+        public Type FindComponentType(string name, string[] namespaces)
         {
+            if (namespaces == null) throw new ArgumentNullException(nameof(namespaces));
+
 #warning Fix here: Component assembly is not loaded when we first hit here.
             new BoxComponent(); // Fix this workaround
 
@@ -27,16 +29,21 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 componentTypes = types.ToDictionary(x => GetComponentName(x), x => x);
             }
 
-            if (componentTypes.ContainsKey(name))
-                return componentTypes[name];
-            else throw new AGPxException($"No component named '{name}' is found!");
+            foreach(var @namespace in namespaces)
+                if (componentTypes.ContainsKey($"{name}@{@namespace}"))
+                    return componentTypes[$"{name}@{@namespace}"];
+            if (componentTypes.ContainsKey($"{name}"))
+                return componentTypes[$"{name}"];
+
+            throw new AGPxException($"No component named '{name}' is found!");
         }
 
         public string GetComponentName(Type type)
         {
             var attribute = type.GetCustomAttributes(typeof(ComponentNameAttribute), false).FirstOrDefault() as ComponentNameAttribute;
-            if (attribute == null) return type.Name;
-            else return attribute.ComponentName;
+            if (attribute == null) return $"{type.Name}@{type.Namespace}";
+            else if (attribute.HasNamespace) return $"{attribute.ComponentName}@{type.Namespace}";
+            else return $"{attribute.ComponentName}";
         }
 
         public Type GetPropertyType(Type typeComponent, string propertyName)

@@ -28,27 +28,20 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
         public IComponent ProcessTemplate(ComponentTemplate rootTemplate)
         {
-            var component = CreateRootComponent(rootTemplate);
+            var component = CreateComponent(rootTemplate);
             return component;
         }
 
-        private IComponent CreateRootComponent(ComponentTemplate componentTemplate)
+        private IComponent CreateComponent(ComponentTemplate componentTemplate)
         {
             var component = componentFactory.CreateComponent(componentTemplate.ComponentType);
-            /*
+            
             // Iterate virtual template components
-            foreach (var templateComponentTemplate in componentTemplate.Templates)
+            foreach (var childComponentTemplate in componentTemplate.Templates)
             {
-                // Create template components and assign scope name
-                var templateComponent = (TemplateComponent)componentFactory.CreateComponent(typeof(TemplateComponent));
-                templateComponent.Scope = templateComponentTemplate.ScopeName;
-                component.Components.Append(templateComponent);
-
-                // Iterate and create actual child components. Append them to the current virtual template
-                foreach(var childComponentTemplate in templateComponentTemplate)
-                    templateComponent.Components.Append(CreateRootComponent(childComponentTemplate));
+                component.Children.Add(CreateComponent(childComponentTemplate));
             }
-            */
+
             styleSetter.ApplyStyle(component);
             foreach(var property in componentTemplate.PropertySetters)
                 styleSetter.ApplyProperty(component, property);
