@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform
@@ -21,17 +22,30 @@ namespace AbsoluteGraphicsPlatform
 
         public int Count => templates.Count;
 
-        public void Add(ComponentTemplate template) => templates.Add(template.ComponentType, template);
+        public void Add(ComponentTemplate template)
+        {
+            if (template.ComponentType.IsAssignableFrom(typeof(ITemplatelessComponent)))
+                throw new ArgumentException($"A component of '{nameof(ITemplatelessComponent)}' can not have template!");
+            templates.Add(template.ComponentType, template);
+        }
 
         public ComponentTemplate GetTemplateByType(Type componentType)
         {
-            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
-            if (templates.TryGetValue(componentType, out ComponentTemplate template)) return template;
+            if (TryGetTemplateByType(componentType, out ComponentTemplate template))
+                return template;
             else throw new TemplateNotFoundException(componentType);
         }
 
         public bool TryGetTemplateByType(Type componentType, out ComponentTemplate componentTemplate)
         {
+            if (componentType == null) throw new ArgumentNullException(nameof(componentType));
+
+            if (componentType.IsAssignableFrom(typeof(ITemplatelessComponent)))
+            {
+                componentTemplate = ComponentTemplate.None;
+                return true;
+            }
+
             if (componentType != null && templates.TryGetValue(componentType, out ComponentTemplate template))
             {
                 componentTemplate = template;

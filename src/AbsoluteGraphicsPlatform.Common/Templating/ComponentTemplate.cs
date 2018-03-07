@@ -9,6 +9,8 @@ namespace AbsoluteGraphicsPlatform.Templating
 {
     public class ComponentTemplate
     {
+        public static ComponentTemplate None { get; } = new ComponentTemplate(null, null, null);
+
         public ComponentTemplate(string containerScopeName, string componentName, Type componentType)
         {
             ContainerScopeName = containerScopeName;
@@ -28,6 +30,6 @@ namespace AbsoluteGraphicsPlatform.Templating
 
         public ComponentTemplateCollection Templates { get; }
 
-        public override string ToString() => $"ComponentTemplate: '{ComponentType.Name}'";
+        public override string ToString() => this == None ? "None" : $"ComponentTemplate: '{ComponentType.Name}'";
     }
 }
