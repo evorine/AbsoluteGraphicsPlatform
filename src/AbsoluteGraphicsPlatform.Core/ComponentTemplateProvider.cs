@@ -40,7 +40,7 @@ namespace AbsoluteGraphicsPlatform
         {
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
 
-            if (componentType.IsAssignableFrom(typeof(ITemplatelessComponent)))
+            if (typeof(ITemplatelessComponent).IsAssignableFrom(componentType))
             {
                 componentTemplate = ComponentTemplate.None;
                 return true;

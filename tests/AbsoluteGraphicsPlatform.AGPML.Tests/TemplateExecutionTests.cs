@@ -19,9 +19,9 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
 <?using AbsoluteGraphicsPlatform.Components?>
 <?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""Foo"">
-    <Component>
+    <primitive>
         <component-placeholder />
-    </Component>
+    </primitive>
 </component-template>
 ";
 

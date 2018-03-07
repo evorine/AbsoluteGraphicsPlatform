@@ -8,7 +8,7 @@ using System.Text;
 namespace AbsoluteGraphicsPlatform.Components
 {
     [ComponentName("component-placeholder", false)]
-    public class ComponentPlaceholderComponent : Component
+    public class ComponentPlaceholderComponent : Component, ITemplatelessComponent
     {
 
     }

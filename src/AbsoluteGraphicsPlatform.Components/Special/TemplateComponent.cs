@@ -8,7 +8,7 @@ using System.Text;
 namespace AbsoluteGraphicsPlatform.Components
 {
     [ComponentName("template", false)]
-    public class TemplateComponent : Component
+    public class TemplateComponent : Component, ITemplatelessComponent
     {
         [ComponentProperty]
         public string Scope { get; set; }
