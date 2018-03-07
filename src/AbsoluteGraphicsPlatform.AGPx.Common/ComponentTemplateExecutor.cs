@@ -11,14 +11,14 @@ using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class ComponentTemplateCompiler
+    public class ComponentTemplateExecutor
     {
         readonly IComponentFactory componentFactory;
         readonly StyleSetter styleSetter;
         readonly PropertySetter propertySetter;
         readonly AgpxOptions agpxOptions;
 
-        public ComponentTemplateCompiler(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter, IOptions<AgpxOptions> agpxOptions)
+        public ComponentTemplateExecutor(IComponentFactory componentFactory, IStyleSetter styleSetter, PropertySetter propertySetter, IOptions<AgpxOptions> agpxOptions)
         {
             this.componentFactory = componentFactory;
             this.styleSetter = (StyleSetter)styleSetter;

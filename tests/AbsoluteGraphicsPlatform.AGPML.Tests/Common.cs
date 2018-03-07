@@ -31,14 +31,14 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             return template;
         }
 
-        public static ComponentTemplateCompiler MockComponentTemplateCompiler()
+        public static ComponentTemplateExecutor MockComponentTemplateExecutor()
         {
             var agpxOptions = OptionsMocks.WrapOptions(OptionsMocks.CreateAgpxOptions());
             var propertySetter = new PropertySetter(OptionsMocks.CreateApplicationOptions());
             var expressionExecutor = new ExpressionExecutor();
             var dssStyleSetter = new DssStyleSetter(agpxOptions, propertySetter, expressionExecutor);
 
-            return new ComponentTemplateCompiler(ComponentFactory, dssStyleSetter, propertySetter, agpxOptions);
+            return new ComponentTemplateExecutor(ComponentFactory, dssStyleSetter, propertySetter, agpxOptions);
         }
     }
 }
