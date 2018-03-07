@@ -42,8 +42,8 @@ namespace AbsoluteGraphicsPlatform
         {
             if (componentType == null) throw new ArgumentNullException(nameof(componentType));
             var template = componentTemplateProvider.GetTemplateByType(componentType);
-
-            var component = ProcessTemplate(template);
+            
+            var component = template == ComponentTemplate.None ? InitializeComponent(componentType) : ProcessTemplate(template);
 #warning Fix here!
             // Fix here. We shouldn't populate Children for root component.
             component.Children.Clear();
