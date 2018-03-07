@@ -16,6 +16,8 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ProcessBasicTemplate()
         {
             var fooTemplateCode = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""Foo"">
     <Component>
         <component-placeholder />
@@ -40,6 +42,8 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
         public void ProcessTemplateWithProperties()
         {
             var fooTemplateCode = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""Foo"">
     <Component Name=""container"">
         <component-placeholder />
