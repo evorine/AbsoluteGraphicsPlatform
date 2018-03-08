@@ -10,7 +10,7 @@ using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.AGPML.Tests
 {
-    public class TemplateExecutionTests
+    public class ComponentTemplateExecutionTests
     {
         [Fact]
         public void ProcessBasicTemplate()
