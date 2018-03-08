@@ -26,7 +26,7 @@ namespace AbsoluteGraphicsPlatform.Components
             var property = component.GetType().GetProperty(propertyName);
             if (property == null) return false;
 
-            var result = findBinderResult(component, property, new IPropertyValue[] { value });
+            var result = FindBinderResult(component, property, new IPropertyValue[] { value });
             if (result.IsSuccess)
             {
                 property.SetValue(component, result.Value);
@@ -39,7 +39,7 @@ namespace AbsoluteGraphicsPlatform.Components
             var property = component.GetType().GetProperty(propertyName);
             if (property == null) return false;
 
-            var result = findBinderResult(component, property, values);
+            var result = FindBinderResult(component, property, values);
             if (result.IsSuccess)
             {
                 property.SetValue(component, result.Value);
@@ -48,7 +48,7 @@ namespace AbsoluteGraphicsPlatform.Components
             return false;
         }
 
-        private StyleValueProviderResult findBinderResult(IComponent component, PropertyInfo property, IPropertyValue[] values)
+        private StyleValueProviderResult FindBinderResult(IComponent component, PropertyInfo property, IPropertyValue[] values)
         {
             foreach (var provider in applicationOptions.ValueProviders)
             {

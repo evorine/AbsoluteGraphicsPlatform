@@ -6,7 +6,7 @@ using System;
 namespace AbsoluteGraphicsPlatform.Components
 {
     [ComponentName("Window")]
-    public class WindowComponent : VisualElement
+    public class WindowComponent : VisualComponent
     {
         public override bool UseTemplate => true;
     }

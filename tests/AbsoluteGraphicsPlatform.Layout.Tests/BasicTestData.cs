@@ -27,36 +27,36 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
          * </component>
          * */
         
-        public VisualElement ComponentRoot { get; }
-        public VisualElement ComponentTop { get; }
-        public VisualElement ComponentBottom { get; }
-        public VisualElement ComponentLeft { get; }
-        public VisualElement ComponentLeft1 { get; }
-        public VisualElement ComponentLeft2 { get; }
-        public VisualElement ComponentRight { get; }
-        public VisualElement ComponentRight1 { get; }
-        public VisualElement ComponentRight2 { get; }
+        public VisualComponent ComponentRoot { get; }
+        public VisualComponent ComponentTop { get; }
+        public VisualComponent ComponentBottom { get; }
+        public VisualComponent ComponentLeft { get; }
+        public VisualComponent ComponentLeft1 { get; }
+        public VisualComponent ComponentLeft2 { get; }
+        public VisualComponent ComponentRight { get; }
+        public VisualComponent ComponentRight1 { get; }
+        public VisualComponent ComponentRight2 { get; }
 
         public BasicTestData(IElementTree componentTree)
         {
             var componentTemplateCollection = new ComponentTemplateProvider();
             var componentFactory = new ComponentFactory(componentTemplateCollection);
 
-            ComponentRoot = componentFactory.CreateComponent<VisualElement>();
+            ComponentRoot = componentFactory.CreateComponent<VisualComponent>();
             ComponentRoot.Name = "Root";
             ComponentRoot.Width = CompositeLength.Fill;
             ComponentRoot.Height = CompositeLength.Fill;
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             //componentTree.RootComponent = ComponentRoot;
 
-            ComponentTop = componentFactory.CreateComponent<VisualElement>();
+            ComponentTop = componentFactory.CreateComponent<VisualComponent>();
             ComponentTop.Name = "Top";
             ComponentTop.Width = CompositeLength.Fill;
             ComponentTop.Height = new CompositeLength(50, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRoot.Children.Add(ComponentTop);
 
-            ComponentBottom = componentFactory.CreateComponent<VisualElement>();
+            ComponentBottom = componentFactory.CreateComponent<VisualComponent>();
             ComponentBottom.Name = "Bottom";
             ComponentBottom.Width = CompositeLength.Fill;
             ComponentBottom.Height = CompositeLength.Fill;
@@ -64,21 +64,21 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
             ComponentRoot.Children.Add(ComponentBottom);
 
             // LEFT
-            ComponentLeft = componentFactory.CreateComponent<VisualElement>();
+            ComponentLeft = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft.Name = "Left";
             ComponentLeft.Width = new CompositeLength(1, UnitType.Ratio);
             ComponentLeft.Height = CompositeLength.Shrink;
             ComponentLeft.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Children.Add(ComponentLeft);
 
-            ComponentLeft1 = componentFactory.CreateComponent<VisualElement>();
+            ComponentLeft1 = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft1.Name = "Left1";
             ComponentLeft1.Width = CompositeLength.Fill;
             ComponentLeft1.Height = new CompositeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentLeft.Children.Add(ComponentLeft1);
 
-            ComponentLeft2 = componentFactory.CreateComponent<VisualElement>();
+            ComponentLeft2 = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft2.Name = "Left2";
             ComponentLeft2.Width = CompositeLength.Fill;
             ComponentLeft2.Height = new CompositeLength(40, UnitType.Pixel);
@@ -86,21 +86,21 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
             ComponentLeft.Children.Add(ComponentLeft2);
 
             // RIGHT
-            ComponentRight = componentFactory.CreateComponent<VisualElement>();
+            ComponentRight = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight.Name = "Right";
             ComponentRight.Width = new CompositeLength(3, UnitType.Ratio);
             ComponentRight.Height = CompositeLength.Fill;
             ComponentRight.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Children.Add(ComponentRight);
 
-            ComponentRight1 = componentFactory.CreateComponent<VisualElement>();
+            ComponentRight1 = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight1.Name = "Right1";
             ComponentRight1.Width = CompositeLength.Fill;
             ComponentRight1.Height = new CompositeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Children.Add(ComponentRight1);
 
-            ComponentRight2 = componentFactory.CreateComponent<VisualElement>();
+            ComponentRight2 = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight2.Name = "Right2";
             ComponentRight2.Width = CompositeLength.Fill;
             ComponentRight2.Height = new CompositeLength(80, UnitType.Pixel);

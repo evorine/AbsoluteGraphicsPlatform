@@ -6,7 +6,7 @@ using System;
 namespace AbsoluteGraphicsPlatform.Components
 {
     [ComponentName("Box")]
-    public class BoxComponent : VisualElement
+    public class BoxComponent : VisualComponent
     {
         public override bool UseTemplate => true;
     }

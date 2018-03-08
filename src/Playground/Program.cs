@@ -102,15 +102,15 @@ namespace Playground
              * </component>
              * */
             
-            public VisualElement ComponentRoot { get; }
-            public VisualElement ComponentTop { get; }
-            public VisualElement ComponentBottom { get; }
-            public VisualElement ComponentLeft { get; }
-            public VisualElement ComponentLeft1 { get; }
-            public VisualElement ComponentLeft2 { get; }
-            public VisualElement ComponentRight { get; }
-            public VisualElement ComponentRight1 { get; }
-            public VisualElement ComponentRight2 { get; }
+            public VisualComponent ComponentRoot { get; }
+            public VisualComponent ComponentTop { get; }
+            public VisualComponent ComponentBottom { get; }
+            public VisualComponent ComponentLeft { get; }
+            public VisualComponent ComponentLeft1 { get; }
+            public VisualComponent ComponentLeft2 { get; }
+            public VisualComponent ComponentRight { get; }
+            public VisualComponent ComponentRight1 { get; }
+            public VisualComponent ComponentRight2 { get; }
 
             public BasicTestData(IElementTree componentTree)
             {

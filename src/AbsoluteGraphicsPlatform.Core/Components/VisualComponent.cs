@@ -11,9 +11,9 @@ using AbsoluteGraphicsPlatform.Styling;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public class VisualElement : Component, IVisualComponent, ILayoutBox
+    public class VisualComponent : Component, IVisualComponent, ILayoutBox
     {
-        public VisualElement()
+        public VisualComponent()
         {
         }
 
@@ -39,7 +39,7 @@ namespace AbsoluteGraphicsPlatform.Components
         public virtual void Render(IRenderContext renderContext)
         {
             // Rectangle
-            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, new SolidColorBrush(randomColorTransparent()));
+            renderContext.FrameRenderer.DrawRectangle(renderContext.LayoutInfo.AbsoluteBox, new SolidColorBrush(RandomColorTransparent()));
 
 
             // Borders
@@ -48,7 +48,7 @@ namespace AbsoluteGraphicsPlatform.Components
             right.Thickness = 3;
             bottom.Thickness = 3;
             left.Thickness = 3;
-            var borderBrush = new SolidColorBrush(randomColorTransparent());
+            var borderBrush = new SolidColorBrush(RandomColorTransparent());
             renderContext.FrameRenderer.DrawLine(top, borderBrush);
             renderContext.FrameRenderer.DrawLine(right, borderBrush);
             renderContext.FrameRenderer.DrawLine(bottom, borderBrush);
@@ -57,16 +57,16 @@ namespace AbsoluteGraphicsPlatform.Components
 
             // Text
             var typeface = new Typeface("Roboto", 12, false, FontWeight.Normal);
-            renderContext.FrameRenderer.DrawMultilineText(renderContext.LayoutInfo.AbsoluteBox, typeface, string.Join(" ", System.Linq.Enumerable.Repeat(Name, 10)), new SolidColorBrush(randomColor()));
+            renderContext.FrameRenderer.DrawMultilineText(renderContext.LayoutInfo.AbsoluteBox, typeface, string.Join(" ", System.Linq.Enumerable.Repeat(Name, 10)), new SolidColorBrush(RandomColor()));
         }
 
-        private Color randomColorTransparent()
+        private Color RandomColorTransparent()
         {
             var bytes = new byte[3];
             DUMMY.rnd.NextBytes(bytes);
             return new Color(bytes[0], bytes[1], bytes[2], 150);
         }
-        private Color randomColor()
+        private Color RandomColor()
         {
             var bytes = new byte[3];
             DUMMY.rnd.NextBytes(bytes);

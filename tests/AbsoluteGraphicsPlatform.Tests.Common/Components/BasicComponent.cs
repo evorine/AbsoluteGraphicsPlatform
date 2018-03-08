@@ -9,7 +9,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common.Components
 {
-    public class BasicComponent : VisualElement
+    public class BasicComponent : VisualComponent
     {
         [ComponentProperty]
         public CompositeLength Length { get; set; }

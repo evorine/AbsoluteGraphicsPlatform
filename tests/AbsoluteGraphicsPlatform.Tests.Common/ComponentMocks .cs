@@ -8,11 +8,11 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
 {
     public static class ComponentMocks
     {
-        public static VisualElement CreateSimpleVisualElement()
+        public static VisualComponent CreateSimpleVisualElement()
         {
             var componentTemplateProvider = new ComponentTemplateProvider();
             var componentFactory = new ComponentFactory(componentTemplateProvider);
-            return componentFactory.CreateComponent<VisualElement>();
+            return componentFactory.CreateComponent<VisualComponent>();
         }
 
         public static TComponent CreateComponent<TComponent>() where TComponent : class, IComponent
