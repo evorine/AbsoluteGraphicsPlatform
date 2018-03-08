@@ -60,6 +60,8 @@ namespace Playground
         }
 
         const string boxTemplate = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""Box"">
     <Component>
         <component-placeholder />
@@ -67,6 +69,8 @@ namespace Playground
 </component-template>";
 
         const string layoutTemplate = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
 <component-template Name=""Window"">
     <Box Width=""fill"" Height=""fill"" LayoutDirection=""Vertical"">
         <Box Width=""fill"" Height=""50px"" />
