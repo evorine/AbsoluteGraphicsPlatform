@@ -43,7 +43,7 @@ namespace AbsoluteGraphicsPlatform.ValueProviders
                 case "px": return UnitType.Pixel;
                 case "x": return UnitType.Ratio;
                 case "u": return UnitType.Unit;
-                case "": return UnitType.Unitless;
+                case "": return UnitType.Scalar;
                 default: throw new NotSupportedException("Unsupported unit type!");
             }
         }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Licensed under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,20 +16,20 @@ namespace AbsoluteGraphicsPlatform.Metrics
         static Measure zero = new Measure(0, 0, 0, 0, 0);
         static Measure nan = new Measure(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
 
-        public Measure(float unitlessValue)
+        public Measure(float scalarValue)
         {
             values = new float[5];
-            values[(int)UnitType.Unitless] = unitlessValue;
+            values[(int)UnitType.Scalar] = scalarValue;
         }
         public Measure(float value, UnitType unit)
         {
             values = new float[5];
             values[(int)unit] = value;
         }
-        public Measure(float unitlessValue, float percentageValue, float pixelValue, float ratioValue, float pointValue)
+        public Measure(float scalarValue, float percentageValue, float pixelValue, float ratioValue, float pointValue)
         {
             values = new float[5];
-            values[(int)UnitType.Unitless] = unitlessValue;
+            values[(int)UnitType.Scalar] = scalarValue;
             values[(int)UnitType.Percentage] = percentageValue;
             values[(int)UnitType.Pixel] = pixelValue;
             values[(int)UnitType.Ratio] = ratioValue;
@@ -44,7 +47,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         }
 
         
-        public bool IsUnitless => this[UnitType.Percentage] == 0 && this[UnitType.Pixel] == 0 && this[UnitType.Ratio] == 0 && this[UnitType.Unit] == 0;
+        public bool IsScalar => this[UnitType.Percentage] == 0 && this[UnitType.Pixel] == 0 && this[UnitType.Ratio] == 0 && this[UnitType.Unit] == 0;
 
         public override string ToString()
         {
@@ -57,7 +60,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
                 {
                     switch ((UnitType)i)
                     {
-                        case UnitType.Unitless: return $"{x}";
+                        case UnitType.Scalar: return $"{x}";
                         case UnitType.Percentage: return $"{x}%";
                         case UnitType.Pixel: return $"{x}px";
                         case UnitType.Ratio: return $"{x}x";
@@ -106,13 +109,13 @@ namespace AbsoluteGraphicsPlatform.Metrics
 
         public static explicit operator int(Measure value)
         {
-            if (!value.IsUnitless) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(int).Name}'!");
-            return (int)value[UnitType.Unitless];
+            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(int).Name}'!");
+            return (int)value[UnitType.Scalar];
         }
         public static explicit operator float(Measure value)
         {
-            if (!value.IsUnitless) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(float).Name}'!");
-            return value[UnitType.Unitless];
+            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(float).Name}'!");
+            return value[UnitType.Scalar];
         }
         #endregion
 
@@ -120,7 +123,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator *(float left, Measure right)
         {
             return new Measure(
-                left * right[UnitType.Unitless],
+                left * right[UnitType.Scalar],
                 left * right[UnitType.Percentage],
                 left * right[UnitType.Pixel],
                 left * right[UnitType.Ratio],
@@ -132,7 +135,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator /(float left, Measure right)
         {
             return new Measure(
-                left / right[UnitType.Unitless],
+                left / right[UnitType.Scalar],
                 left / right[UnitType.Percentage],
                 left / right[UnitType.Pixel],
                 left / right[UnitType.Ratio],
@@ -142,7 +145,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator /(Measure left, float right)
         {
             return new Measure(
-                left[UnitType.Unitless] / right,
+                left[UnitType.Scalar] / right,
                 left[UnitType.Percentage] / right,
                 left[UnitType.Pixel] / right,
                 left[UnitType.Ratio] / right,
@@ -154,7 +157,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator %(Measure left, float right)
         {
             return new Measure(
-                left[UnitType.Unitless] % right,
+                left[UnitType.Scalar] % right,
                 left[UnitType.Percentage] % right,
                 left[UnitType.Pixel] % right,
                 left[UnitType.Ratio] % right,
@@ -165,7 +168,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator +(Measure left, Measure right)
         {
             return new Measure(
-                left[UnitType.Unitless] + right[UnitType.Unitless],
+                left[UnitType.Scalar] + right[UnitType.Scalar],
                 left[UnitType.Percentage] + right[UnitType.Percentage],
                 left[UnitType.Pixel] + right[UnitType.Pixel],
                 left[UnitType.Ratio] + right[UnitType.Ratio],
@@ -175,7 +178,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static Measure operator -(Measure left, Measure right)
         {
             return new Measure(
-                left[UnitType.Unitless] - right[UnitType.Unitless],
+                left[UnitType.Scalar] - right[UnitType.Scalar],
                 left[UnitType.Percentage] - right[UnitType.Percentage],
                 left[UnitType.Pixel] - right[UnitType.Pixel],
                 left[UnitType.Ratio] - right[UnitType.Ratio],
@@ -196,7 +199,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public bool Equals(Measure other)
         {
             return
-                values[(int)UnitType.Unitless] == other.values[(int)UnitType.Unitless] &&
+                values[(int)UnitType.Scalar] == other.values[(int)UnitType.Scalar] &&
                 values[(int)UnitType.Percentage] == other.values[(int)UnitType.Percentage] &&
                 values[(int)UnitType.Pixel] == other.values[(int)UnitType.Pixel] &&
                 values[(int)UnitType.Ratio] == other.values[(int)UnitType.Ratio] &&
@@ -210,7 +213,7 @@ namespace AbsoluteGraphicsPlatform.Metrics
             {
                 return
                     29 *
-                    19 * values[(int)UnitType.Unitless].GetHashCode() *
+                    19 * values[(int)UnitType.Scalar].GetHashCode() *
                     19 * values[(int)UnitType.Percentage].GetHashCode() *
                     19 * values[(int)UnitType.Pixel].GetHashCode() *
                     19 * values[(int)UnitType.Ratio].GetHashCode() *
