@@ -115,12 +115,12 @@ namespace AbsoluteGraphicsPlatform.Metrics
 
         public static explicit operator int(Measure value)
         {
-            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(int).Name}'!");
+            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(int).Name}'. Only scalar values can be casted!");
             return (int)value[UnitType.Scalar];
         }
         public static explicit operator float(Measure value)
         {
-            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(float).Name}'!");
+            if (!value.IsScalar) throw new Exception($"Can't implicitly cast '{typeof(Measure).Name}' to '{typeof(float).Name}'. Only scalar values can be casted!");
             return value[UnitType.Scalar];
         }
         #endregion
