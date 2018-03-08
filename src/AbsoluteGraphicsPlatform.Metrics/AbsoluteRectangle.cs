@@ -10,9 +10,7 @@ using System.Diagnostics.Contracts;
 namespace AbsoluteGraphicsPlatform.Metrics
 {
     /// <summary>
-    ///    <para>
-    ///       Stores the location and size of a rectangular region.
-    ///    </para>
+    /// Stores the location and size of a rectangular region.
     /// </summary>
     [Serializable]
     public struct AbsoluteRectangle : IEquatable<AbsoluteRectangle>

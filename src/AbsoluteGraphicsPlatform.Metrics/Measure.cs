@@ -8,6 +8,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Metrics
 {
+    [Serializable]
     public struct Measure : IEquatable<Measure>
     {
         readonly float[] values;

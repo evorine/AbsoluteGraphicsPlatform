@@ -8,14 +8,8 @@ using System;
 
 namespace AbsoluteGraphicsPlatform.Metrics
 {
-    /**
-     * Represents a dimension in 2D coordinate space
-     */
     /// <summary>
-    ///    <para>
-    ///       Represents the size of a rectangular region
-    ///       with an ordered pair of width and height.
-    ///    </para>
+    /// Represents the size of a rectangular region with an ordered pair of width and height.
     /// </summary>
     [Serializable]
     public struct AbsoluteSize : IEquatable<AbsoluteSize>

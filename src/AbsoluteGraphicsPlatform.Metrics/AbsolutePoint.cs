@@ -9,8 +9,7 @@ using System;
 namespace AbsoluteGraphicsPlatform.Metrics
 {
     /// <summary>
-    ///    Represents an ordered pair of x and y coordinates that
-    ///    define a point in a two-dimensional plane.
+    /// Represents an ordered pair of x and y coordinates that define a point in a two-dimensional plane.
     /// </summary>
     [Serializable]
     public struct AbsolutePoint : IEquatable<AbsolutePoint>
