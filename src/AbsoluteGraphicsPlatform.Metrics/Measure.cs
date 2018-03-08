@@ -75,20 +75,26 @@ namespace AbsoluteGraphicsPlatform.Metrics
         public static bool IsInfinity(Measure value)
         {
             return
-                float.IsPositiveInfinity(value.values[0]) &&
-                float.IsPositiveInfinity(value.values[1]) &&
-                float.IsPositiveInfinity(value.values[2]) &&
-                float.IsPositiveInfinity(value.values[3]) &&
-                float.IsPositiveInfinity(value.values[4]);
+                !IsNaN(value) &&
+                float.IsPositiveInfinity(value.values[0]) ||
+                float.IsPositiveInfinity(value.values[1]) ||
+                float.IsPositiveInfinity(value.values[2]) ||
+                float.IsPositiveInfinity(value.values[3]) ||
+                float.IsPositiveInfinity(value.values[4]) ||
+                float.IsNegativeInfinity(value.values[0]) ||
+                float.IsNegativeInfinity(value.values[1]) ||
+                float.IsNegativeInfinity(value.values[2]) ||
+                float.IsNegativeInfinity(value.values[3]) ||
+                float.IsNegativeInfinity(value.values[4]);
         }
 
         public static bool IsNaN(Measure value)
         {
             return
-                float.IsNaN(value.values[0]) &&
-                float.IsNaN(value.values[1]) &&
-                float.IsNaN(value.values[2]) &&
-                float.IsNaN(value.values[3]) &&
+                float.IsNaN(value.values[0]) ||
+                float.IsNaN(value.values[1]) ||
+                float.IsNaN(value.values[2]) ||
+                float.IsNaN(value.values[3]) ||
                 float.IsNaN(value.values[4]);
         }
 
