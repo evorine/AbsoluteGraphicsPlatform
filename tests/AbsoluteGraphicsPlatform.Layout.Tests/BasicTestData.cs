@@ -44,66 +44,66 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
 
             ComponentRoot = componentFactory.CreateComponent<VisualComponent>();
             ComponentRoot.Name = "Root";
-            ComponentRoot.Width = CompositeLength.Fill;
-            ComponentRoot.Height = CompositeLength.Fill;
+            ComponentRoot.Width = RelativeLength.Infinity;
+            ComponentRoot.Height = RelativeLength.Infinity;
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             //componentTree.RootComponent = ComponentRoot;
 
             ComponentTop = componentFactory.CreateComponent<VisualComponent>();
             ComponentTop.Name = "Top";
-            ComponentTop.Width = CompositeLength.Fill;
-            ComponentTop.Height = new CompositeLength(50, UnitType.Pixel);
+            ComponentTop.Width = RelativeLength.Infinity;
+            ComponentTop.Height = new RelativeLength(50, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRoot.Children.Add(ComponentTop);
 
             ComponentBottom = componentFactory.CreateComponent<VisualComponent>();
             ComponentBottom.Name = "Bottom";
-            ComponentBottom.Width = CompositeLength.Fill;
-            ComponentBottom.Height = CompositeLength.Fill;
+            ComponentBottom.Width = RelativeLength.Infinity;
+            ComponentBottom.Height = RelativeLength.Infinity;
             ComponentBottom.LayoutDirection = LayoutDirection.Horizontal;
             ComponentRoot.Children.Add(ComponentBottom);
 
             // LEFT
             ComponentLeft = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft.Name = "Left";
-            ComponentLeft.Width = new CompositeLength(1, UnitType.Ratio);
-            ComponentLeft.Height = CompositeLength.Shrink;
+            ComponentLeft.Width = new RelativeLength(1, UnitType.Ratio);
+            ComponentLeft.Height = RelativeLength.NaN;
             ComponentLeft.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Children.Add(ComponentLeft);
 
             ComponentLeft1 = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft1.Name = "Left1";
-            ComponentLeft1.Width = CompositeLength.Fill;
-            ComponentLeft1.Height = new CompositeLength(40, UnitType.Pixel);
+            ComponentLeft1.Width = RelativeLength.Infinity;
+            ComponentLeft1.Height = new RelativeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentLeft.Children.Add(ComponentLeft1);
 
             ComponentLeft2 = componentFactory.CreateComponent<VisualComponent>();
             ComponentLeft2.Name = "Left2";
-            ComponentLeft2.Width = CompositeLength.Fill;
-            ComponentLeft2.Height = new CompositeLength(40, UnitType.Pixel);
+            ComponentLeft2.Width = RelativeLength.Infinity;
+            ComponentLeft2.Height = new RelativeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentLeft.Children.Add(ComponentLeft2);
 
             // RIGHT
             ComponentRight = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight.Name = "Right";
-            ComponentRight.Width = new CompositeLength(3, UnitType.Ratio);
-            ComponentRight.Height = CompositeLength.Fill;
+            ComponentRight.Width = new RelativeLength(3, UnitType.Ratio);
+            ComponentRight.Height = RelativeLength.Infinity;
             ComponentRight.LayoutDirection = LayoutDirection.Vertical;
             ComponentBottom.Children.Add(ComponentRight);
 
             ComponentRight1 = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight1.Name = "Right1";
-            ComponentRight1.Width = CompositeLength.Fill;
-            ComponentRight1.Height = new CompositeLength(40, UnitType.Pixel);
+            ComponentRight1.Width = RelativeLength.Infinity;
+            ComponentRight1.Height = new RelativeLength(40, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Children.Add(ComponentRight1);
 
             ComponentRight2 = componentFactory.CreateComponent<VisualComponent>();
             ComponentRight2.Name = "Right2";
-            ComponentRight2.Width = CompositeLength.Fill;
-            ComponentRight2.Height = new CompositeLength(80, UnitType.Pixel);
+            ComponentRight2.Width = RelativeLength.Infinity;
+            ComponentRight2.Height = new RelativeLength(80, UnitType.Pixel);
             ComponentRoot.LayoutDirection = LayoutDirection.Vertical;
             ComponentRight.Children.Add(ComponentRight2);
 

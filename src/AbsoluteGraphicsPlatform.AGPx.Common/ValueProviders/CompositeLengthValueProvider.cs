@@ -13,29 +13,29 @@ namespace AbsoluteGraphicsPlatform.ValueProviders
     {
         public StyleValueProviderResult GetValue(StyleValueProviderContext context)
         {
-            if (context.Property.PropertyType == typeof(CompositeLength))
+            if (context.Property.PropertyType == typeof(RelativeLength))
             {
                 if (context.Values.Length == 1)
                 {
                     if (context.Values[0] is LengthPropertyValue propertyValue)
-                        return StyleValueProviderResult.Success(toCompositeLength(propertyValue));
+                        return StyleValueProviderResult.Success(ToRelativeLength(propertyValue));
                     if (context.Values[0] is StringPropertyValue stringPropertyValue)
                     {
-                        if (stringPropertyValue.Value == "fill") return StyleValueProviderResult.Success(CompositeLength.Fill);
-                        if (stringPropertyValue.Value == "shrink") return StyleValueProviderResult.Success(CompositeLength.Shrink);
+                        if (stringPropertyValue.Value == "fill") return StyleValueProviderResult.Success(RelativeLength.Infinity);
+                        if (stringPropertyValue.Value == "shrink") return StyleValueProviderResult.Success(RelativeLength.NaN);
                     }
                 }
             }
             return StyleValueProviderResult.Fail;
         }
 
-        private static CompositeLength toCompositeLength(LengthPropertyValue value)
+        private static RelativeLength ToRelativeLength(LengthPropertyValue value)
         {
-            var args = value.Units.Select(x => (value[x], toUnitType(x))).ToArray();
-            return new CompositeLength(args);
+            var args = value.Units.Select(x => new RelativeLength(value[x], ToUnitType(x))).ToArray();
+            return args.Sum();
         }
 
-        private static UnitType toUnitType(string unit)
+        private static UnitType ToUnitType(string unit)
         {
             switch (unit)
             {

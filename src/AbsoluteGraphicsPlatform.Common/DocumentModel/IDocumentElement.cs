@@ -14,9 +14,9 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         IComponent Component { get; }
 
         LayoutDirection LayoutDirection { get; set; }
-        CompositeLength Width { get; set; }
-        CompositeLength Height { get; set; }
-        Thickness Margin { get; set; }
-        Thickness Padding { get; set; }
+        RelativeLength Width { get; set; }
+        RelativeLength Height { get; set; }
+        RelativeThickness Margin { get; set; }
+        RelativeThickness Padding { get; set; }
     }
 }

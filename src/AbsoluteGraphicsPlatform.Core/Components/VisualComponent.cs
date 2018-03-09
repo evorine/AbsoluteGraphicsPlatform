@@ -22,16 +22,16 @@ namespace AbsoluteGraphicsPlatform.Components
         public virtual LayoutDirection LayoutDirection { get; set; }
 
         [ComponentProperty]
-        public virtual CompositeLength Width { get; set; }
+        public virtual RelativeLength Width { get; set; }
 
         [ComponentProperty]
-        public virtual CompositeLength Height { get; set; }
+        public virtual RelativeLength Height { get; set; }
 
         [ComponentProperty]
-        public virtual Thickness Margin { get; set; }
+        public virtual RelativeThickness Margin { get; set; }
 
         [ComponentProperty]
-        public virtual Thickness Padding { get; set; }
+        public virtual RelativeThickness Padding { get; set; }
 
         public LayoutBoxInformation CalculatedLayoutBox { get; set; }
 

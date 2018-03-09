@@ -47,10 +47,10 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             var propertyValue = new LengthPropertyValue(unit, length);
             propertySetter.SetValue(component, nameof(BasicComponent.Length), propertyValue);
 
-            Assert.Equal(unit == "%", component.Length.HasUnitOf(UnitType.Percentage));
-            Assert.Equal(unit == "px", component.Length.HasUnitOf(UnitType.Pixel));
-            Assert.Equal(unit == "x", component.Length.HasUnitOf(UnitType.Ratio));
-            Assert.Equal(unit == "u", component.Length.HasUnitOf(UnitType.Unit));
+            Assert.Equal(unit == "%", component.Length[UnitType.Percentage] != 0);
+            Assert.Equal(unit == "px", component.Length[UnitType.Pixel] != 0);
+            Assert.Equal(unit == "x", component.Length[UnitType.Ratio] != 0);
+            Assert.Equal(unit == "u", component.Length[UnitType.Unit] != 0);
         }
 
         [Theory]

@@ -13,7 +13,7 @@ namespace AbsoluteGraphicsPlatform.Tests.Common.Components
     public class FooComponent : VisualComponent
     {
         [ComponentProperty]
-        public CompositeLength Length { get; set; }
+        public RelativeLength Length { get; set; }
 
 
         [ComponentProperty]

@@ -49,10 +49,10 @@ namespace AbsoluteGraphicsPlatform.Layout
         private void validateMeasures(ILayoutBox layoutComponent)
         {
             // Currently margins and paddings don't support related lengths (Ratios like 1x, 5x).
-            if (layoutComponent.Margin.HasUnitOf(UnitType.Ratio))
-                throw new NotSupportedException("Siblings related lengths are not supported on margins");
-            if (layoutComponent.Padding.HasUnitOf(UnitType.Ratio))
-                throw new NotSupportedException("Siblings related lengths are not supported on paddings");
+            //if (layoutComponent.Margin.HasUnitOf(UnitType.Ratio))
+            //    throw new NotSupportedException("Siblings related lengths are not supported on margins");
+            //if (layoutComponent.Padding.HasUnitOf(UnitType.Ratio))
+            //    throw new NotSupportedException("Siblings related lengths are not supported on paddings");
         }
 
         private void processComponent(IElement element, LayoutCalculationContext context, ref AbsolutePoint currentOffset)
@@ -96,8 +96,8 @@ namespace AbsoluteGraphicsPlatform.Layout
 
         private LayoutBoxInformation calculateRelativeLayoutBoxes(ILayoutBox layoutComponent, AbsoluteSize clientSize)
         {
-            CompositeLength width = layoutComponent.Width;
-            CompositeLength height = layoutComponent.Height;
+            RelativeLength width = layoutComponent.Width;
+            RelativeLength height = layoutComponent.Height;
 
             var component = (IComponent)layoutComponent;
 
@@ -113,16 +113,16 @@ namespace AbsoluteGraphicsPlatform.Layout
             var hasRelatedHeight = height[UnitType.Ratio] != 0;
 
             // Assume siblings related lengths to '0' if this component is 'Fill'
-            if (width == CompositeLength.Fill) totalSiblingsWidth[UnitType.Ratio] = 0;
-            if (height == CompositeLength.Fill) totalSiblingsHeight[UnitType.Ratio] = 0;
+            if (width == RelativeLength.Infinity) totalSiblingsWidth -= totalSiblingsWidth[UnitType.Ratio];
+            if (height == RelativeLength.Infinity) totalSiblingsHeight -= totalSiblingsHeight[UnitType.Ratio];
 
             // Assume the length as 'Fill' if this component have related length but siblings don't.
-            if (hasRelatedWidth && !totalSiblingsWidth.HasUnitOf(UnitType.Ratio)) width = CompositeLength.Fill;
-            if (hasRelatedHeight && !totalSiblingsHeight.HasUnitOf(UnitType.Ratio)) height = CompositeLength.Fill;
+            if (hasRelatedWidth && totalSiblingsWidth[UnitType.Ratio] == 0) width = RelativeLength.Infinity;
+            if (hasRelatedHeight && totalSiblingsHeight[UnitType.Ratio] == 0) height = RelativeLength.Infinity;
 
             // Assume the length as 'content length' if this component is 'Shrink' and at least one of the siblings has related or fill length.
-            if (width == CompositeLength.Shrink && (totalSiblingsWidth.HasUnitOf(UnitType.Ratio) || totalSiblingsWidth == CompositeLength.Fill)) width = calculateContentWidth(layoutComponent);
-            if (height == CompositeLength.Shrink && (totalSiblingsHeight.HasUnitOf(UnitType.Ratio) || totalSiblingsHeight == CompositeLength.Fill)) height = calculateContentHeight(layoutComponent);
+            if (width == RelativeLength.NaN && (totalSiblingsWidth[UnitType.Ratio] != 0 || totalSiblingsWidth == RelativeLength.Infinity)) width = calculateContentWidth(layoutComponent);
+            if (height == RelativeLength.NaN && (totalSiblingsHeight[UnitType.Ratio] != 0 || totalSiblingsHeight == RelativeLength.Infinity)) height = calculateContentHeight(layoutComponent);
 
 
             // Calculate size
@@ -165,17 +165,17 @@ namespace AbsoluteGraphicsPlatform.Layout
             };
         }
 
-        private CompositeLength calculateContentHeight(ILayoutBox layoutComponent)
+        private RelativeLength calculateContentHeight(ILayoutBox layoutComponent)
         {
-            return CompositeLength.Zero;
+            return RelativeLength.Zero;
         }
 
-        private CompositeLength calculateContentWidth(ILayoutBox layoutComponent)
+        private RelativeLength calculateContentWidth(ILayoutBox layoutComponent)
         {
-            return CompositeLength.Zero;
+            return RelativeLength.Zero;
         }
 
-        private float calculateLength(CompositeLength length, CompositeLength totalLength, float absoluteClientLength)
+        private float calculateLength(RelativeLength length, RelativeLength totalLength, float absoluteClientLength)
         {
             var independentLength =
                 length[UnitType.Pixel] +
@@ -187,7 +187,7 @@ namespace AbsoluteGraphicsPlatform.Layout
                 unitToPixel(totalLength[UnitType.Unit]) +
                 (absoluteClientLength * totalLength[UnitType.Percentage] / 100);
 
-            if (length.HasUnitOf(UnitType.Ratio))
+            if (length[UnitType.Ratio] != 0)
             {
                 // Get the dynamic length
                 var rest = absoluteClientLength - totalIndependentLength;
@@ -196,13 +196,13 @@ namespace AbsoluteGraphicsPlatform.Layout
                 var factor = rest / totalLength[UnitType.Ratio];
                 return independentLength + (factor * length[UnitType.Ratio]);
             }
-            else if (length == CompositeLength.Zero) return 0;
-            else if (length == CompositeLength.Fill) return absoluteClientLength - totalIndependentLength;
-            else if (length == CompositeLength.Shrink) throw new NotImplementedException();
+            else if (length == RelativeLength.Zero) return 0;
+            else if (length == RelativeLength.Infinity) return absoluteClientLength - totalIndependentLength;
+            else if (length == RelativeLength.NaN) throw new NotImplementedException();
             else return independentLength;
         }
 
-        private float calculateLength(CompositeLength length, float absoluteClientLength)
+        private float calculateLength(RelativeLength length, float absoluteClientLength)
         {
             return length[UnitType.Pixel] + unitToPixel(length[UnitType.Unit]) + (absoluteClientLength * length[UnitType.Percentage] / 100);
         }
