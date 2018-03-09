@@ -60,6 +60,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
                 var expressions = context.expression();
                 foreach (var expression in expressions)
                 {
+#warning Check here! Seems like a bug!
                     var result = expression.Accept(this);
                     return result;
                 }

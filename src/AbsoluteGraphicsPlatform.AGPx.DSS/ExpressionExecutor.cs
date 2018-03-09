@@ -28,7 +28,6 @@ namespace AbsoluteGraphicsPlatform.AGPx
         private object GetValueFromInvocation(InvocationExpression invocationExpression)
         {
             var lambdaExpression = (LambdaExpression)invocationExpression.Expression;
-
             var compiled = lambdaExpression.Compile();
             var args = GetValues(invocationExpression.Arguments.ToArray()).ToArray();
             var result = compiled.DynamicInvoke(args);
