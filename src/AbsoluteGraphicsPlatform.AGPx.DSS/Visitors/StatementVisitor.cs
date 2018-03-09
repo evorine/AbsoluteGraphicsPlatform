@@ -22,6 +22,10 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             var propertySetter = context.Accept(propertySetterVisitor);
             if (propertySetter != null) return propertySetter;
 
+            var asignmentVisitor = new AsignmentVisitor();
+            var asignment = context.Accept(asignmentVisitor);
+            if (asignment != null) return asignment;
+
             throw new Exception("Unexpected exception!");
         }
     }

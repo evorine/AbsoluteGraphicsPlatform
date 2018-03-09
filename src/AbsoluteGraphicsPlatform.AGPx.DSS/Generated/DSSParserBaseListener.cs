@@ -156,6 +156,18 @@ public partial class DSSParserBaseListener : IDSSParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitPropertyValue([NotNull] DSSParser.PropertyValueContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

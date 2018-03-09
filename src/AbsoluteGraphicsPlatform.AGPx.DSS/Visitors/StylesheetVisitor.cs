@@ -26,9 +26,16 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 
             var stylesheet = new Stylesheet();
             foreach (var statement in statements)
+            {
                 if (statement is Ruleset ruleset)
-                stylesheet.AddRuleset(ruleset);
-
+                {
+                    stylesheet.AddRuleset(ruleset);
+                }
+                else if (statement is AsignmentStatement asignment)
+                {
+                    stylesheet.AddGlobalVariable(asignment);
+                }
+            }
             return stylesheet;
         }
     }

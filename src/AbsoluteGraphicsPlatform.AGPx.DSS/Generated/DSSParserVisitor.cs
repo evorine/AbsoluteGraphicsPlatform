@@ -93,6 +93,12 @@ public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

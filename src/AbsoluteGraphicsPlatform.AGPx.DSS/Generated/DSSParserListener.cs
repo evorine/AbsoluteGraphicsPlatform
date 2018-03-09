@@ -132,6 +132,16 @@ public interface IDSSParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DSSParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

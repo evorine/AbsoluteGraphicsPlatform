@@ -25,7 +25,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             if (e is InputMismatchException inputMismatch)
                 throw new AGPxException(msg, line, stylesheetSourceName); // TODO: Customize error message
             else
-                throw new NotImplementedException(e.GetType().Name);
+                throw new NotImplementedException(e?.GetType()?.Name ?? msg);
         }
     }
 }

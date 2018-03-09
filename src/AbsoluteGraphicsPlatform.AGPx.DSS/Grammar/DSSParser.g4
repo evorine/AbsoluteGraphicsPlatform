@@ -16,6 +16,7 @@ stylesheet
 statement
   : ruleset
   | propertyStatement
+  | asignmentStatement
   ;
 
 
@@ -56,6 +57,10 @@ propertyValue
   : expression+
   ;
 
+asignmentStatement
+  : variable ':' propertyValue ';'
+  ;
+
 expression
   : '(' expression ')'
   | LEFT=expression OP=('*'|'/'|'%') RIGHT=expression
@@ -81,5 +86,5 @@ color
   ;
   
 variable
-  : DOLLAR IDENTIFIER
+  : '$' IDENTIFIER
   ;

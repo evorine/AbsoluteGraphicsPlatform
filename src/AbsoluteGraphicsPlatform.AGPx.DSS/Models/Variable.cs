@@ -9,6 +9,12 @@ namespace AbsoluteGraphicsPlatform.AGPx.Models
 {
     public class Variable
     {
+        public Variable(string name, IPropertyValue value)
+        {
+            Name = name;
+            Value = value;
+        }
+
         public string Name { get; }
         public IPropertyValue Value { get; }
     }
