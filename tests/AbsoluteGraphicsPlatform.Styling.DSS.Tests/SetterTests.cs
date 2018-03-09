@@ -22,11 +22,11 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         {
             var applicationOptions = OptionsMocks.CreateApplicationOptions();
             var propertySetter = new PropertySetter(applicationOptions);
-            var component = ComponentMocks.CreateComponent<BasicComponent>();
+            var component = ComponentMocks.CreateComponent<BasicTemplatelessComponent>();
             component.Name = "TestComponent";
 
             var propertyValue = new ScalarPropertyValue(value);
-            propertySetter.SetValue(component, nameof(BasicComponent.Length), propertyValue);
+            propertySetter.SetValue(component, nameof(BasicTemplatelessComponent.Length), propertyValue);
 
             Assert.Equal(value, component.Single);
         }
@@ -41,11 +41,11 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         {
             var applicationOptions = OptionsMocks.CreateApplicationOptions();
             var propertySetter = new PropertySetter(applicationOptions);
-            var component = ComponentMocks.CreateComponent<BasicComponent>();
+            var component = ComponentMocks.CreateComponent<BasicTemplatelessComponent>();
             component.Name = "TestComponent";
 
             var propertyValue = new LengthPropertyValue(unit, length);
-            propertySetter.SetValue(component, nameof(BasicComponent.Length), propertyValue);
+            propertySetter.SetValue(component, nameof(BasicTemplatelessComponent.Length), propertyValue);
 
             Assert.Equal(unit == "%", component.Length[UnitType.Percentage] != 0);
             Assert.Equal(unit == "px", component.Length[UnitType.Pixel] != 0);
@@ -60,11 +60,11 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         {
             var applicationOptions = OptionsMocks.CreateApplicationOptions();
             var propertySetter = new PropertySetter(applicationOptions);
-            var component = ComponentMocks.CreateComponent<BasicComponent>();
+            var component = ComponentMocks.CreateComponent<BasicTemplatelessComponent>();
             component.Name = "TestComponent";
 
             var propertyValue = new TimeSpanPropertyValue(seconds);
-            propertySetter.SetValue(component, nameof(BasicComponent.TimeSpan), propertyValue);
+            propertySetter.SetValue(component, nameof(BasicTemplatelessComponent.TimeSpan), propertyValue);
 
             Assert.Equal(TimeSpan.FromSeconds(seconds), component.TimeSpan);
         }

@@ -15,6 +15,8 @@ namespace AbsoluteGraphicsPlatform.Configurators
             valueProviders.Add(new LayoutDirectionValueProvider());
             valueProviders.Add(new CompositeLengthValueProvider());
             valueProviders.Add(new StringValueProvider());
+            valueProviders.Add(new TimeSpanValueProvider());
+            valueProviders.Add(new ScalarPropertyValueProvider());
         }
     }
 }

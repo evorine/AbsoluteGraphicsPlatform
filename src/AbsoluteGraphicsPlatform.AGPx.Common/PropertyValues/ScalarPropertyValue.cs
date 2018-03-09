@@ -33,6 +33,5 @@ namespace AbsoluteGraphicsPlatform.AGPx
         public override int GetHashCode() => Value.GetHashCode();
 
         #endregion
-
     }
 }
