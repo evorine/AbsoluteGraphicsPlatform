@@ -111,6 +111,24 @@ public interface IDssParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitLiteral([NotNull] DssParser.LiteralContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="DssParser.list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitList([NotNull] DssParser.ListContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DssParser.listRanged"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitListRanged([NotNull] DssParser.ListRangedContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="DssParser.listWithValues"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitListWithValues([NotNull] DssParser.ListWithValuesContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="DssParser.color"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

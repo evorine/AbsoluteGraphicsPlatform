@@ -162,6 +162,36 @@ public interface IDssParserListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLiteral([NotNull] DssParser.LiteralContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterList([NotNull] DssParser.ListContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.list"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitList([NotNull] DssParser.ListContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.listRanged"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterListRanged([NotNull] DssParser.ListRangedContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.listRanged"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitListRanged([NotNull] DssParser.ListRangedContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.listWithValues"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterListWithValues([NotNull] DssParser.ListWithValuesContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.listWithValues"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitListWithValues([NotNull] DssParser.ListWithValuesContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DssParser.color"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

@@ -76,14 +76,23 @@ literal
   : NUMBER UNIT
   | NUMBER
   | color
+  | list
   | NULL
   | NONE
   | OTHER=IDENTIFIER
   ;
 
+list
+  : listRanged
+  | listWithValues
+  ;
+listRanged: '{' FROM=NUMBER '...' TO=NUMBER '}';
+listWithValues: '{' literal (',' literal)? '}';
+
 color
   : '#' HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL HEXADECIMAL
   ;
+
   
 variable
   : '$' IDENTIFIER

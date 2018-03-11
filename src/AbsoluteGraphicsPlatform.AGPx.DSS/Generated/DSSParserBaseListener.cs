@@ -192,6 +192,42 @@ public partial class DssParserBaseListener : IDssParserListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLiteral([NotNull] DssParser.LiteralContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterList([NotNull] DssParser.ListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.list"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitList([NotNull] DssParser.ListContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.listRanged"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterListRanged([NotNull] DssParser.ListRangedContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.listRanged"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitListRanged([NotNull] DssParser.ListRangedContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="DssParser.listWithValues"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterListWithValues([NotNull] DssParser.ListWithValuesContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="DssParser.listWithValues"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitListWithValues([NotNull] DssParser.ListWithValuesContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="DssParser.color"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

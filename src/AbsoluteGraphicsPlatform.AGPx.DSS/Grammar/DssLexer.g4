@@ -35,6 +35,7 @@ DOLLAR              : '$';
 AT                  : '@';
 AMPERSAND           : '&';
 HASH                : '#';
+THREE_DOT           : '...';
 
 PLUS                : '+';
 TIMES               : '*';

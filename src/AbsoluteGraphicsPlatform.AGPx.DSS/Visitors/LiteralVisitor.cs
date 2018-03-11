@@ -27,6 +27,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             var number = context.NUMBER();
             var unit = context.UNIT();
             var color = context.color();
+            var list = context.list();
             var none = context.NONE();
             var other = context.IDENTIFIER();
 
@@ -67,6 +68,25 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
                     throw new Exception("Unexpected color code!");
 
                 return Expression.Constant(new ColorPropertyValue(red, green, blue, 1));
+            }
+            else if (list != null)
+            {
+                var listRanged = list.listRanged();
+                if (listRanged != null)
+                {
+                    if (!int.TryParse(listRanged.FROM.Text, out int from)) throw new Exception("Invalid number");
+                    if (!int.TryParse(listRanged.TO.Text, out int to)) throw new Exception("Invalid number");
+
+                    var listValues = Enumerable.Range(from, to - from + 1).ToArray();
+                    return Expression.Constant(listValues);
+                }
+
+                var listWithValues = list.listWithValues();
+                if (listWithValues != null)
+                {
+                    var listValues = listWithValues.literal().Select(x => x.Accept(this)).ToArray();
+                    return Expression.Constant(listValues);
+                }
             }
             else if (none != null)
             {
