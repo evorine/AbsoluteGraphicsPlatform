@@ -7,10 +7,11 @@ using System.Linq;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class AsignmentVisitor : DssParserVisitor<AsignmentStatement>
+    public class AsignmentVisitor : DssParserVisitor<AsignmentInstruction>
     {
         readonly ExpressionVisitor expressionVisitor;
 
@@ -19,13 +20,12 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             expressionVisitor = new ExpressionVisitor(dssRuntime);
         }
 
-        public override AsignmentStatement VisitAsignmentStatement([NotNull] Internal.DssParser.AsignmentStatementContext context)
+        public override AsignmentInstruction VisitAsignmentStatement([NotNull] Internal.DssParser.AsignmentStatementContext context)
         {
             var variableName = context.variable().IDENTIFIER().GetText();
-
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
 
-            var asignment = new AsignmentStatement(variableName, expressions.ToArray());
+            var asignment = new AsignmentInstruction(variableName, new ValueInstruction(expressions.ToArray()));
             return asignment;
         }
     }

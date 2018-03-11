@@ -10,34 +10,27 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class StylesheetVisitor : DssParserVisitor<Stylesheet>
+    public class StylesheetListener : DssParserBaseListener
     {
         readonly string stylesheetSourceName;
+        readonly DssInstructions dssInstructions;
         readonly StatementVisitor statementVisitor;
 
-        public StylesheetVisitor(string stylesheetSourceName, DssRuntime dssRuntime) : base(dssRuntime)
+        public StylesheetListener(string stylesheetSourceName, DssInstructions dssInstructions)
         {
             this.stylesheetSourceName = stylesheetSourceName;
-            statementVisitor = new StatementVisitor(dssRuntime);
+            this.dssInstructions = dssInstructions;
+            statementVisitor = new StatementVisitor(null);
         }
 
-        public override Stylesheet VisitStylesheet([NotNull] Internal.DssParser.StylesheetContext context)
+        public override void EnterStylesheet([NotNull] Internal.DssParser.StylesheetContext context)
         {
             var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
 
-            var stylesheet = new Stylesheet();
             foreach (var statement in statements)
             {
-                if (statement is Ruleset ruleset)
-                {
-                    stylesheet.AddRuleset(ruleset);
-                }
-                else if (statement is AsignmentStatement asignment)
-                {
-                    stylesheet.AddGlobalVariable(asignment);
-                }
+                dssInstructions.Add(statement);
             }
-            return stylesheet;
         }
     }
 }

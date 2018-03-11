@@ -36,12 +36,13 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
         public static IStyle GetStyle(string filename)
         {
             var fileProvider = IO.GetTestFileProvider();
-            var dssRuntime = new DssRuntime();
-            var dssParser = new DssParser(dssRuntime);
+            var dssParser = new DssParser();
+            var dssCompiler = new DssCompiler();
 
             var fileInfo = fileProvider.GetFileInfo(filename);
             var sourceInfo = new SourceCodeInfo(fileInfo);
-            var style = dssParser.Parse(sourceInfo);
+            var instructions = dssParser.Parse(sourceInfo);
+            var style = dssCompiler.Compile(instructions);
             return style;
         }
     }

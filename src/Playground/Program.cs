@@ -52,11 +52,12 @@ namespace Playground
         private static IStyle parseTestStyle()
         {
             var fileInfo = new PhysicalFileInfo(new System.IO.FileInfo(@"C:\Playground\AbsoluteGraphicsPlatform\tests\TestFiles\TestStyle1.dss"));
-            var dssRuntime = new DssRuntime();
-            var dssParser = new DssParser(dssRuntime);
+            var dssParser = new DssParser();
+            var dssCompiler = new DssCompiler();
 
             var sourceInfo = new SourceCodeInfo(fileInfo);
-            var style = dssParser.Parse(sourceInfo);
+            var instructions = dssParser.Parse(sourceInfo);
+            var style = dssCompiler.Compile(instructions);
             return style;
         }
 

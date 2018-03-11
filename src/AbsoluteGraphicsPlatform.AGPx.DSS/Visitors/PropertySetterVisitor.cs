@@ -7,10 +7,12 @@ using System.Linq;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
+using System.Linq.Expressions;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class PropertySetterVisitor : DssParserVisitor<PropertySetterStatement>
+    public class PropertySetterVisitor : DssParserVisitor<PropertyInstruction>
     {
         readonly ExpressionVisitor expressionVisitor;
 
@@ -19,13 +21,12 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             expressionVisitor = new ExpressionVisitor(dssRuntime);
         }
 
-        public override PropertySetterStatement VisitPropertyStatement([NotNull] Internal.DssParser.PropertyStatementContext context)
+        public override PropertyInstruction VisitPropertyStatement([NotNull] Internal.DssParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
-            
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
             
-            var setter = new PropertySetterStatement(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");
+            var setter = new PropertyInstruction(propertyKey, new ValueInstruction(expressions.ToArray()));
             return setter;
         }
     }

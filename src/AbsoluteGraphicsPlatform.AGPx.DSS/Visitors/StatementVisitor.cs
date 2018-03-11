@@ -7,10 +7,11 @@ using System.Text;
 using Antlr4.Runtime.Misc;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class StatementVisitor : DssParserVisitor<IStatement>
+    public class StatementVisitor : DssParserVisitor<IInstruction>
     {
         readonly RulesetVisitor rulesetVisitor;
         readonly PropertySetterVisitor propertySetterVisitor;
@@ -23,7 +24,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             asignmentVisitor = new AsignmentVisitor(dssRuntime);
         }
 
-        public override IStatement VisitStatement([NotNull] Internal.DssParser.StatementContext context)
+        public override IInstruction VisitStatement([NotNull] Internal.DssParser.StatementContext context)
         {
             var ruleset = context.Accept(rulesetVisitor);
             if (ruleset != null) return ruleset;

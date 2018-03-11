@@ -9,25 +9,32 @@ using AbsoluteGraphicsPlatform.AGPx.Models;
 using AbsoluteGraphicsPlatform.AGPx.Internal;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Templating;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class RulesetVisitor : DssParserVisitor<Ruleset>
+    public class RulesetVisitor : DssParserVisitor<RulesetInstruction>
     {
         readonly RulesetSelectorVisitor rulesetSelectorVisitor;
-        readonly RulesetBlockVisitor rulesetBlockVisitor;
+        readonly StatementVisitor statementVisitor;
 
         public RulesetVisitor(DssRuntime dssRuntime) : base(dssRuntime)
         {
             rulesetSelectorVisitor = new RulesetSelectorVisitor(dssRuntime);
-            rulesetBlockVisitor = new RulesetBlockVisitor(dssRuntime);
+            statementVisitor = new StatementVisitor(dssRuntime);
         }
 
-        public override Ruleset VisitRuleset([NotNull] Internal.DssParser.RulesetContext context)
+        public override RulesetInstruction VisitRuleset([NotNull] Internal.DssParser.RulesetContext context)
         {
+            var block = context.block();
             var selector = context.selector().Accept(rulesetSelectorVisitor);
-            var ruleset = context.block().Accept(rulesetBlockVisitor);
+
+            var ruleset = new RulesetInstruction();
             ruleset.Selector = selector;
+
+            var statements = block.statement().Select(x => x.Accept(statementVisitor)).ToArray();
+            foreach (var statement in statements)
+                ruleset.Instructions.Add(statement);
 
             return ruleset;
         }
@@ -50,28 +57,6 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
                     return new RuleSelector(SelectorType.Component, selectorPart.COMPONENT.GetText());
 
                 else throw new AGPxException("Unexpected parsing error", context.Start.Line, null);
-            }
-        }
-
-        public class RulesetBlockVisitor : DssParserVisitor<Ruleset>
-        {
-            readonly StatementVisitor statementVisitor;
-
-            public RulesetBlockVisitor(DssRuntime dssRuntime) : base(dssRuntime)
-            {
-                statementVisitor = new StatementVisitor(dssRuntime);
-            }
-
-            public override Ruleset VisitBlock([NotNull] Internal.DssParser.BlockContext context)
-            {
-                var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
-
-                var ruleset = new Ruleset();
-                foreach (var statement in statements)
-                    if (statement is PropertySetterInfo propertySetter)
-                        ruleset.PropertySetters.Add(propertySetter);
-                    
-                return ruleset;
             }
         }
     }
