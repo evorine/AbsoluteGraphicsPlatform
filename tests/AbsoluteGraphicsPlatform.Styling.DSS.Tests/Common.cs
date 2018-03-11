@@ -8,13 +8,21 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
     public static class Common
     {
-        public static Stylesheet ParseCode(string code)
+        public static Stylesheet CompileCode(string code)
         {
             var dssParser = new DssParser();
             var dssCompiler = new DssCompiler();
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             var instructions = dssParser.Parse(sourceInfo);
             return dssCompiler.Compile(instructions);
+        }
+
+        public static DssInstructions ParseCode(string code)
+        {
+            var dssParser = new DssParser();
+            var sourceInfo = new SourceCodeInfo("TestCode", code);
+            var instructions = dssParser.Parse(sourceInfo);
+            return instructions;
         }
     }
 }

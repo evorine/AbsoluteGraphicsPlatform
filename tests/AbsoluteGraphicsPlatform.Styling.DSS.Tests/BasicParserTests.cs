@@ -6,34 +6,35 @@ using System.Linq;
 using Xunit;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
 
 namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 {
     public class BasicParserTests
     {
         [Fact]
-        public void EmptyCode_ShouldNotCreateAnyRulesets()
+        public void EmptyCode_ShouldNotCreateAnyInstructions()
         {
-            var style = Common.ParseCode(" ");
+            var instructions = Common.ParseCode(" ");
 
-            Assert.Empty(style.Rulesets);
+            Assert.Empty(instructions);
         }
 
         [Fact]
-        public void EmtyRuleset_ShouldCreateRulesetWithtoutSetter()
+        public void EmtyRuleset_ShouldCreateRulesetWithtoutInstructions()
         {
-            var style = Common.ParseCode(".rule { }");
+            var instructions = Common.ParseCode(".rule { }");
 
-            var ruleset = style.Rulesets.Single();
-            Assert.Empty(style.Rulesets.First().PropertySetters);
+            var ruleset = (RulesetInstruction)instructions.Single();
+            Assert.Empty(ruleset.Instructions);
         }
 
         [Fact]
         public void EmtyRuleset_ShouldParseBasicSelector()
         {
-            var style = Common.ParseCode(".rule { }");
+            var instructions = Common.ParseCode(".rule { }");
 
-            var ruleset = style.Rulesets.First();
+            var ruleset = (RulesetInstruction)instructions.Single();
 
             // Check selector is realy '.rule'
             Assert.Equal("rule", ruleset.Selector.Identifier);
@@ -42,29 +43,29 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         }
 
         [Fact]
-        public void Setter_ShouldCreateBasicSetterWithValueNone()
+        public void Setter_ShouldCreatePropertyInstructionWithValueNone()
         {
-            var style = Common.ParseCode(".rule { property: none; }");
+            var instructions = Common.ParseCode(".rule { property: none; }");
             var expressionExecutor = new ExpressionExecutor();
 
-            var ruleset = style.Rulesets.Single();
-            var setter = ruleset.PropertySetters.Single();
+            var ruleset = (RulesetInstruction)instructions.Single();
+            var property = (PropertyInstruction)ruleset.Instructions.Single();
 
-            Assert.Equal("property", setter.PropertyName);
-            Assert.Single(setter.Values);
-            Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(setter.Values).Single());
+            Assert.Equal("property", property.Identifier);
+            Assert.Single(property.Value.Values);
+            Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(property.Value.Values).Single());
         }
 
         [Fact]
         public void MathOperation_ShouldCalculateBasicOperations()
         {
-            var style = Common.ParseCode(".rule { property: 1 + 7 * (3 + 5); }");
+            var instructions = Common.ParseCode(".rule { property: 1 + 7 * (3 + 5); }");
             var expressionExecutor = new ExpressionExecutor();
 
-            var ruleset = style.Rulesets.Single();
-            var setter = ruleset.PropertySetters.Single();
+            var ruleset = (RulesetInstruction)instructions.Single();
+            var property = (PropertyInstruction)ruleset.Instructions.Single();
 
-            Assert.Equal(new ScalarPropertyValue(57), expressionExecutor.GetValues(setter.Values).Single());
+            Assert.Equal(new ScalarPropertyValue(57), expressionExecutor.GetValues(property.Value.Values).Single());
         }
     }
 }

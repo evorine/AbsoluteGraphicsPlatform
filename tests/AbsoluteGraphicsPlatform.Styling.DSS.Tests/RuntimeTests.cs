@@ -14,7 +14,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [Fact]
         public void ShouldAcceptVariableAsExpression()
         {
-            var style = Common.ParseCode(@"
+            var style = Common.CompileCode(@"
 $variable-1: 1;
 $variable-2: $variable-1 + 2");
 

@@ -18,5 +18,8 @@ namespace AbsoluteGraphicsPlatform.AGPx.Instructions
             this.identifier = identifier;
             this.value = value;
         }
+
+        public string Identifier => identifier;
+        public ValueInstruction Value => value;
     }
 }

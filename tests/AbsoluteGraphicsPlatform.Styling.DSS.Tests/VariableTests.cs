@@ -18,7 +18,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         [InlineData("αlloω-μηicodε")]
         public void Variable_ValidVariableNames(string variableName)
         {
-            var style = Common.ParseCode($"${variableName}: none;");
+            var style = Common.CompileCode($"${variableName}: none;");
             Assert.Equal(variableName, style.GlobalVariables.Single());
         }
 
@@ -30,7 +30,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
         {
             Assert.Throws<AGPxException>(() =>
             {
-                Common.ParseCode($"${variableName}: none;");
+                Common.CompileCode($"${variableName}: none;");
             });
         }
     }
