@@ -9,7 +9,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationBuilderExtensions
     {
-        public static void UseDSS(this IApplicationBuilderBase builder)
+        public static void UseDss(this IApplicationBuilderBase builder)
         {
             builder.RegisterService<DssRuntime>();
             builder.RegisterService<DssParser>();

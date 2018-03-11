@@ -23,7 +23,7 @@ namespace Playground
 
             var appBuilder = new ApplicationBuilder();
             appBuilder.UseAgpml();
-            appBuilder.UseDSS();
+            appBuilder.UseDss();
             appBuilder.Configure<AgpxOptions>((options) =>
             {
                 //options.Styles.Add(parseTestStyle());
