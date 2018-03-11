@@ -14,13 +14,13 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class VariableVisitor : DssParserBaseVisitor<InvocationExpression>
+    public class VariableVisitor : DssParserVisitor<InvocationExpression>
     {
         static Expression<Func<DssRuntime, string, Expression>> getVariableValue = (dssRuntime, variableName) => dssRuntime.GetVariableValue(variableName);
 
         readonly DssRuntime dssRuntime;
 
-        public VariableVisitor(DssRuntime dssRuntime)
+        public VariableVisitor(DssRuntime dssRuntime) : base(dssRuntime)
         {
             this.dssRuntime = dssRuntime;
         }

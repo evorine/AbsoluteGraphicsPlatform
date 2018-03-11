@@ -12,9 +12,9 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class ExpressionVisitor : DssParserBaseVisitor<Expression>
+    public class ExpressionVisitor : DssParserVisitor<Expression>
     {
-        LiteralVisitor literalVisitor = new LiteralVisitor();
+        readonly LiteralVisitor literalVisitor;
 
         static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> multiplyExpression = (left, right) => operationMultiply(left, right);
         static Expression<Func<IPropertyValue, IPropertyValue, IPropertyValue>> divideExpression = (left, right) => operationDivide(left, right);
@@ -26,6 +26,10 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
         static Expression<Func<IPropertyValue, IPropertyValue, bool>> equalsExpression = (left, right) => operatorEquals(left, right);
         static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => operatorNotEquals(left, right);
 
+        public ExpressionVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+            literalVisitor = new LiteralVisitor(dssRuntime);
+        }
 
         public override Expression VisitExpression([NotNull] Internal.DssParser.ExpressionContext context)
         {

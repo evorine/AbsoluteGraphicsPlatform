@@ -10,13 +10,19 @@ using AbsoluteGraphicsPlatform.AGPx.Models;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class PropertySetterVisitor : DssParserBaseVisitor<PropertySetterStatement>
+    public class PropertySetterVisitor : DssParserVisitor<PropertySetterStatement>
     {
+        readonly ExpressionVisitor expressionVisitor;
+
+        public PropertySetterVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+            expressionVisitor = new ExpressionVisitor(dssRuntime);
+        }
+
         public override PropertySetterStatement VisitPropertyStatement([NotNull] Internal.DssParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
             
-            var expressionVisitor = new ExpressionVisitor();
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
             
             var setter = new PropertySetterStatement(propertyKey, expressions.ToArray(), context.Start.Line, "unknown source! fix here");

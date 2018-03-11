@@ -10,19 +10,27 @@ using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class StatementVisitor : DssParserBaseVisitor<IStatement>
+    public class StatementVisitor : DssParserVisitor<IStatement>
     {
+        readonly RulesetVisitor rulesetVisitor;
+        readonly PropertySetterVisitor propertySetterVisitor;
+        readonly AsignmentVisitor asignmentVisitor;
+
+        public StatementVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+            rulesetVisitor = new RulesetVisitor(dssRuntime);
+            propertySetterVisitor = new PropertySetterVisitor(dssRuntime);
+            asignmentVisitor = new AsignmentVisitor(dssRuntime);
+        }
+
         public override IStatement VisitStatement([NotNull] Internal.DssParser.StatementContext context)
         {
-            var rulesetVisitor = new RulesetVisitor();
             var ruleset = context.Accept(rulesetVisitor);
             if (ruleset != null) return ruleset;
 
-            var propertySetterVisitor = new PropertySetterVisitor();
             var propertySetter = context.Accept(propertySetterVisitor);
             if (propertySetter != null) return propertySetter;
 
-            var asignmentVisitor = new AsignmentVisitor();
             var asignment = context.Accept(asignmentVisitor);
             if (asignment != null) return asignment;
 

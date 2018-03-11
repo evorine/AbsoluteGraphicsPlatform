@@ -14,9 +14,13 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class LiteralVisitor : DssParserBaseVisitor<ConstantExpression>
+    public class LiteralVisitor : DssParserVisitor<ConstantExpression>
     {
         static string[] lengthUnits = { "%", "px", "x", "u" };
+
+        public LiteralVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+        }
 
         public override ConstantExpression VisitLiteral([NotNull] Internal.DssParser.LiteralContext context)
         {

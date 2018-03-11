@@ -36,7 +36,8 @@ namespace AbsoluteGraphicsPlatform.Tests.Common
         public static IStyle GetStyle(string filename)
         {
             var fileProvider = IO.GetTestFileProvider();
-            var dssParser = new DssParser();
+            var dssRuntime = new DssRuntime();
+            var dssParser = new DssParser(dssRuntime);
 
             var fileInfo = fileProvider.GetFileInfo(filename);
             var sourceInfo = new SourceCodeInfo(fileInfo);

@@ -10,13 +10,19 @@ using AbsoluteGraphicsPlatform.AGPx.Models;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class AsignmentVisitor : DssParserBaseVisitor<AsignmentStatement>
+    public class AsignmentVisitor : DssParserVisitor<AsignmentStatement>
     {
+        readonly ExpressionVisitor expressionVisitor;
+
+        public AsignmentVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+            expressionVisitor = new ExpressionVisitor(dssRuntime);
+        }
+
         public override AsignmentStatement VisitAsignmentStatement([NotNull] Internal.DssParser.AsignmentStatementContext context)
         {
             var variableName = context.variable().IDENTIFIER().GetText();
 
-            var expressionVisitor = new ExpressionVisitor();
             var expressions = context.propertyValue().expression().Select(x => x.Accept(expressionVisitor));
 
             var asignment = new AsignmentStatement(variableName, expressions.ToArray());

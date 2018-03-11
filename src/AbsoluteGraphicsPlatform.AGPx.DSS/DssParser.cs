@@ -13,9 +13,17 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public class DssParser
     {
+        readonly DssRuntime runtime;
+
+        public DssParser(DssRuntime dssRuntime)
+        {
+            runtime = dssRuntime;
+        }
+
         public Stylesheet Parse(SourceCodeInfo sourceInfo)
         {
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
+            if (runtime == null) throw new ArgumentNullException(nameof(runtime));
 
             Internal.DssLexer lexer;
             using (var stream = sourceInfo.GetStream())
@@ -28,7 +36,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             //parser.RemoveErrorListeners();
             parser.AddErrorListener(errorListener);
 
-            var visitor = new StylesheetVisitor(sourceInfo.SourceName);
+            var visitor = new StylesheetVisitor(sourceInfo.SourceName, runtime);
             var stylesheet = visitor.Visit(parser.stylesheet());
             return stylesheet;
         }
@@ -47,7 +55,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             var errorListener = new ErrorListener(sourceName);
             parser.AddErrorListener(errorListener);
 
-            var visitor = new Visitors.ExpressionVisitor();
+            var visitor = new Visitors.ExpressionVisitor(runtime);
             var expression = visitor.Visit(parser.expression());
             return expression;
         }

@@ -12,19 +12,32 @@ using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class RulesetVisitor : DssParserBaseVisitor<Ruleset>
+    public class RulesetVisitor : DssParserVisitor<Ruleset>
     {
+        readonly RulesetSelectorVisitor rulesetSelectorVisitor;
+        readonly RulesetBlockVisitor rulesetBlockVisitor;
+
+        public RulesetVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        {
+            rulesetSelectorVisitor = new RulesetSelectorVisitor(dssRuntime);
+            rulesetBlockVisitor = new RulesetBlockVisitor(dssRuntime);
+        }
+
         public override Ruleset VisitRuleset([NotNull] Internal.DssParser.RulesetContext context)
         {
-            var selector = context.selector().Accept(new RulesetSelectorVisitor());
-            var ruleset = context.block().Accept(new RulesetBlockVisitor());
+            var selector = context.selector().Accept(rulesetSelectorVisitor);
+            var ruleset = context.block().Accept(rulesetBlockVisitor);
             ruleset.Selector = selector;
 
             return ruleset;
         }
 
-        public class RulesetSelectorVisitor : DssParserBaseVisitor<RuleSelector>
+        public class RulesetSelectorVisitor : DssParserVisitor<RuleSelector>
         {
+            public RulesetSelectorVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+            {
+            }
+
             public override RuleSelector VisitSelector([NotNull] Internal.DssParser.SelectorContext context)
             {
                 var selectorPart = context.selectorPart();
@@ -40,11 +53,17 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             }
         }
 
-        public class RulesetBlockVisitor : DssParserBaseVisitor<Ruleset>
+        public class RulesetBlockVisitor : DssParserVisitor<Ruleset>
         {
+            readonly StatementVisitor statementVisitor;
+
+            public RulesetBlockVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+            {
+                statementVisitor = new StatementVisitor(dssRuntime);
+            }
+
             public override Ruleset VisitBlock([NotNull] Internal.DssParser.BlockContext context)
             {
-                var statementVisitor = new StatementVisitor();
                 var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();
 
                 var ruleset = new Ruleset();
