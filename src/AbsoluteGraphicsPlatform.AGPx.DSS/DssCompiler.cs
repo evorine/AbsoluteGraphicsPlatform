@@ -3,7 +3,9 @@
 
 using System;
 using System.Text;
+using AbsoluteGraphicsPlatform.AGPx.Instructions;
 using AbsoluteGraphicsPlatform.AGPx.Models;
+using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
@@ -11,7 +13,43 @@ namespace AbsoluteGraphicsPlatform.AGPx
     {
         public Stylesheet Compile(DssInstructions dssInstructions)
         {
-            return null;
+            var context = new DssCompilerContext()
+            {
+                Instructions = dssInstructions,
+                Stylesheet = new Stylesheet(),
+            };
+
+            foreach(var instruction in dssInstructions)
+            {
+                if (instruction is RulesetInstruction rulesetInstruction) ProcessRulesetInstruction(context, rulesetInstruction);
+            }
+
+            return context.Stylesheet;
+        }
+
+        private void ProcessRulesetInstruction(DssCompilerContext context, RulesetInstruction rulesetInstruction)
+        {
+            var ruleset = new Ruleset()
+            {
+                Selector = new RuleSelector(rulesetInstruction.Selector.SelectorType, rulesetInstruction.Selector.Identifier)
+            };
+            foreach(var instruction in rulesetInstruction.Instructions)
+            {
+                if (instruction is PropertyInstruction propertyInstruction) ProcessPropertyInstruction(context, ruleset, propertyInstruction);
+            }
+            context.Stylesheet.AddRuleset(ruleset);
+        }
+
+        private void ProcessPropertyInstruction(DssCompilerContext context, Ruleset ruleset, PropertyInstruction propertyInstruction)
+        {
+            var propertySetterInfo = new PropertySetterInfo(propertyInstruction.Identifier, propertyInstruction.Value.Values, 0, null);
+            ruleset.PropertySetters.Add(propertySetterInfo);
+        }
+
+        public class DssCompilerContext
+        {
+            public DssInstructions Instructions { get; set; }
+            public Stylesheet Stylesheet { get; set; }
         }
     }
 }

@@ -18,10 +18,10 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
         readonly RulesetSelectorVisitor rulesetSelectorVisitor;
         readonly StatementVisitor statementVisitor;
 
-        public RulesetVisitor(DssRuntime dssRuntime) : base(dssRuntime)
+        public RulesetVisitor(DssRuntime dssRuntime, StatementVisitor statementVisitor) : base(dssRuntime)
         {
             rulesetSelectorVisitor = new RulesetSelectorVisitor(dssRuntime);
-            statementVisitor = new StatementVisitor(dssRuntime);
+            this.statementVisitor = statementVisitor;
         }
 
         public override RulesetInstruction VisitRuleset([NotNull] Internal.DssParser.RulesetContext context)

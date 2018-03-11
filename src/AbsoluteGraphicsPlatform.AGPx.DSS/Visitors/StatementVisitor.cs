@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 
         public StatementVisitor(DssRuntime dssRuntime) : base(dssRuntime)
         {
-            rulesetVisitor = new RulesetVisitor(dssRuntime);
+            rulesetVisitor = new RulesetVisitor(dssRuntime, this);
             propertySetterVisitor = new PropertySetterVisitor(dssRuntime);
             asignmentVisitor = new AsignmentVisitor(dssRuntime);
         }
