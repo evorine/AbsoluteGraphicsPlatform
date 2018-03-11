@@ -10,9 +10,9 @@ using AbsoluteGraphicsPlatform.AGPx.Models;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class PropertySetterVisitor : DSSParserBaseVisitor<PropertySetterStatement>
+    public class PropertySetterVisitor : DssParserBaseVisitor<PropertySetterStatement>
     {
-        public override PropertySetterStatement VisitPropertyStatement([NotNull] Internal.DSSParser.PropertyStatementContext context)
+        public override PropertySetterStatement VisitPropertyStatement([NotNull] Internal.DssParser.PropertyStatementContext context)
         {
             var propertyKey = context.propertyKey().GetText();
             

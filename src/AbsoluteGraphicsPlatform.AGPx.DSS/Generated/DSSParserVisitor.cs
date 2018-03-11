@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from .\DSSParser.g4 by ANTLR 4.7.1
+// Generated from .\DssParser.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -26,101 +26,101 @@ using IToken = Antlr4.Runtime.IToken;
 
 /// <summary>
 /// This interface defines a complete generic visitor for a parse tree produced
-/// by <see cref="DSSParser"/>.
+/// by <see cref="DssParser"/>.
 /// </summary>
 /// <typeparam name="Result">The return type of the visit operation.</typeparam>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.7.1")]
 [System.CLSCompliant(false)]
-public interface IDSSParserVisitor<Result> : IParseTreeVisitor<Result> {
+public interface IDssParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.stylesheet"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.stylesheet"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitStylesheet([NotNull] DSSParser.StylesheetContext context);
+	Result VisitStylesheet([NotNull] DssParser.StylesheetContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.statement"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitStatement([NotNull] DSSParser.StatementContext context);
+	Result VisitStatement([NotNull] DssParser.StatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.ruleset"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.ruleset"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitRuleset([NotNull] DSSParser.RulesetContext context);
+	Result VisitRuleset([NotNull] DssParser.RulesetContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.block"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitBlock([NotNull] DSSParser.BlockContext context);
+	Result VisitBlock([NotNull] DssParser.BlockContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.selector"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.selector"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitSelector([NotNull] DSSParser.SelectorContext context);
+	Result VisitSelector([NotNull] DssParser.SelectorContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.selectorPart"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.selectorPart"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitSelectorPart([NotNull] DSSParser.SelectorPartContext context);
+	Result VisitSelectorPart([NotNull] DssParser.SelectorPartContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.identifier"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.identifier"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitIdentifier([NotNull] DSSParser.IdentifierContext context);
+	Result VisitIdentifier([NotNull] DssParser.IdentifierContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.propertyStatement"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.propertyStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
+	Result VisitPropertyStatement([NotNull] DssParser.PropertyStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.propertyKey"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	Result VisitPropertyKey([NotNull] DssParser.PropertyKeyContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.propertyValue"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	Result VisitPropertyValue([NotNull] DssParser.PropertyValueContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.asignmentStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	Result VisitAsignmentStatement([NotNull] DssParser.AsignmentStatementContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.expression"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitExpression([NotNull] DSSParser.ExpressionContext context);
+	Result VisitExpression([NotNull] DssParser.ExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.literal"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitLiteral([NotNull] DSSParser.LiteralContext context);
+	Result VisitLiteral([NotNull] DssParser.LiteralContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.color"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.color"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitColor([NotNull] DSSParser.ColorContext context);
+	Result VisitColor([NotNull] DssParser.ColorContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="DSSParser.variable"/>.
+	/// Visit a parse tree produced by <see cref="DssParser.variable"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitVariable([NotNull] DSSParser.VariableContext context);
+	Result VisitVariable([NotNull] DssParser.VariableContext context);
 }
 } // namespace AbsoluteGraphicsPlatform.AGPx.Internal

@@ -10,7 +10,7 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class StylesheetVisitor : DSSParserBaseVisitor<Stylesheet>
+    public class StylesheetVisitor : DssParserBaseVisitor<Stylesheet>
     {
         readonly string stylesheetSourceName;
 
@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             this.stylesheetSourceName = stylesheetSourceName;
         }
 
-        public override Stylesheet VisitStylesheet([NotNull] Internal.DSSParser.StylesheetContext context)
+        public override Stylesheet VisitStylesheet([NotNull] Internal.DssParser.StylesheetContext context)
         {
             var statementVisitor = new StatementVisitor();
             var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();

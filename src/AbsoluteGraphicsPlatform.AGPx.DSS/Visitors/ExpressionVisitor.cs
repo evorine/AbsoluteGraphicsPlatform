@@ -12,7 +12,7 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class ExpressionVisitor : DSSParserBaseVisitor<Expression>
+    public class ExpressionVisitor : DssParserBaseVisitor<Expression>
     {
         LiteralVisitor literalVisitor = new LiteralVisitor();
 
@@ -27,7 +27,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
         static Expression<Func<IPropertyValue, IPropertyValue, bool>> notEqualsExpression = (left, right) => operatorNotEquals(left, right);
 
 
-        public override Expression VisitExpression([NotNull] Internal.DSSParser.ExpressionContext context)
+        public override Expression VisitExpression([NotNull] Internal.DssParser.ExpressionContext context)
         {
             var literal = context.literal();
             if (literal != null) return literal.Accept(literalVisitor);

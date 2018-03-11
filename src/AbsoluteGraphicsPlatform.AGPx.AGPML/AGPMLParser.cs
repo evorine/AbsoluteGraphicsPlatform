@@ -16,10 +16,10 @@ namespace AbsoluteGraphicsPlatform.AGPx
         const string componentTemplateTag = "component-template";
 
         readonly PropertySetter propertySetter;
-        readonly DSSParser dssParser;
+        readonly DssParser dssParser;
         readonly ComponentTypeResolver componentTypeResolver;
 
-        public AGPMLParser(PropertySetter propertySetter, DSSParser dssParser, ComponentTypeResolver componentTypeResolver)
+        public AGPMLParser(PropertySetter propertySetter, DssParser dssParser, ComponentTypeResolver componentTypeResolver)
         {
             this.propertySetter = propertySetter;
             this.dssParser = dssParser;

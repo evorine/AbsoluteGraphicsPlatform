@@ -11,7 +11,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
     {
         public static void UseDSS(this IApplicationBuilderBase builder)
         {
-            builder.RegisterService<DSSParser>();
+            builder.RegisterService<DssParser>();
             builder.RegisterService<IStyleSetter, DssStyleSetter>();
         }
     }

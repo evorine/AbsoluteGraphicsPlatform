@@ -2,10 +2,10 @@
  * Licensed under the MIT license.
  * See the LICENSE file in the project root for more information.
  */
-parser grammar DSSParser;
+parser grammar DssParser;
 
 options {
-  tokenVocab = DSSLexer;
+  tokenVocab = DssLexer;
 }
 
 

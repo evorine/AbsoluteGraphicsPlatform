@@ -14,7 +14,7 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class VariableVisitor : DSSParserBaseVisitor<InvocationExpression>
+    public class VariableVisitor : DssParserBaseVisitor<InvocationExpression>
     {
         static Expression<Func<DssRuntime, string, Expression>> getVariableValue = (dssRuntime, variableName) => dssRuntime.GetVariableValue(variableName);
 
@@ -25,7 +25,7 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             this.dssRuntime = dssRuntime;
         }
 
-        public override InvocationExpression VisitVariable([NotNull] Internal.DSSParser.VariableContext context)
+        public override InvocationExpression VisitVariable([NotNull] Internal.DssParser.VariableContext context)
         {
             var variableName = context.GetText();
             return Expression.Invoke(getVariableValue, Expression.Constant(dssRuntime), Expression.Constant(variableName));

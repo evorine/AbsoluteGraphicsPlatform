@@ -11,18 +11,18 @@ using AbsoluteGraphicsPlatform.AGPx.Visitors;
 
 namespace AbsoluteGraphicsPlatform.AGPx
 {
-    public class DSSParser
+    public class DssParser
     {
         public Stylesheet Parse(SourceCodeInfo sourceInfo)
         {
             if (sourceInfo == null) throw new ArgumentNullException(nameof(sourceInfo));
 
-            Internal.DSSLexer lexer;
+            Internal.DssLexer lexer;
             using (var stream = sourceInfo.GetStream())
-                lexer = new Internal.DSSLexer(new AntlrInputStream(stream));
+                lexer = new Internal.DssLexer(new AntlrInputStream(stream));
 
             var tokens = new CommonTokenStream(lexer);
-            var parser = new Internal.DSSParser(tokens);
+            var parser = new Internal.DssParser(tokens);
             
             var errorListener = new ErrorListener(sourceInfo.SourceName);
             //parser.RemoveErrorListeners();
@@ -37,12 +37,12 @@ namespace AbsoluteGraphicsPlatform.AGPx
         {
             if (expressionCode == null) throw new ArgumentNullException(nameof(expressionCode));
 
-            Internal.DSSLexer lexer;
+            Internal.DssLexer lexer;
             using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(expressionCode)))
-                lexer = new Internal.DSSLexer(new AntlrInputStream(stream));
+                lexer = new Internal.DssLexer(new AntlrInputStream(stream));
 
             var tokens = new CommonTokenStream(lexer);
-            var parser = new Internal.DSSParser(tokens);
+            var parser = new Internal.DssParser(tokens);
 
             var errorListener = new ErrorListener(sourceName);
             parser.AddErrorListener(errorListener);

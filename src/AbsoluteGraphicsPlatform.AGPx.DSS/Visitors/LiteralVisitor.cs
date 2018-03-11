@@ -14,11 +14,11 @@ using AbsoluteGraphicsPlatform.AGPx.Internal;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class LiteralVisitor : DSSParserBaseVisitor<ConstantExpression>
+    public class LiteralVisitor : DssParserBaseVisitor<ConstantExpression>
     {
         static string[] lengthUnits = { "%", "px", "x", "u" };
 
-        public override ConstantExpression VisitLiteral([NotNull] Internal.DSSParser.LiteralContext context)
+        public override ConstantExpression VisitLiteral([NotNull] Internal.DssParser.LiteralContext context)
         {
             var number = context.NUMBER();
             var unit = context.UNIT();

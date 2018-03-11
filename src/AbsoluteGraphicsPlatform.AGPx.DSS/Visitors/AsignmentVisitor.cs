@@ -10,9 +10,9 @@ using AbsoluteGraphicsPlatform.AGPx.Models;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class AsignmentVisitor : DSSParserBaseVisitor<AsignmentStatement>
+    public class AsignmentVisitor : DssParserBaseVisitor<AsignmentStatement>
     {
-        public override AsignmentStatement VisitAsignmentStatement([NotNull] Internal.DSSParser.AsignmentStatementContext context)
+        public override AsignmentStatement VisitAsignmentStatement([NotNull] Internal.DssParser.AsignmentStatementContext context)
         {
             var variableName = context.variable().IDENTIFIER().GetText();
 

@@ -10,9 +10,9 @@ using AbsoluteGraphicsPlatform.AGPx;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class StatementVisitor : DSSParserBaseVisitor<IStatement>
+    public class StatementVisitor : DssParserBaseVisitor<IStatement>
     {
-        public override IStatement VisitStatement([NotNull] Internal.DSSParser.StatementContext context)
+        public override IStatement VisitStatement([NotNull] Internal.DssParser.StatementContext context)
         {
             var rulesetVisitor = new RulesetVisitor();
             var ruleset = context.Accept(rulesetVisitor);

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from .\DSSParser.g4 by ANTLR 4.7.1
+// Generated from .\DssParser.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -26,160 +26,160 @@ using IToken = Antlr4.Runtime.IToken;
 
 /// <summary>
 /// This interface defines a complete listener for a parse tree produced by
-/// <see cref="DSSParser"/>.
+/// <see cref="DssParser"/>.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.7.1")]
 [System.CLSCompliant(false)]
-public interface IDSSParserListener : IParseTreeListener {
+public interface IDssParserListener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.stylesheet"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.stylesheet"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStylesheet([NotNull] DSSParser.StylesheetContext context);
+	void EnterStylesheet([NotNull] DssParser.StylesheetContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.stylesheet"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.stylesheet"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStylesheet([NotNull] DSSParser.StylesheetContext context);
+	void ExitStylesheet([NotNull] DssParser.StylesheetContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.statement"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterStatement([NotNull] DSSParser.StatementContext context);
+	void EnterStatement([NotNull] DssParser.StatementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.statement"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.statement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitStatement([NotNull] DSSParser.StatementContext context);
+	void ExitStatement([NotNull] DssParser.StatementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.ruleset"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.ruleset"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRuleset([NotNull] DSSParser.RulesetContext context);
+	void EnterRuleset([NotNull] DssParser.RulesetContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.ruleset"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.ruleset"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRuleset([NotNull] DSSParser.RulesetContext context);
+	void ExitRuleset([NotNull] DssParser.RulesetContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.block"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterBlock([NotNull] DSSParser.BlockContext context);
+	void EnterBlock([NotNull] DssParser.BlockContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.block"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.block"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitBlock([NotNull] DSSParser.BlockContext context);
+	void ExitBlock([NotNull] DssParser.BlockContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.selector"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.selector"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelector([NotNull] DSSParser.SelectorContext context);
+	void EnterSelector([NotNull] DssParser.SelectorContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.selector"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.selector"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelector([NotNull] DSSParser.SelectorContext context);
+	void ExitSelector([NotNull] DssParser.SelectorContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.selectorPart"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.selectorPart"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSelectorPart([NotNull] DSSParser.SelectorPartContext context);
+	void EnterSelectorPart([NotNull] DssParser.SelectorPartContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.selectorPart"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.selectorPart"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSelectorPart([NotNull] DSSParser.SelectorPartContext context);
+	void ExitSelectorPart([NotNull] DssParser.SelectorPartContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.identifier"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.identifier"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterIdentifier([NotNull] DSSParser.IdentifierContext context);
+	void EnterIdentifier([NotNull] DssParser.IdentifierContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.identifier"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.identifier"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitIdentifier([NotNull] DSSParser.IdentifierContext context);
+	void ExitIdentifier([NotNull] DssParser.IdentifierContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.propertyStatement"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.propertyStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
+	void EnterPropertyStatement([NotNull] DssParser.PropertyStatementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.propertyStatement"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.propertyStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPropertyStatement([NotNull] DSSParser.PropertyStatementContext context);
+	void ExitPropertyStatement([NotNull] DssParser.PropertyStatementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.propertyKey"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	void EnterPropertyKey([NotNull] DssParser.PropertyKeyContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.propertyKey"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.propertyKey"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPropertyKey([NotNull] DSSParser.PropertyKeyContext context);
+	void ExitPropertyKey([NotNull] DssParser.PropertyKeyContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.propertyValue"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	void EnterPropertyValue([NotNull] DssParser.PropertyValueContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.propertyValue"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.propertyValue"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitPropertyValue([NotNull] DSSParser.PropertyValueContext context);
+	void ExitPropertyValue([NotNull] DssParser.PropertyValueContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.asignmentStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	void EnterAsignmentStatement([NotNull] DssParser.AsignmentStatementContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.asignmentStatement"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.asignmentStatement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAsignmentStatement([NotNull] DSSParser.AsignmentStatementContext context);
+	void ExitAsignmentStatement([NotNull] DssParser.AsignmentStatementContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.expression"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterExpression([NotNull] DSSParser.ExpressionContext context);
+	void EnterExpression([NotNull] DssParser.ExpressionContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.expression"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.expression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitExpression([NotNull] DSSParser.ExpressionContext context);
+	void ExitExpression([NotNull] DssParser.ExpressionContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.literal"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterLiteral([NotNull] DSSParser.LiteralContext context);
+	void EnterLiteral([NotNull] DssParser.LiteralContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.literal"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.literal"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitLiteral([NotNull] DSSParser.LiteralContext context);
+	void ExitLiteral([NotNull] DssParser.LiteralContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.color"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.color"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterColor([NotNull] DSSParser.ColorContext context);
+	void EnterColor([NotNull] DssParser.ColorContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.color"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.color"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitColor([NotNull] DSSParser.ColorContext context);
+	void ExitColor([NotNull] DssParser.ColorContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="DSSParser.variable"/>.
+	/// Enter a parse tree produced by <see cref="DssParser.variable"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterVariable([NotNull] DSSParser.VariableContext context);
+	void EnterVariable([NotNull] DssParser.VariableContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="DSSParser.variable"/>.
+	/// Exit a parse tree produced by <see cref="DssParser.variable"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitVariable([NotNull] DSSParser.VariableContext context);
+	void ExitVariable([NotNull] DssParser.VariableContext context);
 }
 } // namespace AbsoluteGraphicsPlatform.AGPx.Internal

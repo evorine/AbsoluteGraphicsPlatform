@@ -12,9 +12,9 @@ using AbsoluteGraphicsPlatform.Templating;
 
 namespace AbsoluteGraphicsPlatform.AGPx.Visitors
 {
-    public class RulesetVisitor : DSSParserBaseVisitor<Ruleset>
+    public class RulesetVisitor : DssParserBaseVisitor<Ruleset>
     {
-        public override Ruleset VisitRuleset([NotNull] Internal.DSSParser.RulesetContext context)
+        public override Ruleset VisitRuleset([NotNull] Internal.DssParser.RulesetContext context)
         {
             var selector = context.selector().Accept(new RulesetSelectorVisitor());
             var ruleset = context.block().Accept(new RulesetBlockVisitor());
@@ -23,9 +23,9 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             return ruleset;
         }
 
-        public class RulesetSelectorVisitor : DSSParserBaseVisitor<RuleSelector>
+        public class RulesetSelectorVisitor : DssParserBaseVisitor<RuleSelector>
         {
-            public override RuleSelector VisitSelector([NotNull] Internal.DSSParser.SelectorContext context)
+            public override RuleSelector VisitSelector([NotNull] Internal.DssParser.SelectorContext context)
             {
                 var selectorPart = context.selectorPart();
 
@@ -40,9 +40,9 @@ namespace AbsoluteGraphicsPlatform.AGPx.Visitors
             }
         }
 
-        public class RulesetBlockVisitor : DSSParserBaseVisitor<Ruleset>
+        public class RulesetBlockVisitor : DssParserBaseVisitor<Ruleset>
         {
-            public override Ruleset VisitBlock([NotNull] Internal.DSSParser.BlockContext context)
+            public override Ruleset VisitBlock([NotNull] Internal.DssParser.BlockContext context)
             {
                 var statementVisitor = new StatementVisitor();
                 var statements = context.statement().Select(x => x.Accept(statementVisitor)).ToArray();

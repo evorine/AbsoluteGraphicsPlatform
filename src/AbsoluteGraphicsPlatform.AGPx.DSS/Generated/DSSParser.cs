@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from .\DSSParser.g4 by ANTLR 4.7.1
+// Generated from .\DssParser.g4 by ANTLR 4.7.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -33,7 +33,7 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.7.1")]
 [System.CLSCompliant(false)]
-public partial class DSSParser : Parser {
+public partial class DssParser : Parser {
 	protected static DFA[] decisionToDFA;
 	protected static PredictionContextCache sharedContextCache = new PredictionContextCache();
 	public const int
@@ -87,22 +87,22 @@ public partial class DSSParser : Parser {
 		}
 	}
 
-	public override string GrammarFileName { get { return "DSSParser.g4"; } }
+	public override string GrammarFileName { get { return "DssParser.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
 	public override string SerializedAtn { get { return new string(_serializedATN); } }
 
-	static DSSParser() {
+	static DssParser() {
 		decisionToDFA = new DFA[_ATN.NumberOfDecisions];
 		for (int i = 0; i < _ATN.NumberOfDecisions; i++) {
 			decisionToDFA[i] = new DFA(_ATN.GetDecisionState(i), i);
 		}
 	}
 
-		public DSSParser(ITokenStream input) : this(input, Console.Out, Console.Error) { }
+		public DssParser(ITokenStream input) : this(input, Console.Out, Console.Error) { }
 
-		public DSSParser(ITokenStream input, TextWriter output, TextWriter errorOutput)
+		public DssParser(ITokenStream input, TextWriter output, TextWriter errorOutput)
 		: base(input, output, errorOutput)
 	{
 		Interpreter = new ParserATNSimulator(this, _ATN, decisionToDFA, sharedContextCache);
@@ -120,15 +120,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_stylesheet; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterStylesheet(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitStylesheet(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitStylesheet(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -184,15 +184,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_statement; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterStatement(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitStatement(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitStatement(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -250,15 +250,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_ruleset; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterRuleset(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitRuleset(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitRuleset(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -299,15 +299,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_block; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterBlock(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitBlock(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBlock(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -359,15 +359,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_selector; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterSelector(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitSelector(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSelector(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -401,23 +401,23 @@ public partial class DSSParser : Parser {
 		public IdentifierContext identifier() {
 			return GetRuleContext<IdentifierContext>(0);
 		}
-		public ITerminalNode HASH() { return GetToken(DSSParser.HASH, 0); }
-		public ITerminalNode DOT() { return GetToken(DSSParser.DOT, 0); }
+		public ITerminalNode HASH() { return GetToken(DssParser.HASH, 0); }
+		public ITerminalNode DOT() { return GetToken(DssParser.DOT, 0); }
 		public SelectorPartContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_selectorPart; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterSelectorPart(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitSelectorPart(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitSelectorPart(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -471,22 +471,22 @@ public partial class DSSParser : Parser {
 	}
 
 	public partial class IdentifierContext : ParserRuleContext {
-		public ITerminalNode IDENTIFIER() { return GetToken(DSSParser.IDENTIFIER, 0); }
+		public ITerminalNode IDENTIFIER() { return GetToken(DssParser.IDENTIFIER, 0); }
 		public IdentifierContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_identifier; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterIdentifier(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitIdentifier(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIdentifier(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -526,15 +526,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_propertyStatement; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterPropertyStatement(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitPropertyStatement(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPropertyStatement(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -578,15 +578,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_propertyKey; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterPropertyKey(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitPropertyKey(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPropertyKey(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -637,15 +637,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_propertyValue; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterPropertyValue(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitPropertyValue(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitPropertyValue(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -698,15 +698,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_asignmentStatement; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterAsignmentStatement(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitAsignmentStatement(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitAsignmentStatement(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -758,15 +758,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_expression; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterExpression(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitExpression(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitExpression(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -931,29 +931,29 @@ public partial class DSSParser : Parser {
 
 	public partial class LiteralContext : ParserRuleContext {
 		public IToken OTHER;
-		public ITerminalNode NUMBER() { return GetToken(DSSParser.NUMBER, 0); }
-		public ITerminalNode UNIT() { return GetToken(DSSParser.UNIT, 0); }
+		public ITerminalNode NUMBER() { return GetToken(DssParser.NUMBER, 0); }
+		public ITerminalNode UNIT() { return GetToken(DssParser.UNIT, 0); }
 		public ColorContext color() {
 			return GetRuleContext<ColorContext>(0);
 		}
-		public ITerminalNode NULL() { return GetToken(DSSParser.NULL, 0); }
-		public ITerminalNode NONE() { return GetToken(DSSParser.NONE, 0); }
-		public ITerminalNode IDENTIFIER() { return GetToken(DSSParser.IDENTIFIER, 0); }
+		public ITerminalNode NULL() { return GetToken(DssParser.NULL, 0); }
+		public ITerminalNode NONE() { return GetToken(DssParser.NONE, 0); }
+		public ITerminalNode IDENTIFIER() { return GetToken(DssParser.IDENTIFIER, 0); }
 		public LiteralContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_literal; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterLiteral(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitLiteral(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitLiteral(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1018,9 +1018,9 @@ public partial class DSSParser : Parser {
 	}
 
 	public partial class ColorContext : ParserRuleContext {
-		public ITerminalNode[] HEXADECIMAL() { return GetTokens(DSSParser.HEXADECIMAL); }
+		public ITerminalNode[] HEXADECIMAL() { return GetTokens(DssParser.HEXADECIMAL); }
 		public ITerminalNode HEXADECIMAL(int i) {
-			return GetToken(DSSParser.HEXADECIMAL, i);
+			return GetToken(DssParser.HEXADECIMAL, i);
 		}
 		public ColorContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -1028,15 +1028,15 @@ public partial class DSSParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_color; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterColor(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitColor(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitColor(this);
 			else return visitor.VisitChildren(this);
 		}
@@ -1070,22 +1070,22 @@ public partial class DSSParser : Parser {
 	}
 
 	public partial class VariableContext : ParserRuleContext {
-		public ITerminalNode IDENTIFIER() { return GetToken(DSSParser.IDENTIFIER, 0); }
+		public ITerminalNode IDENTIFIER() { return GetToken(DssParser.IDENTIFIER, 0); }
 		public VariableContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_variable; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.EnterVariable(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IDSSParserListener typedListener = listener as IDSSParserListener;
+			IDssParserListener typedListener = listener as IDssParserListener;
 			if (typedListener != null) typedListener.ExitVariable(this);
 		}
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
-			IDSSParserVisitor<TResult> typedVisitor = visitor as IDSSParserVisitor<TResult>;
+			IDssParserVisitor<TResult> typedVisitor = visitor as IDssParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitVariable(this);
 			else return visitor.VisitChildren(this);
 		}
