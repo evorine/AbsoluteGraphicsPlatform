@@ -17,12 +17,14 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
         readonly PropertySetter propertySetter;
         readonly DssParser dssParser;
+        readonly ExpressionExecutor expressionExecutor;
         readonly ComponentTypeResolver componentTypeResolver;
 
-        public AGPMLParser(PropertySetter propertySetter, DssParser dssParser, ComponentTypeResolver componentTypeResolver)
+        public AGPMLParser(PropertySetter propertySetter, DssParser dssParser, ExpressionExecutor expressionExecutor, ComponentTypeResolver componentTypeResolver)
         {
             this.propertySetter = propertySetter;
             this.dssParser = dssParser;
+            this.expressionExecutor = expressionExecutor;
             this.componentTypeResolver = componentTypeResolver;
         }
 
@@ -116,7 +118,8 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
                 var expression = propertyType == typeof(string) ? Expression.Constant(new StringPropertyValue(attribute.Value))
                                                                 : dssParser.ParseExpression(attribute.Value, node.OwnerDocument.Name);
-                var propertySetterInfo = new PropertySetterInfo(attribute.Name, new Expression[] { expression }, 0, "");
+                var value = expressionExecutor.GetValue(expression);
+                var propertySetterInfo = new PropertySetterInfo(attribute.Name, value, 0, "");
 
                 template.PropertySetters.Add(propertySetterInfo);
             }

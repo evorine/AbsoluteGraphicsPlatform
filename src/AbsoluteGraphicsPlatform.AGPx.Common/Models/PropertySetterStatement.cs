@@ -9,11 +9,11 @@ namespace AbsoluteGraphicsPlatform.AGPx.Models
     /// <summary>
     /// Stores the information for a style declaration.
     /// </summary>
-    public class PropertySetterStatement : PropertySetterInfo, IStatement
+    /*public class PropertySetterStatement : PropertySetterInfo, IStatement
     {
         public PropertySetterStatement(string propertyName, Expression[] values, int line, string source) 
             : base(propertyName, values, line, source)
         {
         }
-    }
+    }*/
 }

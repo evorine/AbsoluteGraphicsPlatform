@@ -47,7 +47,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
 
         public override void ApplyProperty(IComponent component, PropertySetterInfo propertySetterInfo)
         {
-            if (!propertySetter.SetValue(component, propertySetterInfo.PropertyName, expressionExecutor.GetValues(propertySetterInfo.Values).ToArray()))
+            if (!propertySetter.SetValue(component, propertySetterInfo.PropertyName, propertySetterInfo.Value))
                 throw new PropertyNotFoundException("Invalid property assignement!", propertySetterInfo.Line, propertySetterInfo.Source);
         }
 

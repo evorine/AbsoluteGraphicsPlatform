@@ -10,8 +10,9 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
     {
         public static Stylesheet CompileCode(string code)
         {
+            var expressionExecutor = new ExpressionExecutor();
             var dssParser = new DssParser();
-            var dssCompiler = new DssCompiler();
+            var dssCompiler = new DssCompiler(expressionExecutor);
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             var instructions = dssParser.Parse(sourceInfo);
             return dssCompiler.Compile(instructions);

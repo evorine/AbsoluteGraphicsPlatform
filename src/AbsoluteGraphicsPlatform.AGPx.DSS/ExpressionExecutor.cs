@@ -15,13 +15,28 @@ namespace AbsoluteGraphicsPlatform.AGPx
         /// </summary>
         /// <param name="expressions">Expressions to execute.</param>
         /// <returns></returns>
-        public IEnumerable<IPropertyValue> GetValues(Expression[] expressions)
+        public IPropertyValue GetValue(Expression expression)
         {
-            foreach (var expression in expressions)
+            if (expression is ConstantExpression constantExpression) return (IPropertyValue)constantExpression.Value;
+            else if (expression is InvocationExpression invocationExpression) return (IPropertyValue)GetValueFromInvocation(invocationExpression);
+            else throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
+        }
+
+        /// <summary>
+        /// Executes an expression and returns the values.
+        /// </summary>
+        /// <param name="expressions">Expressions to execute.</param>
+        /// <returns></returns>
+        public IPropertyValue GetValues(Expression[] expressions)
+        {
+            if (expressions.Length > 1)
             {
-                if (expression is ConstantExpression constantExpression) yield return (IPropertyValue)constantExpression.Value;
-                else if (expression is InvocationExpression invocationExpression) yield return (IPropertyValue)GetValueFromInvocation(invocationExpression);
-                else throw new NotImplementedException($"Unimplemented expression type is passed in: '{expression.GetType().Name}'!");
+                var values = expressions.Select(x => GetValue(x)).ToArray();
+                return new TuplePropertyValue(values);
+            }
+            else
+            {
+                return GetValue(expressions.First());
             }
         }
 
@@ -29,7 +44,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
         {
             var lambdaExpression = (LambdaExpression)invocationExpression.Expression;
             var compiled = lambdaExpression.Compile();
-            var args = GetValues(invocationExpression.Arguments.ToArray()).ToArray();
+            var args = invocationExpression.Arguments.Select(x => GetValue(x)).ToArray();
             var result = compiled.DynamicInvoke(args);
 
             return result;

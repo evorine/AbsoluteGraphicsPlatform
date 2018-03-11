@@ -9,5 +9,13 @@ namespace AbsoluteGraphicsPlatform.AGPx
 {
     public sealed class TuplePropertyValue : IPropertyValue
     {
+        readonly IPropertyValue[] values;
+
+        public TuplePropertyValue(IPropertyValue[] values)
+        {
+            this.values = values;
+        }
+
+        public IPropertyValue[] Values => values;
     }
 }

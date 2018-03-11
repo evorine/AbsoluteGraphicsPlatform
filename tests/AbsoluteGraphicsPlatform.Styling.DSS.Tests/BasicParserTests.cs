@@ -53,7 +53,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
 
             Assert.Equal("property", property.Identifier);
             Assert.Single(property.Value.Values);
-            Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(property.Value.Values).Single());
+            Assert.Equal(PropertyValue.None, expressionExecutor.GetValues(property.Value.Values));
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace AbsoluteGraphicsPlatform.Styling.DSS.Tests
             var ruleset = (RulesetInstruction)instructions.Single();
             var property = (PropertyInstruction)ruleset.Instructions.Single();
 
-            Assert.Equal(new ScalarPropertyValue(57), expressionExecutor.GetValues(property.Value.Values).Single());
+            Assert.Equal(new ScalarPropertyValue(57), expressionExecutor.GetValues(property.Value.Values));
         }
     }
 }

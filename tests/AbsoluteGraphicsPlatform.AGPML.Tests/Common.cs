@@ -19,8 +19,9 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var appOptions = OptionsMocks.CreateApplicationOptions();
             var propertySetter = new PropertySetter(appOptions);
             var dssParser = new DssParser();
+            var expressionExecutor = new ExpressionExecutor();
             var componentTypeResolver = new ComponentTypeResolver();
-            var agpmlParser = new AGPMLParser(propertySetter, dssParser, componentTypeResolver);
+            var agpmlParser = new AGPMLParser(propertySetter, dssParser, expressionExecutor, componentTypeResolver);
 
             var sourceInfo = new SourceCodeInfo("TestCode", code);
             var template = agpmlParser.ParseComponentTemplate(sourceInfo);

@@ -10,10 +10,10 @@ namespace AbsoluteGraphicsPlatform.Templating
     /// </summary>
     public class PropertySetterInfo
     {
-        public PropertySetterInfo(string propertyName, Expression[] values, int line, string source)
+        public PropertySetterInfo(string propertyName, IPropertyValue value, int line, string source)
         {
             PropertyName = propertyName;
-            Values = values;
+            Value = value;
             Line = line;
             Source = source;
         }
@@ -24,10 +24,10 @@ namespace AbsoluteGraphicsPlatform.Templating
         public string PropertyName { get; }
 
         /// <summary>
-        /// Gets the values of the style declaration.
+        /// Gets the value of the property setter.
         /// </summary>
-        public Expression[] Values { get; }
-
+        public IPropertyValue Value { get; }
+        
         /// <summary>
         /// Gets the line number of the statement.
         /// </summary>
