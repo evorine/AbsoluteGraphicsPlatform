@@ -67,6 +67,7 @@ namespace AbsoluteGraphicsPlatform
                 var instanceChild = ProcessTemplate(instanceChildTemplate);
                 //instanceChild.ContainerScope = instanceChildTemplate.ContainerScopeName;
                 component.Children.Add(instanceChild);
+                instanceChild.Parent = component;
             }
 
             return component;
@@ -94,7 +95,6 @@ namespace AbsoluteGraphicsPlatform
                     var child = ProcessTemplate(childTemplate);
                     //child.ContainerScope = childTemplate.ContainerScopeName;
                     component.ElementTree.Children.Add(child);
-
                     // Root component won't have children as it is not part of another component model (aka tree)
                     if (component.Parent != null)
                     {

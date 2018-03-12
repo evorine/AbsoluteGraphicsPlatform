@@ -39,7 +39,7 @@ namespace AbsoluteGraphicsPlatform.Layout
             rootComponentBox.LayoutDirection = LayoutDirection.Vertical;
 
             var childrenOffset = new AbsolutePoint();
-            foreach (var component in componentTree.Owner.Children)
+            foreach (var component in componentTree.Owner.ElementTree.Children)
                 processComponent(component, context, ref childrenOffset);
 
             var filteredBoxes = context.LayoutBoxes.ToDictionary(x => (ILayoutBox)x.Key, x => x.Value);

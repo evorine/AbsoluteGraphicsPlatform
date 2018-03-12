@@ -29,6 +29,7 @@ namespace AbsoluteGraphicsPlatform.Components
         /// Parent element in this document model
         /// </summary>
         public IElement Parent { get; set; }
+        
         /// <summary>
         /// Scope name of the placeholder of this element.
         /// </summary>

@@ -24,13 +24,13 @@ namespace AbsoluteGraphicsPlatform.Components
         public void Add(IElement element)
         {
             elementList.Add(element);
-            element.Parent = element;
+            //element.Parent = element;
         }
 
         public void Insert(int index, IElement element)
         {
             elementList.Insert(index, element);
-            element.Parent = element;
+            //element.Parent = element;
         }
 
         public void Clear()

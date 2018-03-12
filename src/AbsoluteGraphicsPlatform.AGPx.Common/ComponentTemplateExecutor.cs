@@ -39,7 +39,9 @@ namespace AbsoluteGraphicsPlatform.AGPx
             // Iterate virtual template components
             foreach (var childComponentTemplate in componentTemplate.Templates)
             {
-                component.Children.Add(CreateComponent(childComponentTemplate));
+                var child = CreateComponent(childComponentTemplate);
+                component.Children.Add(child);
+                child.Parent = component;
             }
 
             styleSetter.ApplyStyle(component);
