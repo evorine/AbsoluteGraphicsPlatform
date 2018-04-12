@@ -40,9 +40,9 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
             var componentTemplate = componentTemplateCollection.GetTemplateByType(component.ComponentMetaInfo.ComponentType);
             
 
-            var componentElement = new DocumentElement()
+            var componentElement = new DocumentObject(context.DocumentModel)
             {
-                Component = component
+                Element = component
             };
             context.ComponentPointers[component] = componentElement;
         }

@@ -2,7 +2,6 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.Collections.Generic;
 using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
@@ -10,26 +9,32 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     /// <summary>
     /// Represents an <seealso cref="IElement"/> in a <seealso cref="IDocumentModelTree"/>.
     /// </summary>
-    public interface IDocumentObject
+    public class DocumentObject : IDocumentObject
     {
+        public DocumentObject(IDocumentModelTree ownerDocumentModelTree)
+        {
+            OwnerDocumentModel = ownerDocumentModelTree;
+            Children = new DocumentObjectCollection();
+        }
+
         /// <summary>
         /// Gets the owner document model tree
         /// </summary>
-        IDocumentModelTree OwnerDocumentModel { get; }
+        public IDocumentModelTree OwnerDocumentModel { get; }
 
         /// <summary>
-        /// Gets the owner element of this document object
+        /// Gets or sets the owner element of this document object
         /// </summary>
-        IElement Element { get; }
+        public IElement Element { get; set; }
 
         /// <summary>
-        /// Gets the parent document object
+        /// Gets or sets the parent document object
         /// </summary>
-        IDocumentObject Parent { get; }
+        public IDocumentObject Parent { get; set; }
 
         /// <summary>
         /// Gets the children document object
         /// </summary>
-        DocumentObjectCollection Children { get; }
+        public DocumentObjectCollection Children { get; }
     }
 }
