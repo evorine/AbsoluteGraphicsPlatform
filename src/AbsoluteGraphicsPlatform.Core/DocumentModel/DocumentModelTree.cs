@@ -10,7 +10,6 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     public class DocumentModelTree : IDocumentModelTree
     {
         readonly IDocumentModelEngine documentModelEngine;
-        IElementCollection componentTree;
 
         public DocumentModelTree(IDocumentModelEngine documentModelEngine)
         {
