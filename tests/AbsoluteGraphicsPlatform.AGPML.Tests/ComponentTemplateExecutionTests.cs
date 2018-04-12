@@ -91,7 +91,11 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var barTemplate = Common.ParseComponentTemplateCode(barTemplateCode);
 
             var foo = componentTemplateExecutor.ExecuteTemplate(fooTemplate);
-            var bar = componentTemplateExecutor.ExecuteTemplate(barTemplate);
+            var bar = (IComponent)foo.ElementTree.Children[0].Children[0];
+
+            Assert.IsAssignableFrom<BarComponent>(bar);
+            Assert.IsAssignableFrom<BasicTemplatelessComponent>(bar.Children[0]);
+            Assert.IsAssignableFrom<ComponentPlaceholderComponent>(bar.ElementTree.Children[0].Children[1]);
         }
     }
 }
