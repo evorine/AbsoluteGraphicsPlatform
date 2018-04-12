@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
@@ -42,32 +43,61 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
             foreach(var element in ElementTree.NavigateAllElementsRecursively(context.DocumentModel.OwnerComponent))
             {
-
+                
             }
-            ProcessElementRecuresively(context, context.DocumentModel.OwnerComponent);
+            ProcessElementRecuresively(context, context.DocumentModel.OwnerComponent, null);
             context.DocumentModel.RootDocumentObject = context.ElementPointers[context.DocumentModel.OwnerComponent];
         }
 
 
-        private void ProcessElementRecuresively(DocumentModelProcessContext context, IElement element)
+        private void ProcessElementRecuresively(DocumentModelProcessContext context, IElement element, IElement parent)
         {
             var documentObject = CreateDocumentObject(context, context.DocumentModel.OwnerComponent);
+            if (parent != null)
+            {
+                var parentDocumentObject = context.ElementPointers[parent];
+                parentDocumentObject.Children.Add(documentObject);
+            }
 
             if (element is IComponent component)
             {
-                //component.ElementTree
-            }
-            foreach(var child in element.Children)
-            {
+                // Continue adding elements to tree by switching to component's tree
+                foreach (var child in component.ElementTree.Children)
+                {
+                    ProcessElementRecuresively(context, child, element);
+                }
 
+                if (component.Children.Any())
+                {
+#warning Fix here! Temporarily use only single placeholder!
+                    var placeholder = component.ElementTree.PlaceholderElements.FirstOrDefault();
+
+                    if (placeholder != null)
+                    {
+                        // Add children elements to component's placeholder
+                        foreach (var child in component.Children)
+                        {
+                            ProcessElementRecuresively(context, child, placeholder);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach(var child in element.Children)
+                {
+                    ProcessElementRecuresively(context, child, element);
+                }
             }
         }
 
         private DocumentObject CreateDocumentObject(DocumentModelProcessContext context, IElement element)
         {
-            var documentObject = new DocumentObject(context.DocumentModel)
+            var documentObject = new DocumentObject()
             {
+                OwnerDocumentModel = context.DocumentModel,
                 Element = element,
+                Parent = context.ElementPointers[element.Parent]
             };
             context.ElementPointers[element] = documentObject;
             return documentObject;

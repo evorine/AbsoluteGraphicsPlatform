@@ -11,16 +11,15 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     /// </summary>
     public class DocumentObject : IDocumentObject
     {
-        public DocumentObject(IDocumentModelTree ownerDocumentModelTree)
+        public DocumentObject()
         {
-            OwnerDocumentModel = ownerDocumentModelTree;
             Children = new DocumentObjectCollection();
         }
 
         /// <summary>
         /// Gets the owner document model tree
         /// </summary>
-        public IDocumentModelTree OwnerDocumentModel { get; }
+        public IDocumentModelTree OwnerDocumentModel { get; set; }
 
         /// <summary>
         /// Gets or sets the owner element of this document object
