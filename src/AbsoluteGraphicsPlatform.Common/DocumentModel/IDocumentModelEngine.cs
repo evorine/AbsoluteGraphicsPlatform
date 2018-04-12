@@ -9,6 +9,12 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public interface IDocumentModelEngine
     {
-        void ProcessDocumentModel(IDocumentTree documentModel);
+        void ProcessDocumentModel(IDocumentModelTree documentModel);
+
+        /// <summary>
+        /// Recalculates the structure of the document model.
+        /// </summary>
+        /// <param name="documentModel">Document model to recalculate</param>
+        void Restructure(IDocumentModelTree documentModel);
     }
 }

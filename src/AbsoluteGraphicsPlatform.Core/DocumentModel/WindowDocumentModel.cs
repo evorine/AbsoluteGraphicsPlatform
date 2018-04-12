@@ -7,7 +7,7 @@ using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
-    public class WindowDocumentModel : IDocumentTree
+    public class WindowDocumentModel : IDocumentModelTree
     {
         readonly IDocumentModelEngine documentModelEngine;
         IElementCollection componentTree;
@@ -21,6 +21,12 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         public IDocumentObject RootElement { get; set; }
         public IEnumerable<IDocumentObject> AllElements { get; set; }
+
+        public IComponent OwnerComponent => throw new NotImplementedException();
+
+        public IDocumentObject RootDocumentObject => throw new NotImplementedException();
+
+        public IEnumerable<IDocumentObject> AllDocumentObjects => throw new NotImplementedException();
 
         public IDocumentObject FindRootElementOfComponent(IComponent component)
         {

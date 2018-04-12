@@ -19,7 +19,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         }
 
 
-        public void ProcessDocumentModel(IDocumentTree documentModel)
+        public void ProcessDocumentModel(IDocumentModelTree documentModel)
         {
             var context = new DocumentModelProcessContext()
             {
@@ -28,6 +28,11 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
             };
 
 
+        }
+
+        public void Restructure(IDocumentModelTree documentModel)
+        {
+            throw new NotImplementedException();
         }
 
         private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentObject containerDocumentElement)
