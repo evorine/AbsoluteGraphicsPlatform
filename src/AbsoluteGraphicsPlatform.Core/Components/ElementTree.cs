@@ -26,25 +26,36 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public IElementCollection Children => elementCollection;
 
-
         /// <summary>
         /// Finds and returns all child components recursively.
         /// </summary>
-        public IEnumerable<IElement> FindAllChildren()
-        {
-            yield return Owner;
+        public IEnumerable<IElement> GetAllElements() => NavigateAllElementsRecursively(this);
 
-            foreach (var child in Children)
-                foreach (var _child in FindAllChildren(child))
-                    yield return _child;
-        }
 
-        private static IEnumerable<IElement> FindAllChildren(IElement element)
+        /// <summary>
+        /// Navigates and returns all member elements recursively.
+        /// </summary>
+        public static IEnumerable<IElement> NavigateAllElementsRecursively(IElementTree elementTree) => NavigateAllElementsRecursively(elementTree.Owner);
+
+        /// <summary>
+        /// Navigates and returns all children elements recursively including itself.
+        /// </summary>
+        public static IEnumerable<IElement> NavigateAllElementsRecursively(IElement element)
         {
             yield return element;
 
             foreach (var child in element.Children)
-                foreach (var _child in FindAllChildren(child))
+                foreach (var _child in NavigateAllElementsRecursively(child))
+                    yield return _child;
+        }
+
+        /// <summary>
+        /// Navigates and returns all children elements recursively.
+        /// </summary>
+        public static IEnumerable<IElement> NavigateAllChildrenRecursively(IElement element)
+        {
+            foreach (var child in element.Children)
+                foreach (var _child in NavigateAllElementsRecursively(child))
                     yield return _child;
         }
     }

@@ -9,6 +9,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common.Components
 {
+    [ComponentName("Basic")]
     public class BasicComponent : VisualComponent
     {
         [ComponentProperty]

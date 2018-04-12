@@ -56,7 +56,7 @@ namespace AbsoluteGraphicsPlatform.AGPx
             var rootTemplate = new ComponentTemplate(null, componentName.Value, rootComponentType);
 
             foreach (XmlNode node in xml.DocumentElement.ChildNodes)
-                rootTemplate.Templates.Add(ParseNode("default", node, namespaces));
+                rootTemplate.Templates.Add(ParseNode(rootTemplate, "default", node, namespaces));
 
             return rootTemplate;
         }
@@ -67,11 +67,13 @@ namespace AbsoluteGraphicsPlatform.AGPx
             return instructions.Select(x => x.Data.Trim()).ToArray();
         }
 
-        private ComponentTemplate ParseNode(string containerScope, XmlNode node, string[] namespaces)
+        private ComponentTemplate ParseNode(ComponentTemplate rootTemplate, string containerScope, XmlNode node, string[] namespaces)
         {
             var componentType = componentTypeResolver.FindComponentType(node.Name, namespaces);
             var template = new ComponentTemplate(containerScope, node.Name, componentType);
             ParsePropertiesSetters(template, node);
+
+            if (componentType == typeof(ComponentPlaceholderComponent)) rootTemplate.Placeholders.Add(template);
 
             foreach (XmlNode childNode in node.ChildNodes)
             {
@@ -79,13 +81,13 @@ namespace AbsoluteGraphicsPlatform.AGPx
                 {
                     foreach (XmlNode scopeChildNode in childNode.ChildNodes)
                     {
-                        var childTemplate = ParseNode(scopeName, scopeChildNode, namespaces);
+                        var childTemplate = ParseNode(rootTemplate, scopeName, scopeChildNode, namespaces);
                         template.Templates.Add(childTemplate);
                     }
                 }
                 else
                 {
-                    var childTemplate = ParseNode("default", childNode, namespaces);
+                    var childTemplate = ParseNode(rootTemplate, "default", childNode, namespaces);
                     template.Templates.Add(childTemplate);
                 }
             }

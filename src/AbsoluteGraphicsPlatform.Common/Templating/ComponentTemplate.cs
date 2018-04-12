@@ -18,6 +18,7 @@ namespace AbsoluteGraphicsPlatform.Templating
             ComponentType = componentType;
             PropertySetters = new PropertySetterInfoCollection();
             Templates = new ComponentTemplateCollection();
+            Placeholders = new ComponentTemplateCollection();
         }
 
         public string ContainerScopeName { get; }
@@ -29,6 +30,8 @@ namespace AbsoluteGraphicsPlatform.Templating
         public ICollection<IComponentDirective> Directives { get; }
 
         public ComponentTemplateCollection Templates { get; }
+
+        public ComponentTemplateCollection Placeholders { get; }
 
         public override string ToString() => this == None ? "None" : $"ComponentTemplate: '{ComponentType.Name}'";
     }

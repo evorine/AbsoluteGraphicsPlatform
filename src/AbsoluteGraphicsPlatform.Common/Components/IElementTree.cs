@@ -10,6 +10,6 @@ namespace AbsoluteGraphicsPlatform.Components
     {
         IComponent Owner { get; }
         IElementCollection Children { get; }
-        IEnumerable<IElement> FindAllChildren();
+        IEnumerable<IElement> GetAllElements();
     }
 }

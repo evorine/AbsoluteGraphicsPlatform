@@ -10,6 +10,8 @@ namespace AbsoluteGraphicsPlatform.Components
     [ComponentName("component-placeholder", false)]
     public class ComponentPlaceholderComponent : Component, ITemplatelessComponent
     {
+        public const string DefaultPlaceholderScope = "default";
 
+        public string Scope { get; set; } = DefaultPlaceholderScope;
     }
 }

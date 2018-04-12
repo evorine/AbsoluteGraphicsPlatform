@@ -17,15 +17,15 @@ namespace AbsoluteGraphicsPlatform.Layout.Tests
             var componentTree = new ElementTree(null);
             var testData = new BasicTestData(componentTree);
 
-            Assert.Contains(testData.ComponentRoot, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentTop, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentBottom, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentLeft, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentLeft1, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentLeft2, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentRight, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentRight1, componentTree.FindAllChildren());
-            Assert.Contains(testData.ComponentRight2, componentTree.FindAllChildren());
+            Assert.Contains(testData.ComponentRoot, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentTop, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentBottom, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentLeft, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentLeft1, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentLeft2, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentRight, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentRight1, componentTree.GetAllElements());
+            Assert.Contains(testData.ComponentRight2, componentTree.GetAllElements());
 
             //Assert.Contains(testData.ComponentTop, componentTree.LeafComponents);
             //Assert.Contains(testData.ComponentLeft1, componentTree.LeafComponents);

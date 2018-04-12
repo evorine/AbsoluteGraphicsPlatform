@@ -55,5 +55,42 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var foo = componentTemplateExecutor.ExecuteTemplate(fooTemplate);
             Assert.Equal("container", foo.Children[0].Name);
         }
+
+
+        [Fact]
+        public void ProcessReferencedTemplates()
+        {
+            var fooTemplateCode = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
+
+<component-template Name=""Foo"">
+    <primitive Name=""container"">
+        <Bar>
+            <BasicTemplateless />
+        </Bar>
+    </primitive>
+</component-template>
+";
+
+            var barTemplateCode = @"
+<?using AbsoluteGraphicsPlatform.Components?>
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
+
+<component-template Name=""Bar"">
+    <primitive Name=""container"">
+        <primitive Name=""Previous"" />
+        <component-placeholder />
+        <primitive Name=""Next"" />
+    </primitive>
+</component-template>
+";
+
+            var componentTemplateExecutor = Common.MockComponentTemplateExecutor();
+            var fooTemplate = Common.ParseComponentTemplateCode(fooTemplateCode);
+            var barTemplate = Common.ParseComponentTemplateCode(barTemplateCode);
+
+            var foo = componentTemplateExecutor.ExecuteTemplate(fooTemplate);
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 
 namespace AbsoluteGraphicsPlatform.Tests.Common.Components
 {
+    [ComponentName("BasicTemplateless")]
     public class BasicTemplatelessComponent : VisualComponent, ITemplatelessComponent
     {
         [ComponentProperty]

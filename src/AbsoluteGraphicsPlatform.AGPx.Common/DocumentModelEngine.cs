@@ -37,27 +37,47 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
             var context = new DocumentModelProcessContext()
             {
                 DocumentModel = (DocumentModelTree)documentModel,
-                ComponentPointers = new Dictionary<IComponent, IDocumentObject>()
+                ElementPointers = new Dictionary<IElement, IDocumentObject>()
             };
+
+            foreach(var element in ElementTree.NavigateAllElementsRecursively(context.DocumentModel.OwnerComponent))
+            {
+
+            }
+            ProcessElementRecuresively(context, context.DocumentModel.OwnerComponent);
+            context.DocumentModel.RootDocumentObject = context.ElementPointers[context.DocumentModel.OwnerComponent];
         }
 
-        private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentObject containerDocumentElement)
-        {
-            var componentTemplate = componentTemplateCollection.GetTemplateByType(component.ComponentMetaInfo.ComponentType);
-            
 
-            var componentElement = new DocumentObject(context.DocumentModel)
+        private void ProcessElementRecuresively(DocumentModelProcessContext context, IElement element)
+        {
+            var documentObject = CreateDocumentObject(context, context.DocumentModel.OwnerComponent);
+
+            if (element is IComponent component)
             {
-                Element = component
+                //component.ElementTree
+            }
+            foreach(var child in element.Children)
+            {
+
+            }
+        }
+
+        private DocumentObject CreateDocumentObject(DocumentModelProcessContext context, IElement element)
+        {
+            var documentObject = new DocumentObject(context.DocumentModel)
+            {
+                Element = element,
             };
-            context.ComponentPointers[component] = componentElement;
+            context.ElementPointers[element] = documentObject;
+            return documentObject;
         }
 
 
         internal class DocumentModelProcessContext
         {
             public DocumentModelTree DocumentModel { get; set; }
-            public Dictionary<IComponent, IDocumentObject> ComponentPointers { get; set; }
+            public Dictionary<IElement, IDocumentObject> ElementPointers { get; set; }
         }
     }
 }

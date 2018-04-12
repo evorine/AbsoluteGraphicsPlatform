@@ -172,7 +172,27 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var template = Common.ParseComponentTemplateCode(code);
 
             var placeholder = template.Templates[0].Templates[1];
+            Assert.Equal(template.Placeholders[0], placeholder);
             Assert.Equal(typeof(Components.ComponentPlaceholderComponent), placeholder.ComponentType);
+        }
+
+
+        [Fact]
+        public void ComponentTemplate_ParsesMultiplePlaceholder()
+        {
+            var code = @"
+<?using AbsoluteGraphicsPlatform.Tests.Common.Components?>
+<component-template Name=""BasicComponent"">
+    <Foo>
+        <component-placeholder Scope=""Main"" />
+        <component-placeholder Scope=""Alternative"" />
+    </Foo>
+</component-template>
+";
+            var expressionExecutor = new ExpressionExecutor();
+            var template = Common.ParseComponentTemplateCode(code);
+
+            Assert.Equal(2, template.Placeholders.Count);
         }
     }
 }
