@@ -24,7 +24,16 @@ namespace AbsoluteGraphicsPlatform.Components
         /// </summary>
         public IComponent Owner { get; }
 
+        /// <summary>
+        /// Gets the children elements
+        /// </summary>
         public IElementCollection Children => elementCollection;
+
+#warning Fix here. Implement a better way to return placeholders!
+        /// <summary>
+        /// Gets all placeholders owned by this <see cref="IElementTree"/>
+        /// </summary>
+        public IElement[] PlaceholderElements => GetAllElements().Where(x => x is ComponentPlaceholderComponent).ToArray();
 
         /// <summary>
         /// Finds and returns all child components recursively.

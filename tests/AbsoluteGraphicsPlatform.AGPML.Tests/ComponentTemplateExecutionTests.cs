@@ -91,6 +91,7 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var barTemplate = Common.ParseComponentTemplateCode(barTemplateCode);
 
             var foo = componentTemplateExecutor.ExecuteTemplate(fooTemplate);
+            var bar = componentTemplateExecutor.ExecuteTemplate(barTemplate);
         }
     }
 }
