@@ -19,18 +19,18 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         }
 
 
-        public void ProcessDocumentModel(IWindowDocumentModel documentModel)
+        public void ProcessDocumentModel(IDocumentTree documentModel)
         {
             var context = new DocumentModelProcessContext()
             {
                 DocumentModel = (WindowDocumentModel)documentModel,
-                ComponentPointers = new Dictionary<IComponent, IDocumentElement>()
+                ComponentPointers = new Dictionary<IComponent, IDocumentObject>()
             };
 
 
         }
 
-        private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentElement containerDocumentElement)
+        private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentObject containerDocumentElement)
         {
             var componentTemplate = componentTemplateCollection.GetTemplateByType(component.ComponentMetaInfo.ComponentType);
             
@@ -46,7 +46,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
         internal class DocumentModelProcessContext
         {
             public WindowDocumentModel DocumentModel { get; set; }
-            public Dictionary<IComponent, IDocumentElement> ComponentPointers { get; set; }
+            public Dictionary<IComponent, IDocumentObject> ComponentPointers { get; set; }
         }
     }
 }

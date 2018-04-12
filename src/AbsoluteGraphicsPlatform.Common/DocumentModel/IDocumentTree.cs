@@ -7,13 +7,13 @@ using AbsoluteGraphicsPlatform.Components;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
-    public interface IWindowDocumentModel
+    public interface IDocumentTree
     {
         IElementCollection ComponentTree { get; set; }
 
-        IEnumerable<IDocumentElement> AllElements { get; }
-        IDocumentElement RootElement { get; }
+        IEnumerable<IDocumentObject> AllElements { get; }
+        IDocumentObject RootElement { get; }
         void Restructure();
-        IDocumentElement FindRootElementOfComponent(IComponent component);
+        IDocumentObject FindRootElementOfComponent(IComponent component);
     }
 }

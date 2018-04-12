@@ -9,9 +9,10 @@ using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
-    public interface IDocumentElement
+    public interface IDocumentObject
     {
         IComponent Component { get; }
+
 
         LayoutDirection LayoutDirection { get; set; }
         RelativeLength Width { get; set; }

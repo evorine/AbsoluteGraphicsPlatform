@@ -10,7 +10,7 @@ using AbsoluteGraphicsPlatform.Metrics;
 
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
-    public class DocumentElement : IDocumentElement
+    public class DocumentElement : IDocumentObject
     {
         public IComponent Component { get; set; }
 

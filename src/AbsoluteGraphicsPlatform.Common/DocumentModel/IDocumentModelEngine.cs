@@ -9,6 +9,6 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public interface IDocumentModelEngine
     {
-        void ProcessDocumentModel(IWindowDocumentModel documentModel);
+        void ProcessDocumentModel(IDocumentTree documentModel);
     }
 }
