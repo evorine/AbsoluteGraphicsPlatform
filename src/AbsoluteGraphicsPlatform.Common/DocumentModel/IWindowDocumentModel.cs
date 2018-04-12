@@ -9,7 +9,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     public interface IWindowDocumentModel
     {
-        IComponentCollection ComponentTree { get; set; }
+        IElementCollection ComponentTree { get; set; }
 
         IEnumerable<IDocumentElement> AllElements { get; }
         IDocumentElement RootElement { get; }

@@ -10,14 +10,14 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
     public class WindowDocumentModel : IWindowDocumentModel
     {
         readonly IDocumentModelEngine documentModelEngine;
-        IComponentCollection componentTree;
+        IElementCollection componentTree;
 
         public WindowDocumentModel(IDocumentModelEngine documentModelEngine)
         {
             this.documentModelEngine = documentModelEngine;
         }
 
-        public IComponentCollection ComponentTree { get; set; }
+        public IElementCollection ComponentTree { get; set; }
 
         public IDocumentElement RootElement { get; set; }
         public IEnumerable<IDocumentElement> AllElements { get; set; }
