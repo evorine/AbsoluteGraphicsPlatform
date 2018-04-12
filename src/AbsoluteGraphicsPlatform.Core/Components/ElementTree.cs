@@ -33,7 +33,7 @@ namespace AbsoluteGraphicsPlatform.Components
         /// <summary>
         /// Gets all placeholders owned by this <see cref="IElementTree"/>
         /// </summary>
-        public IElement[] PlaceholderElements => GetAllElements().Where(x => x is ComponentPlaceholderComponent).ToArray();
+        public IElement[] PlaceholderElements => NavigateAllElementsRecursively(this).Where(x => x is ComponentPlaceholderComponent).ToArray();
 
         /// <summary>
         /// Finds and returns all child components recursively.

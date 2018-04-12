@@ -52,11 +52,18 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         private void ProcessElementRecuresively(DocumentModelProcessContext context, IElement element, IElement parent)
         {
-            var documentObject = CreateDocumentObject(context, context.DocumentModel.OwnerComponent);
-            if (parent != null)
+            if (!context.ElementPointers.ContainsKey(element))
             {
-                var parentDocumentObject = context.ElementPointers[parent];
-                parentDocumentObject.Children.Add(documentObject);
+                var documentObject = CreateDocumentObject(context, element);
+                if (parent != null)
+                {
+                    if (!context.ElementPointers.ContainsKey(parent))
+                        context.ElementPointers[parent] = CreateDocumentObject(context, parent);
+
+                    var parentDocumentObject = context.ElementPointers[parent];
+                    documentObject.Parent = parentDocumentObject;
+                    parentDocumentObject.Children.Add(documentObject);
+                }
             }
 
             if (element is IComponent component)
@@ -72,9 +79,16 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 #warning Fix here! Temporarily use only single placeholder!
                     var placeholder = component.ElementTree.PlaceholderElements.FirstOrDefault();
 
-                    if (placeholder != null)
+                    if (placeholder == null)
                     {
                         // Add children elements to component's placeholder
+                        foreach (var child in component.Children)
+                        {
+                            ProcessElementRecuresively(context, child, element);
+                        }
+                    }
+                    else
+                    {
                         foreach (var child in component.Children)
                         {
                             ProcessElementRecuresively(context, child, placeholder);
@@ -96,9 +110,12 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
             var documentObject = new DocumentObject()
             {
                 OwnerDocumentModel = context.DocumentModel,
-                Element = element,
-                Parent = context.ElementPointers[element.Parent]
+                Element = element
             };
+            if (element.Parent != null)
+            {
+                documentObject.Parent = context.ElementPointers[element.Parent];
+            }
             context.ElementPointers[element] = documentObject;
             return documentObject;
         }

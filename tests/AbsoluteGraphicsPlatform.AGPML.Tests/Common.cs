@@ -4,6 +4,7 @@
 using System.Linq;
 using AbsoluteGraphicsPlatform.AGPx;
 using AbsoluteGraphicsPlatform.Components;
+using AbsoluteGraphicsPlatform.DocumentModel;
 using AbsoluteGraphicsPlatform.Templating;
 using AbsoluteGraphicsPlatform.Tests.Common;
 
@@ -32,6 +33,19 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             return template;
         }
 
+        public static IDocumentModelTree CreateDocumentModelTreeFromTemplate(string templateCode)
+        {
+            var template = ParseComponentTemplateCode(templateCode);
+            var documentModelEngine = MockDocumentModelEngine();
+            var componentTemplateExecutor = MockComponentTemplateExecutor();
+
+            var component = componentTemplateExecutor.ExecuteTemplate(template);
+
+            var componentModelTree = documentModelEngine.CreateNewTree(component);
+            documentModelEngine.Restructure(componentModelTree);
+            return componentModelTree;
+        }
+
         public static ComponentTemplateExecutor MockComponentTemplateExecutor()
         {
             var agpxOptions = OptionsMocks.WrapOptions(OptionsMocks.CreateAgpxOptions());
@@ -40,6 +54,11 @@ namespace AbsoluteGraphicsPlatform.AGPML.Tests
             var dssStyleSetter = new DssStyleSetter(agpxOptions, propertySetter, expressionExecutor);
 
             return new ComponentTemplateExecutor(ComponentFactory, dssStyleSetter, propertySetter, agpxOptions);
+        }
+
+        public static IDocumentModelEngine MockDocumentModelEngine()
+        {
+            return new DocumentModelEngine(ComponentTemplateProvider);
         }
     }
 }
