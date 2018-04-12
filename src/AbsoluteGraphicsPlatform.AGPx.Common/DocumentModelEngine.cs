@@ -18,21 +18,29 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
             this.componentTemplateCollection = componentTemplateCollection;
         }
 
+        /// <summary>
+        /// Creates a new <see cref="IDocumentModelTree"/> for specified component.
+        /// </summary>
+        /// <param name="ownerComponent">Owner of the newly created <see cref="IDocumentModelTree"/></param>
+        public IDocumentModelTree CreateNewTree(IComponent ownerComponent)
+        {
+            return new DocumentModelTree(this)
+            {
+                OwnerComponent = ownerComponent
+            };
+        }
 
-        public void ProcessDocumentModel(IDocumentModelTree documentModel)
+        /// <summary>
+        /// Calculates the structure of the document model.
+        /// </summary>
+        /// <param name="documentModel">Document model to recalculate</param>
+        public void Restructure(IDocumentModelTree documentModel)
         {
             var context = new DocumentModelProcessContext()
             {
-                DocumentModel = (WindowDocumentModel)documentModel,
+                DocumentModel = (DocumentModelTree)documentModel,
                 ComponentPointers = new Dictionary<IComponent, IDocumentObject>()
             };
-
-
-        }
-
-        public void Restructure(IDocumentModelTree documentModel)
-        {
-            throw new NotImplementedException();
         }
 
         private void ProcessComponent(DocumentModelProcessContext context, IComponent component, IDocumentObject containerDocumentElement)
@@ -50,7 +58,7 @@ namespace AbsoluteGraphicsPlatform.DocumentModel
 
         internal class DocumentModelProcessContext
         {
-            public WindowDocumentModel DocumentModel { get; set; }
+            public DocumentModelTree DocumentModel { get; set; }
             public Dictionary<IComponent, IDocumentObject> ComponentPointers { get; set; }
         }
     }

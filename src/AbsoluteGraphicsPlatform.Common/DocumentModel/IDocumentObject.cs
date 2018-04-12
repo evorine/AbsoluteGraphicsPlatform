@@ -8,7 +8,7 @@ using AbsoluteGraphicsPlatform.Components;
 namespace AbsoluteGraphicsPlatform.DocumentModel
 {
     /// <summary>
-    /// Represents an <seealso cref="IElement"/> in a <seealso cref="IDocumentModelTree"/>.
+    /// Represents an <see cref="IElement"/> in a <see cref="IDocumentModelTree"/>.
     /// </summary>
     public interface IDocumentObject
     {
