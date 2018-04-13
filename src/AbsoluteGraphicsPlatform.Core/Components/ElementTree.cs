@@ -10,12 +10,12 @@ namespace AbsoluteGraphicsPlatform.Components
 {
     public class ElementTree : IElementTree
     {
-        private readonly ElementCollection elementCollection;
+        private readonly IElementCollection elementCollection;
 
         public ElementTree(IComponent owner)
         {
-            elementCollection = new ElementCollection();
             Owner = owner;
+            elementCollection = new ManagedElementCollection(owner);
         }
 
 
@@ -29,7 +29,7 @@ namespace AbsoluteGraphicsPlatform.Components
         /// </summary>
         public IElementCollection Children => elementCollection;
 
-#warning Fix here. Implement a better way to return placeholders!
+        #warning Fix here. Implement a better way to return placeholders!
         /// <summary>
         /// Gets all placeholders owned by this <see cref="IElementTree"/>
         /// </summary>

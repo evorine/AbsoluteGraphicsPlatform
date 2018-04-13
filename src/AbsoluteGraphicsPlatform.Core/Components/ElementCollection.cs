@@ -22,22 +22,11 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public virtual int Count => elementList.Count;
 
-        public virtual void Add(IElement element)
-        {
-            elementList.Add(element);
-        }
+        public virtual void Add(IElement element) => elementList.Add(element);
 
-        public virtual void Insert(int index, IElement element)
-        {
-            elementList.Insert(index, element);
-        }
+        public virtual void Insert(int index, IElement element) => elementList.Insert(index, element);
 
-        public virtual void Clear()
-        {
-            foreach (var element in elementList)
-                element.Parent = null;
-            elementList.Clear();
-        }
+        public virtual void Clear() => elementList.Clear();
 
         public virtual bool Contains(IElement element) => elementList.Contains(element);
 

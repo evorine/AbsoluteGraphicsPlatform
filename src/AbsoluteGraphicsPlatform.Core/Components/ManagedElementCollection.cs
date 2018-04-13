@@ -5,11 +5,11 @@ using System;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
-    public class SynchronizedElementCollection : ElementCollection
+    public class ManagedElementCollection : ElementCollection
     {
         readonly IElement ownerElement;
 
-        public SynchronizedElementCollection(IElement ownerElement)
+        public ManagedElementCollection(IElement ownerElement)
         {
             this.ownerElement = ownerElement;
         }

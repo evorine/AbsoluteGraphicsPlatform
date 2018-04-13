@@ -15,7 +15,7 @@ namespace AbsoluteGraphicsPlatform.Components
     {
         public Element()
         {
-            Children = new ElementCollection();
+            Children = new ManagedElementCollection(this);
         }
 
 
