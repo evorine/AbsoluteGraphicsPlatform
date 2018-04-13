@@ -5,6 +5,8 @@ using System;
 using AbsoluteGraphicsPlatform.Components;
 using AbsoluteGraphicsPlatform.Abstractions.Styling;
 
+[assembly: CLSCompliant(false)]
+
 namespace AbsoluteGraphicsPlatform.AGPx
 {
     public static class ApplicationBuilderExtensions
