@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections;
+using Humanizer;
 
 namespace AbsoluteGraphicsPlatform.Components
 {
@@ -19,42 +20,32 @@ namespace AbsoluteGraphicsPlatform.Components
 
         public IElement this[int index] => elementList[index];
 
-        public int Count => elementList.Count;
+        public virtual int Count => elementList.Count;
 
-        public void Add(IElement element)
+        public virtual void Add(IElement element)
         {
             elementList.Add(element);
-            //element.Parent = element;
         }
 
-        public void Insert(int index, IElement element)
+        public virtual void Insert(int index, IElement element)
         {
             elementList.Insert(index, element);
-            //element.Parent = element;
         }
 
-        public void Clear()
+        public virtual void Clear()
         {
             foreach (var element in elementList)
                 element.Parent = null;
             elementList.Clear();
         }
 
-        public bool Contains(IElement item) => elementList.Contains(item);
+        public virtual bool Contains(IElement element) => elementList.Contains(element);
 
-        public bool Remove(IElement item)
-        {
-            if (elementList.Remove(item))
-            {
-                item.Parent = null;
-                return true;
-            }
-            else return false;
-        }
+        public virtual bool Remove(IElement element) => elementList.Remove(element);
 
         public IEnumerator<IElement> GetEnumerator() => elementList.GetEnumerator();
         IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)elementList).GetEnumerator();
 
-        public override string ToString() => $"ElementCollection: {Count} item{(Count > 1 ? "s" : "")}";
+        public override string ToString() => $"Collection: {"element".ToQuantity(Count)}";
     }
 }
