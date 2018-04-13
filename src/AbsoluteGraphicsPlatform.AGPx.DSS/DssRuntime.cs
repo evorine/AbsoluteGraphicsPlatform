@@ -12,7 +12,6 @@ namespace AbsoluteGraphicsPlatform.AGPx
     public class DssRuntime
     {
         readonly List<AsignmentInstruction> globalVariables;
-        readonly List<RulesetInstruction> rulesets;
 
         public DssRuntime()
         {
